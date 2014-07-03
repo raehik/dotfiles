@@ -22,4 +22,4 @@ xset b off
 
 # Start window manager (must be final command!)
 # EDIT
-exec awesome
+exec i3
