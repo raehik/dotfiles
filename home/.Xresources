@@ -10,6 +10,9 @@ URxvt.perl-ext-common:
 ! Turn off scrollbar
 URxvt.scrollBar: false
 
+! Hide mouse pointer while typing
+URxvt.pointerBlank: true
+
 ! Make borderless (not guaranteed to work -- only asks the window manager)
 !URxvt.borderLess: true
 
