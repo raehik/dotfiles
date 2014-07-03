@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Compile an italics-fixed version of screen-256color.
+#
+# screen doesn't have italics support (remember tmux uses screen's terminfo) so
+# tmux and rxvt mess up when used together in some situations (e.g. man pages):
+# reverse video and italics are swapped, or something 
+#
+
+infocmp screen-256color | sed \
+-e 's/^screen[^|]*|[^,]*,/screen-256color-it|screen-256color with italics support,/' \
+-e 's/%?%p1%t;3%/%?%p1%t;7%/' \
+-e 's/smso=[^,]*,/smso=\\E[7m,/' \
+-e 's/rmso=[^,]*,/rmso=\\E[27m,/' \
+-e '$s/$/ sitm=\\E[3m, ritm=\\E[23m,/' > /tmp/screen-256color-it.terminfo
+
+tic /tmp/screen-256color-it.terminfo
+
+echo "Now set screen-256color-it as your default terminal in tmux (i.e. add"
+echo "these lines to your ~/.tmux.conf)."
+echo
+echo '# Set $TERM to screen-256color with added italics support'
+echo "set -g default-terminal 'screen-256color-it'"

@@ -1,0 +1,10 @@
+[user]
+    # EDIT
+	name = Person Personne
+	email = email@example.com
+[core]
+	excludesfile = ~/.gitignore_global
+[alias]
+	s = status
+	a = add
+	c = commit

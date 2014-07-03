@@ -1,0 +1,17 @@
+# Newsbeuter config file.
+# To be placed in ~/.newsbeuter or ~/.config/newsbeuter
+always-display-description	true
+
+# reload feeds on startup
+auto-reload			yes
+
+# browser to open in
+browser				firefox
+
+cleanup-on-quit			yes
+download-retries		10
+download-timeout		20
+refresh-on-startup		yes
+reload-time			10
+download-path			~/podcasts
+max-downloads			2

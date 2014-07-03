@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Install dotfiles.
+#
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/}
+
+  Options:
+    -h              display this help message
+EOF
+}
+
+while getopts "h" opt; do
+    case $opt in
+        h) # display usage message
+            usage
+            exit 0
+            ;;
+    esac
+done
+
+cd "$(dirname "$0")"
+
+cp -R $(find home -mindepth 1 -maxdepth 1) "$HOME"

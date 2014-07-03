@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+str1_mac=00:1e:4f:99:a5:76
+str1_ip=192.168.1.41
+
+maple_mac=c8:60:00:09:5e:3d
+maple_ip=192.168.1.98
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [options] command computer
+
+  Commands:
+    on              turn computer on
+    off             turn computer off
+    ping            ping IP
+
+  Options:
+    -h              display this help message
+EOF
+}
+
+if [[ -z $2 ]]; then
+    echo "error: 2 arguments required"
+    usage
+    exit
+fi
+
+mac=${2}_mac
+mac=${!mac}
+ip=${2}_ip
+ip=${!ip}
+
+if [[ $1 == "on" ]]; then
+    wakeonlan $mac
+elif [[ $1 == "off" ]]; then
+    ssh -t -p22 root@$ip "poweroff"
+elif [[ $1 == "ping" ]]; then
+    fping $ip &> /dev/null
+    if [ $? -eq 0 ]; then
+        echo "on"
+    else
+        echo "off"
+    fi
+else
+    echo "error: argument 1 not a valid command"
+fi

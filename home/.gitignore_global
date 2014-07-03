@@ -1,0 +1,9 @@
+# Vim shenanigans
+*~
+.*.swp
+
+# Personal
+TODO
+
+# Git
+#.gitignore
