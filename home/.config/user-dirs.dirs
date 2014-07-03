@@ -1,0 +1,4 @@
+# defaults to $HOME/Desktop
+# at the moment, I have no need for a desktop folder, so I've appended "-xdg"
+# to show what it's for.
+XDG_DESKTOP_DIR="$HOME/.desktop-xdg"
