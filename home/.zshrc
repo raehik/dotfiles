@@ -57,6 +57,11 @@ source $ZSH/oh-my-zsh.sh
 
 # My own configuration
 
+# Prefix path with user's own bin directory, if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 # Vi-style command-line editing
 bindkey -v
 
