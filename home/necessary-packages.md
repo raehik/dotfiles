@@ -9,8 +9,12 @@ zsh : Shell of choice (bash will suffice)
 tmux : Vital for administration
 git : Vital for grabbing stuff
 
+(these are installed by my arch-setup scripts)
+
 
 # Physical access
+
+oh-my-zsh
 
 ## X
 

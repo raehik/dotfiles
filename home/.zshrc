@@ -72,6 +72,9 @@ export EDITOR="vim"
 # (note: doesn't affect X - see ~/.xinitrc)
 setterm -blength 0
 
+# Turn off the unbelievably annoying AUTO_CD
+unsetopt AUTO_CD
+
 # Use nice colours for man (by using termcap values for less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
