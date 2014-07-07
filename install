@@ -23,4 +23,4 @@ done
 
 cd "$(dirname "$0")"
 
-cp -R $(find home -mindepth 1 -maxdepth 1) "$HOME"
+cp -vR $(find home -mindepth 1 -maxdepth 1) "$HOME"
