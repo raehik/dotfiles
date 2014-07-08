@@ -7,6 +7,12 @@ autoload -U compinit && compinit
 # Vi-style command-line editing
 bindkey -v
 
+# Allow comments in interactive mode
+# e.g.
+# $ #long-command which "I have to" run Later
+# $ do something # even this works
+setopt interactivecomments
+
 # Select your completion from a clear menu (inverted background on selection)
 # You can also move around selections by hitting the arrow keys.
 zstyle ':completion:*:*:*:*:*' menu select
@@ -25,3 +31,21 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 # Also, colour it cool.
 # (stolen from oh-my-zsh)
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# Command history configuration
+# Set file
+HISTFILE=$HOME/.zsh_history
+
+# Big size
+HISTSIZE=10000
+
+# History won't -actually- be saved without this
+SAVEHIST=$HISTSIZE
+
+# same as bash HISTCONTROL=ignoreboth
+setopt hist_ignore_dups
+setopt hist_ignore_space
+
+# append to history every command - a 'shared history' of sorts
+# note that shared_history is another option, but I dunno about it.
+setopt inc_append_history
