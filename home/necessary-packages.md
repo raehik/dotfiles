@@ -13,7 +13,12 @@ git : Vital for grabbing stuff
 
 # Primary disk
 
-grub : The bootloader
+grub : The bootloader (suggested to install by arch-setup, because most
+       installs i.e. those w/o another disk in the machine will require it)
+
+
+# Multi-booting
+
 os-prober : Reasonable automatic prober for GRUB
 
 
