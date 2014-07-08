@@ -33,19 +33,21 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
 # Command history configuration
-# Set file
+## Set file
 HISTFILE=$HOME/.zsh_history
 
-# Big size
+## Big size
 HISTSIZE=10000
 
-# History won't -actually- be saved without this
+## History won't -actually- be saved without this
 SAVEHIST=$HISTSIZE
 
-# same as bash HISTCONTROL=ignoreboth
+## same as bash HISTCONTROL=ignoreboth
 setopt hist_ignore_dups
 setopt hist_ignore_space
 
-# append to history every command - a 'shared history' of sorts
-# note that shared_history is another option, but I dunno about it.
+## append to history every command
 setopt inc_append_history
+
+## actually share the history, between concurrent sessions
+setopt share_history
