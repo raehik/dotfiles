@@ -1,0 +1,58 @@
+#!/usr/bin/zsh
+#
+# ^ Vim, this is a shell file
+#
+# raehik
+# 08/07/14
+#
+# A simple, configurable theme for zsh. Really.
+#
+
+# necessary for git stuff to work in zsh
+setopt PROMPT_SUBST
+
+build_prompt() {
+    # use a function so we don't leave vars everywhere (only PROMPT stays set)
+
+    # bash and zsh need to be told in different ways that colours do not change
+    # the length of the prompt (zsh encloses in '%{', bash encloses in '\[')
+    local reset_colour="\e[0m"
+    local no_bold="\e[22m" # 22 = neither bold nor faint
+    local bold="\e[01m"
+    local red="\e[31m"
+    local green="\e[32m"
+    local yellow="\e[33m"
+    local blue="\e[34m"
+
+    # if you want to change up the colours, change these variables!
+    local col_user="${no_bold}${green}"
+    local col_at="${no_bold}${green}"
+    local char_at='@'
+    local col_host="${no_bold}${green}"
+    local col_colon="${no_bold}${green}"
+    local char_colon=': '
+    local col_pwd="${bold}${blue}"
+    local col_prompt_0="${bold}${red}"
+    local col_prompt_1="${no_bold}${red}"
+    local char_prompt='$ '
+    local col_command="${reset_colour}"
+
+    # git mangling
+    if $(git rev-parse --is-inside-work-tree &> /dev/null); then
+        if [[ -n $(git status --porcelain) ]]; then
+            # dirty
+            local git_status_colour="${bold}${yellow}"
+        else
+            # clean
+            local git_status_colour="${no_bold}${yellow}"
+        fi
+
+        local git_bit="%{$git_status_colour%}<$(git symbolic-ref --short HEAD)> "
+    fi
+
+    echo -n "%{$col_user%}%n%{$col_at%}$char_at%{$col_host%}%m%{$col_colon%}$char_colon%{$col_pwd%}%~ $git_bit%(?:%{$col_prompt_0%}:%{$col_prompt_1%})$char_prompt%{$col_command%}"
+
+}
+
+# use single quotes so command substitution works
+PROMPT='$(build_prompt)'

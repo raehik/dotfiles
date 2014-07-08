@@ -1,0 +1,37 @@
+# Prefix path with user's own bin directory, if it exists
+if [ -d "$HOME/bin" ]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# Turn off all console system bells (PC speaker beeps)
+# (note: doesn't affect X - see ~/.xinitrc)
+setterm -blength 0
+
+# Make ls use LS_COLORS in a tty (but not in a pipe)
+alias ls='ls --color=auto'
+if [ -r "$HOME/.dircolors" ]; then
+    # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
+    # $(dircolors) effectively sets the LS_COLORS environment variable.
+    # thanks [Matt](http://unix.stackexchange.com/a/94306)
+    eval $(dircolors "$HOME/.dircolors")
+fi
+
+# Enable grep colors
+alias grep='grep --color=auto'
+
+# Useful ls aliases
+alias ll='ls -lh'
+alias la='ls -lah'
+alias l='ls -la'
+
+# Use nice colours for man (by using termcap values for less)
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# Vim master race
+export EDITOR="vim"

@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+source $HOME/.shellrc
+source $HOME/.bash_theme
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -47,6 +50,3 @@ alias grep='grep --color=auto'
 alias ll='ls -lh'
 alias la='ls -lah'
 alias l='ls -la'
-
-# Set the prompt
-PS1='\[\033[0;32m\]\u@\h: \[\033[01;34m\]\w\[\033[00m\] \[\033[1;31m\]$\[\033[0m\] '
