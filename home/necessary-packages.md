@@ -1,6 +1,5 @@
 # All
 
-grub : The bootloader
 openssh : Vital for most all usage cases
 ntp : Just to run 1 command once, then you can remove:
     ntpd -qg ; hwclock -w
@@ -12,11 +11,17 @@ git : Vital for grabbing stuff
 (these are installed by my arch-setup scripts)
 
 
-# Physical access
+# Primary disk
 
-oh-my-zsh
+grub : The bootloader
+os-prober : Reasonable automatic prober for GRUB
+
+
+# Physical access/Desktop
 
 ## X
+
+### Base
 
 xorg-server : Necessary for all graphical programs (framebuffer sux)
 (xorg-intel?)
@@ -29,7 +34,7 @@ firefox
 (web fonts? defo need some...)
 
 
-#### Fonts
+### Fonts
 
 terminus-font : Best font
 ttf-sazanami : CJK support
