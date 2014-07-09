@@ -1,7 +1,20 @@
+!           NOTE: THIS FILE DOES NOT ALLOW APOSTROPHES IN COMMENTS!
+!                                WHY NOT?!
 ! Use Terminus font
 ! Terminus 12 bold looks the same as medium (too small for them to
 ! differentiate them, I guess), so use 14 for now
-URxvt.font: -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+! For some reason, this way of declaring fonts gets me -terrible- screen
+! refreshes ON ATI CARDS (HD6770, HD7850):
+!URxvt.font: -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+! Like, it is slow as balls to print new lines. So instead, use xft:
+!URxvt.font: xft:Terminus:size=12
+! xft uses sizes differently or something, so xft 10 = other 14
+! Watch out, because some sizes will print the font in the same way, but with
+! padding on the top and bottom of lines! e.g. try using size=12 - it will look
+! almost identical, except for 'larger' lines (and also, it seems some
+! characters are affected, like the non-ASCII left quote mark (perhaps because
+! another font may be used?)
+URxvt.font: xft:Terminus:size=10
 
 ! Disable all Perl extensions
 URxvt.perl-ext:
@@ -10,7 +23,7 @@ URxvt.perl-ext-common:
 ! Turn off scrollbar
 URxvt.scrollBar: false
 
-! Hide mouse pointer while typing
+! Hide mouse pointer if over window and either typing or not moved for ~2 secs
 URxvt.pointerBlank: true
 
 ! Make borderless (not guaranteed to work -- only asks the window manager)
