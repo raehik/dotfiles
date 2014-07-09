@@ -1,7 +1,3 @@
-#####################################################
-## this is example key configuration file, copy it ##
-## to ~/.ncmpcpp/keys and set up your preferences  ##
-#####################################################
 ##
 ## Tips:
 ## - it's possible to bind maximum two keys to a command
@@ -163,7 +159,9 @@ key_lyrics = 0
 #key_clear = 'c'
 key_clear = 0
 #
+# remove all except current song -- uhh, okay.
 #key_crop = 'C'
+key_crop = 0
 #
 #key_move_song_up = 'm'
 key_move_song_up = 0
@@ -191,9 +189,11 @@ key_save_playlist = 0
 #
 # 'c' for current (maybe? too close to new clear at 'C', though)
 #key_go_to_now_playing = 'o'
-#key_go_to_now_playing = 'c'
+key_go_to_now_playing = 'c'
 #
+# c = centre, C = toggle auto centre. makes sense.
 #key_toggle_auto_center = 'U'
+key_toggle_auto_center = 'C'
 #
 #key_toggle_display_mode = 'p'
 #
