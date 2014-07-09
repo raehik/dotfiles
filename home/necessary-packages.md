@@ -2,7 +2,7 @@
 
 openssh : Vital for most all usage cases
 ntp : Just to run 1 command once, then you can remove:
-    ntpd -qg ; hwclock -w
+    ntpd -qg ; hwclock
 vim : Editor of choice
 zsh : Shell of choice (bash will suffice)
 tmux : Vital for administration
@@ -68,6 +68,10 @@ NOT mplayer : Get mplayer2 from its git repo :
     git clone git://git.mplayer2.org/mplayer2-build.git
 
 
-### Other
+## Interoperability (i.e. working with Windows)
+
+ntfs-3g : allows read/write access to NTFS filesystems
+
+## Other
 
 markdown : <-- (Markdown.pl, not discount or anything)
