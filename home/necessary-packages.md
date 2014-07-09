@@ -2,7 +2,7 @@
 
 openssh : Vital for most all usage cases
 ntp : Just to run 1 command once, then you can remove:
-    ntpd -qg ; hwclock
+    ntpd -qg ; hwclock -w
 vim : Editor of choice
 zsh : Shell of choice (bash will suffice)
 tmux : Vital for administration
