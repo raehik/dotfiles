@@ -29,13 +29,18 @@ os-prober : Reasonable automatic prober for GRUB
 
 ### Base
 
-xorg-server     : Necessary for all graphical programs (framebuffer sux)
-xorg-xrdb       : "X server resource database utility" - load .Xresources
-xorg-xrandr     : Set size etc. of screen (+ multi-screen setup?)
-i3-wm           : Window manager of choice
-i3status        : Nice status bar for i3
-rxvt-unicode    : Terminal emulator of choice
-firefox         : Pretty much no other choice for a decent browser
+xorg-server         : Necessary for all graphical programs (framebuffer sux)
+xorg-xrdb           : "X server resource database utility" - load .Xresources
+xorg-xrandr         : Set size etc. of screen (+ multi-screen setup?)
+xorg-xinit          : Run .xinit on startup
+xorg-xset           : For xset b off (in .xinitrc)
+xf86-video-intel,
+xf86-video-ati,
+xf86-video-nouveau  : Depends on your chipset/graphics card
+i3-wm               : Window manager of choice
+i3status            : Nice status bar for i3
+rxvt-unicode        : Terminal emulator of choice
+firefox             : Pretty much no other choice for a decent browser
 (web fonts? defo need some...)
 
 
