@@ -39,6 +39,7 @@ xf86-video-ati,
 xf86-video-nouveau  : Depends on your chipset/graphics card
 i3-wm               : Window manager of choice
 i3status            : Nice status bar for i3
+dmenu               : Necessary for launching apps in i3
 rxvt-unicode        : Terminal emulator of choice
 firefox             : Pretty much no other choice for a decent browser
 (web fonts? defo need some...)
