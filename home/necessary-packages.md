@@ -1,24 +1,24 @@
 # All
 
 openssh : Vital for most all usage cases
-ntp : Just to run 1 command once:
-          ntpd -qg ; hwclock -w
-      But it's useful enough to keep.
-vim : Editor of choice
-zsh : Shell of choice (bash will suffice)
-tmux : Vital for administration
-git : Vital for grabbing stuff
+ntp     : Just to run 1 command once:
+            ntpd -qg ; hwclock -w
+          But it's useful enough to keep.
+vim     : Editor of choice
+zsh     : Shell of choice (bash will suffice, however)
+tmux    : Vital for administration
+git     : Vital for grabbing stuff
 
-(these are installed by my arch-setup scripts)
+(these are all installed by default by my arch-setup scripts)
 
 
-# Primary disk
+# Booting
 
 grub : The bootloader (suggested to install by arch-setup, because most
        installs i.e. those w/o another disk in the machine will require it)
 
 
-# Multi-booting
+## Multi-booting
 
 os-prober : Reasonable automatic prober for GRUB
 
@@ -29,14 +29,13 @@ os-prober : Reasonable automatic prober for GRUB
 
 ### Base
 
-xorg-server : Necessary for all graphical programs (framebuffer sux)
-(xorg-intel?)
-xorg-xrdb   (is this with xorg-server?)
-xorg-xrandr (is this with xorg-server?)
-i3-wm
-i3status
-rxvt-unicode
-firefox
+xorg-server     : Necessary for all graphical programs (framebuffer sux)
+xorg-xrdb       : "X server resource database utility" - load .Xresources
+xorg-xrandr     : Set size etc. of screen (+ multi-screen setup?)
+i3-wm           : Window manager of choice
+i3status        : Nice status bar for i3
+rxvt-unicode    : Terminal emulator of choice
+firefox         : Pretty much no other choice for a decent browser
 (web fonts? defo need some...)
 
 
@@ -52,7 +51,7 @@ ttf-sazanami : CJK support
 
 sxiv or feh : I dunno yet! feh doesn't support GIFs, so I'm not trying it until
               I have an issue with sxiv.
-imagemagick : Great image tool. Command-line editing much better than GIMP.
+imagemagick : Great image tool, CLI interface/editing much better than GIMP.
 
 
 #### Music
@@ -72,6 +71,7 @@ NOT mplayer : Get mplayer2 from its git repo :
 ## Interoperability (i.e. working with Windows)
 
 ntfs-3g : allows read/write access to NTFS filesystems
+
 
 ## Other
 
