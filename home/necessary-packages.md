@@ -60,18 +60,18 @@ sxiv or feh : I dunno yet! feh doesn't support GIFs, so I'm not trying it until
 imagemagick : Great image tool, CLI interface/editing much better than GIMP.
 
 
-#### Music
+#### Audio & Music
 
-mpd :       Decent and -very- flexible music player
-(vs cmus :  Fast & responsive, nice layout, but more limited (e.g. no icecast)
-ncmpcpp :   Good + highly configurable MPD client
-
-
-#### Video
+alsa-utils  : ALSA is already installed, but this includes alsamixer
+mpd         : Decent and -very- flexible music player
+(vs cmus:  Fast & responsive, nice layout, but more limited (e.g. no icecast)
+ncmpcpp     : Good + highly configurable MPD client
 
 NOT mplayer : Get mplayer2 from its git repo :
 
     git clone git://git.mplayer2.org/mplayer2-build.git
+
+Requires base-devel and yasm, possibly others.
 
 
 ## Interoperability (i.e. working with Windows)
@@ -81,4 +81,4 @@ ntfs-3g : allows read/write access to NTFS filesystems
 
 ## Other
 
-markdown : <-- (Markdown.pl, not discount or anything)
+markdown    : <-- (Markdown.pl, not discount or anything)
