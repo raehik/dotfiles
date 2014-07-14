@@ -34,7 +34,6 @@ xorg-xrdb           : "X server resource database utility" - load .Xresources
 xorg-xrandr         : Set size etc. of screen (+ multi-screen setup?)
 xorg-xinit          : Run .xinit on startup
 xorg-xset           : For xset b off (in .xinitrc)
-xorg-xmodmap        : For remapping keys (not always necessary!)
 xf86-video-intel,
 xf86-video-ati,
 xf86-video-nouveau  : Depends on your chipset/graphics card
