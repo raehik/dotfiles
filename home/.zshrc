@@ -51,3 +51,6 @@ setopt inc_append_history
 
 ## actually share the history, between concurrent sessions
 setopt share_history
+
+# don't do that dumb query before `rm path/*`
+setopt rm_star_silent
