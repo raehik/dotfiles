@@ -2,5 +2,5 @@
 # at the moment, I have no need for a desktop folder, so I've appended "-xdg"
 # to show what it's for.
 XDG_DESKTOP_DIR="$HOME/.desktop-xdg"
-# de-capitalise so it's more shell-friendly
+# de-capitalise for shell-friendliness
 XDG_DOWNLOADS_DIR="$HOME/downloads"
