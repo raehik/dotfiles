@@ -66,12 +66,8 @@ alsa-utils  : ALSA is already installed, but this includes alsamixer
 mpd         : Decent and -very- flexible music player
 (vs cmus:  Fast & responsive, nice layout, but more limited (e.g. no icecast)
 ncmpcpp     : Good + highly configurable MPD client
-
-NOT mplayer : Get mplayer2 from its git repo :
-
-    git clone git://git.mplayer2.org/mplayer2-build.git
-
-Requires base-devel and yasm, possibly others.
+mplayer     : Nice CLI video player (though not so great with some things, i.e.
+              Matroska linked files :[)
 
 
 ## Interoperability (i.e. working with Windows)
