@@ -23,7 +23,7 @@ grub : The bootloader (suggested to install by arch-setup, because most
 os-prober : Reasonable automatic prober for GRUB
 
 
-# Physical access/Desktop
+# Physical access
 
 ## X
 
@@ -68,6 +68,11 @@ mpd         : Decent and -very- flexible music player
 ncmpcpp     : Good + highly configurable MPD client
 mplayer     : Nice CLI video player (though not so great with some things, i.e.
               Matroska linked files :[)
+
+
+### Laptop
+
+xf86-input-synaptics    : Laptop touchpad
 
 
 ## Interoperability (i.e. working with Windows)
