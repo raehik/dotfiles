@@ -235,7 +235,7 @@ audio_output {
     port        "8000"
     mount       "/mpd.mp3"
     password    "hackme"
-    bitrate     "256"
+    bitrate     "128"
     # (for some reason, ogg can't go above 192, at least on Xubuntu 13.04)
     format      "44100:16:2"
     description "A stream of music!"        # optional
