@@ -158,6 +158,10 @@ set fileformats=unix,dos
 " Make sure new files are Unix format
 set fileformat=unix
 
+" Enable modeline (disabled by default because it is a common source of
+" vulnerabilities)
+set modeline
+
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 

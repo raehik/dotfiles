@@ -1,6 +1,16 @@
+# vim: syntax=sh filetype=sh
+#
+# User configuration for universal(ish) shell features.
+#
+
 # Prefix path with user's own bin directory, if it exists
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
+fi
+
+# Prefix path with user's gem directory, if it exists
+if [ -d "$HOME/.gems/ruby/2.1.0/bin" ]; then
+    PATH="$HOME/.gems/ruby/2.1.0/bin:$PATH"
 fi
 
 # Turn off all console system bells (PC speaker beeps)
