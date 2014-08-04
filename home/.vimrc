@@ -186,6 +186,9 @@ set colorcolumn=80
 " Highlight current line
 set cursorline
 
+" In Ruby files, set indent to just 2
+au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
+
 " Enable mouse for all modes
 "set mouse=a
 
