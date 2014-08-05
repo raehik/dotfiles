@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#
-# Start Anki using a different (better) data location.
-#
-
-/usr/bin/anki -b ~/.anki

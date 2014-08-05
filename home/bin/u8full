@@ -1,9 +1,0 @@
-#!/bin/bash
-
-window_name="oyvey"
-wmctrl -r "${window_name}" -t 1
-wmctrl -a "${window_name}"
-if [ $? -ne 0 ]; then
-	(urxvt -title "${window_name}" -e bash -c "wmctrl -r ${window_name} -t 1; wmctrl -r ${window_name} -b add,fullscreen && bash" >& /dev/null) &
-fi
-exit

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Please open Anki and export the A402 deck into '/media/1-1tb-wd/Me/Dropbox/School/Work/Latin'."
-read -p "(press Enter when done)"
-rsync -av --delete "/media/1-1tb-wd/Me/Dropbox/School/Work/Latin" "/media/1-1tb-wd/Me/Dropbox/Public"
