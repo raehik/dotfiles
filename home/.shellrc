@@ -9,13 +9,17 @@ if [ -d "$HOME/bin" ]; then
 fi
 
 # Prefix path with user's gem directory, if it exists
-if [ -d "$HOME/.gems/ruby/2.1.0/bin" ]; then
-    PATH="$HOME/.gems/ruby/2.1.0/bin:$PATH"
+if [ -d "$HOME/.gem/ruby/2.1.0/bin" ]; then
+    PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 fi
 
 # Turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X - see ~/.xinitrc)
-setterm -blength 0
+# EDIT: since I now get an error 'terminal X does not support --blength', only
+# set this if we're in the Linux console
+if [ $TERM = "linux" ]; then
+    setterm --blength 0
+fi
 
 # Make ls use LS_COLORS in a tty (but not in a pipe)
 alias ls='ls --color=auto'
