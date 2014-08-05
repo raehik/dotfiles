@@ -134,10 +134,16 @@ filetype indent plugin on
 syntax on
 
 " Set colourscheme to Zenburn
-"colors zenburn
+colorscheme zenburn
 
 " Set colourscheme to customised Zenburn
-colors zenburn-no-italic
+"colors zenburn-no-italic
+
+" Set colourscheme to dark Solarized + make it work in terminal
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+
 
 " Read *.md files as Markdown formatted
 au BufRead,BufNewFile *.md set filetype=markdown
