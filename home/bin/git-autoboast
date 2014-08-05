@@ -16,4 +16,4 @@ last_hash_full="$(git rev-parse HEAD)"
 last_message="$(git log -1 --pretty=%s)"
 last_author="$(git log -1 --pretty=%aN)"
 
-tweet "\"${last_message}\" - commit $last_hash_short by $last_author @ raehik/$git_root (https://github.com/raehik/$git_root/commit/$last_hash_full"
+tweet "\"${last_message}\" - commit $last_hash_short by $last_author @ raehik/$git_root (https://github.com/raehik/$git_root/commit/$last_hash_full)"
