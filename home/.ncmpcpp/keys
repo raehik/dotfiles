@@ -157,7 +157,8 @@ key_lyrics = 0
 #key_add_selected_items = 'A'
 #
 #key_clear = 'c'
-key_clear = 0
+# 'd' = 1, 'D' = all
+key_clear = 'D'
 #
 # remove all except current song -- uhh, okay.
 #key_crop = 'C'
@@ -206,7 +207,7 @@ key_toggle_lyrics_db = 0
 key_toggle_fetching_lyrics_for_current_song_in_background = 0
 #
 #key_go_to_containing_directory = 'G'
-key_go_to_containing_directory = 0
+key_go_to_containing_directory = '='
 #
 #key_go_to_media_library = '~'
 #
