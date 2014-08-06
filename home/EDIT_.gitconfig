@@ -8,3 +8,4 @@
 	s = status
 	a = add
 	c = commit
+    d = diff
