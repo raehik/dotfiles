@@ -165,6 +165,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# bind volume multimedia keys
+# --no-startup-id disables startup notifications for that window, so we don't
+# get the hourglass pointer for 60 secs
+# see https://faq.i3wm.org/question/561
+# amixer -q is simply quiet mode
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 1dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 1dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
