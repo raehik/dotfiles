@@ -38,6 +38,8 @@ xf86-video-intel,
 xf86-video-ati,
 xf86-video-nouveau  : Depends on your chipset/graphics card
 i3-wm               : Window manager of choice
+    perl-anyevent-i3,
+    perl-json-xs    : Required for i3-save-tree - but not a dependency? :/
 i3status            : Nice status bar for i3
 dmenu               : Necessary for launching apps in i3
 rxvt-unicode        : Terminal emulator of choice
