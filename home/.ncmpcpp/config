@@ -288,6 +288,8 @@ ncmpcpp_directory = "~/.ncmpcpp"
 #seek_time = "1"
 #
 #autocenter_mode = "no"
+# Have auto-centre on by default (I like it)
+autocenter_mode = "yes"
 #
 #centered_cursor = "no"
 #
