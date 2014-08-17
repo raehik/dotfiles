@@ -1,13 +1,13 @@
 # All
 
-openssh : Vital for most all usage cases
-ntp     : Just to run 1 command once:
-            ntpd -qg ; hwclock -w
-          But it's useful enough to keep.
-vim     : Editor of choice
-zsh     : Shell of choice (bash will suffice, however)
-tmux    : Vital for administration
-git     : Vital for grabbing stuff
+openssh                 : Vital for most all usage cases
+rxvt-unicode-terminfo   : SSH is otherwise often going to be broken (Arch does
+                          not come with terminfo for urxvt)
+ntp                     : `ntpd -qg && hwclock -w` & important anyway
+vim                     : Editor of choice
+zsh                     : Shell of choice (bash will suffice e.g. for the RPi)
+tmux                    : Vital for administration
+git                     : Vital for grabbing stuff
 
 (these are all installed by default by my arch-setup scripts)
 
