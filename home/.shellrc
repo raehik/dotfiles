@@ -38,6 +38,14 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias l='ls -la'
 
+# automatic ls to stop my habit
+lcd() {
+    cd $@
+    if [ $? -eq 0 ]; then
+        ls --color=always
+    fi
+}
+
 # Use nice colours for man (by exporting termcap values for less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
