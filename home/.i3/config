@@ -188,13 +188,19 @@ bar {
 # Layouts & autostarting
 #########################
 #
-## ncmpcpp-irssi-firefox
 # programs
-exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/urxvt -title \"extra\"'"
 exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/urxvt -title \"general\"'"
-exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/urxvt -title \"ncmpcpp\"'"
-exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/urxvt -title \"irssi\"'"
-exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/firefox'"
+exec --no-startup-id "i3-msg 'workspace 2; exec /usr/bin/firefox'"
+#exec --no-startup-id "i3-msg 'workspace 2; exec /usr/bin/urxvt -title \"extra\"'"
+exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"ncmpcpp\"'"
+exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"alsamixer\"'"
+exec --no-startup-id "i3-msg 'workspace 4; exec /usr/bin/urxvt -title \"irssi\"'"
 
 # lay 'em out nice and proper
-exec --no-startup-id "i3-msg 'workspace 1; append_layout /root/.i3/ncmpcpp-irssi-firefox.json'"
+exec --no-startup-id "i3-msg 'workspace 1; append_layout /root/.i3/urxvt.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /root/.i3/firefox.json'"
+exec --no-startup-id "i3-msg 'workspace 3; append_layout /root/.i3/ncmpcpp-alsamixer.json'"
+exec --no-startup-id "i3-msg 'workspace 4; append_layout /root/.i3/irssi.json'"
+
+# start on workspace 1
+exec --no-startup-id "i3-msg 'workspace 1'"

@@ -1,0 +1,23 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "floating": "auto_off",
+    //"fullscreen_mode": 1,
+    "geometry": {
+       "height": 340,
+       "width": 644,
+       "x": 0,
+       "y": 0
+    },
+    "name": "irssi",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       // "instance": "^urxvt$",
+       "title": "^irssi$"
+       }
+    ],
+    "type": "con"
+}
+
