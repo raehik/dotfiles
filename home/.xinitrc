@@ -21,5 +21,4 @@ xset b off
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Start window manager (must be final command!)
-# EDIT
 exec i3
