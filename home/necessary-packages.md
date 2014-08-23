@@ -47,6 +47,7 @@ rxvt-unicode        : Terminal emulator of choice
 firefox             : Pretty much no other choice for a decent browser
 (web fonts? defo need some...)
 scrot               : Full-featured and *very* light screenshot program
+irssi               : *the* IRC client
 
 
 ### Fonts
