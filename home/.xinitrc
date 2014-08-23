@@ -17,6 +17,10 @@ setxkbmap -layout gb
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
 xset b off
 
+# Set brightness to half to conserve powa
+# Only for laptops (or those sorts of displays I guess)
+#xbacklight -set 50
+
 # If .Xresources is present, load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
