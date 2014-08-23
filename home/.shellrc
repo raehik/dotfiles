@@ -39,15 +39,12 @@ alias la='ls -lah'
 alias l='ls -la'
 
 # automatic ls to stop my habit
-lcd() {
+cdl() {
     cd $@
     if [ $? -eq 0 ]; then
         ls --color=always
     fi
 }
-
-# this is easier if I have already typed cd
-alias cdl='lcd'
 
 # xbacklight's fade is dumb, let's change the default fade time to 0
 alias xbacklight='xbacklight -time 0'
