@@ -46,6 +46,7 @@ dmenu               : Necessary for launching apps in i3
 rxvt-unicode        : Terminal emulator of choice
 firefox             : Pretty much no other choice for a decent browser
 (web fonts? defo need some...)
+scrot               : Full-featured and *very* light screenshot program
 
 
 ### Fonts
