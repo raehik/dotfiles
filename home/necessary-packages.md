@@ -52,8 +52,9 @@ irssi               : *the* IRC client
 
 ### Fonts
 
-terminus-font : Best font
-ttf-sazanami : CJK support
+terminus-font                   : Best monospace font :P
+adobe-source-han-sans-otc-fans  : Lots of CJK support
+ttf-sazanami                    : Nice big Japanese font
 
 
 ### Multimedia & games
