@@ -44,14 +44,23 @@ i3-wm               : Window manager of choice
 i3status            : Nice status bar for i3
 dmenu               : Necessary for launching apps in i3
 rxvt-unicode        : Terminal emulator of choice
+
+
+### General
+
 firefox             : Pretty much no other choice for a decent browser
-(web fonts? defo need some...)
 scrot               : Full-featured and *very* light screenshot program
 irssi               : *the* IRC client
+sxiv                : I dunno yet! feh doesn't support GIFs, so I'm not trying
+                      it until I have an issue with sxiv.
+feh                 : ??? better ??? (have hardly tried)
+zathura             : Plugin-based document viewer
+zathura-pdf-poppler : PDF plugin for zathura
 
 
 ### Fonts
 
+(web fonts? defo need some...)
 terminus-font                   : Best monospace font :P
 adobe-source-han-sans-otc-fans  : Lots of CJK support
 ttf-sazanami                    : Nice big Japanese font
@@ -61,8 +70,6 @@ ttf-sazanami                    : Nice big Japanese font
 
 #### Images
 
-sxiv or feh : I dunno yet! feh doesn't support GIFs, so I'm not trying it until
-              I have an issue with sxiv.
 imagemagick : Great image tool, CLI interface/editing much better than GIMP.
 
 
