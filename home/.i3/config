@@ -202,8 +202,8 @@ exec --no-startup-id "i3-msg 'workspace 2; exec /usr/bin/firefox'"
 exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"ncmpcpp\" -e mpn'"
 exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"alsamixer\" -e alsamixer'"
 exec --no-startup-id "i3-msg 'workspace 4; exec /usr/bin/urxvt -title \"irssi\"'"
-exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"schedule\" -e vim \"/root/schedule\"'"
-exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"today\" -e vim \"/root/schedule-today\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"today\" -e vim \"$HOME/todo\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"schedule\" -e vim \"$HOME/todo-notes\"'"
 exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"extra-5\"'"
 
 # layouts
