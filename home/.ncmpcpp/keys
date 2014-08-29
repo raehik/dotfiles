@@ -8,6 +8,9 @@
 ## will be used to switch between columns.
 ##
 #
+# raehik note: The 'decimal values' are ASCII values, or something. In any
+#              case, use the first column from `showkey -a`.
+#
 #key_up = 259 'k'
 #
 #key_down = 258 'j'
@@ -218,4 +221,4 @@ key_go_to_containing_directory = '='
 # 'Q' > 'q' (harder to accidentally hit), but quitting doesn't matter with
 # ncmpcpp
 #key_quit = 'q' 'Q'
-key_quit = 'q'
+key_quit = 'q' 27
