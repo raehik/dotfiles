@@ -66,6 +66,15 @@ adobe-source-han-sans-otc-fans  : Lots of CJK support
 ttf-sazanami                    : Nice big Japanese font
 
 
+### Languages
+
+ibus        : Input method framework: enables entering non-Latin characters
+NOTE: requires you to locale-gen en_US.UTF-8, because otherwise ibus-setup
+      won't allow you to add input methods T__T
+      See here: http://bugs.antergos.com/index.php?do=details&task_id=64
+ibus-anthy  : Japanese IME
+
+
 ### Multimedia & games
 
 #### Images
