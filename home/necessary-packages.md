@@ -72,6 +72,9 @@ ibus        : Input method framework: enables entering non-Latin characters
 NOTE: requires you to locale-gen en_US.UTF-8, because otherwise ibus-setup
       won't allow you to add input methods T__T
       See here: http://bugs.antergos.com/index.php?do=details&task_id=64
+librsvg     : REQUIRED FOR ICONS TO SHOW UP! Guess it's not a dependency or
+              something? Allows programs to do SVG-type things (e.g.
+              ImageMagick SVG -> PNG).
 ibus-anthy  : Japanese IME
 
 
