@@ -174,6 +174,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q set Master 1dB+ unm
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q set Master 1dB- unmute"
 bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle"
 
+# bind special multimedia keys
+bindsym XF86AudioPlay exec --no-startup-id "ncmpcpp toggle"
+bindsym XF86AudioStop exec --no-startup-id "ncmpcpp stop"
+bindsym XF86AudioPrev exec --no-startup-id "ncmpcpp prev"
+bindsym XF86AudioNext exec --no-startup-id "ncmpcpp next"
+
 # bind brightness multimedia keys
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10 -time 0"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10 -time 0"
@@ -189,18 +195,21 @@ bar {
 #########################
 #
 # programs
+
+# instead T__T
 exec --no-startup-id "i3-msg 'workspace 1; exec /usr/bin/urxvt -title \"general\"'"
 exec --no-startup-id "i3-msg 'workspace 2; exec /usr/bin/firefox'"
-#exec --no-startup-id "i3-msg 'workspace 2; exec /usr/bin/urxvt -title \"extra\"'"
-exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"ncmpcpp\"'"
-exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"alsamixer\"'"
+exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"ncmpcpp\" -e mpn'"
+exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"alsamixer\" -e alsamixer'"
 exec --no-startup-id "i3-msg 'workspace 4; exec /usr/bin/urxvt -title \"irssi\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"schedule\" -e vim \"/root/schedule\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"today\" -e vim \"/root/schedule-today\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"extra-5\"'"
 
-# lay 'em out nice and proper
-exec --no-startup-id "i3-msg 'workspace 1; append_layout /root/.i3/urxvt.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /root/.i3/firefox.json'"
+# layouts
+# no point if there's just one window on a workspace
 exec --no-startup-id "i3-msg 'workspace 3; append_layout /root/.i3/ncmpcpp-alsamixer.json'"
-exec --no-startup-id "i3-msg 'workspace 4; append_layout /root/.i3/irssi.json'"
+exec --no-startup-id "i3-msg 'workspace 5; append_layout /root/.i3/urxvt-schedule-extra.json'"
 
-# start on workspace 1
+# start on workspace 1 (doesn't always work, but not a big deal anyway)
 exec --no-startup-id "i3-msg 'workspace 1'"
