@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Start mpd and ncmpcpp, and kill the former when the latter exits.
+#
+
+mpd_pid_file="/var/lib/mpd/mpd.pid"
+
+if [ -f "$mpd_pid_file" ]; then
+    mpd_running="true"
+else
+    mpd_running=""
+fi
+
+if [ ! $mpd_running ]; then
+    mpd
+fi
+
+ncmpcpp
+
+if [ ! $mpd_running ]; then
+    mpd --kill
+fi
