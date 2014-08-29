@@ -17,7 +17,7 @@
                "y": 0
             },
             "name": "ncmpcpp",
-            "percent": 0.7,
+            "percent": 0.65,
             "swallows": [
                {
                "class": "^URxvt$",
@@ -37,7 +37,7 @@
                "y": 0
             },
             "name": "alsamixer",
-            "percent": 0.3,
+            "percent": 0.35,
             "swallows": [
                {
                "class": "^URxvt$",
