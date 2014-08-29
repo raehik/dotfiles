@@ -24,5 +24,11 @@ xset b off
 # If .Xresources is present, load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
+# IBus biz
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
+
 # Start window manager (must be final command!)
 exec i3
