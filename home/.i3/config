@@ -204,7 +204,7 @@ exec --no-startup-id "i3-msg 'workspace 3; exec /usr/bin/urxvt -title \"alsamixe
 exec --no-startup-id "i3-msg 'workspace 4; exec /usr/bin/urxvt -title \"irssi\"'"
 exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"today\" -e vim \"$HOME/todo\"'"
 exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"schedule\" -e vim \"$HOME/todo-notes\"'"
-exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"extra-5\"'"
+exec --no-startup-id "i3-msg 'workspace 5; exec /usr/bin/urxvt -title \"blog\" -cd \"$HOME/projects/raehik.github.io\"'"
 
 # layouts
 # no point if there's just one window on a workspace
