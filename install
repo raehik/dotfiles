@@ -24,4 +24,3 @@ done
 cd "$(dirname "$0")"
 
 cp -vR $(find home -mindepth 1 -maxdepth 1) "$HOME"
-cp -vR $(find etc -mindepth 1 -maxdepth 1) "/etc"
