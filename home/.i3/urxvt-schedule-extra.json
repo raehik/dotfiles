@@ -72,7 +72,7 @@
                {
                   "class": "^URxvt$",
                // "instance": "^urxvt$",
-                  "title": "^blog$"
+                  "title": "^current$"
                }
             ],
             "type": "con"
