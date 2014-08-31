@@ -13,6 +13,9 @@ if [ -d "$HOME/.gem/ruby/2.1.0/bin" ]; then
     PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 fi
 
+# Set a default umask I prefer more
+umask 077
+
 # Turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X - see ~/.xinitrc)
 # EDIT: since I now get an error 'terminal X does not support --blength', only
