@@ -2,6 +2,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# i3 doesn't let you use environment variables, so set your home directory here
+set $i3_home /home/raehik
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -216,8 +219,8 @@ exec --no-startup-id "i3-msg 'workspace number 5; exec /usr/bin/urxvt -title \"i
 
 # layouts
 # no point if there's just one window on a workspace
-exec --no-startup-id "i3-msg 'workspace number 2; append_layout /root/.i3/urxvt-schedule-extra.json'"
-exec --no-startup-id "i3-msg 'workspace number 4; append_layout /root/.i3/ncmpcpp-alsamixer.json'"
+exec --no-startup-id "i3-msg 'workspace number 2; append_layout $i3_home/.i3/urxvt-schedule-extra.json'"
+exec --no-startup-id "i3-msg 'workspace number 4; append_layout $i3_home/.i3/ncmpcpp-alsamixer.json'"
 
 # start on workspace 1 (doesn't always work, but not a big deal anyway)
 exec --no-startup-id "i3-msg 'workspace number 1'"
