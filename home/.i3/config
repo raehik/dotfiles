@@ -212,7 +212,7 @@ exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/urxvt -title "tod
 exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/urxvt -title "schedule" -e vim "$HOME/todo-notes"'
 exec --no-startup-id i3-msg 'workspace number 2; exec /usr/bin/urxvt -title "current" -cd "$HOME/projects/raehik.github.io"'
 exec --no-startup-id i3-msg 'workspace number 3; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace number 4; exec /usr/bin/urxvt -title "ncmpcpp" -e sudo mpn'
+exec --no-startup-id i3-msg 'workspace number 4; exec /usr/bin/urxvt -title "ncmpcpp" -e sudo -E mpn'
 exec --no-startup-id i3-msg 'workspace number 4; exec /usr/bin/urxvt -title "alsamixer" -e alsamixer'
 exec --no-startup-id i3-msg 'workspace number 4; exec /usr/bin/urxvt -title "irssi"'
 
