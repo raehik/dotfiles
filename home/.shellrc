@@ -14,7 +14,7 @@ if [ -d "$HOME/.gem/ruby/2.1.0/bin" ]; then
 fi
 
 # Set a default umask I prefer more
-umask 077
+umask 027
 
 # Turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X - see ~/.xinitrc)
