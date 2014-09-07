@@ -56,6 +56,11 @@ sxiv                : I dunno yet! feh doesn't support GIFs, so I'm not trying
 feh                 : ??? better ??? (have hardly tried)
 zathura             : Plugin-based document viewer
 zathura-pdf-poppler : PDF plugin for zathura
+zathura-pdf-mupdf   : PDF plugin for zathura #2. You can only install one of
+                      them. Turns out `poppler` does NOT support Japanese, for
+                      whatever reason -- but `mupdf` made some line-drawing
+                      look a little funny. Iunno, d/l both packages and switch
+                      between them.
 
 
 ### Fonts
