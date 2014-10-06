@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# setxkbmap! :)
+#
+
+layout="gb"
+
+setxkbmap -layout $layout

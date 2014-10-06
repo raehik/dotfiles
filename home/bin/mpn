@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Start mpd and ncmpcpp, and kill the former when the latter exits.
+#
+
+mpd ; ncmpcpp && mpd --kill
