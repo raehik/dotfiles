@@ -3,20 +3,20 @@
 # User configuration for universal(ish) shell features.
 #
 
-# Prefix path with user's own bin directory, if it exists
+# prefix path with user's own bin directory, if it exists
 if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Prefix path with user's gem directory, if it exists
+# prefix path with user's gem directory, if it exists
 if [ -d "$HOME/.gem/ruby/2.1.0/bin" ]; then
     PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 fi
 
-# Set a default umask I prefer more
+# set a default umask I prefer more
 umask 027
 
-# Turn off all console system bells (PC speaker beeps)
+# turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X - see ~/.xinitrc)
 # EDIT: since I now get an error 'terminal X does not support --blength', only
 # set this if we're in the Linux console
@@ -24,7 +24,7 @@ if [ $TERM = "linux" ]; then
     setterm --blength 0
 fi
 
-# Make ls use LS_COLORS in a tty (but not in a pipe)
+# make ls use LS_COLORS in a tty (but not in a pipe)
 alias ls='ls --color=auto'
 if [ -r "$HOME/.dircolors" ]; then
     # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
@@ -33,13 +33,16 @@ if [ -r "$HOME/.dircolors" ]; then
     eval $(dircolors "$HOME/.dircolors")
 fi
 
-# Enable grep colors
+# enable grep colors
 alias grep='grep --color=auto'
 
-# Useful ls aliases
+# useful ls aliases
 alias ll='ls -lh'
 alias la='ls -lah'
 alias l='ls -la'
+
+# Anki has no rc file, so set an alias to change data directory
+alias anki='anki -b ~/.anki'
 
 # automatic ls to stop my habit
 cdl() {
@@ -52,7 +55,7 @@ cdl() {
 # xbacklight's fade is dumb, let's change the default fade time to 0
 alias xbacklight='xbacklight -time 0'
 
-# Use nice colours for man (by exporting termcap values for less)
+# use nice colours for man (by exporting termcap values for less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -61,5 +64,5 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# Vim master race
+# vim master race
 export EDITOR="vim"
