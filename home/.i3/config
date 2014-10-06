@@ -129,6 +129,12 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # move focused container to previous workspace
 bindsym $mod+Shift+z move container to workspace back_and_forth
 
+# make current window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# show first scratchpad window
+bindsym $mod+minus scratchpad show
+
 # reload the configuration file
 #bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r reload
@@ -176,14 +182,17 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q set Master 1dB- unm
 bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle"
 
 # bind special multimedia keys
-bindsym XF86AudioPlay exec --no-startup-id "ncmpcpp toggle"
-bindsym XF86AudioStop exec --no-startup-id "ncmpcpp stop"
-bindsym XF86AudioPrev exec --no-startup-id "ncmpcpp prev"
-bindsym XF86AudioNext exec --no-startup-id "ncmpcpp next"
+bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
+bindsym XF86AudioStop exec --no-startup-id "mpc stop"
+bindsym XF86AudioPrev exec --no-startup-id "mpc prev"
+bindsym XF86AudioNext exec --no-startup-id "mpc next"
 
 # bind brightness multimedia keys
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10 -time 0"
 bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10 -time 0"
+
+# easy keybind for locking
+bindsym $mod+F1 exec --no-startup-id "lockstb"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -195,8 +204,13 @@ bar {
 # looks like workspace number doesn't work here :/
 workspace 1 output eDP1
 workspace 2 output eDP1
-workspace 3 output eDP1
-workspace 4 output VGA1
+workspace 3 output VGA1
+
+# move workspace to another output
+bindsym $mod+x move workspace to output right
+
+# 'swap' outputs
+bindsym $mod+Shift+x exec outswap
 
 #
 # Autostart
@@ -204,20 +218,20 @@ workspace 4 output VGA1
 
 # prefix exec with a switch to the workspace you want the program on
 # remember to title things when required by your layouts
-$i3_msg 'workspace number 1; exec $urxvt -title "general"'
-$i3_msg 'workspace number 2; exec $urxvt -title "today" -e vim "$HOME/todo"'
-$i3_msg 'workspace number 2; exec $urxvt -title "schedule" -e vim "$HOME/todo-notes"'
-$i3_msg 'workspace number 2; exec $urxvt -title "current" -cd "$HOME/projects/raehik.github.io"'
-$i3_msg 'workspace number 3; exec /usr/bin/firefox'
-$i3_msg 'workspace number 4; exec $urxvt -title "ncmpcpp" -e sudo -E mpn'
-$i3_msg 'workspace number 4; exec $urxvt -title "alsamixer" -e alsamixer'
-$i3_msg 'workspace number 4; exec $urxvt -title "irssi"'
+$i3_msg 'workspace number 1; exec $urxvt -title "today" -e vim "$HOME/todo"'
+$i3_msg 'workspace number 1; exec $urxvt -title "schedule" -e vim "$HOME/todo-notes"'
+$i3_msg 'workspace number 1; exec $urxvt -title "work"'
+$i3_msg 'workspace number 2; exec /usr/bin/firefox'
+$i3_msg 'workspace number 3; exec $urxvt -title "ncmpcpp"'
+$i3_msg 'workspace number 3; exec $urxvt -title "alsamixer" -e alsamixer'
+$i3_msg 'workspace number 3; exec $urxvt -title "irssi"'
+$i3_msg 'workspace number 3; exec $urxvt -title "calcurse" -e calcurse'
 
 # layouts
 # (no point if there's just one window on a workspace)
 # remember to prefix it with the wanted workspace!
-$i3_msg 'workspace number 2; append_layout "$i3_home/.i3/urxvt-schedule-work.json"'
-$i3_msg 'workspace number 4; append_layout "$i3_home/.i3/ncmpcpp-alsamixer-irssi.json"'
+$i3_msg 'workspace number 1; append_layout "$i3_home/.i3/urxvt-schedule-work.json"'
+$i3_msg 'workspace number 3; append_layout "$i3_home/.i3/ncmpcpp-alsamixer-irssi-calcurse.json"'
 
 # finally, try to start on workspace 1 (doesn't always work, but not a big
 # deal)
