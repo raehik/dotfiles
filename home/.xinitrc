@@ -30,5 +30,11 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -drx
 
+# Set up second monitor
+#xrandr --output VGA1 --auto --right-of eDP1
+
+# Set desktop background
+#sh ~/.fehbg &
+
 # Start window manager (must be final command!)
 exec i3
