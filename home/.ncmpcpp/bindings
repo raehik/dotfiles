@@ -525,7 +525,7 @@ def_key "Q"
   jump_to_playing_song
   scroll_down
 
-def_key "ctrl_p"
+def_key "ctrl_w"
   move_home
   move_selected_items_to
   move_home
