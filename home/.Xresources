@@ -29,6 +29,11 @@ URxvt.pointerBlank: true
 ! Make borderless (not guaranteed to work -- only asks the window manager)
 !URxvt.borderLess: true
 
+! Native transparency
+URxvt.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt.shading: 15
+
 
 ! Linux console colourscheme
 
