@@ -201,6 +201,9 @@ au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
 " Leave mouse at default (disabled for normal console Vim)
 set mouse=
 
+" Keybind to show tagbar
+nmap <F8> :TagbarToggle<CR> 
+
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 "set confirm
