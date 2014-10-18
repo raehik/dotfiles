@@ -148,6 +148,9 @@ colorscheme zenburn
 " Read *.md files as Markdown formatted
 au BufRead,BufNewFile *.md set filetype=markdown
 
+" Use GitHub Flavored Markdown CSS for Markdown previews
+let g:PreviewCSSPath=$HOME . '/.vim/githubmd.css'
+
 " Set which encoding Vim displays characters in (on the terminal)
 set encoding=utf-8
 
@@ -183,11 +186,17 @@ set tabstop=4
 " Set number of spaces to use for each (auto)indent
 set shiftwidth=4
 
+" Set wrap width
+set textwidth=72
+
+" Auto-wrap
+set formatoptions+=t
+
 " Colour the column which you shall not pass (!)
 " By default, it is a slightly lighter shade than the background (same shade as
 " the cursorline below)
 " The point of this is to not even *touch* the 80th column. Wrap at 79 please!
-set colorcolumn=80
+let &colorcolumn = &textwidth + 1
 
 " Highlight current line
 set cursorline
