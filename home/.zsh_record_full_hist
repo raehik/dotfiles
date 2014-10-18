@@ -1,0 +1,29 @@
+# (this file is meant to be sourced)
+#
+# record *all* commands written ever! >:D
+#
+# special function zshaddhistory is run before a line is added to the
+# history file, or something like that.
+#
+# does *not* store line parse errors (though does store incorrect
+# commands).
+#
+
+full_history_file="$HOME/data/zsh_full_history"
+
+# .zshrc is read on shell startup, so log that
+echo "$(date "+%s") !START!" >> "$full_history_file"
+
+zshaddhistory() {
+    # prepend the current epoch time
+    # $1 includes terminating newline already (see zshmisc(1))
+    echo -n "$(date "+%s") $1" >> "$full_history_file"
+}
+
+# clean up the line when exiting with Ctrl-D
+# if Ctrl-D is hit, there isn't a terminating newline -- so we'll add a
+# useful message which probably won't ever be written (! specifies an
+# event, so it'll only work surrounded in quotes
+zshexit() {
+    echo "!EXIT! $(date "+%s")" >> "$full_history_file"
+}
