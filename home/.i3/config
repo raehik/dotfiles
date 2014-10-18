@@ -227,7 +227,7 @@ $i3_msg 'workspace number 3; exec $urxvt -title "alsamixer" -e alsamixer'
 $i3_msg 'workspace number 3; exec $urxvt -title "irssi"'
 $i3_msg 'workspace number 3; exec $urxvt -title "calcurse" -e calcurse'
 
-# layouts
+## layouts
 # (no point if there's just one window on a workspace)
 # remember to prefix it with the wanted workspace!
 $i3_msg 'workspace number 1; append_layout "$i3_home/.i3/urxvt-schedule-work.json"'
