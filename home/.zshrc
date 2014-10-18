@@ -39,7 +39,7 @@ HISTFILE=$HOME/.zsh_history
 ## Big size
 HISTSIZE=10000
 
-## History won't -actually- be saved without this
+## History won't *actually* be saved without this
 SAVEHIST=$HISTSIZE
 
 ## same as bash HISTCONTROL=ignoreboth
@@ -54,3 +54,6 @@ setopt share_history
 
 # don't do that dumb query before `rm path/*`
 setopt rm_star_silent
+
+# source my full-history-recording stuff
+source $HOME/.zsh_record_full_hist
