@@ -36,5 +36,8 @@ ibus-daemon -drx
 # Set desktop background
 #sh ~/.fehbg &
 
+# Start keylogger
+xinput-keylog &
+
 # Start window manager (must be final command!)
 exec i3
