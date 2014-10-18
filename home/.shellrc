@@ -8,9 +8,9 @@ if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# prefix path with user's gem directory, if it exists
-if [ -d "$HOME/.gem/ruby/2.1.0/bin" ]; then
-    PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+# initialise rbenv if present
+if command -v rbenv >/dev/null 2>&1; then
+    eval "$(rbenv init -)"
 fi
 
 # set a default umask I prefer more
