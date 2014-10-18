@@ -37,7 +37,7 @@ ibus-daemon -drx
 #sh ~/.fehbg &
 
 # Start keylogger
-xinput-keylog &
+#xinput-keylog &
 
 # Start window manager (must be final command!)
 exec i3
