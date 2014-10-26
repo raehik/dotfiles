@@ -10,14 +10,20 @@
 #
 
 full_history_file="$HOME/data/zsh_full_history"
+start_history_file="$HOME/data/zsh_start_history"
+full_history_file_new="$HOME/data/zsh_full_history_new"
 
 # .zshrc is read on shell startup, so log that
 echo "$(date "+%s") !START!" >> "$full_history_file"
+printf '%s\n' "$(date "+%s") 1" >> "$start_history_file"
 
 zshaddhistory() {
     # prepend the current epoch time
     # $1 includes terminating newline already (see zshmisc(1))
     echo -n "$(date "+%s") $1" >> "$full_history_file"
+    if [[ "${1: -1}" == $'\n' ]]; then
+        printf '%s' "$(date "+%s") $1" >> "$full_history_file_new"
+    fi
 }
 
 # clean up the line when exiting with Ctrl-D
@@ -26,4 +32,5 @@ zshaddhistory() {
 # event, so it'll only work surrounded in quotes
 zshexit() {
     echo "!EXIT! $(date "+%s")" >> "$full_history_file"
+    printf '%s\n' "$(date "+%s") 0" >> "$start_history_file"
 }
