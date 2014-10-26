@@ -1,0 +1,35 @@
+# directory for Mutt configuration files
+set my_mutt = "~/.mutt"
+
+# Gmail account
+set my_gmail_mailbox = "gmail"
+set my_gmail_user = "johndoe"
+
+# account info
+set from = "$my_gmail_user@gmail.com"
+set realname = "John Doe"
+
+# ???
+set mbox_type="Maildir"
+
+# ???
+source "$my_mutt/mailboxes"
+
+# ???
+set folder = "~/mail/$my_gmail_mailbox"
+set spoolfile = "=INBOX"
+set record = "=sent"
+set postponed = "=drafts"
+
+# SMTP configuration
+set sendmail = "/usr/bin/msmtp"
+
+#
+# customise-y bits
+#
+
+# colours
+source "$my_mutt/colours-linux"
+
+# other
+auto_view text/html
