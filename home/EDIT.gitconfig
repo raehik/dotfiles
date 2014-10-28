@@ -9,3 +9,6 @@
 	a = add
 	c = commit
     d = diff
+    l = log
+
+# vim: set ft=gitconfig :
