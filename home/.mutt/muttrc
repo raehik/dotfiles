@@ -1,25 +1,45 @@
 # directory for Mutt configuration files
+# *highly* recommend keeping the default ~/.mutt
 set my_mutt = "~/.mutt"
 
-# Gmail account
-set my_gmail_mailbox = "gmail"
-set my_gmail_user = "johndoe"
-
 # account info
-set from = "$my_gmail_user@gmail.com"
+set from = "johndoe@gmail.com"
 set realname = "John Doe"
 
-# ???
-set mbox_type="Maildir"
+# aliases
+set alias_file="$my_mutt/aliases"
+set sort_alias = alias
+source "$alias_file"
+
+# mailbox structure
+set mbox_type = "Maildir"
+
+# header cache
+# Mutt wiki: "Mutt can cache headers of messages so they need to be
+# downloaded just once. This greatly improves speed when opening folders
+# again later."
+# does indeed seem (somewhat) useful for OfflineIMAP
+set header_cache = "~/.cache/mutt"
 
 # ???
+set folder = "$HOME/mail/gmail"
+set spoolfile = "=INBOX"
+#set record = "=sent"
+# Gmail automatically saves sent email for us
+unset record
+set postponed = "=drafts"
+
+# Gmail's IMAP is slightly broken/dumb, see
+# https://productforums.google.com/forum/?hl=en#!category-topic/gmail/4GFpgt2Z8fo
+# this basically fixes marking deleted mail as 'read'
+# or does it??? 6_9 not sure if it works / what it does
+#set imap_peek = no
+
+# mailboxes
 source "$my_mutt/mailboxes"
 
-# ???
-set folder = "~/mail/$my_gmail_mailbox"
-set spoolfile = "=INBOX"
-set record = "=sent"
-set postponed = "=drafts"
+# check for updates every X seconds (so you don't need to hit a key)
+set timeout = 30
 
 # SMTP configuration
 set sendmail = "/usr/bin/msmtp"
@@ -28,8 +48,34 @@ set sendmail = "/usr/bin/msmtp"
 # customise-y bits
 #
 
-# colours
-source "$my_mutt/colours-linux"
+# don't wrap inside a word
+set smart_wrap
 
-# other
+# gotta go fast (don't pause on mailbox change etc.)
+set sleep_time = 0
+
+# colours
+source "$my_mutt/colours-blue-trans"
+
+# display HTML attachments by default (uses .mailcap to decide what
+# program to use to display it with)
 auto_view text/html
+
+# sidebar
+set sidebar_width = 20
+set sidebar_sort = yes
+set sidebar_visible = yes
+set sidebar_folderindent = yes
+
+bind index,pager \eOa sidebar-prev
+bind index,pager \eOb sidebar-next
+bind index,pager \eOc sidebar-open
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
+color sidebar_new yellow default
+
+# show only name
+set sidebar_shortpath = yes
