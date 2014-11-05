@@ -1,1 +1,1 @@
-feh --no-fehbg --bg-center --geometry -0 "$HOME/.desktop-xdg/background-1-dark.jpg"
+feh --no-fehbg --bg-fill --geometry -0 "$HOME/.desktop-xdg/background"
