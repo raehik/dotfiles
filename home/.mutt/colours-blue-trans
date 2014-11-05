@@ -1,0 +1,49 @@
+# vim: set ft=muttrc:
+#
+# Your average blue theme, taken from someone
+# Edited & commented by raehik
+#
+# The Mutt manual <http://www.mutt.org/doc/manual/manual-3.html#ss3.7>
+# shows how these statements are formed. Simply:
+#
+#     color object foreground background [regex]
+#
+# The optional regex can/is (?) only used in a few objects (see manual).
+# Transparency is done by setting background to 'default'.
+#
+# Note: to use this, source it in your .muttrc like so:
+#
+#     source "~/.mutt/this-file"
+#
+
+# main background
+color normal white default
+
+# headers at the top of a message
+color hdrdefault blue default
+
+# '[-- Autoview using ... --]' line
+color attachment red default
+
+# + symbol on wrapped lines
+color markers red default
+
+# certain messages at bottom of screen e.g. 'Mail not sent'
+color message brightred default
+
+# error messages at bottom of screen e.g. 'You are on the last message.'
+color error brightred default
+
+# some bits of emails?? e.g. HTML autoview lines beginning with '#' (?)
+color quoted blue default
+
+# unread email
+color index red default "~N|~O"
+
+color signature blue black
+color indicator black red
+color status brightgreen blue
+color tree white black
+color search white default
+color tilde brightmagenta default
+color index blue black ~F
