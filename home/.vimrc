@@ -195,7 +195,6 @@ set formatoptions+=t
 " Colour the column which you shall not pass (!)
 " By default, it is a slightly lighter shade than the background (same shade as
 " the cursorline below)
-" The point of this is to not even *touch* the 80th column. Wrap at 79 please!
 let &colorcolumn = &textwidth + 1
 
 " Highlight current line
@@ -212,6 +211,10 @@ set mouse=
 
 " Keybind to show tagbar
 nmap <F8> :TagbarToggle<CR> 
+
+" Easier keybind for char/word/line info
+nmap <F2> g<C-g>
+imap <F2> <Esc>g<C-g>a
 
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
