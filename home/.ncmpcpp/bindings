@@ -533,5 +533,6 @@ def_key "Q"
 
 def_key "ctrl_w"
   move_home
+  scroll_down
   move_selected_items_to
-  move_home
+  remove_selection
