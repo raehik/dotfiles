@@ -123,7 +123,10 @@ nnoremap <C-L> :nohl<CR><C-L>
 set nocompatible
 
 " Make backups of files when saved (file name with ~ appended)
-set backup
+"set backup
+
+" Don't
+set nobackup
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -215,6 +218,22 @@ nmap <F8> :TagbarToggle<CR>
 " Easier keybind for char/word/line info
 nmap <F2> g<C-g>
 imap <F2> <Esc>g<C-g>a
+
+" Map preview.vim key myself
+" (must have commented it out in plugin/preview.vim
+"nmap <Leader>P :Preview<CR>
+
+" Mnemonic file jumping
+" Left = back
+nmap <Esc>Od <C-O>
+" Right = forward
+nmap <Esc>Oc <C-I>
+
+" Wikify keybind
+nmap <Leader>w :!wikify <C-R>%<CR><CR>
+
+" default syntax
+"let g:vimwiki_list = [{'path': '~/vimwiki'}]
 
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
