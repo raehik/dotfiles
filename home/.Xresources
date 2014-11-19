@@ -11,11 +11,15 @@
 ! xft uses sizes differently or something, so xft 10 = other 14
 ! Watch out, because some sizes will print the font in the same way, but with
 ! padding on the top and bottom of lines! e.g. try using size=12 - it will look
-! almost identical, except for 'larger' lines (and also, it seems some
+! almost identical, except for larger lines (and also, it seems some
 ! characters are affected, like the non-ASCII left quote mark (perhaps because
 ! another font may be used?)
 ! size 8 is too small to display bold differently
+! Terminus will not work in italic in XFT??? :(
+
 URxvt.font: xft:Terminus:size=10
+URxvt.italicFont: xft:DejaVu Sans Mono:size=10:italic
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:size=10:bold:italic
 
 ! Turn off scrollbar
 URxvt.scrollBar: false
