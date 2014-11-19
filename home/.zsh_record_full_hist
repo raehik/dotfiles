@@ -11,18 +11,16 @@
 
 full_history_file="$HOME/data/zsh_full_history"
 start_history_file="$HOME/data/zsh_start_history"
-full_history_file_new="$HOME/data/zsh_full_history_new"
 
 # .zshrc is read on shell startup, so log that
-echo "$(date "+%s") !START!" >> "$full_history_file"
 printf '%s\n' "$(date "+%s") 1" >> "$start_history_file"
 
 zshaddhistory() {
-    # prepend the current epoch time
-    # $1 includes terminating newline already (see zshmisc(1))
-    echo -n "$(date "+%s") $1" >> "$full_history_file"
+    # exiting with Ctrl-D leaves no newline. we check to see if the last
+    # character is a newline: if it isn't, Ctrl-D was hit, so we don't
+    # record it.
     if [[ "${1: -1}" == $'\n' ]]; then
-        printf '%s' "$(date "+%s") $1" >> "$full_history_file_new"
+        printf '%s' "$(date "+%s") $1" >> "$full_history_file"
     fi
 }
 
@@ -31,6 +29,5 @@ zshaddhistory() {
 # useful message which probably won't ever be written (! specifies an
 # event, so it'll only work surrounded in quotes
 zshexit() {
-    echo "!EXIT! $(date "+%s")" >> "$full_history_file"
     printf '%s\n' "$(date "+%s") 0" >> "$start_history_file"
 }
