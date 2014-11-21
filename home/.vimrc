@@ -151,8 +151,8 @@ colorscheme zenburn
 " Read *.md files as Markdown formatted
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" Use GitHub Flavored Markdown CSS for Markdown previews
-let g:PreviewCSSPath=$HOME . '/.vim/githubmd.css'
+" Use edited GitHub CSS for Markdown previews
+let g:PreviewCSSPath=$HOME . '/.style.css'
 
 " Set which encoding Vim displays characters in (on the terminal)
 set encoding=utf-8
