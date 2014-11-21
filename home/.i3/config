@@ -6,9 +6,12 @@
 # can't access env. vars. in this config file, so set your home directory here
 set $i3_home /home/raehik
 
-# don't want to keep typing these out
+# don't want to keep typing this out
 set $i3_msg exec --no-startup-id i3-msg
-set $urxvt /usr/bin/urxvt
+
+# program configuration
+set $terminal /usr/bin/urxvt
+set $browser /usr/bin/firefox
 
 # i3 modifier key
 # Mod4 = Win
@@ -21,18 +24,16 @@ set $mod Mod4
 #font pango:DejaVu Sans Mono 8
 # buuuut I prefer Terminus :>
 font pango:Terminus 10
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+#font pango:Terminus 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $urxvt
+bindsym $mod+Return exec $terminal
+
+# start browser
+bindsym $mod+Shift+Return exec $browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -194,23 +195,33 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10 -time 0"
 # easy keybind for locking
 bindsym $mod+F1 exec --no-startup-id "lockstb"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
-
 # set default output (monitor) for each workspace
 # looks like workspace number doesn't work here :/
 workspace 1 output eDP1
 workspace 2 output eDP1
 workspace 3 output VGA1
+workspace 4 output VGA1
 
 # move workspace to another output
 bindsym $mod+x move workspace to output right
 
 # 'swap' outputs
-bindsym $mod+Shift+x exec outswap
+bindsym $mod+Shift+x exec --no startup-id "outswap"
+
+# turn off screen
+bindsym $mod+F2 exec --no-startup-id "scr"
+
+# lock computer
+bindsym XF86Display exec --no-startup-id "lock"
+
+# turn off touchpad
+bindsym $mod+F6 exec --no-startup-id "touchpad-toggle"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+}
 
 #
 # Autostart
@@ -218,20 +229,21 @@ bindsym $mod+Shift+x exec outswap
 
 # prefix exec with a switch to the workspace you want the program on
 # remember to title things when required by your layouts
-$i3_msg 'workspace number 1; exec $urxvt -title "today" -e vim "$HOME/todo"'
-$i3_msg 'workspace number 1; exec $urxvt -title "schedule" -e vim "$HOME/todo-notes"'
-$i3_msg 'workspace number 1; exec $urxvt -title "work"'
+$i3_msg 'workspace number 1; exec $terminal -title "schedule" -e vim "$HOME/schedule.md"'
+$i3_msg 'workspace number 1; exec $terminal -title "work"'
 $i3_msg 'workspace number 2; exec /usr/bin/firefox'
-$i3_msg 'workspace number 3; exec $urxvt -title "ncmpcpp"'
-$i3_msg 'workspace number 3; exec $urxvt -title "alsamixer" -e alsamixer'
-$i3_msg 'workspace number 3; exec $urxvt -title "irssi"'
-$i3_msg 'workspace number 3; exec $urxvt -title "calcurse" -e calcurse'
+$i3_msg 'workspace number 3; exec $terminal -title "mutt"'
+$i3_msg 'workspace number 3; exec $terminal -title "irssi"'
+$i3_msg 'workspace number 3; exec $terminal -title "calcurse" -e calcurse'
+$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp"'
+$i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 
 ## layouts
 # (no point if there's just one window on a workspace)
 # remember to prefix it with the wanted workspace!
-$i3_msg 'workspace number 1; append_layout "$i3_home/.i3/urxvt-schedule-work.json"'
-$i3_msg 'workspace number 3; append_layout "$i3_home/.i3/ncmpcpp-alsamixer-irssi-calcurse.json"'
+$i3_msg 'workspace number 1; append_layout "$i3_home/.i3/workspace-1"'
+$i3_msg 'workspace number 3; append_layout "$i3_home/.i3/workspace-3"'
+$i3_msg 'workspace number 4; append_layout "$i3_home/.i3/workspace-4"'
 
 # finally, try to start on workspace 1 (doesn't always work, but not a big
 # deal)
