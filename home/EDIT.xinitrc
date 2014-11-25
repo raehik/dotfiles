@@ -34,10 +34,10 @@ ibus-daemon -drx
 #xrandr --output VGA1 --auto --right-of eDP1
 
 # Set desktop background
-#sh ~/.fehbg &
+sh ~/.fehbg &
 
 # Start keylogger
-#xinput-keylog &
+xinput-keylog &
 
 # Start window manager (must be final command!)
 exec i3
