@@ -1,8 +1,14 @@
-##########################################################
-## this is example bindings configuration file, copy it ##
-## to ~/.ncmpcpp/bindings and set up your preferences   ##
-##########################################################
-##
+# vim: set foldmethod=marker :
+#
+# ncmpcpp key binding configuration file.
+#
+# NOTE: comment lines must have the FIRST COLUMN as a hash '#'. You
+#       can't indent the first hash!
+#
+## Binding info/rules {{{
+# Thanks to the ncmpcpp devs for such a great overview of the config
+# file, and in such a sensible place!
+#
 ##### General rules #####
 ##
 ## 1) Because each action has runtime checks whether it's
@@ -136,13 +142,15 @@
 ##      these two is different and is described in (1) and (2).
 ##
 ## Note: Function def_key accepts non-ascii characters.
+## }}}
+
+## Default bindings (commented out) {{{
+### Unbound actions {{{
+## The following actions are not bound to any key/command by default:
 ##
-##### List of unbound actions #####
-##
-## The following actions are not bound to any key/command:
-##
-##  - set_volume
-##  - filter_playlist_on_priorities
+##   - set_volume
+##   - filter_playlist_on_priorities
+### }}}
 ##
 #
 #def_key "mouse"
@@ -454,13 +462,6 @@ def_key "d"
 #def_key "n"
 #  move_selected_items_down
 #
-def_key "N"
-  move_selected_items_to
-
-def_key "M"
-  scroll_down
-  move_selected_items_to
-#
 #def_key "A"
 #  add
 #
@@ -481,9 +482,6 @@ def_key "M"
 #
 #def_key "E"
 #  jump_to_tag_editor
-#
-#def_key "U"
-#  toggle_playing_song_centering
 #
 #def_key "P"
 #  toggle_display_mode
@@ -520,19 +518,76 @@ def_key "M"
 #
 #def_key "q"
 #  quit
-#
-def_key "Q"
+## }}}
+
+## [Vim] Scroll & move keys {{{
+def_key "j"
+  scroll_down
+
+def_key "k"
+  scroll_up
+
+def_key "J"
+  move_selected_items_down
+
+def_key "K"
+  move_selected_items_up
+
+def_key "g"
+  move_home
+
+def_key "G"
+  move_end
+## }}}
+
+## [Vim] Search {{{
+def_key "n"
+  next_found_item
+
+def_key "N"
+  previous_found_item
+# }}}
+
+## [Vim] Song moving {{{
+def_key "m"
+  move_selected_items_to
+
+def_key "M"
+  scroll_down
+  move_selected_items_to
+## }}}
+
+## Assorted {{{
+def_key "O"
+  toggle_playing_song_centering
+
+def_key "?"
+  show_server_info
+
+def_key "@"
+  jump_to_browser
+## }}}
+
+## Ctrl macros {{{
+# Add selection to after current song
+def_key "ctrl_a"
   add_selected_items
   press_enter
   scroll_down
   scroll_down
   press_enter
-  show_playlist
-  jump_to_playing_song
-  scroll_down
+  remove_selection
 
-def_key "ctrl_w"
-  move_home
+# Move selection to after current song
+def_key "ctrl_n"
+  jump_to_playing_song
   scroll_down
   move_selected_items_to
   remove_selection
+## }}}
+
+## Dummied keys {{{
+def_key "U"
+#toggle_playing_song_centering
+  dummy
+## }}}

@@ -1,8 +1,8 @@
-####################################################
-## this is example configuration file, copy it to ##
-## ~/.ncmpcpp/config and set up your preferences  ##
-####################################################
+# vim: set foldmethod=marker :
 #
+# ncmpcpp configuration file.
+#
+## Default options (commented out) {{{
 ##### directories ######
 ##
 ## Directory for storing ncmpcpp related files.
@@ -313,7 +313,6 @@
 #volume_change_step = 2
 #
 #autocenter_mode = no
-autocenter_mode = yes
 #
 #centered_cursor = no
 #
@@ -507,4 +506,21 @@ autocenter_mode = yes
 #window_border_color = green
 #
 #active_window_border = red
+## }}}
+
+## Actual configuration {{{
+# On start, be autocentering (centre on new song)
+autocenter_mode = yes
+
+# Space operation mode for file browser, media library, playlist editor
+# etc.
 #
+# Available values:
+#   add     Add selected item(s) to current playlist
+#   select  Select item
+#
+# Add is quite often a pain, easier to switch to it on the occasions
+# it's useful.
+#
+default_space_mode = select
+## }}}
