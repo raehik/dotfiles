@@ -57,3 +57,9 @@ setopt rm_star_silent
 
 # source my full-history-recording stuff
 source $HOME/.zsh_record_full_hist
+
+# set a custom 'zsh: command not found: $0' message
+# args are the command args
+#command_not_found_handler() {
+#    echo "ayy lmao"
+#}
