@@ -1,159 +1,61 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-
-"------------------------------------------------------------
-" Must have options {{{1
+" vim: set foldmethod=marker :
 "
-" These are highly recommended options.
-
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
+" Vim runtime configuration.
 "
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
-set hidden
 
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
-
-" Better command-line completion
-set wildmenu
-
-" Show partial commands in the last line of the screen
-set showcmd
-
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
-set hlsearch
-
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-
-
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
-
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
-
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
-
-" Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
-"set nostartofline
-
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-"set confirm
-
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
-
-" And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
-set t_vb=
-
-" Enable use of the mouse for all modes
+"" Operation {{{
+""" General {{{
+" Enable mouse in all modes
 "set mouse=a
 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=2
+" Switch from a buffer without being required to save it, and a bunch of
+" other things.
+" Very useful, does lots of things you'll probably want.
+set hidden
 
+" Show a cyclable completion menu for commands, filenames & more (think
+" zsh)
+set wildmenu
 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
+" Show incomplete commands in bottom-right of screen (e.g. 23y -- before
+" hitting y again to complete yank command)
+"set showcmd
 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
+" Be case insensitive when searching
+set ignorecase
 
-"------------------------------------------------------------
-" Mappings {{{1
-"
-" Useful mappings
+" ... except if using capital letters
+set smartcase
 
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-map Y y$
+" On save, backup the original file (filename with ~ appended)
+set backup
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
+" Directories to try to place backups in. If the first doesn't exist or
+" can't be used, the next entry (separated by a comma) is used, etc.
+set backupdir=~/.vim/backup,.
 
+" Enable modeline (disabled by default because it is a common source of
+" vulnerabilities)
+set modeline
 
-"------------------------------------------------------------
-" raehik's additions
-
-" Set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
-
-" Make backups of files when saved (file name with ~ appended)
-"set backup
-
-" Don't
-set nobackup
-
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
+" Turn on filetype detection (using filename & sometimes file contents).
+" Also enables custom indent per filetype (e.g. you type an if statement
+" in Bash, the next line is indented).
 filetype indent plugin on
 
-" Enable syntax highlighting
-syntax on
+" Always look for fold markers (useful so you don't *have* to write
+" modelines, but they're still helpful and informative to people who
+" don't have this setting, so keep using modelines for foldmethod too!)
+set foldmethod=marker
 
-" Set colourscheme to Zenburn
-colorscheme zenburn
+" Never timeout on mappings (useful for <Leader> mappings!)
+set notimeout
 
-" Set colourscheme to customised Zenburn
-"colors zenburn-no-italic
+" Do timeout on keycodes (e.g. Esc)
+set ttimeout
+""" }}}
 
-" Set colourscheme to dark Solarized + make it work in terminal
-"let g:solarized_termcolors=256
-"set background=dark
-"colorscheme solarized
-
-
-" Read *.md files as Markdown formatted
-au BufRead,BufNewFile *.md set filetype=markdown
-
-" Use edited GitHub CSS for Markdown previews
-let g:PreviewCSSPath=$HOME . '/.style.css'
-
+""" File encoding {{{
 " Set which encoding Vim displays characters in (on the terminal)
 set encoding=utf-8
 
@@ -169,16 +71,17 @@ set fileformats=unix,dos
 
 " Make sure new files are Unix format
 set fileformat=unix
+""" }}}
 
-" Enable modeline (disabled by default because it is a common source of
-" vulnerabilities)
-set modeline
+""" Formatting {{{
+" t: Auto-wrap text to textwidth.
+" c: Auto-wrap comments to textwidth & insert comment leader.
+set formatoptions+=tc
 
-" Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start
-
-" Display line numbers on the left
-set number
+" When making a new line & no identing is specified by the filetype,
+" keep the same indent as the previous line. Useful for READMEs &
+" generally preferred behaviour.
+set autoindent
 
 " Expand tabs out to spaces
 set expandtab
@@ -192,61 +95,137 @@ set shiftwidth=4
 " Set wrap width
 set textwidth=72
 
-" Auto-wrap
-set formatoptions+=t
-
 " Colour the column which you shall not pass (!)
 " By default, it is a slightly lighter shade than the background (same shade as
 " the cursorline below)
 let &colorcolumn = &textwidth + 1
 
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+""" }}}
+"" }}}
+
+"" Appearance {{{
+" Enable syntax highlighting
+syntax on
+
+" Set colourscheme to Zenburn
+colorscheme zenburn
+
+" Display the cursor position (line & column no.) in the right of the
+" status line
+set ruler
+
+" Display line numbers on the left
+set number
+
 " Highlight current line
 set cursorline
 
-" In Ruby files, set indent to just 2
-au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
+" Always display the status line, even if only one window is displayed
+set laststatus=2
 
-" Enable mouse for all modes
-"set mouse=a
+" Set the command window height to 2 lines, to avoid many cases of
+" having to
+" "press <Enter> to continue"
+"set cmdheight=2
 
-" Leave mouse at default (disabled for normal console Vim)
-set mouse=
+" Highlight searches
+set hlsearch
+
+" Don't (soft) wrap while in a word
+set linebreak
+
+" Use visual bell over audible 'beep' when doing something 'bad' (e.g.
+" hitting Escape in normal mode)
+set visualbell
+
+" Clear visual bell terminal code (default is to flash screen) -- no
+" beeps or flashes :)
+set t_vb=
+"" }}}
+
+"" Mappings {{{
+" Toggle between 'paste' and 'nopaste' modes
+set pastetoggle=<F11>
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
 
 " Keybind to show tagbar
-nmap <F8> :TagbarToggle<CR> 
+"nmap <F8> :TagbarToggle<CR> 
 
 " Easier keybind for char/word/line info
 nmap <F2> g<C-g>
-imap <F2> <Esc>g<C-g>a
 
 " Map preview.vim key myself
-" (must have commented it out in plugin/preview.vim
+" (must have commented it out in plugin/preview.vim)
 "nmap <Leader>P :Preview<CR>
 
-" Mnemonic file jumping
-" Left = back
+"""  Mnemonic file jumping {{{
+" Ctrl-Left = back
 nmap <Esc>Od <C-O>
-" Right = forward
+" Ctrl-Right = forward
 nmap <Esc>Oc <C-I>
+""" }}}
 
 " Wikify keybind
 nmap <Leader>w :!wikify <C-R>%<CR><CR>
 
-" default syntax
-"let g:vimwiki_list = [{'path': '~/vimwiki'}]
+" Markdown line-sized header insert
+nmap <F3> VypVr=
+nmap <F4> VypVr-
 
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-"set confirm
+""" Wrap + view modes - toggle hard/soft {{{
+" Thanks ktohg, http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
+" setlocal means changes are limited to current buffer
+noremap <silent> <Leader>r :call ToggleWrap()<CR>
+function ToggleWrap()
+  if &textwidth != 0
+    echo "soft wrap"
+    "silent! nunmap <buffer> <Home>
+    "silent! nunmap <buffer> <End>
+    "silent! iunmap <buffer> <Home>
+    "silent! iunmap <buffer> <End>
+    setlocal textwidth=0
+    setlocal colorcolumn=0
+    nnoremap  <buffer> <silent> <Up>   gk
+    nnoremap  <buffer> <silent> <Down> gj
+    inoremap  <buffer> <silent> <Up>   <C-o>gk
+    inoremap  <buffer> <silent> <Down> <C-o>gj
+  else
+    echo "hard wrap"
+    setlocal wrap
+    "noremap  <buffer> <silent> <Home> g<Home>
+    "noremap  <buffer> <silent> <End>  g<End>
+    "inoremap <buffer> <silent> <Home> <C-o>g<Home>
+    "inoremap <buffer> <silent> <End>  <C-o>g<End>
+    set textwidth=72
+    let &colorcolumn = &textwidth + 1
+    silent! nunmap <buffer> <Up>
+    silent! nunmap <buffer> <Down>
+    silent! iunmap <buffer> <Up>
+    silent! iunmap <buffer> <Down>
+  endif
+endfunction
+""" }}}
+"" }}}
 
-" Never start another comment on newline if currently in one
-" is this a good or bad line? seems kinda awkward. pretty sure I could maybe
-" just set formatoptions=
-"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"" Filetype-specific options {{{
+" Auto soft wrap mode for Markdown
+"autocmd Filetype markdown call ToggleWrap()
 
-"   Custom colours for colorcolumn (default is based on 'background' setting &
-"   whether you are in GUI or non-GUI mode)
-" Black
-"highlight ColorColumn guibg=#2c2d27
-" Light grey
-"highlight ColorColumn guibg=#5D5D62
+" Markdown: don't wrap headers
+autocmd Filetype markdown set comments+=n:--,n:==
+
+" Ruby: indent = 2
+au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
+"" }}}
+
+"" Plugin options {{{
+""" Preview {{{
+" Use edited GitHub CSS for Markdown previews
+let g:PreviewCSSPath=$HOME . '/.style.css'
+""" }}}
+"" }}}
