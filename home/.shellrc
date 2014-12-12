@@ -1,7 +1,12 @@
-# vim: syntax=sh filetype=sh
+# vim: syntax=sh filetype=sh :
 #
-# User configuration for universal(ish) shell features.
+# Non-specific/common (bash & zsh) shell configuration.
 #
+
+# source all my aliases
+# (The aliases in this file are more for 'default behaviour' rather than
+# shortcuts, e.g. ls & grep colours.)
+source "$HOME/.shell_aliases"
 
 # prefix path with user's own bin directory, if it exists
 if [ -d "$HOME/bin" ]; then
@@ -17,15 +22,12 @@ fi
 umask 027
 
 # turn off all console system bells (PC speaker beeps)
-# (note: doesn't affect X - see ~/.xinitrc)
-# EDIT: since I now get an error 'terminal X does not support --blength', only
-# set this if we're in the Linux console
+# (note: doesn't affect X, see ~/.xinitrc for that)
 if [ $TERM = "linux" ]; then
     setterm --blength 0
 fi
 
-# make ls use LS_COLORS in a tty (but not in a pipe)
-alias ls='ls --color=auto'
+# set $LS_COLOURS
 if [ -r "$HOME/.dircolors" ]; then
     # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
     # $(dircolors) effectively sets the LS_COLORS environment variable.
@@ -33,33 +35,11 @@ if [ -r "$HOME/.dircolors" ]; then
     eval $(dircolors "$HOME/.dircolors")
 fi
 
+# enable using $LS_COLOURS in ls
+alias ls="ls --color=auto"
+
 # enable grep colors
-alias grep='grep --color=auto'
-
-# useful ls aliases
-alias ll='ls -lh'
-alias la='ls -lah'
-alias l='ls -la'
-
-# Anki has no rc file, so set an alias to change data directory
-alias anki='anki -b ~/.anki'
-
-# always get subs on video screenshots
-alias mplayer='mplayer -ass -vf ass,screenshot,expand=osd=1'
-
-# I do this so much, make it shorter
-alias cm='git c -m'
-
-# automatic ls to stop my habit
-cdl() {
-    cd $@
-    if [ $? -eq 0 ]; then
-        ls --color=always
-    fi
-}
-
-# xbacklight's fade is dumb, let's change the default fade time to 0
-alias xbacklight='xbacklight -time 0'
+alias grep="grep --color=auto"
 
 # use nice colours for man (by exporting termcap values for less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -70,5 +50,5 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# vim master race
+# Vim master race
 export EDITOR="vim"
