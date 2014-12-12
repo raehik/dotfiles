@@ -261,8 +261,14 @@ bar {
 
 ## Autostarting {{{
 ### Applications {{{
-# prefix exec with a switch to the workspace you want the program on
-# remember to title things when required by your layouts
+# Things to remember:
+#
+#   - prefix exec with a switch to the workspace you want the program on
+#   - remember to title things when required by your layouts
+#   - the selected window for a workspace seems pretty hard to set -
+#     the order in which you start things might have an effect, but it
+#     doesn't seem reliable
+#
 $i3_msg 'workspace number 1; exec $terminal -title "schedule" -e vim "$HOME/schedule.md"'
 $i3_msg 'workspace number 1; exec $terminal -title "work"'
 $i3_msg 'workspace number 2; exec $browser'
@@ -274,10 +280,13 @@ $i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 ### }}}
 
 ### Layouts {{{
-# (no point in using a layout if a workspace has just 1 window)
-# remember to prefix the layout with a change to the wanted workspace!
-# keep in mind that the last workspace to have a layout appended to it
-# will probably be the active one on startup
+# Note: there is no point in using a layout if a workspace has just 1
+#       window
+#
+# Remember to prefix the layout with a change to the wanted workspace!
+# Keep in mind that the last workspace to have a layout appended to it
+# will probably be the active one on startup.
+#
 $i3_msg 'workspace number 3; append_layout "$i3_home/.i3/workspace-3"'
 $i3_msg 'workspace number 4; append_layout "$i3_home/.i3/workspace-4"'
 $i3_msg 'workspace number 1; append_layout "$i3_home/.i3/workspace-1"'
