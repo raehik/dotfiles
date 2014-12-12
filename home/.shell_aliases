@@ -41,9 +41,6 @@ alias pi="ssh -p 6176 86.28.170.125"
 alias home='sudo netctl switch-to reading-wpa-static'
 alias school='sudo netctl switch-to reading-school-none-dhcp'
 
-# Anki has no rc file, so set an alias to change data directory
-alias anki="anki -b ~/.anki"
-
 # copy a file to the clipboard
 alias clpb="xsel -i < "
 
