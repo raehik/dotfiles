@@ -1,56 +1,65 @@
-source $HOME/.shellrc
-source $HOME/.zsh_theme
+# vim: set foldmethod=marker :
+#
+# zsh-specific shell configuration.
+#
 
-# Load zsh's great completion features
+# source general config
+source "$HOME/.shellrc"
+
+# source shell theme
+source "$HOME/.zsh_theme"
+
+# load zsh's great completion features
 autoload -U compinit && compinit
 
-# Vi-style command-line editing
+# Vi[m]-style command-line editing
 bindkey -v
 
-# Allow comments in interactive mode
-# e.g.
-# $ #long-command which "I have to" run Later
-# $ do something # even this works
+# Allow comments in interactive mode.
+#
+#     $ #command to run when I remember syntax
+#     $ do this # but not this
+#
 setopt interactivecomments
 
-# Select your completion from a clear menu (inverted background on selection)
-# You can also move around selections by hitting the arrow keys.
+## Custom completions {{{
+# show a completion menu for commands, files etc. (move around using
+# arrow keys)
 zstyle ':completion:*:*:*:*:*' menu select
 
-# make zsh's completion use LS_COLORS too! :D
-# it's only set when this command is run, though, so chainging LS_COLORS
-# without re-running this command won't help.
+# make zsh's completion use $LS_COLORS
 # (stolen from oh-my-zsh)
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-# For some reason, kill completion doesn't show up many processes to kill.
-# We'll fix that.
+# show lots of processes with `kill` completion
 # (stolen from oh-my-zsh)
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
-# Also, colour it cool.
+# & colour `kill` completion
 # (stolen from oh-my-zsh)
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+## }}}
 
-# Command history configuration
-## Set file
+## Command history configuration {{{
+# file name
 HISTFILE=$HOME/.zsh_history
 
-## Big size
+# ???
+# for setting max no. of commands in history file
 HISTSIZE=10000
-
-## History won't *actually* be saved without this
 SAVEHIST=$HISTSIZE
 
-## same as bash HISTCONTROL=ignoreboth
+# don't record duplicate lines or lines beginning with a space
+# (same as bash HISTCONTROL=ignoreboth)
 setopt hist_ignore_dups
 setopt hist_ignore_space
 
-## append to history every command
+# append to history every command
 setopt inc_append_history
 
-## actually share the history, between concurrent sessions
+# actually share the history, between concurrent sessions
 setopt share_history
+## }}}
 
 # don't do that dumb query before `rm path/*`
 setopt rm_star_silent
