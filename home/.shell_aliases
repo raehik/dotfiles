@@ -34,15 +34,5 @@ title() {
     echo -ne "\e]0;${@}\007"
 }
 
-# SSH shortcuts
-alias pi="ssh -p 6176 86.28.170.125"
-
-# netctl profile shortcuts
-alias home='sudo netctl switch-to reading-wpa-static'
-alias school='sudo netctl switch-to reading-school-none-dhcp'
-
 # copy a file to the clipboard
 alias clpb="xsel -i < "
-
-# plugged-in keyboards seem to like to use US layout by default, so fix
-alias skb="setxkbmap -layout gb"
