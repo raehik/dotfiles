@@ -1,0 +1,51 @@
+# vim: syntax=sh filetype=sh :
+#
+# Non-specific/common (bash & zsh) shell aliases.
+#
+# This is only for shell-related shortcuts/aliases/etc. which I might
+# use in a terminal session. i3 and dmenu_run can't read aliases, so
+# some things are stored as one-line files in my ~/bin.
+#
+# Note: there are a few aliases I store as files in my ~/bin as well as
+#       in here. This is because dmenu_run can't read aliases :(
+#
+
+# useful ls aliases
+alias ll="ls -lh"
+alias la="ls -lah"
+alias l="ls -la"
+
+# always capture subs on video screenshots
+alias mplayer="mplayer -ass -vf ass,screenshot,expand=osd=1"
+
+# I do this so much, make it shorter
+alias cm="git c -m"
+
+# automatic ls to stop my habit
+cdl() {
+    cd $@
+    if [ $? -eq 0 ]; then
+        ls
+    fi
+}
+
+# set terminal [emulator] title (a.k.a. xterm window title)
+title() {
+    echo -ne "\e]0;${@}\007"
+}
+
+# SSH shortcuts
+alias pi="ssh -p 6176 86.28.170.125"
+
+# netctl profile shortcuts
+alias home='sudo netctl switch-to reading-wpa-static'
+alias school='sudo netctl switch-to reading-school-none-dhcp'
+
+# Anki has no rc file, so set an alias to change data directory
+alias anki="anki -b ~/.anki"
+
+# copy a file to the clipboard
+alias clpb="xsel -i < "
+
+# plugged-in keyboards seem to like to use US layout by default, so fix
+alias skb="setxkbmap -layout gb"
