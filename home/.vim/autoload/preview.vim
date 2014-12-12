@@ -117,12 +117,13 @@ class Preview
   def show_markdown
     return unless load_dependencies(:markdown)
     show_with(:browser) do
-      exts = { :tables => true, :autolink => true }
+      exts = { :tables => true, :autolink => true, :footnotes => true, :no_intra_emphasis => true, :strikethrough => true }
       if has_option(:markdown_fences) and option(:markdown_fences).to_i != 0
         exts[:fenced_code_blocks] = true
       end
-      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensinos = exts)
-      wrap_html markdown.render(content)
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = exts)
+      html = markdown.render(content)
+      wrap_html Redcarpet::Render::SmartyPants.render(html)
     end
   end
 
