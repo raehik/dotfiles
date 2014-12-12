@@ -3,13 +3,7 @@
 # Swap two outputs in i3.
 #
 
-i3-msg 'workspace number 1; move workspace to output right'
-i3-msg 'workspace number 2; move workspace to output right'
-i3-msg 'workspace number 3; move workspace to output right'
-i3-msg 'workspace number 4; move workspace to output right'
-i3-msg 'workspace number 5; move workspace to output right'
-i3-msg 'workspace number 6; move workspace to output right'
-i3-msg 'workspace number 7; move workspace to output right'
-i3-msg 'workspace number 8; move workspace to output right'
-i3-msg 'workspace number 9; move workspace to output right'
-i3-msg 'workspace number 10; move workspace to output right'
+for i in {1..10}
+do
+    i3-msg "workspace number $i; move workspace to output right"
+done

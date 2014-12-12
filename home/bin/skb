@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
-# setxkbmap! :)
+# Fix plugged-in keyboard layout.
+#
+# By default they seem to use US layout :<
 #
 
 layout="gb"

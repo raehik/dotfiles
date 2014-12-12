@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# SSH to a server.
+#
+
+user="$USER"
+server="86.28.170.125"
+
+ssh -p $port $USER@$server

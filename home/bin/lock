@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Lock your X session using i3lock.
+#
+
+i3lock -utdI 0 --color "000000"
