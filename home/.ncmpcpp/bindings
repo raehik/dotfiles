@@ -549,11 +549,13 @@ def_key "N"
 # }}}
 
 ## [Vim] Song moving {{{
+# move below
 def_key "m"
+  scroll_down
   move_selected_items_to
 
+# move above
 def_key "M"
-  scroll_down
   move_selected_items_to
 ## }}}
 
