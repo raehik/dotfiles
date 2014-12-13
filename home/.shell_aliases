@@ -25,7 +25,7 @@ alias cm="git c -m"
 cdl() {
     cd $@
     if [ $? -eq 0 ]; then
-        ls
+        ls --color=auto
     fi
 }
 
