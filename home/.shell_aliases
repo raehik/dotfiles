@@ -15,8 +15,8 @@ alias ll="ls -lh"
 alias la="ls -lah"
 alias l="ls -la"
 
-# always capture subs on video screenshots
-alias mplayer="mplayer -ass -vf ass,screenshot,expand=osd=1"
+# I do this so much, make it shorter
+alias cm="git c -m"
 
 # automatic ls to stop my habit
 cdl() {
