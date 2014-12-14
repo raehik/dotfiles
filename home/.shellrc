@@ -4,7 +4,7 @@
 #
 
 # source all my aliases
-# (The aliases in this file are more for 'default behaviour' rather than
+# (The aliases in this file are for 'default behaviour' rather than
 # shortcuts, e.g. ls & grep colours.)
 source "$HOME/.shell_aliases"
 
@@ -40,6 +40,9 @@ alias ls="ls --color=auto"
 
 # enable grep colors
 alias grep="grep --color=auto"
+
+# always capture subs on video screenshots
+alias mplayer="mplayer -ass -vf ass,screenshot,expand=osd=1"
 
 ## man colours {{{
 # use nice colours for man (by exporting termcap values for less)
