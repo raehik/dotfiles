@@ -195,14 +195,8 @@
 #def_key "delete"
 #  delete_playlist_items
 #
-def_key "d"
-  delete_playlist_items
-#
 #def_key "delete"
 #  delete_stored_playlist
-#
-def_key "d"
-  delete_stored_playlist
 #
 #def_key "right"
 #  next_column
@@ -540,23 +534,30 @@ def_key "G"
   move_end
 ## }}}
 
+## [Vim] Selection moving {{{
+# move after/below
+def_key "m"
+  scroll_down
+  move_selected_items_to
+
+# move before/above
+def_key "M"
+  move_selected_items_to
+## }}}
+
+## [Vim] Delete {{{
+def_key "d"
+  delete_playlist_items
+def_key "d"
+  delete_stored_playlist
+## }}}
+
 ## [Vim] Search {{{
 def_key "n"
   next_found_item
 
 def_key "N"
   previous_found_item
-# }}}
-
-## [Vim] Song moving {{{
-# move below
-def_key "m"
-  scroll_down
-  move_selected_items_to
-
-# move above
-def_key "M"
-  move_selected_items_to
 ## }}}
 
 ## Assorted {{{
@@ -571,16 +572,24 @@ def_key "@"
 ## }}}
 
 ## Ctrl macros {{{
-# Add selection to after current song
+# Add selection to after highlighted song.
+# i.e. add after
+#
+# Imagined use is in the browse/search/library screen.
 def_key "ctrl_a"
   add_selected_items
   press_enter
   scroll_down
   scroll_down
+  scroll_down
+  scroll_down
   press_enter
   remove_selection
 
-# Move selection to after current song
+# Move selection to after current (playing) song.
+# i.e. move next
+#
+# Imagined use is in the current playlist screen.
 def_key "ctrl_n"
   jump_to_playing_song
   scroll_down
