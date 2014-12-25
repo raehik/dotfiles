@@ -226,6 +226,9 @@ bindsym $mod+F2 exec "scr"
 # lock computer
 bindsym XF86Display exec "lock"
 
+# turn off computer
+bindsym $mod+Shift+Delete exec "poweroff"
+
 # turn off touchpad
 bindsym $mod+F6 exec "touchpad-toggle"
 
