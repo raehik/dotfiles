@@ -171,11 +171,15 @@ nmap <Esc>Oc <C-I>
 """ }}}
 
 " Wikify keybind
-nmap <Leader>w :!wikify <C-R>%<CR><CR>
+nmap <Leader>w :!wikify "<C-R>%"<CR><CR>
 
 " Markdown line-sized header insert
 nmap <F3> VypVr=
 nmap <F4> VypVr-
+
+" Markdown simple hash headers insert
+nmap <F5> 0i### <Esc>
+nmap <F6> 0i#### <Esc>
 
 """ Wrap + view modes - toggle hard/soft {{{
 " Thanks ktohg, http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
