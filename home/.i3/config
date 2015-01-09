@@ -208,6 +208,10 @@ bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+"
 bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB-"
 bindsym XF86AudioMute $exec "amixer set Master toggle"
 
+# MPD volume keybinds
+bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +5"
+bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -5"
+
 # special multimedia keys
 bindsym XF86AudioPlay $exec "mpc toggle"
 bindsym XF86AudioStop $exec "mpc stop"
@@ -219,28 +223,42 @@ bindsym XF86MonBrightnessUp $exec "xbacklight -inc 10 -time 0"
 bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
 ### }}}
 
+### Screenshots {{{
+# TODO: can't capture currently focused screen with scrot!
+# do something??? (does same as scrot -m)
+bindsym Print $exec "scrot"
+
+# capture currently focused window
+bindsym $mod+Print $exec "scrot -u"
+
+# capture all screens together
+bindsym Shift+Print $exec "scrot -m"
+
+# capture a selection
+bindsym Ctrl+Print $exec "scrot -s"
+### }}}
+
 ### Computer {{{
 # turn off screen
-bindsym $mod+F2 exec "scr"
+bindsym $mod+F2 $exec "scr"
 
 # lock computer
-bindsym XF86Display exec "lock"
+bindsym XF86Display $exec "lock"
 
 # turn off computer
-bindsym $mod+Shift+Delete exec "poweroff"
+bindsym $mod+Shift+Delete $exec "poweroff"
 
 # turn off touchpad
-bindsym $mod+F6 exec "touchpad-toggle"
+bindsym $mod+F6 $exec "touchpad-toggle"
 
 # lock computer & standby
-bindsym $mod+F1 exec "lockstb"
+bindsym $mod+F1 $exec "lockstb"
 ### }}}
 
 ### Etc. {{{
 # 'swap' outputs
 bindsym $mod+Shift+x exec "outswap"
 ### }}}
-
 ## }}}
 
 ## Behaviour {{{
