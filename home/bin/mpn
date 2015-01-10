@@ -4,7 +4,7 @@
 # exits.
 #
 
-mpdscribble_pidfile="~/.mpdscribble/pid"
+mpdscribble_pidfile="$HOME/.mpdscribble/pid"
 
 mpd
 mpdscribble
