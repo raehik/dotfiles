@@ -10,6 +10,9 @@
 #       in here. This is because dmenu_run can't read aliases :(
 #
 
+# allow aliases with 'sudo' prefixed -- pretty cool
+alias sudo="sudo "
+
 # useful ls aliases
 alias ll="ls -lh"
 alias la="ls -lah"
@@ -33,3 +36,7 @@ title() {
 
 # copy a file to the clipboard
 alias clpb="xsel -i < "
+
+# mount under current user
+# bash doesn't keep track of GID, so reuse UID
+alias mount="mount -ouid=$UID,gid=$UID"
