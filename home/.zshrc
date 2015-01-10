@@ -59,6 +59,10 @@ setopt inc_append_history
 
 # actually share the history, between concurrent sessions
 setopt share_history
+
+# by default, history only outputs the last 16 commands
+# wtf that is freaking useless no thx
+alias history="history 0"
 ## }}}
 
 # don't do that dumb query before `rm path/*`
