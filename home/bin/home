@@ -3,6 +3,6 @@
 # Switch to a netctl profile.
 #
 
-profile="reading-school-none-dhcp"
+profile="reading-wpa-static"
 
 sudo netctl switch-to "$profile"
