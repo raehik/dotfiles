@@ -225,7 +225,7 @@ bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
 
 ### Screenshots {{{
 # TODO: can't capture currently focused screen with scrot!
-# do something??? (does same as scrot -m)
+# capture all screens together
 bindsym Print $exec "scrot"
 
 # capture currently focused window
