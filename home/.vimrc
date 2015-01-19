@@ -146,6 +146,10 @@ set t_vb=
 "" }}}
 
 "" Mappings {{{
+" Unmap the dumb F1 help key
+" Since we can't do :unmap <F1> for some reason, map it to no-op
+nmap <F1> <nop>
+
 " Toggle between 'paste' and 'nopaste' modes
 set pastetoggle=<F11>
 
@@ -156,30 +160,25 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Keybind to show tagbar
 "nmap <F8> :TagbarToggle<CR> 
 
-" Easier keybind for char/word/line info
-nmap <F2> g<C-g>
+" Easier keybind for char/word/line info (rather than g<C-g>)
+nmap <F12> g<C-g>
 
-" Map preview.vim key myself
-" (must have commented it out in plugin/preview.vim)
-"nmap <Leader>P :Preview<CR>
+" Keybind to render current file (assumed Markdown) to HTML & view it
+nmap <C-P> :!markdown-render -o "<C-R>%"<CR><CR>
 
-"""  Mnemonic file jumping {{{
+""" Mnemonic file jumping {{{
 " Ctrl-Left = back
 nmap <Esc>Od <C-O>
 " Ctrl-Right = forward
 nmap <Esc>Oc <C-I>
 """ }}}
 
-" Wikify keybind
-nmap <Leader>w :!wikify "<C-R>%"<CR><CR>
-
-" Markdown line-sized header insert
-nmap <F3> VypVr=
-nmap <F4> VypVr-
-
-" Markdown simple hash headers insert
-nmap <F5> 0i### <Esc>
-nmap <F6> 0i#### <Esc>
+""" Markdown header inserts {{{
+nmap <F1> VypVr=
+nmap <F2> VypVr-
+nmap <F3> 0i### <Esc>
+nmap <F4> 0i#### <Esc>
+""" }}}
 
 """ Wrap + view modes - toggle hard/soft {{{
 " Thanks ktohg, http://vim.wikia.com/wiki/Move_cursor_by_display_lines_when_wrapping
