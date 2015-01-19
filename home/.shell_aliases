@@ -37,6 +37,6 @@ title() {
 # copy a file to the clipboard
 alias clpb="xsel -i < "
 
-# mount under current user
+# mount under current user w/ UTF8 for NTFS
 # bash doesn't keep track of GID, so reuse UID
-alias mount="mount -ouid=$UID,gid=$UID"
+alias ntfsmount="mount -ouid=$UID,gid=$UID,utf8"
