@@ -174,10 +174,17 @@ nmap <Esc>Oc <C-I>
 """ }}}
 
 """ Markdown header inserts {{{
+" Normal mode
 nmap <F1> VypVr=
 nmap <F2> VypVr-
 nmap <F3> 0i### <Esc>
 nmap <F4> 0i#### <Esc>
+
+" Insert mode: insert some extra newlines as well, so I can keep writing
+imap <F1> <Esc><F1>o<CR>
+imap <F2> <Esc><F2>o<CR>
+imap <F3> <Esc><F3>o<CR>
+imap <F4> <Esc><F4>o<CR>
 """ }}}
 
 """ Wrap + view modes - toggle hard/soft {{{
