@@ -510,6 +510,7 @@
 
 ## Actual configuration {{{
 # On start, be autocentering (centre on new song)
+# You can toggle autocentre with binding toggle_playing_song_centering
 autocenter_mode = yes
 
 # Space operation mode for file browser, media library, playlist editor
@@ -523,4 +524,8 @@ autocenter_mode = yes
 # it's useful.
 #
 default_space_mode = select
+
+# Tab & shift-tab just switch between the last 2 screens you've been on,
+# rather than moving through a sequence of screens.
+screen_switcher_mode = previous
 ## }}}
