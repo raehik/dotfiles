@@ -576,6 +576,8 @@ def_key "@"
 # i.e. add after
 #
 # Imagined use is in the browse/search/library screen.
+# Requires screen_switcher_mode = previous in your ncmpcpp config, else
+# the previous_screen command might take you wherever.
 def_key "ctrl_a"
   add_selected_items
   press_enter
@@ -585,6 +587,9 @@ def_key "ctrl_a"
   scroll_down
   press_enter
   remove_selection
+  show_playlist
+  scroll_down
+  previous_screen
 
 # Move selection to after current (playing) song.
 # i.e. move next
