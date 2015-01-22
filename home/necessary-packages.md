@@ -52,6 +52,7 @@ Physical access
 #### General
 
   * firefox             : Pretty much no other choice for a decent browser
+      * gst-plugins-good : Fix MP3 playback in Firefox
   * scrot               : Full-featured and *very* light screenshot program
   * irssi               : *the* IRC client
   * sxiv                : I dunno yet! feh doesn't support GIFs, so I'm not trying
