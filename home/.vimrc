@@ -164,7 +164,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 nmap <F12> g<C-g>
 
 " Keybind to render current file (assumed Markdown) to HTML & view it
-nmap <C-P> :!markdown-render -o "<C-R>%"<CR><CR>
+nmap <C-P> :!markdown-render -mo "<C-R>%"<CR><CR>
 
 """ Mnemonic file jumping {{{
 " Ctrl-Left = back
