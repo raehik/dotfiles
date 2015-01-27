@@ -24,10 +24,7 @@ zshaddhistory() {
     fi
 }
 
-# clean up the line when exiting with Ctrl-D
-# if Ctrl-D is hit, there isn't a terminating newline -- so we'll add a
-# useful message which probably won't ever be written (! specifies an
-# event, so it'll only work surrounded in quotes
+# executed on shell exit
 zshexit() {
     printf '%s\n' "$(date "+%s") 0" >> "$start_history_file"
 }
