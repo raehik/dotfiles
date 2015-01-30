@@ -19,7 +19,7 @@ xset b off
 
 # Set brightness to half to conserve powa
 # Only for laptops (or those sorts of displays I guess)
-#xbacklight -set 50
+#xbacklight -set 50 -time 0
 
 # If .Xresources is present, load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
