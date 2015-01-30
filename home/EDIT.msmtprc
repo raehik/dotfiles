@@ -1,5 +1,3 @@
-# Example for a user configuration file
-
 # Set default values for all following accounts.
 defaults
 auth            on
@@ -11,8 +9,8 @@ logfile         ~/.msmtp.log
 account         gmail
 host            smtp.gmail.com
 port            587
-from            johndoe@gmail.com
-user            johndoe
+from            thefirstmuffinman@gmail.com
+user            thefirstmuffinman
 password        <password>
 
 # Set a default account

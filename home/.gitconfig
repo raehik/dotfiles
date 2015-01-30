@@ -1,7 +1,6 @@
 [user]
-    # EDIT
-	name = Person Personne
-	email = email@example.com
+	name = Ben Orchard
+	email = thefirstmuffinman@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
 [alias]
@@ -10,5 +9,3 @@
 	c = commit
     d = diff
     l = log
-
-# vim: set ft=gitconfig :

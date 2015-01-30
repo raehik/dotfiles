@@ -3,8 +3,8 @@
 set my_mutt = "~/.mutt"
 
 # account info
-set from = "johndoe@gmail.com"
-set realname = "John Doe"
+set from = "thefirstmuffinman@gmail.com"
+set realname = "Ben Orchard"
 
 # aliases
 set alias_file="$my_mutt/aliases"
@@ -24,9 +24,11 @@ set header_cache = "~/.cache/mutt"
 # ???
 set folder = "$HOME/mail/gmail"
 set spoolfile = "=INBOX"
-#set record = "=sent"
+set record = "=sent"
 # Gmail automatically saves sent email for us
-unset record
+# However, setting record doesn't duplicate mail, and means I can read
+# stuff I've sent before offlineimap syncs.
+#unset record
 set postponed = "=drafts"
 
 # Gmail's IMAP is slightly broken/dumb, see

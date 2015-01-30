@@ -1,3 +1,5 @@
+# vim: set ft=conf :
+
 [general]
 accounts = gmail
 # controls how many accounts may be synced simultaneously
@@ -26,7 +28,7 @@ nametrans = lambda folder: {'drafts':   '[Gmail]/Drafts',
 
 [Repository gmail-remote]
 type = Gmail
-remoteuser = johndoe@gmail.com
+remoteuser = thefirstmuffinman@gmail.com
 # realdelete = no
 maxconnections = 5
 # map special Gmail folders ('system labels') to nicer folders & back
@@ -57,5 +59,3 @@ header = "# header can't be empty :/\n"
 peritem = mailboxes "=%(foldername)s"
 sep = "\n"
 footer = "\n"
-
-# vim: set ft=conf :
