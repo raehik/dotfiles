@@ -84,6 +84,9 @@ bindsym $mod+Shift+Return exec $browser
 
 # start dmenu (program launcher)
 bindsym $mod+d exec dmenu_run
+
+# start Anki
+bindsym $mod+Shift+a exec anki
 ### }}}
 
 ### Moving workspaces {{{
@@ -225,7 +228,7 @@ bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
 
 ### Screenshots {{{
 # set scrot options & directory
-set $scrot scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/media/shots'
+set $scrot scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/media/screenshots'
 
 # TODO: can't capture currently focused screen with scrot!
 # capture currently focused window
@@ -296,8 +299,7 @@ $i3_msg 'workspace number 2; exec $browser'
 $i3_msg 'workspace number 3; exec $terminal -title "mutt"'
 $i3_msg 'workspace number 3; exec $terminal -title "irssi"'
 $i3_msg 'workspace number 3; exec $terminal -title "calcurse" -e calcurse'
-$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp"'
-$i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
+$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp" -e mpn'
 ### }}}
 
 ### Layouts {{{
@@ -309,7 +311,6 @@ $i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 # will probably be the active one on startup.
 #
 $i3_msg 'workspace number 3; append_layout "$i3_home/.i3/workspace-3"'
-$i3_msg 'workspace number 4; append_layout "$i3_home/.i3/workspace-4"'
 $i3_msg 'workspace number 1; append_layout "$i3_home/.i3/workspace-1"'
 
 ### }}}
