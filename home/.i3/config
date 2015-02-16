@@ -299,7 +299,7 @@ $i3_msg 'workspace number 2; exec $browser'
 $i3_msg 'workspace number 3; exec $terminal -title "mutt"'
 $i3_msg 'workspace number 3; exec $terminal -title "irssi"'
 $i3_msg 'workspace number 3; exec $terminal -title "calcurse" -e calcurse'
-$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp"'
+$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp" -e mpn'
 $i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 ### }}}
 
