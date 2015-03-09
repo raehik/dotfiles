@@ -5,5 +5,5 @@
 # Personal
 #TODO*
 
-# Git
-#.gitignore
+# Python
+__pycache__
