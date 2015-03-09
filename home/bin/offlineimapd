@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#
-# Start offlineimap disowned & log everything.
-#
-
-# nohup detaches a program *fully* from a tty
-nohup offlineimap &> $HOME/.offlineimap/log &
