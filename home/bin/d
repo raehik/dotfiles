@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#
-# Get the current date in a form commonly used in filenames.
-#
-
-date "+%Y-%m-%d"
