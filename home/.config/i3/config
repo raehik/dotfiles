@@ -19,9 +19,11 @@ set $i3_msg exec --no-startup-id i3-msg
 ## }}}
 
 ## General {{{
-# can't access environment variables in i3 config, so set your home
-# directory here
-set $i3_home /home/raehik
+# set i3 config directory
+set $conf_dir /home/raehik/.config/i3
+
+# set py3status config directory
+set $py3status_dir /home/raehik/.config/py3status
 ## }}}
 
 ## Appearance {{{
@@ -221,6 +223,9 @@ bindsym XF86AudioStop $exec "mpc stop"
 bindsym XF86AudioPrev $exec "mpc prev"
 bindsym XF86AudioNext $exec "mpc next"
 
+# special MPD keys
+bindsym $mod+XF86AudioNext $exec "mpd-insert-best"
+
 # brightness keys
 bindsym XF86MonBrightnessUp $exec "xbacklight -inc 10 -time 0"
 bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
@@ -280,6 +285,8 @@ workspace 4 output VGA1
 ## Bar {{{
 bar {
         status_command i3status | i3status-wrapper.py
+        #status_command $conf_dir/i3pystatus-run.py
+        #status_command py3status -i $py3status_dir/modules -c $py3status_dir/config
 }
 ## }}}
 
@@ -293,7 +300,6 @@ bar {
 #     the order in which you start things might have an effect, but it
 #     doesn't seem reliable
 #
-$i3_msg 'workspace number 1; exec $terminal -title "schedule" -e vim "$HOME/schedule.md"'
 $i3_msg 'workspace number 1; exec $terminal -title "work"'
 $i3_msg 'workspace number 2; exec $browser'
 $i3_msg 'workspace number 3; exec $terminal -title "mutt"'
@@ -311,9 +317,11 @@ $i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 # Keep in mind that the last workspace to have a layout appended to it
 # will probably be the active one on startup.
 #
-$i3_msg 'workspace number 3; append_layout "$i3_home/.i3/workspace-3"'
-$i3_msg 'workspace number 4; append_layout "$i3_home/.i3/workspace-4"'
-$i3_msg 'workspace number 1; append_layout "$i3_home/.i3/workspace-1"'
+$i3_msg 'workspace number 3; append_layout "$conf_dir/workspace-3"'
+$i3_msg 'workspace number 4; append_layout "$conf_dir/workspace-4"'
+
+# try to make a specific workspace active on startup
+$i3_msg 'workspace number 1'
 
 ### }}}
 ## }}}
