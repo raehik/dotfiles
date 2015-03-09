@@ -13,5 +13,5 @@ download-retries		10
 download-timeout		20
 refresh-on-startup		yes
 reload-time			10
-download-path			~/podcasts
+download-path			~/media/podcasts
 max-downloads			2
