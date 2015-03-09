@@ -9,8 +9,15 @@ source "$HOME/.shellrc"
 # source shell theme
 source "$HOME/.zsh_theme"
 
+# add custom command completions
+# note: must be before the autoload -U compinit
+fpath=(~/.zsh_completions $fpath)
+
 # load zsh's great completion features
 autoload -U compinit && compinit
+
+# cdl = cd
+compdef _cd cdl
 
 # Vi[m]-style command-line editing
 bindkey -v
@@ -20,6 +27,11 @@ bindkey -v
 #     $ #command to run when I remember syntax
 #     $ do this # but not this
 #
+# You can comment-out a line hitting Alt-#. This inserts a hash at the
+# start of the line, meaning it does nothing, and enters it. Now when
+# you're prepared to run the command, you can scroll up your history and
+# hit Alt-# on the commented-out line: it un-comments it and runs the
+# command! Clever and incredibly handy, props to the zsh devs for that.
 setopt interactivecomments
 
 ## Custom completions {{{
