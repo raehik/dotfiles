@@ -6,9 +6,6 @@
 # terminal session. i3 and dmenu_run can't read aliases, so some things
 # are stored as one-line files in my ~/bin.
 #
-# Note: there are a few aliases I store as files in my ~/bin as well as
-#       in here. This is because dmenu_run can't read aliases :(
-#
 
 # allow aliases with 'sudo' prefixed -- pretty cool
 alias sudo="sudo "
@@ -17,6 +14,9 @@ alias sudo="sudo "
 alias ll="ls -lh"
 alias la="ls -lah"
 alias l="ls -la"
+
+# so much git rite now
+alias g="git"
 
 # I do this so much, make it shorter
 alias cm="git c -m"
@@ -29,10 +29,16 @@ cdl() {
     fi
 }
 
-# set terminal [emulator] title (a.k.a. xterm window title)
-title() {
-    echo -ne "\e]0;${@}\007"
+# shorter cdl so maybe I use it more plz
+alias c="cdl"
+
+# `cd` to the real path of current directory
+real() {
+    cd "$(realpath .)"
 }
+
+# quicker 'date now' command
+alias d="date +%F"
 
 # copy a file to the clipboard
 alias clpb="xsel -i < "
