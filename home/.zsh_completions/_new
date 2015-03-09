@@ -1,0 +1,5 @@
+#compdef new
+
+template_dir="$HOME/.templates"
+
+_arguments "1: :($(ls $template_dir))"

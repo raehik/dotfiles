@@ -1,0 +1,16 @@
+#compdef list
+
+list_dir="$HOME/lists"
+list_ext=".md"
+
+lists=
+
+for list in $list_dir/*$list_ext; do
+    # get list without extension
+    name="${list%.*}"
+
+    # append only filename (not ~/$list_dir/filename)
+    lists="$lists ${name##*/}"
+done
+
+_arguments "1: :($lists)"
