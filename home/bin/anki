@@ -1,8 +1,1 @@
-#!/usr/bin/env bash
-#
-# Override Anki's data directory.
-#
-# For dmenu, since it can't read aliases.
-#
-
-/usr/bin/anki -b "$HOME/.anki"
+/home/raehik/projects/coding/scripts/anki

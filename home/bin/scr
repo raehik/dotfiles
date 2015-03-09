@@ -1,8 +1,1 @@
-#!/usr/bin/env bash
-#
-# Turn the screen off.
-#
-
-sleep_time=0.1
-
-sleep $sleep_time && xset dpms force off
+/home/raehik/projects/coding/scripts/scr

@@ -1,10 +1,1 @@
-#!/usr/bin/env bash
-#
-# SSH to a server.
-#
-
-user="$USER"
-server="86.28.170.125"
-port=6176
-
-ssh -p $port "$USER@$server"
+/home/raehik/projects/coding/scripts/pi

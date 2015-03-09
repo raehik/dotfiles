@@ -1,8 +1,1 @@
-#!/usr/bin/env bash
-#
-# Switch to a netctl profile.
-#
-
-profile="reading-wpa-static"
-
-sudo netctl switch-to "$profile"
+/home/raehik/projects/coding/scripts/home
