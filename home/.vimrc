@@ -157,14 +157,22 @@ set pastetoggle=<F11>
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-" Keybind to show tagbar
+" Show tagbar
 "nmap <F8> :TagbarToggle<CR> 
 
 " Easier keybind for char/word/line info (rather than g<C-g>)
 nmap <F12> g<C-g>
 
-" Keybind to render current file (assumed Markdown) to HTML & view it
-nmap <C-P> :!markdown-render -mo "<C-R>%"<CR><CR>
+" Render current file (assumed Markdown) to HTML & view it
+nmap <C-P> :!markdown-render -o "<C-R>%"<CR><CR>
+
+""" Special character inserts {{{
+" Check mark
+imap <C-c> ✓
+
+" X mark
+imap <C-x> ✗
+""" }}}
 
 """ Mnemonic file jumping {{{
 " Ctrl-Left = back
