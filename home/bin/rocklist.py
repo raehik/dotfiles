@@ -1,1 +1,1 @@
-/home/raehik/projects/coding/scripts/rocklist/rocklist.py
+/home/raehik/projects/coding/scripts/rocklist.py
