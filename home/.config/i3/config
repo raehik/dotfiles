@@ -20,10 +20,10 @@ set $i3_msg exec --no-startup-id i3-msg
 
 ## General {{{
 # set i3 config directory
-set $conf_dir /home/raehik/.config/i3
+set $conf_dir ~/.config/i3
 
 # set py3status config directory
-set $py3status_dir /home/raehik/.config/py3status
+set $py3status_dir ~/.config/py3status
 ## }}}
 
 ## Appearance {{{
