@@ -6,6 +6,10 @@
 # terminal session. i3 and dmenu_run can't read aliases, so some things
 # are stored as one-line files in my ~/bin.
 #
+# Anything that is a shortcut or something belongs here, rather than in
+# my ~/bin, if it's only for my ease of use (e.g. tmpmux, since it can
+# be achieved easily in another way
+#
 
 # allow aliases with 'sudo' prefixed -- pretty cool
 alias sudo="sudo "
@@ -32,9 +36,19 @@ cdl() {
 # shorter cdl so maybe I use it more plz
 alias c="cdl"
 
-# `cd` to the real path of current directory
+# cd to the real path of current directory
 real() {
     cd "$(realpath .)"
+}
+
+# run a command in a tmux session and exit when it finishes
+# (literally a shortcut for `tmux new "args"`, but easier)
+tmpmux() {
+    # necessary to do this -- for some reason, can't just quote $@
+    args="$@"
+
+    tmux new-session "$args"
+
 }
 
 # quicker 'date now' command
