@@ -22,6 +22,9 @@ alias l="ls -la"
 # so much git rite now
 alias g="git"
 
+# vim is my 3rd most common command, make it easier
+alias v="vim"
+
 # I do this so much, make it shorter
 alias cm="git c -m"
 
