@@ -41,7 +41,22 @@ alias c="cdl"
 
 # cd to the real path of current directory
 real() {
-    cd "$(realpath .)"
+    if [[ $# > 0 ]]; then
+        # we got an argument, so cd to it's realpath
+        if [[ -d "$1" ]]; then
+            # it's a directory
+            new_dir="$(realpath "$1")"
+        else
+            # it's a file, so cd to it's directory
+            new_file="$(realpath "$1")"
+            new_dir="${new_file%/*}"
+        fi
+    else
+        # no arguments, use current directory
+        new_dir="$(realpath .)"
+    fi
+
+    cd "$new_dir"
 }
 
 # run a command in a tmux session and exit when it finishes
