@@ -208,23 +208,26 @@ bindsym $mod+r mode "resize"
 ### }}}
 
 ### Multimedia {{{
+# send SIGUSR1 to i3status to refresh it manually
+set $refresh killall -USR1 i3status
+
 # volume multimedia keys
-bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+"
-bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB-"
-bindsym XF86AudioMute $exec "amixer set Master toggle"
+bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+ && $refresh"
+bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB- && $refresh"
+bindsym XF86AudioMute $exec "amixer set Master toggle && $refresh"
 
 # MPD volume keybinds
-bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +5"
-bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -5"
+bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +5 && $refresh"
+bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -5 && $refresh"
 
 # special multimedia keys
-bindsym XF86AudioPlay $exec "mpc toggle"
-bindsym XF86AudioStop $exec "mpc stop"
-bindsym XF86AudioPrev $exec "mpc prev"
-bindsym XF86AudioNext $exec "mpc next"
+bindsym XF86AudioPlay $exec "mpc toggle && $refresh"
+bindsym XF86AudioStop $exec "mpc stop && $refresh"
+bindsym XF86AudioPrev $exec "mpc prev && $refresh"
+bindsym XF86AudioNext $exec "mpc next && $refresh"
 
 # special MPD keys
-bindsym $mod+XF86AudioNext $exec "mpd-insert-best"
+bindsym $mod+XF86AudioNext $exec "mpd-insert-best && $refresh"
 
 # brightness keys
 bindsym XF86MonBrightnessUp $exec "xbacklight -inc 10 -time 0"
