@@ -528,4 +528,10 @@ default_space_mode = select
 # Tab & shift-tab just switch between the last 2 screens you've been on,
 # rather than moving through a sequence of screens.
 screen_switcher_mode = previous
+
+# Place lyrics in a directory out of the way
+lyrics_directory = ~/.mpd/lyrics
+
+# Vim master race, as usual
+external_editor = vim
 ## }}}
