@@ -73,8 +73,16 @@ tmpmux() {
 alias d="date +%F"
 
 # copy a file to the clipboard
-alias clpb="xsel -i < "
+alias clpb="xsel -i -b < "
 
 # mount under current user w/ UTF8 for NTFS
 # bash doesn't keep track of GID, so reuse UID
 alias ntfsmount="mount -ouid=$UID,gid=$UID,utf8"
+
+# write a note easier
+note() {
+    new note $@
+    git add "$(date +%F)-$(ezstring "Note $@").md"
+    git commit -m "add daily note"
+    git push
+}
