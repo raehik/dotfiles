@@ -1,9 +1,8 @@
-#compdef list
+#compdef logs
 
-local list_dir="$HOME/lists"
+local list_dir="$HOME/logs"
 local list_ext=".md"
 
-local list=
 local lists=
 
 for list in $list_dir/*$list_ext; do

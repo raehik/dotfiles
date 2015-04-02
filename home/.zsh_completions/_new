@@ -1,5 +1,5 @@
 #compdef new
 
-template_dir="$HOME/.templates"
+local template_dir="$HOME/.templates"
 
-_arguments "1: :($(ls $template_dir))"
+_files -W "$template_dir"
