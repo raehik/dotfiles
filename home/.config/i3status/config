@@ -13,7 +13,7 @@ general {
         output_format = "i3bar"
 }
 
-#order += "volume master"
+order += "volume master"
 order += "disk /home"
 order += "battery 1"
 #order += "wireless wlp4s0"
@@ -21,12 +21,12 @@ order += "battery 1"
 order += "load"
 order += "time"
 
-#volume "master" {
-#    # doesn't use human/natural scale like alsamixer or amixer -M
-#    format = "%volume"
-#    device = "default"
-#    mixer = "Master"
-#}
+volume "master" {
+    # doesn't use human/natural scale like alsamixer or amixer -M
+    format = "%volume"
+    device = "default"
+    mixer = "Master"
+}
 
 disk "/home" {
     format = "%avail free"
