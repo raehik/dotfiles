@@ -4,9 +4,17 @@
 "
 
 "" Operation {{{
+" Set up pathogen
+" Note that this must be the first thing in your vimrc.
+execute pathogen#infect()
+
 """ General {{{
 " Enable mouse in all modes
-"set mouse=a
+set mouse=a
+
+" Set clipboard to system default (so yank/paste goes to main X
+" clipboard)
+set clipboard=unnamedplus
 
 " Switch from a buffer without being required to save it, and a bunch of
 " other things.
@@ -157,14 +165,20 @@ set pastetoggle=<F11>
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-" Show tagbar
-"nmap <F8> :TagbarToggle<CR> 
+" Show NERD tree
+nmap <F8> :NERDTreeToggle<CR>
 
 " Easier keybind for char/word/line info (rather than g<C-g>)
 nmap <F12> g<C-g>
 
 " Render current file (assumed Markdown) to HTML & view it
 nmap <C-P> :!markdown-render -o "<C-R>%"<CR><CR>
+
+" Insert current date
+imap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
+
+" Insert current time
+imap <C-T> <C-R>=strftime("%H:%M:%S")<CR>
 
 """ Special character inserts {{{
 " Check mark
