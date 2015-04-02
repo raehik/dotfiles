@@ -21,9 +21,6 @@ set $i3_msg exec --no-startup-id i3-msg
 ## General {{{
 # set i3 config directory
 set $conf_dir ~/.config/i3
-
-# set py3status config directory
-set $py3status_dir ~/.config/py3status
 ## }}}
 
 ## Appearance {{{
@@ -211,14 +208,19 @@ bindsym $mod+r mode "resize"
 # send SIGUSR1 to i3status to refresh it manually
 set $refresh killall -USR1 i3status
 
-# volume multimedia keys
-bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+ && $refresh"
-bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB- && $refresh"
+# volume multimedia keys -- ALSA
+#bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+ && $refresh"
+#bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB- && $refresh"
+#bindsym XF86AudioMute $exec "amixer set Master toggle && $refresh"
+
+# volume multimedia keys -- PulseAudio
+bindsym XF86AudioRaiseVolume $exec "amixer set Master 2%+ && $refresh"
+bindsym XF86AudioLowerVolume $exec "amixer set Master 2%- && $refresh"
 bindsym XF86AudioMute $exec "amixer set Master toggle && $refresh"
 
 # MPD volume keybinds
-bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +5 && $refresh"
-bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -5 && $refresh"
+bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +2 && $refresh"
+bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -2 && $refresh"
 
 # special multimedia keys
 bindsym XF86AudioPlay $exec "mpc toggle && $refresh"
@@ -283,13 +285,23 @@ workspace 1 output eDP1
 workspace 2 output eDP1
 workspace 3 output VGA1
 workspace 4 output VGA1
+
+### Assigns {{{
+# start Anki on workspace 5
+assign [class="Anki"] 5
+
+# start pavucontrol floating
+for_window [class="Pavucontrol"] floating enable
+### }}}
 ## }}}
 
 ## Bar {{{
 bar {
-        status_command i3status | i3status-wrapper.py
-        #status_command $conf_dir/i3pystatus-run.py
-        #status_command py3status -i $py3status_dir/modules -c $py3status_dir/config
+    # pipe to my wrapper script (inserts extra bits)
+    status_command i3status | i3status-wrapper.py
+
+    # system tray on primary monitor plz
+    tray_output primary
 }
 ## }}}
 
