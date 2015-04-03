@@ -16,11 +16,11 @@
 #     source "~/.mutt/this-file"
 #
 
-# main background
+# main colour for general stuff (text & background)
 color normal white default
 
 # headers at the top of a message
-color hdrdefault blue default
+color hdrdefault cyan default
 
 # '[-- Autoview using ... --]' line
 color attachment red default
@@ -40,10 +40,14 @@ color quoted blue default
 # unread email
 color index red default "~N|~O"
 
-color signature blue black
+# tree e.g. for attachments
+color tree white default
+
+# signatures (not sure how they're detected)
+color signature blue default
+
 color indicator black red
 color status brightgreen blue
-color tree white black
 color search white default
 color tilde brightmagenta default
 color index blue black ~F
