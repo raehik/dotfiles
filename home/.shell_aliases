@@ -76,5 +76,5 @@ alias d="date +%F"
 alias clpb="xsel -i -b < "
 
 # mount under current user w/ UTF8 for NTFS
-# bash doesn't keep track of GID, so reuse UID
-alias ntfsmount="mount -ouid=$UID,gid=$UID,utf8"
+# bash doesn't keep track of GID, so we'll use a command
+alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
