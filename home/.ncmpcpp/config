@@ -534,4 +534,7 @@ lyrics_directory = ~/.mpd/lyrics
 
 # Vim master race, as usual
 external_editor = vim
+
+# Try to load new lyrics on song change
+follow_now_playing_lyrics = yes
 ## }}}
