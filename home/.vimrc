@@ -17,6 +17,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
+Plugin 'majutsushi/tagbar'
 
 " Run end Vundle stuff (required!)
 " (maybe adds RTPs?)
@@ -32,7 +33,7 @@ set mouse=a
 
 " Set clipboard to system default (so yank/paste goes to main X
 " clipboard)
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " Switch from a buffer without being required to save it, and a bunch of
 " other things.
@@ -79,6 +80,9 @@ set notimeout
 
 " Do timeout on keycodes (e.g. Esc)
 set ttimeout
+
+" Enable omni completion
+"set omnifunc=syntaxcomplete#Complete
 """ }}}
 
 """ File encoding {{{
@@ -138,6 +142,13 @@ syntax on
 " Set colourscheme to Zenburn
 colorscheme zenburn
 
+" Show extra whitespace at end of line
+" Colour = Zenburn theme (slightly lighter than CursorLine colour)
+highlight ExtraWhitespace ctermbg=239 guibg=#4e4e4e
+
+" Match group thing
+match ExtraWhitespace /\s\+\%#\@<!$/
+
 " Display the cursor position (line & column no.) in the right of the
 " status line
 set ruler
@@ -183,14 +194,20 @@ set pastetoggle=<F11>
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
-" Show NERD tree
+" Toggle NERD tree
 nmap <F8> :NERDTreeToggle<CR>
+imap <F8> <C-o><F8>
+
+" Toggle tagbar
+nmap <F9> :TagbarToggle<CR>
+imap <F9> <C-o><F9>
 
 " Easier keybind for char/word/line info (rather than g<C-g>)
 nmap <F12> g<C-g>
 
-" Render current file (assumed Markdown) to HTML & view it
-nmap <C-P> :!markdown-render -o "<C-R>%"<CR><CR>
+" Render current file
+"nmap <C-P> :Dispatch! markdown-render -o "%"<CR><CR>
+nmap <C-P> :Dispatch! file-render "%"<CR>
 
 " Insert current date
 imap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
@@ -198,12 +215,18 @@ imap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
 " Insert current time
 imap <C-T> <C-R>=strftime("%H:%M:%S")<CR>
 
+" Copy to main X clipboard
+vmap <C-Y> "+y
+
+" Paste from main X clipboard
+" - just use Ctrl+Alt+V!
+
 """ Special character inserts {{{
 " Check mark
-imap <C-c> ✓
+"imap <C-C> ✓
 
 " X mark
-imap <C-x> ✗
+"imap <C-X> ✗
 """ }}}
 
 """ Mnemonic file jumping {{{
@@ -221,10 +244,10 @@ nmap <F3> 0i### <Esc>
 nmap <F4> 0i#### <Esc>
 
 " Insert mode: insert some extra newlines as well, so I can keep writing
-imap <F1> <Esc><F1>o<CR>
-imap <F2> <Esc><F2>o<CR>
-imap <F3> <Esc><F3>o<CR>
-imap <F4> <Esc><F4>o<CR>
+imap <F1> <Esc><F1>A
+imap <F2> <Esc><F2>A
+imap <F3> <Esc><F3>A
+imap <F4> <Esc><F4>A
 """ }}}
 
 """ Wrap + view modes - toggle hard/soft {{{
