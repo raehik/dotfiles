@@ -13,6 +13,9 @@ fi
 # Set keyboard layout
 setxkbmap -layout gb
 
+# Set primary X output
+#xrandr --output eDP1 --primary
+
 # Turn off all X system bells (PC speaker beeps)
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
 xset b off
@@ -32,6 +35,12 @@ ibus-daemon -drx
 
 # Set up second monitor
 #xrandr --output VGA1 --auto --right-of eDP1
+
+# Start up compositor (just used for vsync for now)
+compton --vsync opengl &
+
+# Start up pasystray (comes in handy)
+pasystray &
 
 # Set desktop background
 sh ~/.fehbg &
