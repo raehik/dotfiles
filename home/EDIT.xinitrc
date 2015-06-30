@@ -20,7 +20,7 @@ setxkbmap -layout gb
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
 xset b off
 
-# Set brightness to half to conserve powa
+# Set brightness to half to conserve power
 # Only for laptops (or those sorts of displays I guess)
 #xbacklight -set 50 -time 0
 
