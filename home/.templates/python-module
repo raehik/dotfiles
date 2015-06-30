@@ -1,0 +1,12 @@
+%{1||new-python-module}%.py
+#!/usr/bin/env python3
+#
+# %{3||Short description of the module's operation/function.}%
+#
+
+class %{2||ClassName}%:
+
+
+
+if __name__ == "__main__":
+    do_stuff()

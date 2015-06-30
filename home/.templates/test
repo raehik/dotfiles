@@ -1,0 +1,5 @@
+new-from-template-testfile.md
+Heya! This is a test file for the `new-from-template` program.
+
+%{nope}% <-- Here I tried to print a variable that doesn't exist.
+%{HOME}% <-- That's the value of your $HOME environment variable!

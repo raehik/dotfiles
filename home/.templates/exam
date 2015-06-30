@@ -1,0 +1,13 @@
+%{HOME}%/journal/%(date "+%Y-%m-%d")%-%(ezstring "Exam #%{1||1}%: %{2||exam name}%")%.md
+---
+title: "Exam #%{1||1}%: %{2||exam name}%"
+date: %(date "+%F %T")%
+layout: exam
+
+exam-subject: %{3||Subject}%
+exam-name: %{2||exam name}%
+exam-date: %(date "+%Y-%m-%d")%
+exam-time: 09:00 / 14:00
+---
+
+

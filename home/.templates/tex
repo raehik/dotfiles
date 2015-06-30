@@ -1,0 +1,2 @@
+%(ezstring %{1||New TeX section}%)%.tex
+\section{%{1||New TeX section}%}
