@@ -72,6 +72,15 @@ setopt inc_append_history
 # actually share the history, between concurrent sessions
 setopt share_history
 
+# going up through history scrolls through previous commands starting
+# with what you've typed so far
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 # by default, history only outputs the last 16 commands
 # wtf that is freaking useless no thx
 alias history="history 0"
