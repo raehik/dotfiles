@@ -1,1 +1,0 @@
-/home/raehik/projects/coding/programs/i3status-wrapper/i3status-wrapper.py

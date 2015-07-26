@@ -1,1 +1,0 @@
-/home/raehik/projects/coding/programs/redcarpet-shortlink/redcarpet-shortlink.rb

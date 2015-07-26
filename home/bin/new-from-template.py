@@ -1,1 +1,0 @@
-/home/raehik/projects/coding/programs/new-from-template/new-from-template.py
