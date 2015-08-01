@@ -108,7 +108,7 @@ set fileformat=unix
 " c: Auto-wrap comments to textwidth & insert comment leader.
 set formatoptions+=tc
 
-" When making a new line & no identing is specified by the filetype,
+" When making a new line & no indenting is specified by the filetype,
 " keep the same indent as the previous line. Useful for READMEs &
 " generally preferred behaviour.
 set autoindent
@@ -123,7 +123,7 @@ set tabstop=4
 set shiftwidth=4
 
 " Set wrap width
-set textwidth=72
+set textwidth=80
 
 " Colour the column which you shall not pass (!)
 " By default, it is a slightly lighter shade than the background (same shade as
@@ -223,7 +223,7 @@ vmap <C-Y> "+y
 
 """ Special character inserts {{{
 " Check mark
-"imap <C-C> ✓
+imap <C-C> ✓
 
 " X mark
 "imap <C-X> ✗
@@ -255,32 +255,39 @@ imap <F4> <Esc><F4>A
 " setlocal means changes are limited to current buffer
 noremap <silent> <Leader>r :call ToggleWrap()<CR>
 function ToggleWrap()
-  if &textwidth != 0
-    echo "soft wrap"
-    "silent! nunmap <buffer> <Home>
-    "silent! nunmap <buffer> <End>
-    "silent! iunmap <buffer> <Home>
-    "silent! iunmap <buffer> <End>
-    setlocal textwidth=0
-    setlocal colorcolumn=0
-    nnoremap  <buffer> <silent> <Up>   gk
-    nnoremap  <buffer> <silent> <Down> gj
-    inoremap  <buffer> <silent> <Up>   <C-o>gk
-    inoremap  <buffer> <silent> <Down> <C-o>gj
-  else
-    echo "hard wrap"
-    setlocal wrap
-    "noremap  <buffer> <silent> <Home> g<Home>
-    "noremap  <buffer> <silent> <End>  g<End>
-    "inoremap <buffer> <silent> <Home> <C-o>g<Home>
-    "inoremap <buffer> <silent> <End>  <C-o>g<End>
-    set textwidth=72
-    let &colorcolumn = &textwidth + 1
-    silent! nunmap <buffer> <Up>
-    silent! nunmap <buffer> <Down>
-    silent! iunmap <buffer> <Up>
-    silent! iunmap <buffer> <Down>
-  endif
+    if &textwidth != 0
+        echo "soft wrap"
+        "silent! nunmap <buffer> <Home>
+        "silent! nunmap <buffer> <End>
+        "silent! iunmap <buffer> <Home>
+        "silent! iunmap <buffer> <End>
+        setlocal textwidth=0
+        setlocal colorcolumn=0
+        nnoremap  <buffer> <silent> <Up>   gk
+        nnoremap  <buffer> <silent> <Down> gj
+        inoremap  <buffer> <silent> <Up>   <C-o>gk
+        inoremap  <buffer> <silent> <Down> <C-o>gj
+    else
+        echo "hard wrap"
+        setlocal wrap
+        "noremap  <buffer> <silent> <Home> g<Home>
+        "noremap  <buffer> <silent> <End>  g<End>
+        "inoremap <buffer> <silent> <Home> <C-o>g<Home>
+        "inoremap <buffer> <silent> <End>  <C-o>g<End>
+        set textwidth=80
+        let &colorcolumn = &textwidth + 1
+        silent! nunmap <buffer> <Up>
+        silent! nunmap <buffer> <Down>
+        silent! iunmap <buffer> <Up>
+        silent! iunmap <buffer> <Down>
+    endif
+endfunction
+""" }}}
+
+""" remind 'tick' function {{{
+nnoremap <Leader>c :call RemindTick()<CR>
+function RemindTick()
+    execute "normal! 0/MSG\<CR>wi✓ \<ESC>ZZ"
 endfunction
 """ }}}
 "" }}}
