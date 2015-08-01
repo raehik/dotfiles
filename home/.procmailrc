@@ -1,0 +1,10 @@
+MAILDIR=$HOME/mail/gmail
+PMDIR=$HOME/.procmail
+
+
+DEFAULT=$MAILDIR/INBOX
+LOGFILE=$PMDIR/log
+
+:0 B
+* ^REM \/.*
+| remind-add-no-dup "REM $MATCH"
