@@ -9,5 +9,6 @@
 	c = commit
     d = diff
     l = log
+    co = checkout
 [push]
 	default = simple
