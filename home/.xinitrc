@@ -14,7 +14,7 @@ fi
 setxkbmap -layout gb
 
 # Set primary X output
-#xrandr --output eDP1 --primary
+xrandr --output eDP1 --primary
 
 # Turn off all X system bells (PC speaker beeps)
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
@@ -22,7 +22,7 @@ xset b off
 
 # Set brightness to half to conserve power
 # Only for laptops (or those sorts of displays I guess)
-#xbacklight -set 50 -time 0
+xbacklight -set 50 -time 0
 
 # If .Xresources is present, load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
@@ -47,6 +47,10 @@ sh ~/.fehbg &
 
 # Start keylogger
 xinput-keylog &
+
+# Start reminder daemon (checks every minute, notifies for timed events)
+# %s is escaped for us, so don't quote it
+remind -z1 -k'notify-send -u critical REM:\ %s &' .reminders &
 
 # Start window manager (must be final command!)
 exec i3
