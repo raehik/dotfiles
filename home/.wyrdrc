@@ -1,0 +1,54 @@
+# NOTE: This file does NOT SUPPORT more than one pound sign (#) at the start of
+#       a line!!
+
+# include default rcfile while it's not all in here
+# NOTE: This MUST be first so that everything in here overrides the
+#       global settings.
+include "/etc/wyrdrc"
+
+# Bindings {{{
+# Calendar movement keys {{{
+bind \144 previous_day
+bind \143 next_day
+bind \142 next_week
+bind \141 previous_week
+# }}}
+
+# Current date/time (easier than 'Home' key)
+bind "G" home
+# }}}
+
+# YYYY-MM-DD templates {{{
+set timed_template="REM %year%-%mon%-%mday%@%hour%:%min% MSG "
+set untimed_template="REM %year%-%mon%-%mday% MSG "
+# }}}
+
+# Fixing America's dumbass issues with calendars {{{
+# we don't have weird-ass American date shenanigans over here
+set quick_date_US="false"
+
+# please start the week on the *start of the week*, not Sunday T_T
+set week_starts_monday="true"
+# }}}
+
+# Colours (transparent background) {{{
+color help               green blue
+color timed_default      white default
+color timed_current      white red
+color timed_reminder1    yellow blue
+color timed_reminder2    white red
+color timed_reminder3    white green
+color timed_reminder4    yellow magenta
+color untimed_reminder   white default
+color timed_date         cyan default
+color selection_info     green blue
+color description        white default
+color status             green blue
+color calendar_labels    white default
+color calendar_level1    white default
+color calendar_level2    blue default
+color calendar_level3    magenta default
+color calendar_today     white red
+color left_divider       cyan blue
+color right_divider      cyan blue
+# }}}
