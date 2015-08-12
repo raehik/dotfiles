@@ -1,12 +1,14 @@
-# vim: syntax=sh filetype=sh foldmethod=marker :
+# vim: ft=sh :
 #
 # Non-specific/common (bash & zsh) shell configuration.
 #
 
+cfg_dir="$HOME/.config"
+
 # source all my aliases
 # (The aliases in this file are for 'default behaviour' rather than
 # shortcuts, e.g. ls & grep colours.)
-source "$HOME/.shell_aliases"
+source "$cfg_dir/shells/shell_aliases"
 
 # prefix path with user's own bin directory, if it exists
 if [ -d "$HOME/bin" ]; then
@@ -28,11 +30,11 @@ if [ $TERM = "linux" ]; then
 fi
 
 # set $LS_COLOURS
-if [ -r "$HOME/.dircolors" ]; then
+if [ -r "$cfg_dir/dircolors" ]; then
     # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
     # $(dircolors) effectively sets the LS_COLORS environment variable.
     # thanks [Matt](http://unix.stackexchange.com/a/94306)
-    eval $(dircolors "$HOME/.dircolors")
+    eval $(dircolors "$cfg_dir/dircolors")
 fi
 
 # enable using $LS_COLOURS in ls
