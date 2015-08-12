@@ -1,7 +1,0 @@
-%{1||%(date +%F)%.md}%
-TYPE:
-EXPECTED:
-START: %(date +%T)%
-END:
-TOOK:
-
