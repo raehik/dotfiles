@@ -59,6 +59,13 @@ set sleep_time = 0
 # colours
 source "$my_mutt/colours-blue-trans"
 
+# set mailcap file
+# moved from $HOME/.mailcap because I plan for only mutt to use it & it's neater
+set mailcap_path = "$my_mutt/mailcap"
+
+# try to view plain text befor HTML
+alternative_order text/plain text/html
+
 # display HTML attachments by default (uses .mailcap to decide what
 # program to use to display it with)
 auto_view text/html
@@ -81,3 +88,7 @@ color sidebar_new yellow default
 
 # show only name
 set sidebar_shortpath = yes
+
+# make the subject of a forwarded email how most mail clients do it
+# (or at least gmail does it like this)
+set forward_format = "Fwd: %s"
