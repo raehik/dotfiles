@@ -1,5 +1,0 @@
-#compdef new
-
-local template_dir="$HOME/.templates"
-
-_files -W "$template_dir"

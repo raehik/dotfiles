@@ -1,6 +1,6 @@
 #compdef bg-cycle
 
 # always use locals!
-local bg_dir="$HOME/.backgrounds/orig"
+local bg_dir="$HOME/.assets/backgrounds/orig"
 
 _files -W "$bg_dir"
