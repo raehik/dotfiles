@@ -43,7 +43,7 @@ compton --vsync opengl &
 pasystray &
 
 # Set desktop background
-sh ~/.fehbg &
+$HOME/.assets/backgrounds/set-desktop-background &
 
 # Start keylogger
 xinput-keylog &
