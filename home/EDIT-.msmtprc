@@ -3,7 +3,12 @@ defaults
 auth            on
 tls             on
 tls_trust_file  /etc/ssl/certs/ca-certificates.crt
-logfile         ~/.msmtp.log
+
+# use system logging
+syslog on
+
+# log to file
+#logfile         ~/.msmtp.log
 
 # The SMTP server of the provider.
 account         gmail
@@ -11,7 +16,7 @@ host            smtp.gmail.com
 port            587
 from            thefirstmuffinman@gmail.com
 user            thefirstmuffinman
-password        <password>
+password
 
 # Set a default account
 account default : gmail
