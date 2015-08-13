@@ -19,6 +19,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
 Plugin 'majutsushi/tagbar'
 
+Plugin 'chriskempson/base16-vim'
+Plugin 'sickill/vim-monokai'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'altercation/vim-colors-solarized'
+
 " Run end Vundle stuff (required!)
 " (maybe adds RTPs?)
 call vundle#end()
@@ -28,6 +33,9 @@ filetype indent plugin on
 """ }}}
 
 """ General {{{
+" Move viminfo to a cache dir instead of $HOME
+set viminfo+=n~/.cache/viminfo
+
 " Enable mouse in all modes
 set mouse=a
 
@@ -83,6 +91,9 @@ set ttimeout
 
 " Enable omni completion
 "set omnifunc=syntaxcomplete#Complete
+
+" Set spelling language
+set spelllang=en_gb
 """ }}}
 
 """ File encoding {{{
@@ -221,6 +232,10 @@ vmap <C-Y> "+y
 " Paste from main X clipboard
 " - just use Ctrl+Alt+V!
 
+" Toggle spellcheck
+nmap <Leader>s :set spell!<CR>
+
+
 """ Special character inserts {{{
 " Check mark
 imap <C-C> ✓
@@ -290,7 +305,6 @@ function RemindTick()
     execute "normal! 0/MSG\<CR>wi✓ \<ESC>ZZ"
 endfunction
 """ }}}
-"" }}}
 
 "" Filetype-specific options {{{
 " Auto soft wrap mode for Markdown
