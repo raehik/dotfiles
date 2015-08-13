@@ -1,0 +1,6 @@
+## Pre stuff {{{
+# include all the *.rem files in a 'reminders' directory
+INCLUDE [getenv("HOME")]/.remind-files
+## }}}
+
+REM Jul 22 2015 MSG ✓ Learn how to use remind
