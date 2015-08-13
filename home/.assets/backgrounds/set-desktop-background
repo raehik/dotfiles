@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Refresh X background with feh.
+#
+
+feh --no-fehbg --bg-fill --geometry -0 "$HOME/.assets/backgrounds/desktop"
