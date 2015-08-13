@@ -17,7 +17,7 @@ quick = 10
 
 [Repository gmail-local]
 type = Maildir
-localfolders = ~/.mail/gmail
+localfolders = ~/mail/gmail
 sep = /
 # map special Gmail folders ('system labels') to nicer folders & back
 nametrans = lambda folder: {'drafts':   '[Gmail]/Drafts',
