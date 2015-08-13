@@ -1,2 +1,9 @@
 # Enable styled subtitles (colours, fonts, coolstuff, etc.)
 ass=yes
+
+# Use PulseAudio by default
+ao=pulse
+
+# Use OpenGL for video, because it works with compton's vsync (xv
+# doesn't)
+vo=gl
