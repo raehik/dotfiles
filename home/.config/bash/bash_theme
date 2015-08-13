@@ -1,11 +1,6 @@
-#!/usr/bin/zsh
+# vim: set ft=sh :
 #
-# ^ Vim, this is a shell file
-#
-# raehik
-# 08/07/14
-#
-# A simple, configurable theme for zsh. Really.
+# A simple, configurable theme for Bash.
 #
 
 build_prompt() {

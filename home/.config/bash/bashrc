@@ -1,0 +1,42 @@
+#
+# bash-specific shell configuration.
+#
+
+cfg_dir="$HOME/.config"
+cache_dir="$HOME/.cache"
+
+## Pre-config sourcing {{{
+# source general config
+source "$cfg_dir/shells/shellrc"
+
+# source shell theme
+source "$cfg_dir/bash/bash_theme"
+## }}}
+
+# reset any dumb settings made by your distro (Arch Linux, why? :c)
+PROMPT_COMMAND=
+
+## Command history {{{
+# set history file
+HISTFILE="$cache_dir/bash_history"
+
+# set number of history commands stored in memory
+HISTSIZE=1000
+
+# set number of history commands stored in the history file
+HISTFILESIZE=2000
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+## }}}
+
+# check window size after each command and, if necessary, update $LINES
+# and $COLUMNS
+shopt -s checkwinsize
+
+# '**' = match all files in *all subdirectories* of all directories
+# (i.e. recurse all levels)
+shopt -s globstar
