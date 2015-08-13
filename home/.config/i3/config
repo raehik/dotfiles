@@ -31,6 +31,46 @@ set $conf_dir ~/.config/i3
 #font pango:DejaVu Sans Mono 10
 # Terminus is for hackers only 8)
 font pango:Terminus 10
+
+### Window decorations/colours {{{
+# disable titlebar
+# suggest against this due to some title bars being pretty helpful
+#new_window 1pixel
+
+# Note: the quotes are actually optional, but they help Vim understand that
+# they're strings, not comments
+
+#### Default colours {{{
+# class                 border    backgrnd. text      indicator
+#client.focused          "#4c7899" "#285577" "#ffffff" "#2e9ef4"
+#client.focused_inactive "#333333" "#5f676a" "#ffffff" "#484e50"
+#client.unfocused        "#333333" "#222222" "#888888" "#292d2e"
+#client.urgent           "#2f343a" "#900000" "#ffffff" "#900000"
+#client.placeholder      "#000000" "#0c0c0c" "#ffffff" "#000000"
+#### }}}
+
+set $clr_foc_text "#dddddd"
+set $clr_unfoc_text "#777777"
+
+set $clr_foc_border "#4c6088"
+set $clr_foc_bg "#2a3d5d"
+
+set $clr_unfoc_border "#242424"
+set $clr_unfoc_bg "#1a1a1a"
+
+set $clr_inactive_border "#444444"
+set $clr_inactive_bg "#353535"
+set $clr_inactive_text "#cccccc"
+
+# class                 border    backgrnd. text      indicator
+client.focused          $clr_foc_border $clr_foc_bg $clr_foc_text "#4477aa"
+client.focused_inactive $clr_inactive_border $clr_inactive_bg $clr_inactive_text "#333333"
+client.unfocused        $clr_unfoc_border $clr_unfoc_bg $clr_unfoc_text "#292d2e"
+client.urgent           "#2f343a" "#900000" $clr_foc_text "#900000"
+client.placeholder      "#000000" "#0c0c0c" $clr_foc_text "#000000"
+#### }}}
+
+### }}}
 ## }}}
 
 ## Programs {{{
@@ -307,6 +347,18 @@ bar {
 
     # system tray on primary monitor plz
     tray_output primary
+
+    # set default statusline color
+    colors {
+        background "#000000"
+        statusline $clr_foc_text
+        #separator "#666666"
+
+        focused_workspace $clr_foc_border $clr_foc_bg $clr_foc_text
+        active_workspace $clr_inactive_border $clr_inactive_bg $clr_inactive_text
+        inactive_workspace $clr_unfoc_border $clr_unfoc_bg $clr_unfoc_text
+        #urgent_workspace "#2f343a" "#900000" "#ffffff"
+    }
 }
 ## }}}
 
