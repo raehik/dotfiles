@@ -300,10 +300,15 @@ endfunction
 """ }}}
 
 """ remind 'tick' function {{{
-nnoremap <Leader>c :call RemindTick()<CR>
-function RemindTick()
-    execute "normal! 0/MSG\<CR>wi✓ \<ESC>ZZ"
-endfunction
+"nmap <Leader>c :call RemindTick()<CR>
+"function RemindTick()
+"    execute "normal! 0/MSG\<CR>wi✓ \<ESC>ZZ"
+"endfunction
+nmap <Leader>c 0/MSG<CR>wi✓ <ESC>ZZ
+""" }}}
+
+""" remind 'open file at end' function {{{
+nmap <Leader>o $gf
 """ }}}
 
 "" Filetype-specific options {{{
