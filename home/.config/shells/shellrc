@@ -21,7 +21,10 @@ if command -v rbenv >/dev/null 2>&1; then
 fi
 
 # set a default umask I prefer more
-umask 027
+#umask 027
+# ok maybe not such a great idea -- set it to the normal default
+# (remember that people can't read your home dir anyway because it's *not 755)
+umask 022
 
 # turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X, see ~/.xinitrc for that)
