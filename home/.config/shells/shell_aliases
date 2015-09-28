@@ -62,11 +62,11 @@ real() {
 # run a command in a tmux session and exit when it finishes
 # (literally a shortcut for `tmux new "args"`, but easier)
 tmpmux() {
-    # necessary to do this -- for some reason, can't just quote $@
-    args="$@"
-
-    tmux new-session "$args"
-
+    # "$*" is all arguments together in one argument, rather than split
+    # like "$@" (so it skips the intermediate step of assigning "$@" to a
+    # variable)
+    # note that of course this doesn't quote spaces properly
+    tmux new-session "$*"
 }
 
 # quicker 'date now' command
