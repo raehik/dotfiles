@@ -1,0 +1,74 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/lib/i3blocks/$BLOCK_NAME
+#separator_block_width=15
+markup=none
+
+# MPD
+[mpd]
+command=$HOME/.config/i3blocks/i3blocks-mpd.py
+interval=5
+signal=10
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display).
+# The second parameter overrides the mixer selection.
+# See the script for details.
+[volume]
+instance=Master
+interval=10
+color=#6666FF
+signal=11
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+# Requires the acpi command (pacman -S acpi).
+[battery]
+label=⚡:
+interval=30
+
+# Disk usage
+#
+# The directory defaults to $HOME if the instance is not specified.
+# The script may be called with a optional argument to set the alert
+# (defaults to 10 for 10%).
+[disk]
+label=~/:
+interval=30
+
+# Load
+[load_average]
+label=load
+interval=10
+
+# Date Time
+#
+[time]
+command=$HOME/.config/i3blocks/i3blocks-datetime
+interval=5
