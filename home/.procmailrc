@@ -5,6 +5,7 @@ PMDIR=$HOME/.procmail
 DEFAULT=$MAILDIR/INBOX
 LOGFILE=$PMDIR/log
 
+# \/ means 'set everything after this to the MATCH variable'
 :0 B
 * ^REM \/.*
 | remind-add-no-dup "REM $MATCH"
