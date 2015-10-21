@@ -45,6 +45,8 @@ def check_pre_mouse_events():
     block_button = os.environ.get("BLOCK_BUTTON")
     if block_button == "3": # right click
         run_command(["mpc", "toggle"])
+    elif block_button == "2": # middle click
+        run_command(["mpc", "next"])
     elif block_button == "4": # scroll up
         run_command(["mpc", "volume", "+4"])
     elif block_button == "5": # scroll down
