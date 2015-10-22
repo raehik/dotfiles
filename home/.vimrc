@@ -308,7 +308,7 @@ nmap <Leader>c 0/MSG<CR>wi✓ <ESC>ZZ
 """ }}}
 
 """ remind 'open file at end' function {{{
-nmap <Leader>o $gf
+"nmap <Leader>o $gf
 """ }}}
 
 "" Filetype-specific options {{{
