@@ -1,0 +1,8 @@
+print
+#!/usr/bin/env bash
+#
+# Print test QP & MS.
+#
+
+print-test %{1}%
+print-test -f 7 -t <to> %{2}%

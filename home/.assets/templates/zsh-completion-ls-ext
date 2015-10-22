@@ -1,0 +1,17 @@
+%{HOME}%/.config/zsh/zsh_completions/_%{!1}%
+#compdef %{!1}%
+
+# always use locals!
+local file_dir="%{2||$HOME/dir/to/list}%"
+local file_ext="%{3||.ext}%"
+
+for file in "$file_dir"/*"$file_ext"; do
+	# get list without extension
+    local file_no_ext="${file%.*}"
+
+    # append only filename (not ~/$file_dir/filename)
+    # quote file so spaces are treated correctly
+    local files="$files \"${file_no_ext##*/}\""
+done
+
+_arguments "1: :($files)"
