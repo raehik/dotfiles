@@ -14,7 +14,7 @@ fi
 setxkbmap -layout gb
 
 # Set primary X output
-xrandr --output eDP1 --primary
+#xrandr --output eDP1 --primary
 
 # Turn off all X system bells (PC speaker beeps)
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
@@ -22,10 +22,11 @@ xset b off
 
 # Set brightness to half to conserve power
 # Only for laptops (or those sorts of displays I guess)
-xbacklight -set 50 -time 0
+#xbacklight -set 50 -time 0
 
-# If .Xresources is present, load it
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# If Xresources is present, load it
+x_resources="$HOME/.config/Xresources"
+[[ -f "$x_resources" ]] && xrdb "$x_resources"
 
 # IBus biz
 export GTK_IM_MODULE=ibus
@@ -43,7 +44,7 @@ compton --vsync opengl &
 pasystray &
 
 # Set desktop background
-$HOME/.assets/backgrounds/set-desktop-background &
+"$HOME"/.assets/backgrounds/set-desktop-background
 
 # Start keylogger
 xinput-keylog &
