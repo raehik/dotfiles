@@ -1,0 +1,15 @@
+#compdef - run-bg
+# This is taken from the Zsh source, `Completion/Zsh/Command/_precommand`.
+# I have no idea how it works. Goddamn Zsh completion is just a bit too
+# confusing.
+#
+# In any case, this makes the selected command(s) use the completion for the
+# first argument.
+
+# precommands is made local in _main_complete
+precommands+=($words[1])
+
+shift words
+(( CURRENT-- ))
+
+_normal
