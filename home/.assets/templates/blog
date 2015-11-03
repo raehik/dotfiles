@@ -1,7 +1,0 @@
-%{HOME}%/blog/%(date "+%Y-%m-%d")%-%(ezstring "%{@||New post}%")%.md
----
-title: "%{@||New post}%"
-date: %(date "+%F %T")%
----
-
-

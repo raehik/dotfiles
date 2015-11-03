@@ -1,7 +1,0 @@
-%{HOME}%/.config/zsh/zsh_completions/_%{1}%
-#compdef %{1}%
-
-# always use locals!
-local ls_dir="%{2||.}%"
-
-_files -W "$ls_dir"
