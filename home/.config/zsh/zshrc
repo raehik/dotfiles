@@ -14,6 +14,7 @@ source "$cfg_dir/shells/shellrc"
 source "$cfg_dir/zsh/zsh_theme"
 ## }}}
 
+## Completion-related stuff {{{
 # add custom command completions
 # note: must be before the autoload -U compinit
 fpath=($cfg_dir/zsh/zsh_completions $fpath)
@@ -24,8 +25,9 @@ autoload -U compinit
 # run compinit + move zcompdump cache file
 compinit -d "$cache_dir/zcompdump"
 
-# cdl = cd
-compdef _cd cdl
+# source alias completions
+source "$cfg_dir/zsh/zsh_completion_aliases"
+## }}}
 
 # Vi[m]-style command-line editing
 bindkey -v

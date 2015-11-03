@@ -1,6 +1,6 @@
 #compdef list
 
-local list_dir="$HOME/.assets/lists"
+local list_dir="$HOME/.local/share/lists"
 local list_ext=".md"
 
 local list=
