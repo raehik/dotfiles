@@ -4,8 +4,10 @@
 #
 
 rem_cache="$HOME/.cache/daily-remind"
-
 date_today="$(date "+%Y-%m-%d")"
+
+# create cache file if not created, else do nothing of importance
+touch "$rem_cache"
 
 if [[ "$(< "$rem_cache")" != "$date_today" ]]; then
     rem
