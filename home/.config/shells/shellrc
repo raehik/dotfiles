@@ -62,3 +62,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Vim master race
 export EDITOR="vim"
+
+# check reminders for the day
+source "$cfg_dir/shells/daily-remind"
