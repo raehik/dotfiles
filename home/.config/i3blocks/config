@@ -31,7 +31,7 @@ markup=none
 # MPD
 [mpd]
 command=$HOME/.config/i3blocks/i3blocks-mpd.py
-interval=5
+interval=10
 signal=10
 
 # Volume indicator
@@ -65,10 +65,10 @@ interval=30
 # Load
 [load_average]
 label=load
-interval=10
+interval=15
 
 # Date Time
 #
 [time]
 command=$HOME/.config/i3blocks/i3blocks-datetime
-interval=5
+interval=15
