@@ -37,14 +37,14 @@ ibus-daemon -drx
 # Set up second monitor
 #xrandr --output VGA1 --auto --right-of eDP1
 
-# Start up compositor (just used for vsync for now)
-compton --vsync opengl &
+# Start up compositor (for vsync)
+compton -C -G --no-fading-openclose --vsync opengl &
 
 # Start up pasystray (comes in handy)
 pasystray &
 
 # Set desktop background
-"$HOME"/.assets/backgrounds/set-desktop-background
+$HOME/.assets/backgrounds/set-desktop-background
 
 # Start keylogger
 xinput-keylog &
