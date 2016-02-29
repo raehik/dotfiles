@@ -18,11 +18,14 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
 Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+"Plugin 'scrooloose/syntastic'
 
-Plugin 'chriskempson/base16-vim'
-Plugin 'sickill/vim-monokai'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'sickill/vim-monokai'
+"Plugin 'whatyouhide/vim-gotham'
+"Plugin 'altercation/vim-colors-solarized'
 
 " Run end Vundle stuff (required!)
 " (maybe adds RTPs?)
@@ -30,6 +33,23 @@ call vundle#end()
 
 " Reenable filetype
 filetype indent plugin on
+""" }}}
+
+""" UltiSnips configuration {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+""" }}}
+
+""" syntastic configuration {{{
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 """ }}}
 
 """ General {{{
@@ -101,7 +121,7 @@ set spelllang=en_gb
 set encoding=utf-8
 
 " Set file encodings & order for Vim to check
-set fileencodings=ucs-bom,utf-8,latin1,shift-jis
+set fileencodings=ucs-bom,utf-8,shift-jis,latin1
 
 " Set UTF-8 as default encoding to write to new file
 set fileencoding=utf-8
@@ -194,16 +214,6 @@ set t_vb=
 "" }}}
 
 "" Mappings {{{
-" Unmap the dumb F1 help key
-" Since we can't do :unmap <F1> for some reason, map it to no-op
-nmap <F1> <nop>
-
-" Toggle between 'paste' and 'nopaste' modes
-set pastetoggle=<F11>
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
 
 " Toggle NERD tree
 nmap <F8> :NERDTreeToggle<CR>
@@ -220,12 +230,6 @@ nmap <F12> g<C-g>
 "nmap <C-P> :Dispatch! markdown-render -o "%"<CR><CR>
 nmap <C-P> :Dispatch! file-render "%"<CR>
 
-" Insert current date
-imap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
-
-" Insert current time
-imap <C-T> <C-R>=strftime("%H:%M:%S")<CR>
-
 " Copy to main X clipboard
 vmap <C-Y> "+y
 
@@ -235,20 +239,40 @@ vmap <C-Y> "+y
 " Toggle spellcheck
 nmap <Leader>s :set spell!<CR>
 
+" ROT13 the whole file
+"   mz : set mark z at cursor position
+"   gg : top of file
+"   g? : applies ROT13 to a specified movement
+"   G  : end of file (i.e. with previous 2 commands, applies ROT13 on all)
+"   `z : go to mark z (original cursor position)
+"
+map <Leader># mzggg?G`z
 
-""" Special character inserts {{{
-" Check mark
+""" Base mappings {{{
+" Unmap the dumb F1 help key
+" Since we can't do :unmap <F1> for some reason, map it to no-op
+nmap <F1> <nop>
+
+" Toggle between 'paste' and 'nopaste' modes
+set pastetoggle=<F11>
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+""" }}}
+
+""" Inserts {{{
+" Insert current date
+imap <C-D> <C-R>=strftime("%F")<CR>
+
+" Insert current time
+imap <C-T> <C-R>=strftime("%T")<CR>
+
+" check mark ✓ check mark ✓ check mark ✓ must be check mark ✓
 imap <C-C> ✓
 
 " X mark
 "imap <C-X> ✗
-""" }}}
-
-""" Mnemonic file jumping {{{
-" Ctrl-Left = back
-nmap <Esc>Od <C-O>
-" Ctrl-Right = forward
-nmap <Esc>Oc <C-I>
 """ }}}
 
 """ Markdown header inserts {{{
@@ -263,6 +287,12 @@ imap <F1> <Esc><F1>A
 imap <F2> <Esc><F2>A
 imap <F3> <Esc><F3>A
 imap <F4> <Esc><F4>A
+""" }}}
+""" Mnemonic file jumping {{{
+" Ctrl-Left = back
+nmap <Esc>Od <C-O>
+" Ctrl-Right = forward
+nmap <Esc>Oc <C-I>
 """ }}}
 
 """ Wrap + view modes - toggle hard/soft {{{
@@ -299,15 +329,11 @@ function ToggleWrap()
 endfunction
 """ }}}
 
-""" remind 'tick' function {{{
-"nmap <Leader>c :call RemindTick()<CR>
-"function RemindTick()
-"    execute "normal! 0/MSG\<CR>wi✓ \<ESC>ZZ"
-"endfunction
+""" remind functions {{{
+" tick
 nmap <Leader>c 0/MSG<CR>wi✓ <ESC>ZZ
-""" }}}
 
-""" remind 'open file at end' function {{{
+" open file specified at end
 "nmap <Leader>o $gf
 """ }}}
 
@@ -320,11 +346,4 @@ autocmd Filetype markdown set comments+=n:--,n:==
 
 " Ruby: indent = 2
 au FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
-"" }}}
-
-"" Plugin options {{{
-""" Preview {{{
-" Use edited GitHub CSS for Markdown previews
-let g:PreviewCSSPath=$HOME . '/.style.css'
-""" }}}
 "" }}}
