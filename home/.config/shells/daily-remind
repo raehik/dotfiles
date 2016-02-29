@@ -11,5 +11,5 @@ touch "$rem_cache"
 
 if [[ "$(< "$rem_cache")" != "$date_today" ]]; then
     rem
-    echo "$date_today" >> "$rem_cache"
+    echo "$date_today" > "$rem_cache"
 fi
