@@ -11,6 +11,13 @@
 # be achieved easily in another way
 #
 
+# as of 2015-11-04 commit 109b9220c, ls now uses a different default quoting
+# method for terminals. I don't like it (makes my music library etc. look ugly)
+alias ls="ls --color=auto --literal"
+
+# grep colours
+alias grep="grep --color=auto"
+
 # allow aliases with 'sudo' prefixed -- pretty cool
 alias sudo="sudo "
 
@@ -21,6 +28,9 @@ alias l="ls -la"
 
 # so much git rite now
 alias g="git"
+
+# useful tmux shortcut
+alias t="tmux"
 
 # vim is my 3rd most common command, make it easier
 alias v="vim"
@@ -59,16 +69,6 @@ real() {
     cd "$new_dir"
 }
 
-# run a command in a tmux session and exit when it finishes
-# (literally a shortcut for `tmux new "args"`, but easier)
-tmpmux() {
-    # "$*" is all arguments together in one argument, rather than split
-    # like "$@" (so it skips the intermediate step of assigning "$@" to a
-    # variable)
-    # note that of course this doesn't quote spaces properly
-    tmux new-session "$*"
-}
-
 # quicker 'date now' command
 alias d="date +%F"
 
@@ -78,3 +78,9 @@ alias clpb="xsel -i -b < "
 # mount under current user w/ UTF8 for NTFS
 # bash doesn't keep track of GID, so we'll use a command
 alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
+
+# always capture subs on video screenshots
+alias mplayer="mplayer -ass -vf ass,screenshot,expand=osd=1"
+
+# source user bin shortcuts
+source "$cfg_dir/shells/shell_aliases_user"

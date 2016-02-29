@@ -40,15 +40,6 @@ if [ -r "$cfg_dir/dircolors" ]; then
     eval $(dircolors "$cfg_dir/dircolors")
 fi
 
-# enable using $LS_COLOURS in ls
-alias ls="ls --color=auto"
-
-# enable grep colors
-alias grep="grep --color=auto"
-
-# always capture subs on video screenshots
-alias mplayer="mplayer -ass -vf ass,screenshot,expand=osd=1"
-
 ## man colours {{{
 # use nice colours for man (by exporting termcap values for less)
 export LESS_TERMCAP_mb=$'\E[01;31m'
