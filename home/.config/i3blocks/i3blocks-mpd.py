@@ -60,16 +60,12 @@ def check_transforming_mouse_events(full_text, short_text, color, exit_code):
     block_button = os.environ.get("BLOCK_BUTTON")
     if block_button == "1": # left click
         s_elapsed = round(float(client.status()["elapsed"]))
-        track_num = int(client.currentsong()["track"])
-        disc_num = int(client.currentsong()["disc"])
         s_len = round(float(song["time"]))
         s_c_m, s_c_s = divmod(s_elapsed, SECS_IN_MIN)
         s_m, s_s = divmod(s_len, SECS_IN_MIN)
         new_full_text += \
               " [{0}:{1:02d}/{2}:{3:02d}]".format(
-                s_c_m, s_c_s, s_m, s_s) \
-            + " [{0}-{1:02d}]".format(
-                disc_num, track_num)
+                s_c_m, s_c_s, s_m, s_s)
 
     return new_full_text, short_text, color
 
