@@ -1,4 +1,4 @@
-#compdef cheatsheet
+#compdef cheatsheet cs
 
 # always use locals!
 local file_dir="$HOME/projects/wiki/wiki-pages"

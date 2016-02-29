@@ -4,4 +4,3 @@
 #
 
 compdef cdl=cd
-compdef cs=cheatsheet
