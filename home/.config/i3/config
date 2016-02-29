@@ -102,6 +102,12 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+set $no_swallow "no-swallow - $mod+Shift+Esc to exit"
+mode $no_swallow {
+    # only keybind is one to return to normal
+    bindsym $mod+Shift+Escape mode "default"
+}
 ## }}}
 
 ## Keybinds {{{
@@ -109,6 +115,9 @@ mode "resize" {
 # main i3 modifier key
 # Mod4 = Win
 set $mod Mod4
+
+# more descriptive name for Alt
+set $alt Mod1
 
 # drag floating windows with mouse + floating_modifier
 floating_modifier $mod
@@ -245,6 +254,9 @@ bindsym $mod+Shift+e exit
 ### Modes {{{
 # enter resize mode
 bindsym $mod+r mode "resize"
+
+# enter no-swallow mode
+bindsym $mod+Shift+Escape mode $no_swallow
 ### }}}
 
 ### Multimedia {{{
@@ -278,7 +290,6 @@ bindsym XF86AudioNext $exec "mpc next && $refresh_mpd"
 # special MPD keys
 bindsym $mod+XF86AudioNext $exec "mpd-insert-best"
 
-
 # brightness keys
 bindsym XF86MonBrightnessUp $exec "xbacklight -inc 10 -time 0"
 bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
@@ -293,10 +304,13 @@ set $scrot scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/media/screenshots'
 bindsym Print $exec "$scrot -u"
 
 # capture a selection
-bindsym --release $mod+Print $exec "$scrot -s"
+bindsym --release Ctrl+Print $exec "$scrot -s"
 
 # capture all screens together
 bindsym Shift+Print $exec "$scrot"
+
+# custom shots
+bindsym $mod+Print $exec "cs-shot"
 ### }}}
 
 ### Computer {{{
@@ -337,7 +351,7 @@ workspace 10 output VGA1
 
 ### Assigns {{{
 # start Anki on workspace 5
-assign [class="Anki"] 5
+#assign [class="Anki"] 5
 
 # start pavucontrol floating
 for_window [class="Pavucontrol"] floating enable
@@ -385,7 +399,6 @@ $i3_msg 'workspace number 2; exec $browser'
 $i3_msg 'workspace number 3; exec $terminal -title "mutt" -e email'
 $i3_msg 'workspace number 3; exec $terminal -title "weechat" -e weechat'
 $i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp" -e mpn'
-$i3_msg 'workspace number 4; exec $terminal -title "alsamixer" -e alsamixer'
 $i3_msg 'workspace number 10; exec $terminal -title "wyrd" -e wyrd-fix-startup'
 ### }}}
 
@@ -398,7 +411,6 @@ $i3_msg 'workspace number 10; exec $terminal -title "wyrd" -e wyrd-fix-startup'
 # will probably be the active one on startup.
 #
 $i3_msg 'workspace number 3; append_layout "$conf_dir/workspace-3"'
-$i3_msg 'workspace number 4; append_layout "$conf_dir/workspace-4"'
 
 # try to make a specific workspace active on startup
 $i3_msg 'workspace number 1'
