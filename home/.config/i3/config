@@ -296,21 +296,20 @@ bindsym XF86MonBrightnessDown $exec "xbacklight -dec 10 -time 0"
 ### }}}
 
 ### Screenshots {{{
-# set scrot options & directory
-set $scrot scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/media/screenshots'
+# set shot options & directory
+set $shot maim -n -b2 $HOME/media/shots/$(date +%F_%T_shot).png
 
-# TODO: can't capture currently focused screen with scrot!
 # capture currently focused window
-bindsym Print $exec "$scrot -u"
+bindsym Print $exec $shot -i $(xdotool getactivewindow)
 
 # capture a selection
-bindsym --release Ctrl+Print $exec "$scrot -s"
+bindsym Ctrl+Print $exec $shot -s
 
 # capture all screens together
-bindsym Shift+Print $exec "$scrot"
+bindsym Shift+Print $exec $shot
 
 # custom shots
-bindsym $mod+Print $exec "cs-shot"
+bindsym $mod+Print $exec shot-cs-manual
 ### }}}
 
 ### Computer {{{
