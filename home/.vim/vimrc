@@ -1,0 +1,46 @@
+" vim: set foldmethod=marker :
+"
+" Main file (entry point) for my modular Vim configuration.
+"
+
+" Configuration module directory
+let g:confdir = $HOME."/.vim/config"
+
+" Command to source a config file
+command -nargs=1 Config execute "source" g:confdir . "/" . <q-args> . ".vim"
+
+"" General {{{
+" Note: by default, Vundle plugins are configured in the Vundle config file
+"       rather than in here. Check that file before doing `Config ultisnips` and
+"       such!
+Config vundle
+
+" Base Vim config
+Config base
+
+" File encoding
+Config fenc
+
+" Text formatting
+Config textformat
+
+" Appearance (colourscheme, numbered lines etc.)
+Config appearance
+
+" Filetype-specific options
+Config ft-opt
+"" }}}
+
+"" Mappings {{{
+" Base vim
+Config map-base
+
+" General (all) plugins
+Config map-plugins
+
+" String insert shortcuts
+Config map-inserts
+
+" Wrap & view modes (toggle hard/soft wrapping)
+Config map-wrapmode
+"" }}}
