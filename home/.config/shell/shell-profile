@@ -8,8 +8,7 @@ if [[ "$SSH_CLIENT" ]]; then
     export NCURSES_NO_UTF8_ACS=1
 fi
 
-# show MOTD
-# not in tmux
+# show MOTD, but not in tmux (which starts a login shell by default)
 if [[ -z "$TMUX" ]]; then
     "$HOME/bin/motd-script"
 fi

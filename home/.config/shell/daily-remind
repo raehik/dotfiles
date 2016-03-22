@@ -1,10 +1,10 @@
-# vim: ft=sh :
+# vim: ft=sh
 #
 # Daily calendar reminder using remind.
 #
 
 rem_cache="$HOME/.cache/daily-remind"
-date_today="$(date "+%Y-%m-%d")"
+date_today="$(date "+%F")"
 
 # create cache file if not created, else do nothing of importance
 touch "$rem_cache"

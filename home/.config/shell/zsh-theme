@@ -12,7 +12,7 @@
 setopt PROMPT_SUBST
 
 build_prompt() {
-    # use a function so we don't leave vars everywhere (only PROMPT stays set)
+    # use a function so we don't leave vars everywhere
 
     # bash and zsh need to be told in different ways that colours do not change
     # the length of the prompt (zsh encloses in '%{', bash encloses in '\[')
@@ -54,5 +54,5 @@ build_prompt() {
 
 }
 
-# use single quotes so command substitution works
+# use single quotes to make command substitution work properly (TODO: why tho?)
 PROMPT='$(build_prompt)'

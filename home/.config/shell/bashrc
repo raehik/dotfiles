@@ -2,18 +2,12 @@
 # bash-specific shell configuration.
 #
 
-cfg_dir="$HOME/.config"
 cache_dir="$HOME/.cache"
 
-## Pre-config sourcing {{{
-# source general config
-source "$cfg_dir/shells/shellrc"
+# shell theme
+_use_conf "shell/bash-theme"
 
-# source shell theme
-source "$cfg_dir/bash/bash_theme"
-## }}}
-
-# reset any dumb settings made by your distro (Arch Linux, why? :c)
+# reset default distro settings
 PROMPT_COMMAND=
 
 ## Command history {{{

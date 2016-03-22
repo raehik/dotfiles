@@ -5,3 +5,4 @@ alias rtl=netmod-reload
 alias predict=pb-make.py
 alias new=pyplater.py
 alias mr=markdown-render
+alias rg=run-bg

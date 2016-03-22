@@ -4,7 +4,7 @@
 #
 
 build_prompt() {
-    # use a function so we don't leave vars everywhere (only PROMPT stays set)
+    # use a function so we don't leave vars everywhere
 
     # bash and zsh need to be told in different ways that colours do not change
     # the length of the prompt (zsh encloses in '%{', bash encloses in '\[')
@@ -16,7 +16,7 @@ build_prompt() {
     local yellow="\e[33m"
     local blue="\e[34m"
 
-    # if you want to change up the colours, change these variables!
+    # if you want to change up the colours, edit these variables!
     local col_user="${no_bold}${green}"
     local col_at="${no_bold}${green}"
     local char_at='@'
@@ -32,5 +32,4 @@ build_prompt() {
 
 }
 
-# use single quotes so command substitution works
 PS1="$(build_prompt)"

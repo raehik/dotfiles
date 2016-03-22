@@ -1,0 +1,86 @@
+# vim: ft=sh
+#
+# Non-specific/common (bash & zsh) shell configuration.
+
+## Config sourcing setup {{{
+SHCFG_DIR="$HOME/.config"
+
+_use_conf() {
+    if [[ $# != 1 ]]; then
+        >&2 echo "error: expected exactly 1 argument"
+        return 1
+    fi
+
+    local conf_file="$SHCFG_DIR/$1"
+    if [[ ! -f "$conf_file" ]]; then
+        >&2 echo "error: config file $conf_file does not exist"
+        return 2
+    fi
+    source "$conf_file"
+}
+## }}}
+
+# prefix $PATH with user's personal ~/bin, if it exists
+if [[ -d "$HOME/bin" ]]; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# initialise rbenv if present
+if command -v rbenv >/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+# turn off all console system bells (PC speaker beeps)
+# (note: doesn't affect X, see ~/.xinitrc for that)
+if [[ "$TERM" == "linux" ]]; then
+    setterm --blength 0
+fi
+
+# set $LS_COLOURS
+if [[ -r "$SHCFG_DIR/shell/dircolors" ]]; then
+    # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
+    # $(dircolors) effectively sets the LS_COLORS environment variable.
+    # thanks [Matt](http://unix.stackexchange.com/a/94306)
+    eval $(dircolors "$SHCFG_DIR/shell/dircolors")
+fi
+
+# Vim master race
+export EDITOR="vim"
+
+# Set general file opener (e.g. xdg-open)
+export FILE_OPENER="mimeo"
+
+## man colours {{{
+# use nice colours for man (by exporting termcap values for less)
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+## }}}
+
+# aliases
+_use_conf "shell/aliases"
+
+# command/user bin aliases
+_use_conf "shell/aliases-user"
+
+# check reminders for the day
+_use_conf "shell/daily-remind"
+
+## Shell-specific options {{{
+if [[ "$BASH_VERSION" ]]; then
+    _use_conf "shell/bashrc"
+elif [[ "$ZSH_VERSION" ]]; then
+    _use_conf "shell/zshrc"
+else
+    # nothing specific for this shell
+    continue
+fi
+## }}}
+
+# end: unset config sourcing function
+unset -f _use_conf
+unset SHCFG_DIR
