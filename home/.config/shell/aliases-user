@@ -1,6 +1,7 @@
 # vim: syntax=sh filetype=sh :
 alias tw=twitterminal
 alias j=jctl.py
+alias jp="jctl.py -b ~/projects/writing/jp.raehik.net"
 alias rtl=netmod-reload
 alias predict=pb-make.py
 alias new=pyplater.py
