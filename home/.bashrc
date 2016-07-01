@@ -1,2 +1,1 @@
-# redirect -> ~/.config directory
-source "$HOME/.config/bash/bashrc"
+source "$HOME/.config/shell/shellrc"

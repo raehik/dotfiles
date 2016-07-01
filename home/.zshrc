@@ -1,2 +1,1 @@
-# redirect -> ~/.config directory
-source "$HOME/.config/zsh/zshrc"
+source "$HOME/.config/shell/shellrc"
