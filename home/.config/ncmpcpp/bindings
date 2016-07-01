@@ -612,6 +612,9 @@ def_key "c"
 
 def_key "C"
   clear_playlist
+
+def_key "C"
+  clear_main_playlist
 ## }}}
 
 ## Ctrl macros {{{
