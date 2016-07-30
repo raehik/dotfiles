@@ -25,10 +25,15 @@ if [[ -d "$HOME/bin" ]]; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# initialise rbenv if present
+## rbenv setup {{{
+# add rbenv to $PATH (for user-based install)
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# initialise rbenv *only* if present
 if command -v rbenv >/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
+## }}}
 
 # turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X, see ~/.xinitrc for that)
