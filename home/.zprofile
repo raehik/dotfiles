@@ -1,1 +1,1 @@
-source "$HOME/.config/shell/shell_profile"
+source "$HOME/.config/shell/shell-profile"
