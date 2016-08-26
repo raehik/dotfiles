@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
 Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
 Config ultisnips
 Plugin 'honza/vim-snippets'
