@@ -92,6 +92,9 @@ alias history="history 0"
 # don't do that dumb query before `rm path/*`
 setopt rm_star_silent
 
+# make sure no system-wide files have set 'Ctrl-D doesn't exit' option
+unsetopt ignoreeof
+
 # record full command history
 _use_conf "shell/zsh-record-full-hist"
 
