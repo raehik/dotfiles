@@ -1,7 +1,7 @@
 " Markdown: treat .md as Markdown (rather than Modula 2)
 " Most of the Vim versions I use don't need this, but a Vim 2013 7.4 on Windows
 " read it as Modula 2, so better to be safe.
-autocmd BufNewFile,BufRead *.md setf markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 
 " Markdown: don't wrap headers
