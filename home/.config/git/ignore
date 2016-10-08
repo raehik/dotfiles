@@ -9,4 +9,4 @@ tags
 #TODO*
 
 # Python
-__pycache__
+__pycache__/

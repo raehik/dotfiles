@@ -2,7 +2,6 @@
 	name = Ben Orchard
 	email = thefirstmuffinman@gmail.com
 [core]
-	excludesfile = ~/.gitignore_global
 	quotepath = false
 [alias]
 	s = status
