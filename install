@@ -21,6 +21,10 @@ while getopts "h" opt; do
     esac
 done
 
+# make sure we're in the same directory as the script
 cd "$(dirname "$0")"
 
-cp -vR $(find home -mindepth 1 -maxdepth 1) "$HOME"
+echo cp -vR $(find home -mindepth 1 -maxdepth 1) "$HOME"
+
+# load my base user dconf settings
+dconf load / < dconf-user-base.cfg
