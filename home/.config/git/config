@@ -5,10 +5,11 @@
 	quotepath = false
 [alias]
 	s = status
+    l = log
 	a = add
 	c = commit
-    d = diff
-    l = log
     co = checkout
+    d = diff
+    b = branch
 [push]
 	default = simple
