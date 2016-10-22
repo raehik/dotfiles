@@ -1,0 +1,58 @@
+# vim: ft=sh
+#
+# General xinitrc. Tell xinit/startx what programs to start.
+#
+
+## Sourcing (inc. specific xinitrcs) {{{
+xcfg_dir="$HOME/.config/x"
+
+# load any global config files
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# if Xresources is present, load it
+x_resources="$xcfg_dir/Xresources"
+[[ -f "$x_resources" ]] && xrdb "$x_resources"
+
+# specific xinitrcs
+#source "$xcfg_dir/xinitrc-laptop"
+
+# end sourcing: unset variables
+#unset xcfg_dir
+#unset x_resources
+## }}}
+
+# IBus biz
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -drx
+
+# turn off all X system bells (PC speaker beeps)
+# (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
+xset b off
+
+# set keyboard layout
+setxkbmap -layout gb
+
+# set desktop background
+$HOME/.assets/backgrounds/set-desktop-background
+
+## Start-up programs {{{
+# start keylogger
+xinput-keylog &
+
+# start up pasystray (comes in handy)
+pasystray &
+
+# start up compositor (for vsync)
+# 2016-08-23: seems to be causing some problems with urxvt, so disabled for now
+#compton -C -G --no-fading-openclose --vsync opengl &
+## }}}
+
+# start window manager (must be final command!)
+exec i3

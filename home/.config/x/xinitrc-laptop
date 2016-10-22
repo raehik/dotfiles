@@ -1,0 +1,13 @@
+# vim: ft=sh
+#
+# Specific xinitrc for my laptop.
+#
+
+# set primary X output
+xrandr --output eDP1 --primary
+
+# set brightness to half to conserve power
+xbacklight -set 50 -time 0
+
+# set up second monitor
+#xrandr --output VGA1 --auto --right-of eDP1
