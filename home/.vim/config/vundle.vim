@@ -8,8 +8,8 @@ call vundle#begin()
 " Note: for some reason, these must be enclosed in SINGLE QUOTES
 " I have no idea why :/
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-dispatch'
+Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
@@ -17,6 +17,9 @@ Config ultisnips
 Plugin 'honza/vim-snippets'
 "Plugin 'scrooloose/syntastic'
 "Config syntastic
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-scripts/loremipsum'
 
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sickill/vim-monokai'

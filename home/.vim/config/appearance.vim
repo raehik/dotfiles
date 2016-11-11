@@ -16,6 +16,12 @@ highlight ExtraWhitespace ctermbg=239 guibg=#4e4e4e
 " Match group thing
 match ExtraWhitespace /\s\+\%#\@<!$/
 
+" Highlight YAML frontmatter
+let g:vim_markdown_frontmatter = 1
+
+" Disable automatic vim-markdown folding (annoying)
+let g:vim_markdown_folding_disabled = 1
+
 " Display the cursor position (line & column no.) in the right of the
 " status line
 set ruler

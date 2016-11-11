@@ -1,11 +1,8 @@
-" Markdown: treat .md as Markdown (rather than Modula 2)
-" Most of the Vim versions I use don't need this, but a Vim 2013 7.4 on Windows
-" read it as Modula 2, so better to be safe.
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-
-
 " Markdown: don't wrap headers
-autocmd FileType markdown set comments+=n:--,n:==
+autocmd Filetype markdown set comments+=n:--,n:==
+
+" LaTeX: always treat *.tex as ft=tex, not sometimes plaintex
+autocmd BufNewFile,BufRead *.tex set filetype=tex
 
 " Ruby: indent = 2
 autocmd FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2

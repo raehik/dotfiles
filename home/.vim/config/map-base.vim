@@ -21,6 +21,10 @@ vmap <C-Y> "+y
 " Toggle spellcheck
 nmap <Leader>s :set spell!<CR>
 
+" Easier back-tab (shift left) mapping
+" (eh, just use <C-w> and retab)
+"imap <S-Tab> <C-O><<
+
 "" Mnemonic file jumping {{{
 " Ctrl-Left = back
 nmap <Esc>Od <C-O>
