@@ -40,6 +40,7 @@ signal=10
 # The second parameter overrides the mixer selection.
 # See the script for details.
 [volume]
+command=$HOME/.config/i3blocks/vol
 instance=Master
 interval=10
 color=#6666FF
