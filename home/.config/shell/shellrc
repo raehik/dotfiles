@@ -1,6 +1,7 @@
 # vim: ft=sh
 #
 # Non-specific/common (bash & zsh) shell configuration.
+#
 
 ## Config sourcing setup {{{
 SHCFG_DIR="$HOME/.config"
@@ -25,7 +26,7 @@ if [[ -d "$HOME/bin" ]]; then
     PATH="$HOME/bin:$PATH"
 fi
 
-## rbenv setup {{{
+## rbenv {{{
 # add rbenv to $PATH (for user-based install)
 export PATH="$HOME/.rbenv/bin:$PATH"
 
@@ -33,6 +34,20 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if command -v rbenv >/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
+## }}}
+
+## cabal {{{
+# TODO
+# add cabal to $PATH (for user-based install)
+export PATH="$PATH:$HOME/.cabal/bin"
+## }}}
+
+## Java {{{
+# make sure Java programs use anti-aliasing
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+# Arch doesn't set its own classpath or something? smh
+export CLASSPATH=".:/usr/share/java/*"
 ## }}}
 
 # turn off all console system bells (PC speaker beeps)
