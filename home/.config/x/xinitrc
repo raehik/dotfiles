@@ -14,23 +14,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# if Xresources is present, load it
-x_resources="$xcfg_dir/Xresources"
-[[ -f "$x_resources" ]] && xrdb "$x_resources"
-
 # specific xinitrcs
-#source "$xcfg_dir/xinitrc-laptop"
+xrdb "$xcfg_dir/Xresources"
+source "$xcfg_dir/xinitrc-laptop"
+source "$xcfg_dir/graphical-envvars"
 
 # end sourcing: unset variables
 #unset xcfg_dir
-#unset x_resources
 ## }}}
-
-# IBus biz
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -drx
 
 # turn off all X system bells (PC speaker beeps)
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
