@@ -24,7 +24,8 @@ alias sudo="sudo "
 # useful ls aliases
 alias ll="ls -lh"
 alias la="ls -lAh"
-alias l="ls -la"
+alias l="ls"
+alias lb="ls -la"
 
 # so much git rite now
 alias g="git"
