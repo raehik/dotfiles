@@ -2,6 +2,9 @@
 #
 # MPD i3blocks thing.
 #
+# Requires Python 3 and python-mpd2 (pip install python-mpd2).
+# Requires mpc for click events.
+#
 
 import sys
 import os
@@ -13,22 +16,20 @@ from socket import error as SocketError
 host = "localhost"
 port = "6600"
 
-BROWN = "#AA5500"
+ORANGE = "#AA5500"
 GREY = "#555555"
 BLUE = "#6666FF"
 
-tag = "♬  "
+# Prefixes all full/short outputs, no matter what status.
+prefix_str = "♬  "
 
-text_play = tag + "{artist}{name}"
-text_pause = text_play
-text_stop = "<{0}stopped>".format(tag)
-text_off = "<{0}off>".format(tag)
+text_stop = "<stopped>"
+text_off = "<off>"
 
-color_play = BROWN
+color_play = ORANGE
 color_pause = GREY
 color_stop = GREY
 color_off = GREY
-color_error = GREY
 
 def run_command(args):
     """Run a command, returning the output and a boolean value
@@ -84,20 +85,11 @@ def output_and_exit(full_text, short_text, color, exit_code=0):
         # errors were encountered, but we don't do anything special except exit
         # with the error code
         pass
-    print(full_text)
-    print(short_text)
+    print(prefix_str + full_text)
+    print(prefix_str + short_text)
     print(color)
 
     sys.exit(exit_code)
-
-
-
-    # now check for mouse events
-    check_mouse_events()
-
-    # aaaand we're done
-    sys.exit(exit_code)
-
 
 
 # run non-transforming button checks
@@ -108,49 +100,32 @@ client = MPDClient()
 try:
     client.connect(host=host, port=port)
 except ConnectionRefusedError:
-    text = text_off
-    color = color_off
     output_and_exit(text_off, text_off, color_off, -1)
 
 # we connected, get some song info
 song = client.currentsong()
 status = client.status()["state"]
-#self.insert_part(self.form_part(self.text_off, self.color_error))
-
 if status == "play":
-    text = text_play
     color = color_play
 elif status == "pause":
-    text = text_pause
     color = color_pause
 elif status == "stop":
     # if we're stopped, exit before trying to get info
-    text = text_stop
-    color = color_stop
-    output_and_exit(text, text, color, -1)
+    output_and_exit(text_stop, text_stop, color_stop, -1)
 
-# get info about song (to use in formatting)
-info = {}
-info["file"] = os.path.basename(song["file"])
-
+# add artist if available, else nothing
+song_full = ""
 try:
-    info["artist"] = song["artist"] + " - "
+    song_full += "{} - ".format(song["artist"])
 except KeyError:
-    # song has no artist set, so none
-    info["artist"] = ""
+    pass
 
+# add title if available, else filename
+song_title = ""
 try:
-    info["title"] = song["title"]
-    info["name"] = song["title"]
+    song_title = song["title"]
 except KeyError:
-    # song has no title set, so use filename instead
-    info["title"] = ""
-    info["name"] = info["file"]
+    song_title += os.path.basename(song["file"])
+song_full += song_title
 
-# replace format parts with actual values
-# e.g. {artist} -> info["artist"]
-for key, value in info.items():
-    text = text.replace("{" + key + "}", value)
-
-# done, output and exit
-output_and_exit(text, info["name"], color)
+output_and_exit(song_full, song_title, color)
