@@ -16,11 +16,13 @@ set $exec exec --no-startup-id
 # v - this does NOT work! - v
 #set $i3_msg $exec i3-msg
 set $i3_msg exec --no-startup-id i3-msg
-## }}}
 
-## General {{{
 # set i3 config directory
 set $conf_dir ~/.config/i3
+
+# set monitor names
+set $mon_primary eDP1
+set $mon_secondary HDMI1
 ## }}}
 
 ## Appearance {{{
@@ -30,7 +32,7 @@ set $conf_dir ~/.config/i3
 # rendering and looks nice.
 #font pango:DejaVu Sans Mono 10
 # Terminus is for hackers only 8)
-font pango:Terminus 10
+font pango:xos4 Terminus 10
 
 ### Window decorations/colours {{{
 # disable titlebar
@@ -342,11 +344,10 @@ bindsym $mod+Shift+x exec "outswap"
 
 # set default output (monitor) for each workspace
 # looks like workspace number doesn't work here :/
-workspace 1 output eDP1
-workspace 2 output eDP1
-workspace 3 output VGA1
-workspace 4 output VGA1
-workspace 10 output VGA1
+workspace 1 output $mon_primary
+workspace 2 output $mon_primary
+workspace 3 output $mon_secondary
+workspace 4 output $mon_secondary
 
 ### Assigns {{{
 # start Anki on workspace 5
@@ -354,6 +355,9 @@ workspace 10 output VGA1
 
 # start pavucontrol floating
 for_window [class="Pavucontrol"] floating enable
+
+# Steam floats by default, so that chat windows don't annoy you
+for_window [class="Steam"] floating enable
 
 # temp./test
 assign [title="^watch-then-move"] 3
