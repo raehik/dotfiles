@@ -29,6 +29,7 @@ nametrans = lambda folder: {'drafts':   '[Gmail]/Drafts',
 [Repository gmail-remote]
 type = Gmail
 remoteuser = thefirstmuffinman@gmail.com
+auth_mechanisms = LOGIN
 # realdelete = no
 maxconnections = 5
 # map special Gmail folders ('system labels') to nicer folders & back
