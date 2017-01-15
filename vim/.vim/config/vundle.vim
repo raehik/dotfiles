@@ -20,6 +20,7 @@ Plugin 'honza/vim-snippets'
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/loremipsum'
+Plugin 'airblade/vim-rooter'
 
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sickill/vim-monokai'
