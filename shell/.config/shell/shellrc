@@ -87,6 +87,8 @@ _use_conf "shell/aliases"
 # command/user bin aliases
 _use_conf "shell/aliases-user"
 
+# deadline reminder
+_use_conf "shell/deadline-remind"
 ## Shell-specific options {{{
 if [[ "$BASH_VERSION" ]]; then
     _use_conf "shell/bashrc"
