@@ -37,10 +37,8 @@ setxkbmap -layout gb
 $HOME/.assets/backgrounds/set-desktop-background
 
 ## Start-up programs {{{
-# start keylogger
+urxvtd -q -f -o
 xinput-keylog &
-
-# start up pasystray (comes in handy)
 pasystray &
 
 # start up compositor (for vsync)

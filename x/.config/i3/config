@@ -77,7 +77,7 @@ client.placeholder      "#000000" "#0c0c0c" $clr_foc_text "#000000"
 
 ## Programs {{{
 # (suggested absolute paths so no one can mess with them)
-set $terminal /usr/bin/urxvt
+set $terminal /usr/bin/urxvtc
 set $browser /usr/bin/firefox
 ## }}}
 
