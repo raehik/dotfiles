@@ -1,4 +1,4 @@
-! NOTE: This file does NOT allow apostrophes in comments. Youll get a warning
+! NOTE: This file does NOT allow apostrophes in comments. You will get a warning
 !       about a missing terminator if you use one. *No* idea why, but thems the
 !       rules.
 
@@ -16,8 +16,14 @@ URxvt.scrollBar: false
 ! Hide mouse pointer if over window and either typing or not moved for ~2 secs
 URxvt.pointerBlank: true
 
+! On audible bell, flash the screen quickly.
+! I do not like this. Cannot think of a reason I would use it (no apostrophes
+! ROFL).
+!URxvt.visualBell: true
+
 ! Set window urgency hint (flash/turn red/something obvious) on audible bell
-! Note that if a program is configured to do a 'visual' bell, this will not work
+! (ASCII char 7)
+! NOTE: if a program is configured to do a 'visual' bell, this will not work
 URxvt.urgentOnBell: true
 
 ! Clickable URLs
