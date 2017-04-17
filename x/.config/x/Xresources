@@ -9,11 +9,15 @@ URxvt.font: xft:xos4 Terminus:size=10
 !URxvt.boldItalicFont: xft:DejaVu Sans Mono:size=10:bold:italic
 !! }}}
 
+!! URxvt {{{
 ! Turn off scrollbar
 URxvt.scrollBar: false
 
 ! Hide mouse pointer if over window and either typing or not moved for ~2 secs
 URxvt.pointerBlank: true
+
+! Set window urgency hint (flash/turn red/something obvious) on bell
+!URxvt.urgentOnBell: true
 
 ! Clickable URLs
 URxvt.perl-ext-common: default,matcher
@@ -32,9 +36,8 @@ URxvt.transparent: true
 ! 0 to 99 darkens, 101 to 200 lightens
 !URxvt.shading: 15
 
-
-!! Colourschemes {{{
-!!! Linux console colourscheme {{{
+!!! Colourschemes {{{
+!!!! Linux console {{{
 
 ! background colour
 URxvt.background:  #000000
@@ -74,8 +77,7 @@ URxvt.color14:      #55FFFF
 URxvt.color7:       #AAAAAA
 URxvt.color15:      #FFFFFF
 !!! }}}
-
-!!! Zenburn colourscheme (in progress) {{{
+!!!! Zenburn (WIP) {{{
 !TODO
 
 ! background colour
@@ -116,8 +118,7 @@ URxvt.color15:      #FFFFFF
 !URxvt.color7:      #dcdccc
 !URxvt.color15:     #ffffff
 !!! }}}
-
-!!! Solarized colorscheme {{{
+!!!! Solarized {{{
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
@@ -196,4 +197,5 @@ URxvt.color15:      #FFFFFF
 !*color7:                S_base2
 !*color15:               S_base3
 !!! }}}
+!! }}}
 !! }}}
