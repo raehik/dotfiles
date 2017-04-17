@@ -16,8 +16,9 @@ URxvt.scrollBar: false
 ! Hide mouse pointer if over window and either typing or not moved for ~2 secs
 URxvt.pointerBlank: true
 
-! Set window urgency hint (flash/turn red/something obvious) on bell
-!URxvt.urgentOnBell: true
+! Set window urgency hint (flash/turn red/something obvious) on audible bell
+! Note that if a program is configured to do a 'visual' bell, this will not work
+URxvt.urgentOnBell: true
 
 ! Clickable URLs
 URxvt.perl-ext-common: default,matcher
