@@ -30,9 +30,6 @@ xset b off
 # turn off all mouse acceleration
 xset m 1 0
 
-# set keyboard layout
-setxkbmap -layout gb
-
 # set desktop background
 $HOME/.assets/backgrounds/set-desktop-background
 
