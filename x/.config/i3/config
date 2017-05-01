@@ -402,10 +402,9 @@ bar {
 #
 $i3_msg 'workspace number 1; exec $terminal -title "work"'
 $i3_msg 'workspace number 2; exec $browser'
-$i3_msg 'workspace number 3; exec $terminal -title "mutt" -e email'
-#$i3_msg 'workspace number 3; exec $terminal -title "weechat" -e weechat'
-$i3_msg 'workspace number 3; exec $terminal -title "weechat"'
-$i3_msg 'workspace number 4; exec $terminal -title "ncmpcpp" -e mpn'
+$i3_msg 'workspace number 3; exec $terminal -title "email" -e email'
+$i3_msg 'workspace number 3; exec $terminal -title "irc" -e weechat'
+$i3_msg 'workspace number 4; exec $terminal -title "music" -e mpn'
 #$i3_msg 'workspace number 10; exec $terminal -title "wyrd" -e wyrd-fix-startup'
 ### }}}
 

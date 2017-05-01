@@ -24,13 +24,13 @@
                        "x": 0,
                        "y": 0
                     },
-                    "name": "mutt",
+                    "name": "email",
                     "percent": 1,
                     "swallows": [
                        {
                           "class": "^URxvt$",
                        // "instance": "^urxvt$",
-                          "title": "^mutt$"
+                          "title": "^email$"
                        }
                     ],
                     "type": "con"
@@ -54,13 +54,13 @@
                        "x": 0,
                        "y": 0
                     },
-                    "name": "irssi",
+                    "name": "irc",
                     "percent": 1,
                     "swallows": [
                        {
                           "class": "^URxvt$",
                        // "instance": "^urxvt$",
-                          "title": "^weechat$"
+                          "title": "^irc$"
                        }
                     ],
                     "type": "con"
