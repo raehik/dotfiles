@@ -547,8 +547,8 @@ autocenter_mode = yes
 # rather than moving through a sequence of screens.
 screen_switcher_mode = previous
 
-# Place lyrics in a directory out of the way
-lyrics_directory = ~/.config/mpd/lyrics
+# Place lyrics outside the music directory
+lyrics_directory = ~/media/music-etc/lyrics
 
 # Vim master race, as usual
 external_editor = vim
