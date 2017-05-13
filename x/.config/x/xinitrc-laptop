@@ -10,4 +10,4 @@ xrandr --output eDP1 --primary
 xbacklight -set 50 -time 0
 
 # set up second monitor
-xrandr --output HDMI1 --auto --right-of eDP1
+xrandr --output HDMI1 --auto --left-of eDP1

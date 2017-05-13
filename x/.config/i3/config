@@ -319,7 +319,7 @@ bindsym $mod+Print $exec shot-cs-manual
 
 ### Computer {{{
 # turn off screen
-bindsym $mod+F2 $exec "scr"
+bindsym $mod+F2 $exec "sleep 0.2 && xset dpms force off"
 
 # lock computer
 bindsym XF86Display $exec "lock"
@@ -328,7 +328,7 @@ bindsym XF86Display $exec "lock"
 bindsym $mod+Shift+Delete $exec "poweroff"
 
 # turn off touchpad
-bindsym $mod+F6 $exec "touchpad-toggle"
+#bindsym $mod+F6 $exec "touchpad-toggle"
 
 # lock computer & standby
 bindsym $mod+F1 $exec "lockstb"
