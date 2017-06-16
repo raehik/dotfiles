@@ -302,7 +302,7 @@ bindsym XF86MonBrightnessDown $exec "xbacklight -time 0 -steps 1 -dec 10"
 
 ### Screenshots {{{
 # set shot options & directory
-set $shot maim -n -b2 $HOME/media/screenshots/$(date +%F_%T_shot).png
+set $shot maim -n -b 2 $HOME/media/screenshots/$(date +%F_%T_shot).png
 
 # capture currently focused window
 bindsym Print $exec $shot -i $(xdotool getactivewindow)
