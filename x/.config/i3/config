@@ -79,6 +79,7 @@ client.placeholder      "#000000" "#0c0c0c" $clr_foc_text "#000000"
 # (suggested absolute paths so no one can mess with them)
 set $terminal /usr/bin/urxvtc
 set $browser /usr/bin/firefox
+set $browser_alt /usr/bin/chromium
 ## }}}
 
 ## Modes {{{
@@ -131,6 +132,9 @@ bindsym $mod+Return exec $terminal
 
 # start browser
 bindsym $mod+Shift+Return exec $browser
+
+# start alternate browser
+bindsym $mod+$alt+Shift+Return exec $browser_alt
 
 # start dmenu (program launcher)
 bindsym $mod+d exec dmenu_run
@@ -353,17 +357,19 @@ workspace 3 output $mon_secondary
 workspace 4 output $mon_secondary
 
 ### Assigns {{{
+# Use xprop to get WM_CLASS strings.
+
 # start Anki on workspace 5
 #assign [class="Anki"] 5
+
+# start alternate browser (Chromium) on workspace 8
+assign [class="Chromium"] 8
 
 # start pavucontrol floating
 for_window [class="Pavucontrol"] floating enable
 
 # Steam floats by default, so that chat windows don't annoy you
 for_window [class="Steam"] floating enable
-
-# temp./test
-assign [title="^watch-then-move"] 3
 ### }}}
 ## }}}
 
