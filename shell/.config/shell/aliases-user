@@ -1,5 +1,5 @@
 # vim: syntax=sh filetype=sh :
-alias tw=twitterminal
+alias tw=twitterminal.py
 alias j=jctl.py
 alias jp="jctl.py -b ~/proj/writing/jp.raehik.net"
 alias rtl=netmod-reload
