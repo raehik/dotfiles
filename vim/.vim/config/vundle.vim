@@ -12,9 +12,9 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
-Plugin 'SirVer/ultisnips'
-Config ultisnips
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Config ultisnips
+"Plugin 'honza/vim-snippets'
 "Plugin 'scrooloose/syntastic'
 "Config syntastic
 "Plugin 'godlygeek/tabular'
