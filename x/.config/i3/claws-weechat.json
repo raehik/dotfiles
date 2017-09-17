@@ -1,0 +1,23 @@
+{
+    "layout": "splitv",
+    "percent": 1,
+    "nodes": [
+        {
+            "percent": 0.7,
+            "swallows": [
+               {
+                "class": "^Claws\\-mail$"
+               }
+            ]
+        },
+        {
+            "percent": 0.3,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "title": "^irc$"
+               }
+            ]
+        }
+    ]
+}
