@@ -9,5 +9,5 @@ xrandr --output eDP1 --primary
 # set brightness to half to conserve power
 xbacklight -set 50 -time 0
 
-# set up second monitor
-xrandr --output HDMI1 --auto --right-of eDP1
+# set up second monitor (soft dock)
+dock
