@@ -34,14 +34,15 @@ URxvt.matcher.button: 1
 ! Make borderless (not guaranteed to work -- only asks the window manager)
 !URxvt.borderLess: true
 
-! True transparency
-!URxvt.depth: 32
-!URxvt.background: [50]#000000
-
 ! Native transparency
 URxvt.transparent: true
 ! 0 to 99 darkens, 101 to 200 lightens
+! if not specified, 100 (no change)
 !URxvt.shading: 15
+
+! True transparency
+!URxvt.depth: 32
+!URxvt.background: rgba:0000/0000/0000/cccc
 
 !!! Colourschemes {{{
 !!!! Linux console {{{
