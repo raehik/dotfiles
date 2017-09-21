@@ -31,7 +31,7 @@ xset b off
 xset m 1 0
 
 # set desktop background
-$HOME/.assets/backgrounds/set-desktop-background
+"$HOME"/.assets/backgrounds/set-desktop-background
 
 ## Start-up programs {{{
 urxvtd -q -f -o
