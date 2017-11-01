@@ -558,4 +558,7 @@ follow_now_playing_lyrics = yes
 
 # Music library location
 mpd_music_dir = ~/media/music
+
+# Sort media library view by album artist (default: artist)
+media_library_primary_tag = album_artist
 ## }}}
