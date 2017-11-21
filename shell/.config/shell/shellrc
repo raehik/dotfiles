@@ -50,6 +50,11 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 export CLASSPATH=".:/usr/share/java/*"
 ## }}}
 
+## Python {{{
+# set a directory for personal user modules
+export PYTHONPATH="$HOME/.local/share/python-user"
+## }}}
+
 # turn off all console system bells (PC speaker beeps)
 # (note: doesn't affect X, see ~/.xinitrc for that)
 if [[ "$TERM" == "linux" ]]; then
