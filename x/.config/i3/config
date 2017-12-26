@@ -84,9 +84,8 @@ set $browser_alt /usr/bin/chromium
 
 ## Modes {{{
 # resize mode (can also use $mod + right/left click)
-mode "resize" {
-    # note: mode bindings only apply while the mode is active
-
+set $mode_resize "resize"
+mode $mode_resize {
     # grow/shrink (from top-left i.e. down, right = grow)
     # (shifted Vim keys)
     bindsym j         resize shrink width  10 px or 10 ppt
@@ -106,8 +105,8 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-set $no_swallow "no-swallow - $mod+Shift+Esc to exit"
-mode $no_swallow {
+set $mode_no_swallow "no-swallow - $mod+Shift+Esc to exit"
+mode $mode_no_swallow {
     # only keybind is one to return to normal
     bindsym $mod+Shift+Escape mode "default"
 }
@@ -262,45 +261,44 @@ bindsym $mod+Shift+e exit
 
 ### Modes {{{
 # enter resize mode
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode $mode_resize
 
 # enter no-swallow mode
-bindsym $mod+Shift+Escape mode $no_swallow
+bindsym $mod+Shift+Escape mode $mode_no_swallow
 ### }}}
 
 ### Multimedia {{{
-# send SIGUSR1 to i3status to refresh it manually
+# set i3status full refresh command (only way)
 #set $refresh killall -USR1 i3status
 
 # set i3blocks refresh commands
 set $refresh_mpd pkill -RTMIN+10 i3blocks
 set $refresh_vol pkill -RTMIN+11 i3blocks
 
-# volume multimedia keys -- ALSA
+# volume multimedia keys (ALSA)
 #bindsym XF86AudioRaiseVolume $exec "amixer -M set Master 1dB+ && $refresh"
 #bindsym XF86AudioLowerVolume $exec "amixer -M set Master 1dB- && $refresh"
 #bindsym XF86AudioMute $exec "amixer set Master toggle && $refresh"
 
-# volume multimedia keys -- PulseAudio
+# volume multimedia keys (PulseAudio)
 bindsym XF86AudioRaiseVolume $exec "amixer set Master 2%+ && $refresh_vol"
 bindsym XF86AudioLowerVolume $exec "amixer set Master 2%- && $refresh_vol"
 bindsym XF86AudioMute $exec "amixer set Master toggle && $refresh_vol"
 
-# MPD volume keybinds
+# music player keys (MPD)
+# with special multimedia keys, and extra binds for keyboards missing them
 bindsym $mod+XF86AudioRaiseVolume $exec "mpc volume +2 && $refresh_vol"
 bindsym $mod+XF86AudioLowerVolume $exec "mpc volume -2 && $refresh_vol"
+bindsym XF86AudioPlay      $exec "mpc toggle && $refresh_mpd"
+bindsym XF86AudioStop      $exec "mpc stop   && $refresh_mpd"
+bindsym XF86AudioPrev      $exec "mpc prev   && $refresh_mpd"
+bindsym XF86AudioNext      $exec "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioPlay $exec "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioNext       $exec "mpd-insert-best"
+bindsym $mod+Shift+XF86AudioPlay $exec "mpd-insert-best"
 
-# special multimedia keys
-bindsym XF86AudioPlay $exec "mpc toggle && $refresh_mpd"
-bindsym XF86AudioStop $exec "mpc stop && $refresh_mpd"
-bindsym XF86AudioPrev $exec "mpc prev && $refresh_mpd"
-bindsym XF86AudioNext $exec "mpc next && $refresh_mpd"
-
-# special MPD keys
-bindsym $mod+XF86AudioNext $exec "mpd-insert-best"
-
-# brightness keys
-bindsym XF86MonBrightnessUp $exec "xbacklight -time 0 -steps 1   -inc 10"
+# brightness keys (xbacklight)
+bindsym XF86MonBrightnessUp   $exec "xbacklight -time 0 -steps 1 -inc 10"
 bindsym XF86MonBrightnessDown $exec "xbacklight -time 0 -steps 1 -dec 10"
 ### }}}
 
@@ -377,6 +375,7 @@ for_window [class="Steam"] floating enable
 bar {
     # pipe to my wrapper script (inserts extra bits)
     #status_command i3status | i3status-wrapper.py
+
     status_command i3blocks
 
     # system tray on primary monitor plz
