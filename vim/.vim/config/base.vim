@@ -34,6 +34,9 @@ set backup
 " can't be used, the next entry (separated by a comma) is used, etc.
 set backupdir=~/.vim/backup,.
 
+" Directories to try to place swap files in.
+set directory=.,~/.vim/swap
+
 " Enable modeline (disabled by default because it is a common source of
 " vulnerabilities)
 set modeline
