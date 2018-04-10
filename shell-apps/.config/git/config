@@ -3,6 +3,7 @@
 	email = thefirstmuffinman@gmail.com
 [core]
 	quotepath = false
+	autocrlf = false
 [alias]
 	s = status
     l = log
