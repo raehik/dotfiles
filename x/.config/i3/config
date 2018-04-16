@@ -296,10 +296,6 @@ bindsym XF86AudioNext      $exec "mpc next   && $refresh_mpd"
 bindsym $mod+XF86AudioPlay $exec "mpc next   && $refresh_mpd"
 bindsym $mod+XF86AudioNext       $exec "mpd-insert-best"
 bindsym $mod+Shift+XF86AudioPlay $exec "mpd-insert-best"
-
-# brightness keys (xbacklight)
-bindsym XF86MonBrightnessUp   $exec "xbacklight -time 0 -steps 1 -inc 10"
-bindsym XF86MonBrightnessDown $exec "xbacklight -time 0 -steps 1 -dec 10"
 ### }}}
 
 ### Screenshots {{{

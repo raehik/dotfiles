@@ -1,0 +1,3 @@
+# monitor brightness (laptop)
+XF86MonBrightness{Up,Down}
+    xbacklight -time 0 -steps 1 {-inc,-dec} 10

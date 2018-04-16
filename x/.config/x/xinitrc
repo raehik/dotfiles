@@ -43,5 +43,8 @@ pasystray &
 #compton -C -G --no-fading-openclose --vsync opengl &
 ## }}}
 
+# start keybind daemon
+sxhkd &
+
 # start window manager (must be final command!)
 exec i3
