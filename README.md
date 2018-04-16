@@ -3,6 +3,8 @@ raehik's dotfiles
 
 Stored using stow.
 
+    stow -t ~ <config folder>
+
 
 Installation
 ------------
