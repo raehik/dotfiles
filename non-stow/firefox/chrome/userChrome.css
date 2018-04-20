@@ -1,0 +1,4 @@
+/* change white flash colour in new tabs, page loading etc. */
+.tabbrowser-tabbox {
+    background-color: #1a1a1a!important;
+}

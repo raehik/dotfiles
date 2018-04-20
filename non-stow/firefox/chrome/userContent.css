@@ -1,0 +1,6 @@
+/* change "new tab" page BG colour */
+@-moz-document url("about:home"), url("about:newtab") {
+    .activity-stream {
+        background: #1a1a1a!important;
+    }
+}
