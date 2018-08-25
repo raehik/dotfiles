@@ -354,10 +354,12 @@ workspace 4 output $mon_secondary
 # Use xprop to get WM_CLASS strings.
 
 # start Anki on workspace 5
-assign [class="Anki"] 5
+# 2018-08-18: disabled due to low usage
+#assign [class="Anki"] 5
 
 # start alternate browser (Chromium) on workspace 8
-assign [class="Chromium"] 8
+# 2018-08-18: disabled due to low usage (Firefox is great with videos now)
+#assign [class="Chromium"] 8
 
 # start pavucontrol floating
 for_window [class="Pavucontrol"] floating enable
