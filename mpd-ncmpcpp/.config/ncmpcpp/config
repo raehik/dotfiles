@@ -559,6 +559,9 @@ follow_now_playing_lyrics = yes
 # Music library location
 mpd_music_dir = ~/media/music
 
+# Use alternative UI (song name/artist/album centred at top)
+user_interface = alternative
+
 # Sort media library view by album artist (default: artist)
 media_library_primary_tag = album_artist
 ## }}}
