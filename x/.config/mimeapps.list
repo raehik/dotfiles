@@ -1,9 +1,18 @@
 [Default Applications]
+application/pdf=org.pwmt.zathura.desktop;
+audio/aac=mpv.desktop;
+audio/mp3=mpv.desktop;
+audio/ogg=mpv.desktop;
+audio/wav=mpv.desktop;
+image/gif=sxiv.desktop;
+image/jpeg=sxiv.desktop;
+image/jpg=sxiv.desktop;
+image/png=sxiv.desktop;
 text/html=firefox.desktop;
+text/plain=gvim.desktop;
+video/mp4=mpv.desktop;
+video/ogg=mpv.desktop;
+video/webm=mpv.desktop;
+video/x-matroska=mpv.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
-application/pdf=zathura.desktop;
-regex:^image/(png|jpe?g|gif)$=sxiv.desktop;
-
-[Added Associations]
-text/plain=gvim.desktop;
