@@ -93,7 +93,8 @@ _use_conf "shell/aliases"
 _use_conf "shell/aliases-user"
 
 # ssh-agent
-_use_conf "shell/ssh-agent"
+# 2018-08-29: added but then immediately disabled (may be useful later)
+#_use_conf "shell/ssh-agent"
 
 ## Shell-specific options {{{
 if [[ "$BASH_VERSION" ]]; then
