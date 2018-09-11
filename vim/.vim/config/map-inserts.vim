@@ -1,8 +1,8 @@
 " Insert current date
 imap <C-D> <C-R>=strftime("%F")<CR>
 
-" Insert current time
-imap <C-T> <C-R>=strftime("%T")<CR>
+" Insert current ISO-8601 datetime (date, time, timezone)
+imap <C-T> <C-R>=strftime("%FT%T%z")<CR>
 
 "" Markdown header inserts {{{
 " Normal mode
