@@ -1,8 +1,13 @@
 " Insert current date
-imap <C-D> <C-R>=strftime("%F")<CR>
+imap <C-d> <C-r>=strftime("%F")<CR>
 
 " Insert current ISO-8601 datetime (date, time, timezone)
-imap <C-T> <C-R>=strftime("%FT%T%z")<CR>
+imap <C-t> <C-r>=strftime("%FT%T%z")<CR>
+" Note that the above does not insert a colon between the hours and minutes for
+" the timezone (%z). Though this is valid for ISO 8601 and RFC 3339 (which is
+" based on the ISO 8601 standard), some parsers do not implement the
+" specification correctly. If you need the colon:
+"imap <C-t> <C-r>=system("date -Iseconds")[:-2]<CR>
 
 "" Markdown header inserts {{{
 " Normal mode
@@ -19,7 +24,7 @@ imap <F4> <Esc><F4>A
 "" }}}
 
 " check mark ✓ check mark ✓ check mark ✓ must be check mark ✓
-imap <C-C> ✓
+imap <C-c> ✓
 
 " X mark
-"imap <C-X> ✗
+"imap <C-x> ✗
