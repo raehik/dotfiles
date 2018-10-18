@@ -1,5 +1,5 @@
 [include]
-    path = default-user-alias
+    path = default-identity
 [core]
     quotepath = false
     autocrlf = false
