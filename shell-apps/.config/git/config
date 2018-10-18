@@ -1,16 +1,15 @@
-[user]
-	name = Ben Orchard
-	email = thefirstmuffinman@gmail.com
+[include]
+    path = default-user-alias
 [core]
-	quotepath = false
-	autocrlf = false
+    quotepath = false
+    autocrlf = false
 [alias]
-	s = status
+    s = status
     l = log
-	a = add
-	c = commit
+    a = add
+    c = commit
     co = checkout
     d = diff
     b = branch
 [push]
-	default = simple
+    default = simple
