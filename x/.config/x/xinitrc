@@ -23,8 +23,8 @@ source "$xcfg_dir/graphical-envvars"
 #unset xcfg_dir
 ## }}}
 
-# compose key setup (default is awkward)
-setxkbmap -option compose:menu
+setxkbmap -option compose:menu      # menu = compose key
+setxkbmap -option caps:swapescape   # swap caps lock <-> Escape
 
 # turn off all X system bells (PC speaker beeps)
 # (note: doesn't affect tty beeps - see your shell rc file (i.e. ~.zshrc))
