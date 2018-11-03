@@ -144,11 +144,11 @@ bindsym $mod+Shift+a exec anki
 
 ### Moving workspaces {{{
 # switch to workspace [beginning with] X
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
+bindsym $mod+1 workspace number 1 text
+bindsym $mod+2 workspace number 2 www
+bindsym $mod+3 workspace number 3 comms
+bindsym $mod+4 workspace number 4 cal
+bindsym $mod+5 workspace number 5 music
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
@@ -403,12 +403,15 @@ bar {
 #     the order in which you start things might have an effect, but it
 #     doesn't seem reliable
 #
-$i3_msg 'workspace number 1; exec $terminal -title "work"'
+$i3_msg 'workspace number 1; exec emacs'
 $i3_msg 'workspace number 2; exec $browser'
 $i3_msg 'workspace number 3; exec claws-mail'
 $i3_msg 'workspace number 3; exec $terminal -title "irc" -e weechat'
+$i3_msg 'workspace number 5; exec evolution'
 $i3_msg 'workspace number 4; exec $terminal -title "music" -e mpn'
-#$i3_msg 'workspace number 10; exec $terminal -title "wyrd" -e wyrd-fix-startup'
+
+for_window [title="scratch"] move scratchpad
+$i3_msg 'workspace number 1; exec $terminal -title "scratch"'
 ### }}}
 
 ### Layouts {{{
@@ -419,9 +422,9 @@ $i3_msg 'workspace number 4; exec $terminal -title "music" -e mpn'
 # Keep in mind that the last workspace to have a layout appended to it
 # will probably be the active one on startup.
 #
-$i3_msg 'workspace number 3; append_layout "$conf_dir/workspace-3"'
+$i3_msg 'workspace number 4; append_layout "$conf_dir/workspace-4"'
 
-# try to make a specific workspace active on startup
+# try our best to make a specific workspace active on startup
 $i3_msg 'workspace number 1'
 
 ### }}}
