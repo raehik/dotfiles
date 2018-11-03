@@ -93,8 +93,8 @@ _use_conf "shell/aliases"
 _use_conf "shell/aliases-user"
 
 # ssh-agent
-# 2018-08-29: added but then immediately disabled (may be useful later)
-#_use_conf "shell/ssh-agent"
+# managed by systemd user service, which needs this envvar
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 ## Shell-specific options {{{
 if [[ "$BASH_VERSION" ]]; then
