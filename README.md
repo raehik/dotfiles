@@ -2,6 +2,7 @@
 Stored using `stow`.
 
 ## Installation
+
     stow -t ~ <config folder>
 
 `EDIT_*` files will very likely require some other configuration. Search for

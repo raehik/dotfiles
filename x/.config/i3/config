@@ -28,7 +28,7 @@ set $mon_secondary VGA1
 set $ws_text 1:text
 set $ws_www 2:www
 set $ws_comms 3:comms
-set $ws_music 4:music
+set $ws_media 4:media
 set $ws_cal 5:cal
 ## }}}
 
@@ -154,7 +154,7 @@ bindsym $mod+Shift+a exec anki
 bindsym $mod+1 workspace number $ws_text
 bindsym $mod+2 workspace number $ws_www
 bindsym $mod+3 workspace number $ws_comms
-bindsym $mod+4 workspace number $ws_music
+bindsym $mod+4 workspace number $ws_media
 bindsym $mod+5 workspace number $ws_cal
 bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
@@ -169,7 +169,7 @@ bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+1 move container to workspace number $ws_text
 bindsym $mod+Shift+2 move container to workspace number $ws_www
 bindsym $mod+Shift+3 move container to workspace number $ws_comms
-bindsym $mod+Shift+4 move container to workspace number $ws_music
+bindsym $mod+Shift+4 move container to workspace number $ws_media
 bindsym $mod+Shift+5 move container to workspace number $ws_cal
 bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
@@ -355,7 +355,7 @@ bindsym $mod+Shift+x exec "outswap"
 workspace $ws_text output $mon_primary
 workspace $ws_www output $mon_primary
 workspace $ws_comms output $mon_secondary
-workspace $ws_music output $mon_secondary
+workspace $ws_media output $mon_secondary
 workspace $ws_cal output $mon_secondary
 
 ### Assigns {{{
@@ -423,7 +423,8 @@ exec $browser
 
 $i3_msg 'workspace number $ws_comms; exec claws-mail'
 $i3_msg 'workspace number $ws_comms; exec $terminal -title "irc" -e weechat'
-$i3_msg 'workspace number $ws_music; exec $terminal -title "music" -e mpn'
+$i3_msg 'workspace number $ws_media; exec $terminal -title "music" -e mpn'
+$i3_msg 'workspace number $ws_media; exec $terminal -title "news" -e newsboat'
 $i3_msg 'workspace number $ws_cal; exec evolution'
 ### }}}
 
@@ -435,7 +436,8 @@ $i3_msg 'workspace number $ws_cal; exec evolution'
 # Keep in mind that the last workspace to have a layout appended to it
 # will probably be the active one on startup.
 #
-$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms"'
+$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
+$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
 
 # try our best to make a specific workspace active on startup
 $i3_msg 'workspace number $ws_text'
