@@ -28,8 +28,14 @@ ag -o "REQ: .*$"
 
 ### Non-requirements
 Usually though, configuration can be safely done without encountering any
-problems. A requirement will only be noted if its correct execution depends on
-the program referred to.
+problems. Here's why there shouldn't be many requirements:
+
+  * A requirement will only be noted if its correct execution depends on the
+    program referred to.
+  * Config files don't require themselves (e.g. `i3/config` won't say it
+    requires i3, that's obvious).
+  * And generally, I try to gracefully skip things if a dependency isn't
+    present.
 
 Where options are available, such as choice of window manager, as long as the
 option isn't hardcoded (i.e. it's in a variable) then no requirement will be
