@@ -8,44 +8,50 @@ Stored using `stow`.
 `EDIT_*` files will very likely require some other configuration. Search for
 EDIT in them to find the important lines more quickly.
 
-## Requirements
-Some parts of my dotfiles call other programs, or expect certain services to be
-available. I like to use lots of small programs, so if you're using an old or
-poorly-supported OS, you may not find them easily, or may have to build them
-from source. That's fine, but sometimes it's hard to find missing dependencies
-in the first place.
+## Dependencies
+### General
+Not tied to any one OS. *(But I do use Arch Linux, so my `--version`s are very
+up-to-date.)*
 
-For that reason, where possible, generic requirements are stored inline in
-config files (as comments). These are just guidelines for finding the correct
-package to install: some might be GitHub repos, others Pacman packages, others
-exact program names (that may come packaged under a utility collection)..
+  * Unix-like OS
+  * Filesystem that supports symlinks
+  * Git
+  * systemd
 
-To find all requirements:
+### Specified
+To find all dependencies in a given package (or overall if run in root):
 
 ```sh
 ag -o "REQ: .*$"
 ```
 
-### Non-requirements
-Usually though, configuration can be safely done without encountering any
-problems. Here's why there shouldn't be many requirements:
+Because these dotfiles aren't tied to a specific OS, dependencies are stored as
+generic guidelines for finding the correct package to install: some might be
+GitHub repos, others Pacman packages, others exact program names (that may come
+packaged under a utility collection).
 
-  * A requirement will only be noted if its correct execution depends on the
+Where possible, dependencies are stored inline in config files (as comments), so
+it should be clear why something is required.
+
+### Not a big deal
+You shouldn't have to worry too much about dependencies:
+
+  * Most software configuration either doesn't expect any other software, or is
+    tightly enough coupled that the user basically must have the dependency if
+    they run it.
+  * I try to gracefully skip things if a dependency isn't present.
+  * A dependency will only be noted if its correct execution depends on the
     program referred to.
-  * Config files don't require themselves (e.g. `i3/config` won't say it
-    requires i3, that's obvious).
-  * And generally, I try to gracefully skip things if a dependency isn't
-    present.
+  * If my dotfiles provide some sort of option, or store the program in a
+    generically-named variable, it's not considered a dependency.
+  * Config files don't depend on themselves (`i3/config` doesn't require i3).
 
-Where options are available, such as choice of window manager, as long as the
-option isn't hardcoded (i.e. it's in a variable) then no requirement will be
-added. *(Really it's just for those little/background programs.)*
+Most dependencies are concentrated in the X package, for various keybinds and
+programs. Really it's just for those little background programs and scripts.
 
 ### systemd user services
-For every service in `~/.config/systemd/user` you want to enable:
-
-    systemctl --user enable <file>
-    systemctl --user start <file>
+Some systemd user services come pre-configured to be enabled. All systemd user
+services are found at `~/.config/systemd/user` if you want to check it out.
 
 ## Structure
   * `~/.assets`: things which change when I use my computers but should be the
