@@ -1,0 +1,17 @@
+# vim: ft=sh
+#
+# Personal xinitrc things: starting my favourite programs/daemons and so on.
+#
+
+## Programs {{{
+# REQ: raehik/scripts
+# REQ: pasystray
+# REQ: sxhkd
+xinput-keylog &     # personal keylogger
+pasystray &         # PulseAudio system tray application launcher
+sxhkd &             # generic keybind daemon
+# TODO: compositor (for vsync) (compton sucks)
+## }}}
+
+# set desktop background
+"$HOME"/.assets/backgrounds/set-desktop-background # TODO find better solution

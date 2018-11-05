@@ -1,3 +1,14 @@
-# monitor brightness (laptop)
+# vim: ft=conf
+#
+# sxhkd config.
+#
+# Syntax copied from 2018-11-05 man page:
+#   * If it is empty or starts with `#`, it is ignored.
+#   * If it starts with a space, it is read as a command.
+#   * Otherwise, it is read as a hotkey.
+#
+
+# monitor brightness
+# REQ: xbacklight
 XF86MonBrightness{Up,Down}
     xbacklight -time 0 -steps 1 {-inc,-dec} 10

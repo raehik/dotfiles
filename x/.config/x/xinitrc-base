@@ -1,0 +1,16 @@
+# vim: ft=sh
+#
+# Base xinitrc for any and all setups.
+#
+
+## Behaviour {{{
+setxkbmap -option compose:menu      # menu = compose key
+setxkbmap -option caps:swapescape   # swap caps lock <-> Escape
+
+# turn off all X system bells (PC speaker beeps)
+# (note: doesn't affect tty beeps - see your shell rc file)
+xset b off
+
+# turn off all mouse acceleration
+xset m 1 0
+## Behaviour }}}

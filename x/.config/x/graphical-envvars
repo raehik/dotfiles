@@ -2,19 +2,18 @@
 #
 # Environment variables for purely graphical applications.
 #
-# Helps to keep things clean (could go in main shellrcs, but Arch wiki suggests
-# this cleaner method).
+# Could go in general shell config, but this method keeps the environment clean.
+# And it's our duty to keep the environment clean.
 #
 
 # input method (IBus)
+# REQ: ibus
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 ibus-daemon -drx
 
-# Steam
-# with STEAM_FRAME_FORCE_CLOSE=1, clicking X (close) button on window will
-# actually close the window until you bring it back up using the tray app, like
-# on Windows. Note that i3's kill command will still shut down Steam proper (as
-# intended).
+## Application-specific {{{
+# Steam: close window to tray on X/close button click
 export STEAM_FRAME_FORCE_CLOSE=1
+## Application-specific }}}
