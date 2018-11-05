@@ -2,56 +2,65 @@
 !       about a missing terminator if you use one. *No* idea why, but thems the
 !       rules.
 
+!! URxvt {{{
+! Perl extensions
+URxvt.perl-ext-common: default,matcher,font-size
+
+!! Appearance {{{
 !! Fonts {{{
-!URxvt.font: xft:tewi:size=8
-!URxvt.font: xft:xos4 Terminus:size=10
-URxvt.font: xft:xos4 Terminus:pixelsize=14
+! use mincho=serif because it is more readable as bitmap
+! (but use Noto Sans because sans-serif for Noto is larger/more readable)
+URxvt.font: xft:xos4 Terminus:size=10,\
+            xft:Sazanami Mincho:size=10,\
+            xft:Noto Sans CJK JP:size=10
+!URxvt.font: xft:Inconsolata:size=10,\
+!URxvt.font: xft:DejaVu Sans Mono:size=9
+!URxvt.font: xft:lucy tewi:size=14
 !URxvt.italicFont: xft:DejaVu Sans Mono:size=10:italic
 !URxvt.boldItalicFont: xft:DejaVu Sans Mono:size=10:bold:italic
 !! }}}
 
-!! URxvt {{{
-! Font size keybinds
-URxvt.keysym.C-minus: command:\033]710;xft:xos4 Terminus:pixelsize=14\007
-URxvt.keysym.C-equal: command:\033]710;xft:xos4 Terminus:pixelsize=22\007
-URxvt.keysym.C-plus:  command:\033]710;xft:xos4 Terminus:pixelsize=32\007
-
-! Turn off scrollbar
+! turn off scrollbar
 URxvt.scrollBar: false
 
-! Hide mouse pointer if over window and either typing or not moved for ~2 secs
-URxvt.pointerBlank: true
-
-! On audible bell, flash the screen quickly.
-! I do not like this. Cannot think of a reason I would use it (no apostrophes
-! ROFL).
-!URxvt.visualBell: true
-
-! Set window urgency hint (flash/turn red/something obvious) on audible bell
-! (ASCII char 7)
-! NOTE: if a program is configured to do a 'visual' bell, this will not work
-URxvt.urgentOnBell: true
-
-! Clickable URLs
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: /usr/bin/firefox
-URxvt.matcher.button: 1
-
-! Make borderless (not guaranteed to work -- only asks the window manager)
+! make borderless (not guaranteed to work -- only asks the window manager)
 !URxvt.borderLess: true
 
-! Native transparency
+! native transparency (is good enough, even preferred for my strange use case)
 URxvt.transparent: true
 ! 0 to 99 darkens, 101 to 200 lightens
 ! if not specified, 100 (no change)
 !URxvt.shading: 15
 
-! True transparency
+! true transparency
 !URxvt.depth: 32
 !URxvt.background: rgba:0000/0000/0000/cccc
+!! Appearance }}}
 
-!!! Colourschemes {{{
-!!!! Linux console {{{
+!! Keybinds {{{
+! Font size keybinds
+! Disabled: with font-size extension, use <C-+>, <C-->, <C-0>
+!URxvt.keysym.C-minus: command:\033]710;xft:xos4 Terminus:pixelsize=14\007
+!URxvt.keysym.C-equal: command:\033]710;xft:xos4 Terminus:pixelsize=22\007
+!URxvt.keysym.C-plus:  command:\033]710;xft:xos4 Terminus:pixelsize=32\007
+!! Keybinds }}}
+
+!! Behaviour {{{
+! hide mouse pointer if over window and either typing or not moved for ~2 secs
+URxvt.pointerBlank: true
+
+! set window urgency hint (flash/turn red/something obvious) on audible bell
+! (ASCII char 7)
+! NOTE: if a program is configured to do a 'visual' bell, this will not work
+URxvt.urgentOnBell: true
+
+! clickable URLs (default, matcher)
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+!! Behaviour }}}
+
+!! Colourschemes {{{
+!! Linux console {{{
 
 ! background colour
 URxvt.background:  #000000
@@ -91,7 +100,7 @@ URxvt.color14:      #55FFFF
 URxvt.color7:       #AAAAAA
 URxvt.color15:      #FFFFFF
 !!! }}}
-!!!! Zenburn (WIP) {{{
+!! Zenburn (WIP) {{{
 !TODO
 
 ! background colour
@@ -132,7 +141,7 @@ URxvt.color15:      #FFFFFF
 !URxvt.color7:      #dcdccc
 !URxvt.color15:     #ffffff
 !!! }}}
-!!!! Solarized {{{
+!! Solarized {{{
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
