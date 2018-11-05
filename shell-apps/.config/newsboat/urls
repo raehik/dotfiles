@@ -1,0 +1,40 @@
+# vim: set ft=conf
+
+# software
+https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml
+http://feeds.feedburner.com/codinghorror?format=xml
+http://hackerpublicradio.org/hpr_ogg_rss.php
+#http://feeds.feedburner.com/linuxjournalcom?format=xml
+#http://faif.us/feeds/cast-ogg/
+#http://feeds.feedburner.com/TheLinuxLinkTechShowOgg-vorbisFeed
+#http://feeds.feedburner.com/se-radio?format=xml
+#http://inconsolation.wordpress.com/feed/atom/
+#http://kmandla.wordpress.com/feed/
+
+# podcasts:ja
+http://gdgdgame.seesaa.net/index20.rdf
+http://marimoeo.seesaa.net/index20.rdf
+
+# webcomics
+http://www.peppercarrot.com/feed/en/rss
+http://www.ma3comic.com/comic.rss
+http://www.stickydillybuns.com/comic.rss
+#http://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95
+
+# brain-y
+http://slatestarcodex.com/feed/
+
+# write-y
+#https://bookwitch.wordpress.com/feed/
+
+# lang:ja
+#http://www.alljapaneseallthetime.com/blog/feed
+
+# music:ja
+#https://kafkafuura.wordpress.com/feed/
+
+# gaming
+#https://www.elitedangerous.com/en/news/galnet/rss
+
+# fun
+#http://xkcd.com/atom.xml

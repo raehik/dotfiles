@@ -1,0 +1,18 @@
+# ??? TODO
+always-display-description true
+
+# move cache file to ~/.cache
+#cache-file "~/.cache/newsbeuter-cache.db"
+
+# reload feeds on startup
+auto-reload yes
+
+browser firefox
+
+cleanup-on-quit yes
+download-retries 10
+download-timeout 20
+refresh-on-startup yes
+reload-time 10
+download-path "~/media/rss"
+max-downloads 2
