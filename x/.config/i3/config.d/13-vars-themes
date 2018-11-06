@@ -1,0 +1,11 @@
+# monitor themes (duplicates allowed if your setup is smaller)
+set $mon_primary    DP-1-1
+set $mon_secondary  DP-1-2
+set $mon_tertiary   eDP-1
+
+# workspace themes (labelled+numbered)
+set $ws_text    1:txt
+set $ws_www     2:www
+set $ws_comms   3:eml
+set $ws_media   4:med
+set $ws_cal     5:cal

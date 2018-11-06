@@ -1,0 +1,9 @@
+# set i3 config dir for includes
+set $conf_dir ~/.config/i3
+
+# for exec-ing things that don't show windows, use --no-startup-id so we don't
+# get the hourglass pointer for 60 secs
+set $exec_quiet exec --no-startup-id
+
+# this doesn't work so we expand (dong) manually: set $i3_msg $exec_quiet i3-msg
+set $i3_msg exec --no-startup-id i3-msg

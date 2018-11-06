@@ -1,21 +1,38 @@
+# i3 config.
+#
+# i3's variables aren't particularly great, e.g. you can't set a variable to a
+# variable, quoting etc. is really weird and generally you can't trust them.
+#
+# Note: For class strings, use `xprop`.
+
+## Local variables {{{
 # set i3 config dir for includes
 set $conf_dir ~/.config/i3
+
+# modifiers (Mod4 = Win, Mod1 = Alt)
+set $mod Mod4
+set $alt Mod1
 
 # for exec-ing things that don't show windows, use --no-startup-id so we don't
 # get the hourglass pointer for 60 secs
 set $exec_quiet exec --no-startup-id
 
-# this doesn't work so we expand (dong) manually: set $i3_msg $exec_quiet i3-msg
+# v - this does NOT work! - v
+#set $i3_msg $exec_quiet i3-msg
 set $i3_msg exec --no-startup-id i3-msg
-# modifiers (Mod4 = Win, Mod1 = Alt)
-set $mod Mod4
-set $alt Mod1
 
-# direction keys (Vim qwerty)
-set $left   h
-set $down   j
-set $up     k
-set $right  l
+set $mon_primary    eDP1
+set $mon_secondary  VGA1
+
+# assign numbers & labels to workspace themes
+set $ws_text    1:text
+set $ws_www     2:www
+set $ws_comms   3:comms
+set $ws_media   4:media
+set $ws_cal     5:cal
+
+set $font xos4 Terminus 10
+
 # generic names for preferred programs
 set $terminal       termite
 set $terminal_class termite
@@ -27,6 +44,7 @@ set $editor_class   Emacs
 
 set $browser        firefox
 set $browser_class  Firefox
+set $browser_alt    chromium
 
 set $mail           claws-mail
 set $calendar       evolution
@@ -34,51 +52,11 @@ set $calendar       evolution
 set $term_irc       weechat
 set $term_music     mpn
 set $term_news      newsboat
-# monitor themes (duplicates allowed if your setup is smaller)
-set $mon_primary    DP-1-1
-set $mon_secondary  DP-1-2
-set $mon_tertiary   eDP-1
+## }}}
 
-# workspace themes (labelled+numbered)
-set $ws_text    1:txt
-set $ws_www     2:www
-set $ws_comms   3:eml
-set $ws_media   4:med
-set $ws_cal     5:cal
-# fonts
-set $font_main  Terminus 10
-# your average resize mode
-set $mode_resize "resize"
-mode $mode_resize {
-    # grow/shrink (from top-left i.e. down, right = grow)
-    bindsym $left   resize  shrink  width   10px
-    bindsym $down   resize  grow    height  10px
-    bindsym $up     resize  shrink  height  10px
-    bindsym $right  resize  grow    width   10px
-
-    # arrow keys are legal too
-    bindsym Left    resize  shrink  width   10px
-    bindsym Down    resize  grow    height  10px
-    bindsym Up      resize  shrink  height  10px
-    bindsym Right 	resize  grow    width   10px
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode $mode_resize
-
-# no-swallow mode for using in virtual machines etc.
-set $mode_no_swallow "no-swallow - $mod+Shift+Esc to exit"
-mode $mode_no_swallow {
-    # only one keybind: return to normal
-    bindsym $mod+Shift+Escape mode "default"
-}
-bindsym $mod+Shift+Escape mode $mode_no_swallow
-# TODO
-
+## Appearance {{{
 # set font for window titles, bar (unless specified in bar {} block) etc.
-font pango:$font_main
+font pango:$font
 
 ## Window decorations, colours {{{
 # disable titlebar (personally not suggested because some titles can be helpful)
@@ -114,29 +92,47 @@ client.unfocused        $clr_unfoc_border $clr_unfoc_bg $clr_unfoc_text "#292d2e
 client.urgent           "#2f343a" "#900000" $clr_foc_text "#900000"
 client.placeholder      "#000000" "#0c0c0c" $clr_foc_text "#000000"
 ## }}}
-# enable back and forth (hitting the bindsym for your current workspace will
-# switch you to your previous workspace)
-#workspace_auto_back_and_forth yes
-
-# set default output (monitor) for each workspace
-# looks like workspace number doesn't work here :/
-workspace $ws_text output $mon_primary
-workspace $ws_www output $mon_secondary
-workspace $ws_comms output $mon_tertiary
-workspace $ws_media output $mon_tertiary
-workspace $ws_cal output $mon_tertiary
-
-## Auto-float program assigns {{{
-# pavucontrol is better floating
-for_window [class="Pavucontrol"] floating enable
-
-# make Steam float by default (so that chat windows aren't annoying)
-for_window [class="Steam"] floating enable
 ## }}}
+
+## Modes {{{
+# keybinds may be set elsewhere (depends on the mode)
+# resize mode (can also use $mod + right/left click)
+set $mode_resize "resize"
+mode $mode_resize {
+    # grow/shrink (from top-left i.e. down, right = grow)
+    # (shifted Vim keys)
+    bindsym j         resize shrink width  10 px or 10 ppt
+    bindsym k         resize grow   height 10 px or 10 ppt
+    bindsym l         resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow   width  10 px or 10 ppt
+
+    # grow/shrink (from top-left i.e. down, right = grow)
+    # (arrow keys)
+    bindsym Left  resize shrink width  10 px or 10 ppt
+    bindsym Down  resize grow   height 10 px or 10 ppt
+    bindsym Up    resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow   width  10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# no-swallow mode for (Vim in) virtual machines etc.
+set $mode_no_swallow "no-swallow - $mod+Shift+Esc to exit"
+mode $mode_no_swallow {
+    # only one keybind: return to normal
+    bindsym $mod+Shift+Escape mode "default"
+}
+bindsym $mod+Shift+Escape mode $mode_no_swallow
+## }}}
+
+## Keybinds {{{
 ## Programs {{{
 # basic
 bindsym $mod+Return             exec $terminal
 bindsym $mod+Shift+Return       exec $browser
+bindsym $mod+$alt+Shift+Return  exec $browser_alt
 bindsym $mod+d                  exec $launcher
 
 # shortcuts
@@ -184,38 +180,38 @@ bindsym $mod+x move workspace to output right
 # drag floating windows with $mod+mouse
 floating_modifier $mod
 
-# change focus window
-bindsym $mod+$left  focus left
-bindsym $mod+$down  focus down
-bindsym $mod+$up    focus up
-bindsym $mod+$right focus right
+# change focus window (shifted Vim keys)
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
 # change focus window (arrow keys)
-bindsym $mod+Left   focus left
-bindsym $mod+Down   focus down
-bindsym $mod+Up     focus up
-bindsym $mod+Right  focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # change focus window to latest urgent window
 bindsym $mod+u [urgent=latest] focus
 
-# move focused window
-bindsym $mod+Shift+$left    move left
-bindsym $mod+Shift+$down    move down
-bindsym $mod+Shift+$up      move up
-bindsym $mod+Shift+$right   move right
+# move focused window (shifted Vim keys)
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
 # move focused window (arrow keys)
-bindsym $mod+Shift+Left     move left
-bindsym $mod+Shift+Down     move down
-bindsym $mod+Shift+Up       move up
-bindsym $mod+Shift+Right    move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # move floating window to centre of monitor
 bindsym $mod+Shift+c move position center
 
 # set to split horizontal, vertical
-bindsym $mod+b split h
+bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -249,13 +245,18 @@ bindsym $mod+Shift+q kill
 ## }}}
 
 ## i3 {{{
-# reload i3 config
-#bindsym $mod+Shift+r reload
-bindsym $mod+Shift+r $exec_quiet cat $conf_dir/config.d/* > $conf_dir/config; reload
+# reload i3 config file (i.e. this file)
+bindsym $mod+Shift+r reload
+
+# restart i3 in-place (preserves layout & session -- can be used to upgrade i3)
+bindsym $mod+Control+Shift+r restart
 
 # exit i3 (and X too)
 bindsym $mod+Shift+e exit
 ## }}}
+
+# mode keybinds
+bindsym $mod+r mode $mode_resize
 
 ## Multimedia {{{
 # set i3status full refresh command (only way)
@@ -321,6 +322,54 @@ bindsym $mod+Shift+Delete $exec_quiet "poweroff"
 
 # call simple 2 monitor all-workspace-swap script
 bindsym $mod+Shift+x $exec_quiet "outswap"
+## }}}
+
+## Behaviour {{{
+# enable back and forth (hitting the bindsym for your current workspace will
+# switch you to your previous workspace)
+#workspace_auto_back_and_forth yes
+
+# set default output (monitor) for each workspace
+# looks like workspace number doesn't work here :/
+workspace $ws_text output $mon_primary
+workspace $ws_www output $mon_primary
+workspace $ws_comms output $mon_secondary
+workspace $ws_media output $mon_secondary
+workspace $ws_cal output $mon_secondary
+
+## Automatic window assigns {{{
+# pavucontrol is better floating
+for_window [class="Pavucontrol"] floating enable
+
+# make Steam float by default (so that chat windows aren't annoying)
+for_window [class="Steam"] floating enable
+## }}}
+## }}}
+
+## Bar {{{
+bar {
+    # use i3blocks
+    status_command i3blocks
+
+    # system tray on primary monitor
+    tray_output primary
+
+    # set default statusline colour
+    colors {
+        background "#000000"
+        statusline $clr_foc_text
+        #separator "#666666"
+
+        # same colors as set & used for window titles previously
+        focused_workspace $clr_foc_border $clr_foc_bg $clr_foc_text
+        active_workspace $clr_inactive_border $clr_inactive_bg $clr_inactive_text
+        inactive_workspace $clr_unfoc_border $clr_unfoc_bg $clr_unfoc_text
+        #urgent_workspace "#2f343a" "#900000" "#ffffff"
+    }
+}
+## }}}
+
+## Autostarting {{{
 ### Applications {{{
 # Things to remember:
 #
@@ -334,17 +383,17 @@ bindsym $mod+Shift+x $exec_quiet "outswap"
 for_window [title="^scratch$"] move scratchpad
 exec $terminal --title "scratch"
 
-assign [class="$editor_class"] $ws_text
+assign [class="$editor_class"] number $ws_text
 exec $editor
 
-assign [class="$browser_class"] $ws_www
+assign [class="$browser_class"] number $ws_www
 exec $browser
 
-#$i3_msg 'workspace number $ws_comms; exec $mail'
+$i3_msg 'workspace number $ws_comms; exec $mail'
 $i3_msg 'workspace number $ws_comms; exec $terminal --title "irc" -e $term_irc'
-#$i3_msg 'workspace number $ws_media; exec $terminal --title "music" -e $term_music'
-#$i3_msg 'workspace number $ws_media; exec $terminal --title "news" -e $term_news'
-#$i3_msg 'workspace number $ws_cal; exec $calendar'
+$i3_msg 'workspace number $ws_media; exec $terminal --title "music" -e $term_music'
+$i3_msg 'workspace number $ws_media; exec $terminal --title "news" -e $term_news'
+$i3_msg 'workspace number $ws_cal; exec $calendar'
 ### }}}
 
 ### Layouts {{{
@@ -355,32 +404,11 @@ $i3_msg 'workspace number $ws_comms; exec $terminal --title "irc" -e $term_irc'
 # Keep in mind that the last workspace to have a layout appended to it
 # will probably be the active one on startup.
 #
-#$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
-#$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
+$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
+$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
 
 # try our best to make a specific workspace active on startup
 $i3_msg 'workspace number $ws_text'
 
 ### }}}
-# vim: ft=conf
-bar {
-    # use i3blocks
-    # REQ: i3blocks
-    status_command i3blocks
-
-    # system tray on primary monitor
-    tray_output primary
-
-    # set default statusline colour
-    colors {
-        background "#000000"
-        statusline $clr_foc_text
-        #separator "#666666"
-
-        # same colors as set & used for window titles previously
-        focused_workspace   $clr_foc_border         $clr_foc_bg         $clr_foc_text
-        active_workspace    $clr_inactive_border    $clr_inactive_bg    $clr_inactive_text
-        inactive_workspace  $clr_unfoc_border       $clr_unfoc_bg       $clr_unfoc_text
-       #urgent_workspace    "#2f343a"               "#900000"           "#ffffff"
-    }
-}
+## }}}

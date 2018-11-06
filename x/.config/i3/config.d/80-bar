@@ -1,0 +1,22 @@
+# vim: ft=conf
+bar {
+    # use i3blocks
+    # REQ: i3blocks
+    status_command i3blocks
+
+    # system tray on primary monitor
+    tray_output primary
+
+    # set default statusline colour
+    colors {
+        background "#000000"
+        statusline $clr_foc_text
+        #separator "#666666"
+
+        # same colors as set & used for window titles previously
+        focused_workspace   $clr_foc_border         $clr_foc_bg         $clr_foc_text
+        active_workspace    $clr_inactive_border    $clr_inactive_bg    $clr_inactive_text
+        inactive_workspace  $clr_unfoc_border       $clr_unfoc_bg       $clr_unfoc_text
+       #urgent_workspace    "#2f343a"               "#900000"           "#ffffff"
+    }
+}

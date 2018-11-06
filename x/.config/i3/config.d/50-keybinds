@@ -1,0 +1,188 @@
+## Programs {{{
+# basic
+bindsym $mod+Return             exec $terminal
+bindsym $mod+Shift+Return       exec $browser
+bindsym $mod+d                  exec $launcher
+
+# shortcuts
+bindsym $mod+Shift+a exec anki
+## }}}
+
+## Workspaces {{{
+# `workspace number` refers to the workspace *beginning* with that number (it
+# can be more descriptive)
+
+# basic moving to, moving windows to
+bindsym $mod+1 workspace number $ws_text
+bindsym $mod+2 workspace number $ws_www
+bindsym $mod+3 workspace number $ws_comms
+bindsym $mod+4 workspace number $ws_media
+bindsym $mod+5 workspace number $ws_cal
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number $ws_text
+bindsym $mod+Shift+2 move container to workspace number $ws_www
+bindsym $mod+Shift+3 move container to workspace number $ws_comms
+bindsym $mod+Shift+4 move container to workspace number $ws_media
+bindsym $mod+Shift+5 move container to workspace number $ws_cal
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# switch to previous workspace
+bindsym $mod+z workspace back_and_forth
+
+# move focused container to previous workspace
+bindsym $mod+Shift+z move container to workspace back_and_forth
+
+# move workspace to another output (rolls over, so with 2 outputs=always swap)
+bindsym $mod+x move workspace to output right
+### }}}
+
+## Windows {{{
+# drag floating windows with $mod+mouse
+floating_modifier $mod
+
+# change focus window
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# change focus window (arrow keys)
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# change focus window to latest urgent window
+bindsym $mod+u [urgent=latest] focus
+
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
+
+# move focused window (arrow keys)
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# move floating window to centre of monitor
+bindsym $mod+Shift+c move position center
+
+# set to split horizontal, vertical
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows on workspace
+bindsym $mod+space focus mode_toggle
+
+# make current window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# show first/next scratchpad window
+bindsym $mod+minus scratchpad show
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# kill focused window
+bindsym $mod+Shift+q kill
+## }}}
+
+## i3 {{{
+# reload i3 config
+#bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r $exec_quiet cat $conf_dir/config.d/* > $conf_dir/config; reload
+
+# exit i3 (and X too)
+bindsym $mod+Shift+e exit
+## }}}
+
+## Multimedia {{{
+# set i3status full refresh command (only way)
+#set $refresh killall -USR1 i3status
+
+# set i3blocks refresh commands
+set $refresh_mpd pkill -RTMIN+10 i3blocks
+set $refresh_vol pkill -RTMIN+11 i3blocks
+
+# volume multimedia keys (ALSA)
+#bindsym XF86AudioRaiseVolume $exec_quiet "amixer -M set Master 1dB+ && $refresh"
+#bindsym XF86AudioLowerVolume $exec_quiet "amixer -M set Master 1dB- && $refresh"
+#bindsym XF86AudioMute $exec_quiet "amixer set Master toggle && $refresh"
+
+# volume multimedia keys (PulseAudio)
+bindsym XF86AudioRaiseVolume $exec_quiet "amixer set Master 2%+ && $refresh_vol"
+bindsym XF86AudioLowerVolume $exec_quiet "amixer set Master 2%- && $refresh_vol"
+bindsym XF86AudioMute $exec_quiet "amixer set Master toggle && $refresh_vol"
+
+# music player keys (MPD)
+# with special multimedia keys, and extra binds for keyboards missing them
+bindsym $mod+XF86AudioRaiseVolume $exec_quiet "mpc volume +2 && $refresh_vol"
+bindsym $mod+XF86AudioLowerVolume $exec_quiet "mpc volume -2 && $refresh_vol"
+bindsym XF86AudioPlay      $exec_quiet "mpc toggle && $refresh_mpd"
+bindsym XF86AudioStop      $exec_quiet "mpc stop   && $refresh_mpd"
+bindsym XF86AudioPrev      $exec_quiet "mpc prev   && $refresh_mpd"
+bindsym XF86AudioNext      $exec_quiet "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioPlay $exec_quiet "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioNext       $exec_quiet "mpd-insert-best"
+bindsym $mod+Shift+XF86AudioPlay $exec_quiet "mpd-insert-best"
+## }}}
+
+## Screenshots {{{
+# set shot options & directory
+set $shot maim -n -b 2 $HOME/media/screenshots/$(date +%F_%T_shot).png
+
+# capture currently focused window
+bindsym Print $exec_quiet $shot -i $(xdotool getactivewindow)
+
+# capture a selection
+bindsym Ctrl+Print $exec_quiet $shot -s
+
+# capture all screens together
+bindsym Shift+Print $exec_quiet $shot
+
+# custom shots
+bindsym $mod+Print $exec_quiet shot-cs-manual
+## }}}
+
+### Computer {{{
+# lock computer
+bindsym XF86Display $exec_quiet "lock"
+
+# lock computer & standby
+bindsym $mod+F1 $exec_quiet "lockstb"
+
+# turn off screen
+bindsym $mod+F2 $exec_quiet "sleep 0.2 && xset dpms force off"
+
+# turn off computer
+bindsym $mod+Shift+Delete $exec_quiet "poweroff"
+### }}}
+
+# call simple 2 monitor all-workspace-swap script
+bindsym $mod+Shift+x $exec_quiet "outswap"
