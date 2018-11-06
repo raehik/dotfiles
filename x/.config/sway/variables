@@ -1,0 +1,47 @@
+# modifiers (Mod4 = Win, Mod1 = Alt)
+set $mod Mod4
+set $alt Mod1
+
+# direction keys (Vim qwerty)
+set $left h
+set $down j
+set $up k
+set $right l
+
+# generic names for preferred programs
+set $terminal       termite
+set $terminal_class termite
+
+set $launcher       dmenu_run
+
+set $editor         emacs
+set $editor_class   Emacs
+
+set $browser        firefox
+set $browser_class  Firefox
+set $browser_alt    chromium
+
+set $mail           claws-mail
+set $calendar       evolution
+
+set $term_irc       weechat
+set $term_music     mpn
+set $term_news      newsboat
+
+set $launcher dmenu_path | dmenu | xargs swaymsg exec
+
+# monitors
+set $mon_primary    eDP1
+set $mon_secondary  VGA1
+
+# assign numbers & labels to workspace themes
+#set $ws_text    1:text
+#set $ws_www     2:www
+#set $ws_comms   3:comms
+#set $ws_media   4:media
+#set $ws_cal     5:cal
+set $ws_text    1
+set $ws_www     2
+set $ws_comms   3
+set $ws_media   4
+set $ws_cal     5
