@@ -1,0 +1,12 @@
+# set font for window titles, bar (unless specified in bar {} block) etc.
+font pango:$font_main
+
+# disable titlebar (personally, I like titles, at least for now)
+#new_window 1pixel
+
+# class                 border              background      text                indicator
+client.focused          $c_border_foc       $c_bg_foc       $c_text_foc         "#4477aa"
+client.focused_inactive $c_border_inactive  $c_bg_inactive  $c_text_inactive    "#333333"
+client.unfocused        $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc       "#292d2e"
+client.urgent           "#2f343a"           "#900000"       $c_text_foc         "#900000"
+client.placeholder      "#000000"           "#0c0c0c"       $c_text_foc         "#000000"

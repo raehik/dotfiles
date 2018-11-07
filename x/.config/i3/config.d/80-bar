@@ -14,9 +14,9 @@ bar {
         #separator "#666666"
 
         # same colors as set & used for window titles previously
-        focused_workspace   $clr_foc_border         $clr_foc_bg         $clr_foc_text
-        active_workspace    $clr_inactive_border    $clr_inactive_bg    $clr_inactive_text
-        inactive_workspace  $clr_unfoc_border       $clr_unfoc_bg       $clr_unfoc_text
-       #urgent_workspace    "#2f343a"               "#900000"           "#ffffff"
+        focused_workspace   $c_border_foc       $c_bg_foc       $c_text_foc
+        active_workspace    $c_border_inactive  $c_bg_inactive  $c_text_inactive
+        inactive_workspace  $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc
+       #urgent_workspace    "#2f343a"           "#900000"       "#ffffff"
     }
 }

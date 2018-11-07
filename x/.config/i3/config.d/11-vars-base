@@ -1,9 +1,0 @@
-# modifiers (Mod4 = Win, Mod1 = Alt)
-set $mod Mod4
-set $alt Mod1
-
-# direction keys (Vim qwerty)
-set $left   h
-set $down   j
-set $up     k
-set $right  l

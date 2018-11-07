@@ -1,3 +1,13 @@
+# modifiers (Mod4 = Win, Mod1 = Alt)
+set $mod Mod4
+set $alt Mod1
+
+# direction keys (Vim qwerty)
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
 # monitor themes (duplicates allowed if your setup is smaller)
 set $mon_primary    DP-1-1
 set $mon_secondary  DP-1-2
