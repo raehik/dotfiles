@@ -1,5 +1,9 @@
+# set base identity, then potentially override based on filesystem location
 [include]
-    path = default-identity
+    path = identity-default
+[includeIf "gitdir:~/work/"]
+    path = identity-work
+
 [core]
     quotepath = false
     autocrlf = false
