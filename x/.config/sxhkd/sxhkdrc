@@ -9,6 +9,6 @@
 #
 
 # monitor brightness
-# REQ: xbacklight
+# REQ: haikarainen/light
 XF86MonBrightness{Up,Down}
-    xbacklight -time 0 -steps 1 {-inc,-dec} 10
+    light {-A,-U} 10

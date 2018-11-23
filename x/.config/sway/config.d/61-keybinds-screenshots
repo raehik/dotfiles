@@ -1,0 +1,10 @@
+# set programs, options, outputs
+set $shot_img $HOME/media/screenshots/$(date +%F_%T_shot).png
+set $shotter grim
+set $shot_selector slurp
+
+# capture all screens together
+bindsym $mod+Print exec $shotter $shot_img
+
+# capture a selection
+bindsym $mod+Ctrl+Print exec $shot_selector | $shotter -g - $shot_img

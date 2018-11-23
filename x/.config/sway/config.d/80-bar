@@ -1,0 +1,26 @@
+# vim: ft=conf
+bar {
+    # use i3blocks
+    # REQ: i3blocks
+    status_command i3blocks
+
+    # place at top of monitor(s)
+    position top
+
+    # system tray on primary monitor
+    # TODO: 2018-11-23: tray not available in sway
+    #tray_output primary
+
+    # set default statusline colour
+    colors {
+        background "#000000"
+        statusline $c_text_foc
+        #separator "#666666"
+
+        # same colors as set & used for window titles previously
+        focused_workspace   $c_border_foc       $c_bg_foc       $c_text_foc
+        active_workspace    $c_border_inactive  $c_bg_inactive  $c_text_inactive
+        inactive_workspace  $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc
+       #urgent_workspace    "#2f343a"           "#900000"       "#ffffff"
+    }
+}

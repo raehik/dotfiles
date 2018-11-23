@@ -1,0 +1,19 @@
+# generic names for preferred programs
+set $terminal       termite
+set $terminal_class termite
+
+set $launcher dmenu_path | dmenu | xargs swaymsg exec
+
+set $editor         emacs
+set $editor_class   Emacs
+
+set $browser        firefox
+set $browser_class  Firefox
+set $browser_alt    chromium
+
+set $mail           claws-mail
+set $calendar       evolution
+
+set $term_irc       weechat
+set $term_music     mpn
+set $term_news      newsboat

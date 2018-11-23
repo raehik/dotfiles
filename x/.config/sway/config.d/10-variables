@@ -1,0 +1,21 @@
+# modifiers (Mod4 = Win, Mod1 = Alt)
+set $mod Mod4
+set $alt Mod1
+
+# direction keys (Vim qwerty)
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# monitor themes (duplicates allowed if your setup is smaller)
+set $mon_primary    eDP1
+set $mon_secondary  VGA1
+set $mon_tertiary   eDP1
+
+# workspace themes (labelled+numbered)
+set $ws_text    1:txt
+set $ws_www     2:www
+set $ws_comms   3:eml
+set $ws_media   4:med
+set $ws_cal     5:cal

@@ -1,0 +1,20 @@
+# set i3blocks refresh commands
+set $refresh_mpd pkill -RTMIN+10 i3blocks
+set $refresh_vol pkill -RTMIN+11 i3blocks
+
+# volume multimedia keys (PulseAudio)
+bindsym XF86AudioRaiseVolume exec "amixer set Master 2%+ && $refresh_vol"
+bindsym XF86AudioLowerVolume exec "amixer set Master 2%- && $refresh_vol"
+bindsym XF86AudioMute exec "amixer set Master toggle && $refresh_vol"
+
+# music player keys (MPD)
+# with special multimedia keys, and extra binds for keyboards missing them
+bindsym $mod+XF86AudioRaiseVolume exec "mpc volume +2 && $refresh_vol"
+bindsym $mod+XF86AudioLowerVolume exec "mpc volume -2 && $refresh_vol"
+bindsym XF86AudioPlay      exec "mpc toggle && $refresh_mpd"
+bindsym XF86AudioStop      exec "mpc stop   && $refresh_mpd"
+bindsym XF86AudioPrev      exec "mpc prev   && $refresh_mpd"
+bindsym XF86AudioNext      exec "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioPlay exec "mpc next   && $refresh_mpd"
+bindsym $mod+XF86AudioNext       exec "mpd-insert-best"
+bindsym $mod+Shift+XF86AudioPlay exec "mpd-insert-best"

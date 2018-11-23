@@ -1,0 +1,42 @@
+# fonts
+set $font_main  xos4 Terminus 10
+
+## Default colours {{{
+# class                 border    backgrnd. text      indicator
+#client.focused          "#4c7899" "#285577" "#ffffff" "#2e9ef4"
+#client.focused_inactive "#333333" "#5f676a" "#ffffff" "#484e50"
+#client.unfocused        "#333333" "#222222" "#888888" "#292d2e"
+#client.urgent           "#2f343a" "#900000" "#ffffff" "#900000"
+#client.placeholder      "#000000" "#0c0c0c" "#ffffff" "#000000"
+## }}}
+
+# theme colours (applied to windows etc.)
+# (quotes not required, just for editors (Vim) to understand they're strings)
+
+## Theme: Default {{{
+#set $c_text_foc         "#ffffff"
+#set $c_text_unfoc       "#888888"
+#set $c_text_inactive    "#ffffff"
+#
+#set $c_border_foc       "#4c7899"
+#set $c_border_unfoc     "#333333"
+#set $c_border_inactive  "#333333"
+#
+#set $c_bg_foc       "#285577"
+#set $c_bg_unfoc     "#222222"
+#set $c_bg_inactive  "#5f676a"
+## }}}
+
+## Theme: dim i3 (raehik) {{{
+set $c_text_foc         #dddddd
+set $c_text_unfoc       #777777
+set $c_text_inactive    #cccccc
+
+set $c_border_foc       #4c6088
+set $c_border_unfoc     #242424
+set $c_border_inactive  #444444
+
+set $c_bg_foc           #2a3d5d
+set $c_bg_unfoc         #1a1a1a
+set $c_bg_inactive      #353535
+## }}}
