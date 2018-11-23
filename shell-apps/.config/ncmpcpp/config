@@ -548,7 +548,7 @@ autocenter_mode = yes
 screen_switcher_mode = previous
 
 # Place lyrics outside the music directory
-lyrics_directory = ~/media/music-etc/lyrics
+lyrics_directory = ~/proj/music/lyrics
 
 # Vim master race, as usual
 external_editor = vim
@@ -557,7 +557,7 @@ external_editor = vim
 follow_now_playing_lyrics = yes
 
 # Music library location
-mpd_music_dir = ~/media/music
+mpd_music_dir = ~/proj/music/library-main
 
 # Use alternative UI (song name/artist/album centred at top)
 user_interface = alternative
