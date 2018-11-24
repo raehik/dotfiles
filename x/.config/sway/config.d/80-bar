@@ -4,8 +4,8 @@ bar {
     # REQ: i3blocks
     status_command i3blocks
 
-    # place at top of monitor(s)
-    position top
+    # placement on monitor(s)
+    position bottom
 
     # system tray on primary monitor
     # TODO: 2018-11-23: tray not available in sway

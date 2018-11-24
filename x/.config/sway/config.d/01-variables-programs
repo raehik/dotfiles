@@ -1,3 +1,7 @@
+# internal-ish programs
+set $lock       swaylock -c 000000
+set $lock_fork  swaylock -c 000000 -f
+
 # generic names for preferred programs
 set $terminal       termite
 set $terminal_class termite

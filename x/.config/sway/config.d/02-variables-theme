@@ -1,5 +1,8 @@
 # fonts
-set $font_main  xos4 Terminus 10
+set $font_main xos4 Terminus 10
+
+# backgrounds
+set $bg_main ~/.assets/backgrounds/desktop
 
 ## Default colours {{{
 # class                 border    backgrnd. text      indicator

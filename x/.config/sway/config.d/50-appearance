@@ -1,14 +1,15 @@
 # set font for window titles, bar (unless specified in bar {} block) etc.
-font pango:$font_main
+font $font_main
 
-# disable titlebar (personally, I like titles, at least for now)
-#new_window 1pixel
+# disable titlebar & borders
+#default_border none
 
 # class                 border              background      text                indicator   child border
-client.focused          $c_border_foc       $c_bg_foc       $c_text_foc         "#4477aa"   "#4477aa"
-client.focused_inactive $c_border_inactive  $c_bg_inactive  $c_text_inactive    "#333333"   "#333333"
-client.unfocused        $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc       "#292d2e"   "#292d2e"
-client.urgent           "#2f343a"           "#900000"       $c_text_foc         "#900000"   "#900000"
+client.focused          $c_border_foc       $c_bg_foc       $c_text_foc         "#4477aa"   $c_border_foc
+client.focused_inactive $c_border_inactive  $c_bg_inactive  $c_text_inactive    "#333333"   $c_border_inactive
+client.unfocused        $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc       "#292d2e"   $c_border_unfoc
+client.urgent           "#2f343a"           "#900000"       $c_text_foc         "#900000"   "#2f343a"
 client.placeholder      "#000000"           "#0c0c0c"       $c_text_foc         "#000000"   "#000000"
 
-output * bg ~/.assets/backgrounds/desktop fill
+# default background
+output * bg $bg_main fill
