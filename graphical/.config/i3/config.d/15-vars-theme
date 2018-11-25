@@ -1,5 +1,5 @@
 # fonts
-set $font_main xos4 Terminus 10
+set $font_main pango:xos4 Terminus 10
 
 # backgrounds
 set $bg_main ~/.assets/backgrounds/desktop

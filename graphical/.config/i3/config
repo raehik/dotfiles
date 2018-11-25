@@ -47,7 +47,7 @@ set $term_irc       weechat
 set $term_music     mpn
 set $term_news      newsboat
 # fonts
-set $font_main xos4 Terminus 10
+set $font_main pango:xos4 Terminus 10
 
 # backgrounds
 set $bg_main ~/.assets/backgrounds/desktop
@@ -391,7 +391,7 @@ bar {
     # set default statusline colour
     colors {
         background "#000000"
-        statusline $clr_foc_text
+        statusline $c_text_foc
         #separator "#666666"
 
         # same colors as set & used for window titles previously
