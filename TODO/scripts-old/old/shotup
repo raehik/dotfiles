@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+# Thanks to Simon Hørup Eskildsen @
+# http://sirupsen.com/a-simple-imgur-bash-screenshot-utility/ for inspiration.
+#
+
+tmp_dir="$HOME/media/screenshots-shotup"
+tmp_filename="$(date +%s)-shotup.png"
+
+client_id="91dbed3a3c366ef"
+
+error() {
+    if [[ $2 ]]; then
+        err=$2
+    else
+        err=$2
+    fi
+    echo "error: $1 (error code $err)"
+    exit $err
+}
+
+take_shot() {
+    scrot -s "$1" || error "scrot failed" 2
+    optipng "$1"
+}
+
+upload_imgur() {
+    # TODO: uses regex to parse XML NotLikeThis
+    curl -s \
+         -H "Authorization: Client-ID $client_id" \
+         -F "image=@$1" \
+         -F "title=${1##*/}" \
+         https://api.imgur.com/3/image \
+         | perl -ne '/"link":"(.*?)"/ && print $1' \
+         | perl -pe 's/\\\//\//g' \
+         || error "uploading failed" 3
+}
+
+tmp_file=
+
+if [[ $1 ]]; then
+    # if argument provided, use it as image to upload
+    img_file="$1"
+else
+    # else take a screenshot
+    img_file="$tmp_dir/$tmp_filename"
+    take_shot "$img_file"
+fi
+
+img_link=$(upload_imgur "$img_file")
+
+xclip -selection c <<< "$img_link"
+notify-send "Screenshot uploaded to: $img_link"

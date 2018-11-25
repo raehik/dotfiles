@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Start mpd, scrobbler and ncmpcpp, and kill mpd when ncmpcpp exits.
+#
+
+mpdscribble_pidfile="$HOME/.mpdscribble/pid"
+
+mpd
+mpdscribble
+ncmpcpp
+
+# ncmpcpp exited: cleanup
+
+mpd --kill
+kill $(cat "$mpdscribble_pidfile")

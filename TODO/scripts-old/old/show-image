@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Download an image, convert it to text and display it.
+#
+
+tmpfile="/tmp/show-image-tmp"
+
+wget "$1" -O "$tmpfile" &> "/dev/null"
+img2txt -W "$(tput cols)" "$tmpfile"
+rm "$tmpfile"

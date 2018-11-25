@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+STDOUT="1"
+STDERR="2"
+
+FILENAME="${0##*/}"
+
+LOGGER="echo"
+LOG_PRE="$FILENAME"
+
+# Print usage and exit depending on given exit code.
+usage() {
+    exit_code=$1
+    # if argument was non-zero, pipe it to STDERR instead
+    if [[ $exit_code == 0 ]]; then
+        pipe=$STDOUT
+    else
+        pipe=$STDERR
+    fi
+    cat >&$pipe <<EOF
+Usage: $FILENAME [options]
+Description of the program's function (identical if you'd like).
+
+  Options:
+    -v          be verbose
+    -h          display this help message
+
+Notes about default options/arguments, things you might wanna watch out
+for, etc.
+EOF
+    exit $exit_code
+}
+
+# If verbose, log an event.
+log() {
+    # if not verbose (i.e. $VERBOSE is empty), do nothing
+    test -z $VERBOSE && return
+    $LOGGER "$LOG_PRE: $1"
+}
+
+# Log an error. If given a 2nd argument, exit with it as the exit code.
+error() {
+    $LOGGER "$LOG_PRE: error: $1"
+    if [[ $2 ]]; then
+        exit $2
+    fi
+}
+
+while getopts ":vh" opt; do
+    case $opt in
+        h) usage 0 ;;
+        v) VERBOSE=1 ;;
+        *) error "-$OPTARG is not a valid option" ; usage 1 ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+
+
+if [[ $# != 2 ]]; then
+    error "expected 2 arguments" 1
+fi
+
+
+
+shrt.py "$1" "$2" | tr -d '\n' | xsel -bi

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+convert -background black -fill '#222222' -pointsize 100 -size 1366x768 \
+        -gravity center -font DejaVu-Sans label:'(locked)' \
+        i3-lockscreen.png

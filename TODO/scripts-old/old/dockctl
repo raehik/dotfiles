@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Dock or undock from a workstation (basically just turn a monitor on or off).
+#
+
+main_output="eDP1"
+extra_output="HDMI1"
+location="--right-of"
+
+case "$1" in
+    on)
+        xrandr --output $extra_output --auto $location $main_output
+        ;;
+    off)
+        xrandr --output $extra_output --off
+        ;;
+    swap)
+        xrandr --output $main_output --auto $location $extra_output
+        ;;
+esac
+
+"$HOME/.assets/backgrounds/set-desktop-background"

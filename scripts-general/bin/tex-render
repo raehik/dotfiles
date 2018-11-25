@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+#
+# Render a Tex file.
+#
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+
+_usage="\
+Usage: $_FILENAME [options]
+Render a Tex file.
+
+  Options:
+    -v, --verbose       be verbose
+    -h, --help          display this help text and exit
+"
+
+while getopts_long :vhe opt \
+    verbose 0 \
+    help 0 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$((_VERBOSE + 1)) ;;
+        h|help) _print_usage 0 ;;
+        :) _err "$OPTLERR"; _print_usage 1 ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+if [[ $# != 1 ]]; then
+    _err "expected exactly 1 argument (got $#)" 1
+fi
+
+#renderer="pdflatex"
+#renderer_options="-shell-escape"
+
+# check ~/.latexmkrc for options
+renderer="latexmk"
+renderer_options=""
+
+build_dir="build"
+bin_dir="bin"
+
+# set build/bin directories to ./ if they don't exist
+if [[ ! -d "$build_dir" ]]; then
+    build_dir="."
+fi
+
+if [[ ! -d "$bin_dir" ]]; then
+    bin_dir="."
+fi
+
+$renderer $renderer_options -output-directory="$build_dir" "$1"
+
+if [[ "$build_dir" != "$bin_dir" ]]; then
+    mv "$build_dir"/*.pdf "$bin_dir"
+fi

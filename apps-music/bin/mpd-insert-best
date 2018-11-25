@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Insert a random song from a pre-specified playlist into MPD's
+# playlist.
+#
+# This is expected to be called as a "this is boring, switch to a good
+# song" script. I have it bound to $mod+XF86AudioNext ($mod = Win key), which
+# means Win+Fn+F12 on my laptop keyboard.
+#
+
+playlist="best"
+
+# get a list of all files (by filename) in the playlist, shuffle & take
+# first, add that to the next song
+mpc playlist -f "%file%" "$playlist" | shuf -n1 | mpc insert
+
+# play that song
+#mpc next

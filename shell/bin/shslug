@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Shell-slugify a string.
+#
+# Returns the shell-friendly equivalent of a string.
+#
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [options] STRING
+Shell-slugify a string.
+
+Returns the shell-friendly equivalent of a string.
+
+  Options:
+    -h          display this help message
+EOF
+}
+
+while getopts "h" opt; do
+    case $opt in
+        h) # display help
+            usage
+            exit 0
+    esac
+done
+
+if [[ $# == 0 ]]; then
+    echo "${0##*/}: error: no arguments given"
+    exit 1
+fi
+
+echo "$@" | \
+    sed -e "s/&/and/g"                      \
+        -e "s/[^[:alnum:][:space:]_-]//g"   \
+        -e "s/[ \t]*$//g"                   \
+        -e "s/ \+/-/g"                      \
+        -e "s/-\+/-/g"                      \
+        -e "s/\(.*\)/\L\1/g"
+      # 1. '&' -> 'and'
+      # 2. remove almost all non-alphanumeric chars
+      # 3. remove trailing whitespace
+      # 4. 1 or more ' ' -> '-'
+      # 5. 1 or more '-' -> '-'
+      # 6. to lowercase

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+remind_file="$HOME/.reminders"
+
+# date to test
+test_date="$1"
+
+if grep -E "^[0-9]{4}-[0-9]{2}-[0-9]{2}((@| AT )[0-9]{2}:[0-9]{2})?$" <<< "$test_date"; then
+    echo "Success"
+    # date matches regex; now check if it already exists in my reminders file
+
+    remind_msg="REM $test_date MSG ${@:2}"
+    if ! grep -Fxq "$remind_msg" "$remind_file"; then
+        echo "$remind_msg" >> "$remind_file"
+    fi
+else
+    exit 1
+fi

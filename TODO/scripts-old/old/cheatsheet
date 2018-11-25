@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+sheet_dir="$HOME/projects/wiki/wiki-pages"
+sheet_ext="md"
+
+bad_sheets=0
+
+for arg in "$@"; do
+    cur_sheet="$sheet_dir/${arg}.${sheet_ext}"
+    if [[ -f "$cur_sheet" ]]; then
+        cat "$cur_sheet"
+    else
+        echo "${0##*/}: error: sheet $arg doesn't exist"
+        bad_sheets=$(($bad_sheets + 1))
+    fi
+done
+
+if [[ $bad_sheets != 0 ]]; then
+    echo "${0##*/}: couldn't find $bad_sheets sheet(s)"
+fi

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# Make some figures about computer usage.
+#
+
+# Directory data files are stored in.
+data_dir="$HOME/data"
+
+command_history="$data_dir/zsh_full_history"
+term_start_history="$data_dir/zsh_start_history"
+keystroke_history="$data_dir/x11_keystrokes"
+
+num_most_common_commands=10
+
+press="1"
+release="0"
+repeat="2"
+
+most_common_commands="$(cut -d " " -f2 "$command_history" | sort -h | uniq -c | sort -hr | head -n $num_most_common_commands)"
+total_commands="$(wc -l < "$command_history")"
+
+starts="$(grep -E '^[0-9]{10,} 1$' "$term_start_history" | wc -l)"
+exits="$(grep -E '^[0-9]{10,} 0$' "$term_start_history" | wc -l)"
+# check for bad lines
+total_starts_exits="$(wc -l < "$term_start_history")"
+
+press_keystrokes="$(grep -E "^[0-9]{10,}\.[0-9]{6,} $press" "$keystroke_history")"
+release_keystrokes="$(grep -E "^[0-9]{10,}\.[0-9]{6,} $release" "$keystroke_history")"
+repeat_keystrokes="$(grep -E "^[0-9]{10,}\.[0-9]{6,} $repeat" "$keystroke_history")"
+presses="$(wc -l <<< "$press_keystrokes")"
+releases="$(wc -l <<< "$release_keystrokes")"
+repeats="$(wc -l <<< "$repeat_keystrokes")"
+keystrokes="$(wc -l < "$keystroke_history")"
+
+echo "Approx. commands run: $total_commands"
+echo "$num_most_common_commands most common commands:"
+echo "$most_common_commands"
+echo
+echo "Started: $starts"
+echo "Exited: $exits"
+echo "Total lines: $total_starts_exits"
+echo
+echo "Key presses: $presses"
+echo "Key releases: $releases"
+echo "Key repeats: $repeats"
+echo "Total keystrokes: $keystrokes"

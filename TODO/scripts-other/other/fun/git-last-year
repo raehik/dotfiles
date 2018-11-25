@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+repo_list="
+$HOME/journal
+$HOME/blog
+$HOME/wiki
+$HOME/proj/coding/scripts
+$HOME/proj/configfiles/dotfiles
+$HOME/proj/coding/programs/pkg-install
+$HOME/proj/coding/programs/mp3ctl
+$HOME/proj/coding/programs/musctl
+$HOME/proj/coding/programs/pyplater
+$HOME/proj/coding/programs/jctl"
+
+num_of_years_to_check=3
+
+print_intro_text() {
+    echo "PREVIOUSLY IN GIT HISTORY"
+    echo "========================="
+    echo
+    echo "Between $date_since and $date_before"
+    echo
+}
+
+check_repo_for_x_years() {
+    have_printed=
+    max_years_back=$2
+
+    # hop into the repo
+    cd $1
+
+    for years_back in $(seq 1 $max_years_back); do
+        cur_date_since="$(date --date="$date_since - $years_back years" +%Y-%m-%d)"
+        cur_date_before="$(date --date="$date_before - $years_back years" +%Y-%m-%d)"
+
+        cur_logs="$(git --no-pager log \
+            --since="$cur_date_since" \
+            --before="$cur_date_before" \
+            --date=short \
+            --pretty=tformat:"%cd (%h) %s")"
+        if [[ "$cur_logs" ]]; then
+            # logs weren't empty, so we have something to print
+            have_printed=true
+            echo "## $1"
+            echo "$cur_logs"
+        fi
+    done
+
+    if [[ $have_printed == true ]]; then
+        # we printed something, so print a new line to separate
+        echo
+    fi
+}
+
+# get date range
+if [[ "$1" ]]; then
+    date_since="$(date --date="$1" +%Y-%m-%d)"
+else
+    date_since="$(date --date="today" +%Y-%m-%d)"
+fi
+
+if [[ "$2" ]]; then
+    date_before="$(date --date="$2" +%Y-%m-%d)"
+else
+    date_before="$(date --date="today + 1 day" +%Y-%m-%d)"
+fi
+
+# print some intro flavour text
+print_intro_text
+
+for repo in $repo_list; do
+    check_repo_for_x_years "$repo" $num_of_years_to_check
+done

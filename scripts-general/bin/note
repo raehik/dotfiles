@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+# Write a short note.
+#
+
+REGEX_NOTE_NUM="s/.*-note-([0-9]+).md$/\1/p"
+
+journal_dir="$HOME/journal"
+template_exec="new"
+template_type="note"
+
+
+
+prev_num="$(ls "$journal_dir" | sed -En "$REGEX_NOTE_NUM" | sort -n | tail -n1)"
+next_num=$(($prev_num + 1))
+
+# go to journal
+cd "$journal_dir"
+
+# starting editing: start timer
+start_time="$(date "+%s")"
+
+note_filename="$(date "+%F")-$(shslug "Note $next_num").md"
+
+$template_exec "$template_type" "$next_num"
+
+# finished editing: end timer
+end_time="$(date "+%s")"
+
+editing_time=$(($end_time - $start_time))
+
+# do the git
+git add "$note_filename"
+git commit -m "add daily note #$next_num
+
+Approx. writing time: ${editing_time}s"
+git push

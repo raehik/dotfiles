@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Run a command completely in the background, disconnecting it entirely from the
+# terminal.
+#
+# Should work in both Bash and Zsh.
+#
+
+if [[ -z $@ ]] ; then
+    echo "error: you must provide a command to run"
+    exit 1
+fi
+
+nohup "$@" &>/dev/null &!
+exit $?

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Start up getmail and mutt.
+#
+
+# start up getmail & detach fully
+nohup getmail &> "/dev/null" &
+getmail_pid=$!
+
+# start mutt
+mutt
+
+# mutt was exited, kill getmail
+kill $getmail_pid

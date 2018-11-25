@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# Display a dynamic MOTD (not generated once).
+#
+
+print_cmd="printf --"
+
+# fortune: use all + my custom quotes
+fortune_cmd="fortune all $HOME/.assets/fortunes"
+
+indent_str="  | "
+
+colour() {
+    clr=$'\e'
+    case $1 in
+        red) clr="${clr}[0;31m" ;;
+        red_b) clr="${clr}[1;31m" ;;
+        green) clr="${clr}[0;32m" ;;
+        green_b) clr="${clr}[1;32m" ;;
+        yellow) clr="${clr}[0;33m" ;;
+        yellow_b) clr="${clr}[1;33m" ;;
+        blue) clr="${clr}[0;34m" ;;
+        blue_b) clr="${clr}[1;34m" ;;
+        purple) clr="${clr}[0;35m" ;;
+        purple_b) clr="${clr}[1;35m" ;;
+        cyan) clr="${clr}[0;36m" ;;
+        cyan_b) clr="${clr}[1;36m" ;;
+        grey) clr="${clr}[0;37m" ;;
+        white) clr="${clr}[1;37m" ;;
+        reset) clr="${clr}[0m" ;;
+        *) clr="" ;;
+    esac
+
+    $print_cmd "$clr"
+}
+
+print_with_colour() {
+    colour $1
+    $print_cmd "$2"
+    colour reset
+}
+
+print_with_colour cyan_b "$(figlet "$(source /etc/os-release; echo "$NAME")")\n"
+print_with_colour cyan "Hostname: "
+print_with_colour green "$(hostname)\n"
+
+$print_cmd "\n"
+$fortune_cmd | sed "s/^/$(colour cyan)${indent_str}$(colour yellow_b)$line/"
+
+colour reset

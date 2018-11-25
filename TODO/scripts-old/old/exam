@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+# Write a short note.
+#
+
+REGEX_NOTE_NUM="s/.*-exam-([0-9]+).*.md$/\1/p"
+
+journal_dir="$HOME/journal"
+
+
+
+prev_num="$(ls "$journal_dir" | sed -En "$REGEX_NOTE_NUM" | sort -n | tail -n1)"
+next_num=$(($prev_num + 1))
+
+# go to journal
+cd "$journal_dir"
+
+# starting editing: start timer
+start_time="$(date "+%s")"
+
+note_filename="$(date "+%F")-$(ezstring "Exam $next_num: $1").md"
+
+new-from-template.py exam "$next_num" "$1" "$2"
+
+# finished editing: end timer
+end_time="$(date "+%s")"
+
+editing_time=$(($end_time - $start_time))
+
+# do the git
+echo $note_filename
+git add "$note_filename"
+
+# edit the commit message (in case you want to cancel)
+git commit -em "add exam #$next_num $1
+
+Approx. writing time: ${editing_time}s"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# ayy lmao
+#
+
+set -e
+
+conf="/etc/systemd/logind.conf.d/disable-lid-suspend.conf"
+
+if [[ -f "$conf" ]]; then
+    sudo rm "$conf"
+    echo "${0##*/}: Suspend enabled"
+else
+    sudo sh -c "echo HandleLidSwitch=ignore > $conf"
+    echo "${0##*/}: Suspend disabled"
+fi
+
+echo
+echo "Note: you must restart to apply the change. Annoying."

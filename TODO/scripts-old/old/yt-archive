@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# Download videos from a YouTube channel.
+#
+
+# id of channel to download
+channel_id="UCkf_rgLzKlZv2_V6c3mNN2A"
+
+# youtube-dl default is 'bestvideo+bestaudio/best', but it could change later,
+# so define our wanted format here
+av_format="bestvideo+bestaudio/best"
+
+# speed limit
+dl_speed_limit="75K"
+
+# youtube-dl --download-archive option so we don't re-download videos
+dl_archive_file=".yt-dl-archive"
+
+# form the channel URL
+channel_url="https://www.youtube.com/channel/$channel_id"
+
+youtube-dl -i \
+           --rate-limit $dl_speed_limit \
+           --download-archive "$dl_archive_file" \
+           -o "%(upload_date)s-%(title)s-%(id)s.%(ext)s" \
+           --all-subs \
+           -f "$av_format" \
+           "$channel_url"

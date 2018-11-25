@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Send a torrent file to an rtorrent watch directory on a remote server.
+#
+
+port="6176"
+host="raehik@raehik.me:~/watch"
+
+if [[ $# != 1 ]]; then
+    echo "${0##*/}: error: number of arguments not equal to 1"
+    exit 1
+fi
+
+scp -P $port "$1" "$host"

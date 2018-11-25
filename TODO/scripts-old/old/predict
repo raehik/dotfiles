@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+usage() {
+    echo "Usage: \$1 = desc, \$2 = prob, \$3 = deadline, -p = private"
+}
+
+while getopts "hpdv" opt; do
+    case $opt in
+        h) # display help
+            usage
+            exit 0
+            ;;
+        p) # make prediction private
+            opts_extra+="--private "
+            ;;
+        d) # dry-run
+            opts_extra+="--dry-run "
+            ;;
+        v) # be verbose
+            opts_extra+="-v "
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+if [[ $# != 3 ]]; then
+    usage
+    exit 1
+fi
+
+pb-make.py --description "$1" \
+           --probability "$2" \
+           --deadline "$3" \
+           $opts_extra

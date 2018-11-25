@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Dock/undock from my workstation.
+#
+
+wlan_interface="wlan0"
+eth_profile="general-eth-static"
+out_main="eDP1"
+out_extra="VGA1"
+extra_loc="--right-of"
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+_LOG_PRE="dock"
+
+_usage="\
+Usage: dock [-n] [-u]
+       undock [-n]
+Dock/undock from my workstation.
+
+  Options:
+    -u, --undock        undock instead (no effect if filename is undock)
+    -n, --network       change network as well
+    -v, --verbose       be verbose
+    -h, --help          display this help text and exit\
+"
+
+while getopts_long :vhnu opt \
+    verbose 0 \
+    help 0 \
+    network 0 \
+    undock 0 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$((_VERBOSE + 1)) ;;
+        h|help) _print_usage 0 ;;
+        :) _err "$OPTLERR"; _print_usage 1 ;;
+
+        n|network) opt_net=1 ;;
+        u|undock) opt_undock=1 ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+dock_on() {
+    #xrandr --output $out_extra --auto $extra_loc $out_main --set "Broadcast RGB" "Full"
+    xrandr --output $out_extra --auto $extra_loc $out_main
+    if [[ $opt_net ]]; then
+        sudo systemctl stop netctl-auto@$wlan_interface
+        sudo netctl restart "$eth_profile"
+    fi
+}
+
+dock_off() {
+    xrandr --output $out_extra --off
+    if [[ $opt_net ]]; then
+        sudo netctl stop "$eth_profile"
+        sudo systemctl restart netctl-auto@$wlan_interface
+    fi
+}
+
+if [[ "$_FILENAME" == "dock" ]]; then
+    if [[ $opt_undock ]]; then
+        dock_off
+    else
+        dock_on
+    fi
+elif [[ "$_FILENAME" == "undock" ]]; then
+    dock_off
+else
+    _err "unknown command" 2
+fi
+
+# reset background because it can glitch out
+"$HOME"/.assets/backgrounds/set-desktop-background

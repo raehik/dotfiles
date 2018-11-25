@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Tar & xz something up nice and slow.
+#
+
+if [[ $# == 1 ]]; then
+    archive="${1}.tar.xz"
+    files="$1"
+else
+    archive="$1"
+    files="${@:2}"
+fi
+
+XZ_OPT=-9 tar -Jcvf "$archive" "$files"

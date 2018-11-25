@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Stop my damn loud fan!
+#
+
+interface="wlp4s0"
+
+sudo systemctl stop netctl-auto@"$interface"
+sudo systemctl suspend
+sleep 3
+sudo systemctl start netctl-auto@"$interface"

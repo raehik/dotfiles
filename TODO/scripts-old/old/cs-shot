@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# Take a screenshot of an area and save it in a specific directory with a
+# templated name.
+#
+
+shot_dir="$HOME/school/report/img/test"
+shot_name="$(date +%F_%T)_cs-test-img.png"
+
+# prompt for a test ID
+test_id="$(zenity --entry \
+       --title="${0##*/}" \
+       --text="Test ID:")"
+if [[ $? != 0 ]]; then
+    # fail early if they press Cancel or hit Escape
+    echo "Zenity failed, screenshot cancelled"
+    exit 1
+elif [[ -z "$test_id" ]]; then
+    # empty ID, fail
+    echo "No ID provided, screenshot cancelled"
+    exit 2
+fi
+
+echo "Taking a screenshot..."
+scrot "$shot_dir/$shot_name"
+ln -s "$shot_name" "$shot_dir/${test_id}.png"
+echo "Done."

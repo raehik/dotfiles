@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Find all the TODO notes in a file.
+#
+
+str1="TODO"
+str2="\(\?"
+
+if [[ -z $@ ]]; then
+    echo "no files provided -- using current directory"
+    files="$(ls)"
+else
+    files="$@"
+fi
+
+ack -C 1 "$str1|$str2" 2>/dev/null

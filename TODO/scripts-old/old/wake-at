@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# Put the computer into standby and wake up at a designated time and play MPD.
+#
+
+if [[ "$1" ]]; then
+    wake_time="$1"
+else
+    wake_time="06:30"
+fi
+
+# pre-sleep
+mpc pause
+
+# sleep/wake command
+is_next_day_time=8
+if [[ $(date +%H) -le $is_next_day_time ]]; then
+    next_date="today"
+else
+    next_date="tomorrow"
+fi
+
+next_time="$(date -d "$next_date $wake_time" +%s)"
+rtcwake --mode mem --time "$next_time"
+
+# post-sleep
+DISPLAY=:0 xbacklight -set 0 -time 0
+mpc vol 50
+mpc play

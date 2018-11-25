@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Lock your X session using i3lock, then suspend.
+#
+# Requires `lock` to be in your $PATH (simple i3lock command).
+#
+
+# i3lock forks, so it's easy (see i3lock(1))
+lock && systemctl suspend

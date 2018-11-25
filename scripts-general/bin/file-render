@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+# Render a file by guessing its markup from the extension.
+#
+
+_error() {
+    >&2 echo "$1"
+    exit 1
+}
+
+_render_md() {
+    markdown-render.py -b "$1"
+}
+
+_render_tex() {
+    main_tex="main.tex"
+    if [[ -f "$main_tex" ]]; then
+        # if there's a main.tex file, override and render that
+        tex-render "$main_tex"
+    else
+        tex-render "$1"
+    fi
+}
+
+_render_dot() {
+    dot-render -o "$1"
+}
+
+if [[ $# != 1 ]]; then
+    _error "should have exactly 1 argument (file to render)"
+fi
+
+file="$1"
+ext="${file##*.}"
+
+case "$ext" in
+    md) ft=$ext ;;
+    tex) ft=$ext ;;
+    gv) ft=dot ;;
+    *) ft=md ;; # assume markdown if extension is not recognised
+esac
+
+_render_$ft "$file"

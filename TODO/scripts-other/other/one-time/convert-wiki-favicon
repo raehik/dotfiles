@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+convert -size 100x100 radial-gradient:black-none gradient-transparent.png

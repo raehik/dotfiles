@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# Open sshfs directory.
+#
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+
+_usage="\
+Usage: $_FILENAME open|close
+Open sshfs directory.
+
+Mounts read-only.
+
+  Options:
+    -v, --verbose       be verbose
+    -h, --help          display this help text and exit\
+"
+
+remote_host="raehik.net"
+remote_port=6176
+remote_dir="media/podcasts"
+local_dir="archive"
+
+# verbose by default
+_VERBOSE=1
+
+while getopts_long :vh opt \
+    verbose 0 \
+    help 0 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$((_VERBOSE + 1)) ;;
+        h|help) _print_usage 0 ;;
+        :) _err "$OPTLERR"; _print_usage 1 ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+mk_conn() {
+    if [[ -e "$local_dir" ]]; then
+        _log "local dir exists, continuing..."
+    else
+        _log "creating local dir..."
+        mkdir "$local_dir" || _err "mkdir failed" 2
+    fi
+    _log "mounting $remote_host:$remote_dir port $remote_port read-only..."
+    sshfs -o ro -p $remote_port "$remote_host:$remote_dir" "$local_dir"
+}
+
+close_conn() {
+    if [[ ! -e "$local_dir" ]]; then
+        _err "local dir $local_dir doesn't exist, nothing to close" 3
+    fi
+    _log "unmounting local dir..."
+    fusermount -u "$local_dir" \
+        || _log "umount not successful"
+
+    _log "removing local dir..."
+    rmdir "$local_dir" \
+        || _err "rmdir failed, check $local_dir"
+}
+
+if [[ $# != 1 ]]; then
+    _err "expected exactly 1 argument" 5
+fi
+
+case "$1" in
+    o|open) mk_conn ;;
+    c|close) close_conn ;;
+    *) _err "unknown command" 6 ;;
+esac

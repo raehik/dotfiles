@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Check media sites.
+#
+
+i3-msg exec -- urxvt -e newsbeuter
+firefox 'https://www.reddit.com/r/DotA2'
+firefox 'http://twitter.com'
+firefox 'http://facebook.com'

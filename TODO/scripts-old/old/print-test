@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#
+# Print a PDF or a selection of pages from one two-sided, 2-up.
+#
+
+set -e
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [options] file
+Print a file and try to save paper doing it.
+
+  Options:
+    -f          page number to start printing from
+    -t          page number to stop printing after
+    -h          display this help message
+EOF
+}
+
+while getopts "f:t:h" opt; do
+    case $opt in
+        f) # from page num.
+            from=$OPTARG
+            ;;
+        t) # to page num.
+            to=$OPTARG
+            ;;
+        h) # display usage message
+            usage
+            exit 0
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+
+
+tmpdir="/tmp"
+
+# stupid hack because I don't know a better way
+if [[ -z $from ]]; then
+    from=1
+fi
+
+if [[ -z $to ]]; then
+    to=99999
+fi
+
+# form outfile name
+outfile="$tmpdir/$(date +%s)-${0##*/}-$1"
+
+# select & print pages
+gs -q -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+   -dFirstPage=$from \
+   -dLastPage=$to \
+   -sOutputFile="$outfile" \
+   "$1" 2>/dev/null
+
+lp -o number-up=2 -o sides=two-sided-long-edge "$outfile"
+
+# fix error where last page is not printed
+lp <<< "FIX"

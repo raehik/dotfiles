@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Make an image.
+#
+# Note: +antialias *turns off* antialiasing.
+#
+#-background black \
+
+convert \
+-size 1366x768 \
+xc:black \
+-font "Chrono-Trigger-Regular" \
+-pointsize 80 \
+-gravity southeast \
+-fill white \
++antialias \
+-annotate +100+100 'Good morning, Crono!' \
+chrono-trigger-good-morning-chrono.png

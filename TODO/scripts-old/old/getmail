@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Run offlineimap every interval and notify for new mail.
+#
+
+interval=120
+mail_dir="$HOME/mail/gmail"
+new_box="INBOX"
+
+new_mail_dir="$mail_dir/$new_box/new"
+
+while true; do
+    # run offlineimap just once
+    offlineimap -o &> "$HOME/.offlineimap/log"
+
+    # filter email, do stuff with certain emails
+    save-receipts-deliveroo.py "$mail_dir/$new_box/new"
+    save-receipts-deliveroo.py "$mail_dir/$new_box/cur"
+
+    # get number of new emails
+    new_mails_num=$(find "$new_mail_dir" -type f | wc -l)
+
+    # if we have any new email
+    if [[ $new_mails_num > 0 ]]; then
+        # notify for new mail
+        notify-send "New mail!" -u low
+
+        # filter each new mail with procmail
+        # 2016-01-23: DISABLED because I don't need it at the moment
+        #for file in "$new_mail_dir"/*; do
+        #    # -p keeps env. vars. so we have the DBUS session address etc.
+        #    procmail -p < "$file"
+        #done
+    fi
+
+    # wait for a while
+    sleep $interval
+done

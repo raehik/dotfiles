@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+sleep 1
+wyrd

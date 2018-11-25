@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# SSH to a server.
+#
+
+user="$USER"
+server="86.28.170.125"
+port=6176
+
+ssh -o TCPKeepAlive=yes -o ServerAliveInterval=50 -p $port "$USER@$server"

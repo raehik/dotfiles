@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Open/close your safe.
+#
+
+safe_enc_pre="$HOME/data/.safe"
+safe_mount_pre="$HOME/data/safe"
+
+safe_id="$1"
+safe_cmd="$2"
+
+safe_open() {
+    local safe_enc="${safe_enc_pre}-$1"
+    local safe_mount="${safe_mount_pre}-$1"
+
+    # if directory not empty, encfs will fail, so fail early
+    if [[ -n "$(ls "$safe_mount")" ]]; then
+        echo "${0##*/}: error: mount point not empty"
+        exit 2
+    fi
+    encfs "$safe_enc" "$safe_mount"
+}
+
+safe_close() {
+    local safe_mount="${safe_mount_pre}-$1"
+    fusermount -u "$safe_mount"
+}
+
+safe_create() {
+    local safe_enc="${safe_enc_pre}-$1"
+    local safe_mount="${safe_mount_pre}-$1"
+    encfs "$safe_enc" "$safe_mount"
+}
+
+if [[ $# < 2 ]]; then
+    echo "${0##*/}: error: argument required (open or close)"
+    exit 1
+fi
+
+case "$safe_cmd" in
+    "open") safe_open "$safe_id" ;;
+    "close") safe_close "$safe_id" ;;
+    "create") safe_create "$safe_id" ;;
+    *) "${0##*/}: error: unknown command" ;;
+esac

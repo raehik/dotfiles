@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+outfolder="no-img"
+
+num=1
+for f in *.flac; do
+    if [[ $num -ge 10 ]]; then
+        nextnum="$num"
+    else
+        nextnum="0${num}"
+    fi
+    ffmpeg -i "$f" -c:a copy "$outfolder/$nextnum.flac"
+    num=$((num+1))
+done

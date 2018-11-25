@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+run-bg zathura ~/school/cs/comp4/docs/project-log.pdf
+run-bg zathura ~/school/cs/comp4/comp4-report/bin/main.pdf
+run-bg zathura ~/school/cs/comp4/resources/comp4-exemplar-2014.pdf

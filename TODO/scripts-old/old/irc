@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Start bitlbee + weechat.
+#
+
+bitlbee_dir="$HOME/.config/bitlbee"
+
+bitlbee -d "$bitlbee_dir" -D
+weechat
+pkill bitlbee

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+# Set terminal emulator title (aka xterm window title).
+#
+
+echo -ne "\e]0;${@}\007"

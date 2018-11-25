@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# Short description of the program/script's operation/function.
+#
+
+str_begin="Big_long_string"
+
+str="$str_begin"
+while :; do
+    printf "\r\e[K"
+    echo -n "$str"
+    if [[ ${#str} -ge 2 ]]; then
+        str=${str:0:-1}
+    else
+        break
+    fi
+    sleep 0.05
+done
+
+echo

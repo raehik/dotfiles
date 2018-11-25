@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Turn the screen off.
+#
+
+sleep_time=0.2
+
+sleep $sleep_time && xset dpms force off

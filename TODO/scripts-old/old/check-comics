@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Read webcomics.
+#
+
+browser="firefox"
+
+$browser 'http://www.egscomics.com/'
+$browser 'http://www.egscomics.com/egsnp.php'
+$browser 'http://thepropertyofhate.com/TPoH/Wardrobe/214'
+$browser 'http://facebook.com/theboredman'
+$browser 'http://www.stickydillybuns.com/'
+$browser 'http://cucumber.gigidigi.com/'
+$browser 'http://xkcd.com/'

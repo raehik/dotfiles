@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Approximate total lines & words in a Jekyll directory.
+#
+
+content="$(tail -q -n+5 *.md)"
+
+echo "Lines: $(wc -l <<< "$content")"
+echo "Words: $(wc -w <<< "$content")"

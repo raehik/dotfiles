@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# ayy lmao
+#
+
+site_dir="$HOME/projects/writing/raehik.me"
+gen_dir="$HOME/projects/writing/raehik.me-gen"
+
+cd "$site_dir"
+last_msg="$(git log -1 --pretty=%s)"
+
+echo "Building site..."
+jekyll build --destination "$gen_dir"
+
+cd "$gen_dir"
+touch ".nojekyll"
+git add -A
+git commit -m "Site generated $(date --rfc-3339=seconds)
+
+Last commit message: $last_msg"
+git push

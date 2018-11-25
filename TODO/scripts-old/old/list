@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Open/create a list.
+#
+
+list_dir="$HOME/.local/share/lists"
+ext=".md"
+
+if [[ -n "$1" ]]; then
+    list="$1"
+else
+    list="$(date "+%F")"
+fi
+
+vim "$list_dir/${list}${ext}"

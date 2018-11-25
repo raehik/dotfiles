@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+#
+# Move recordings and change filenames to useful descriptors.
+#
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+
+mount_dir="/mnt-set/mp3-sd"
+rec_dir="record"
+out_prefix="$(date +%F)-"
+out_ext="ogg"
+outdir="$HOME/media/recordings"
+
+ERR_ARGS=2
+ERR_DEVICE=3
+ERR_SCROBBLER=4
+
+# Print usage and exit depending on given exit code.
+_usage="\
+Usage: $_FILENAME [options]
+Move recordings and change filenames to useful descriptors.
+
+  Options:
+    -v, --verbose   be verbose
+    -h, --help      display this help text and exit\
+"
+
+## Mount/umount functions {{{
+# Try to mount device.
+mount_device() {
+    _log "trying to mount ${mount_dir}..."
+    mount "$mount_dir"
+
+    # tell how it went
+    if [[ $? == 0 ]]; then
+        _log "mounted succesfully"
+    else
+        _err "could not mount directory ${mount_dir}: is the device plugged in?" $ERR_DEVICE
+    fi
+}
+
+# Try to unmount device.
+umount_device() {
+    umount "$mount_dir"
+
+    # tell how it went
+    if [[ $? == 0 ]]; then
+        _log "unmounted successfully"
+    else
+        _err "could not unmount directory $mount_dir" $ERR_DEVICE
+    fi
+}
+## }}}
+
+while getopts_long :vh opt \
+    verbose 0 \
+    help 0 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$(($_VERBOSE+1)) ;;
+        h|help) _print_usage 0 ;;
+		:) _err "$OPTLERR" ; _print_usage 1 ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+require_args $# 0
+
+mount_device
+
+shopt -s nullglob
+i=1
+for rec in "$mount_dir/$rec_dir/"*; do
+    tmpfile=$(mktemp --suffix=".${rec##*.}")
+    echo "$i) ${rec##*/}"
+    read -p " > " rec_tags
+    rec_name="${out_prefix}$(ezstring "$rec_tags").$out_ext"
+
+    sox "$rec" "$tmpfile" trim 1 -1
+    ffmpeg -i "$tmpfile" "$outdir/$rec_name"
+    echo "cropped & moved -> $rec_name"
+    i=$((i+1))
+done
+shopt -u nullglob
+
+if [[ $i == 1 ]]; then
+    # no files were found (didn't increment counter)
+    echo "No recordings present"
+fi
+
+umount_device

@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+#
+# Copy podcasts to MP3.
+#
+
+# we use relative filenames, so make sure we're in the right place
+cd "$(dirname "$0")"
+
+mount_dir="/mnt-set/mp3-sd"
+
+device_dest="podcasts"
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+
+ERR_DEVICE=2
+
+# be verbose by default
+_VERBOSE=1
+
+_usage="\
+Usage: $_FILENAME [options]
+Copy podcasts to MP3.
+
+  Options:
+    -o, --open          run ./get first (open connection)
+    -v, --verbose       be verbose
+    -h, --help          display this help text and exit\
+"
+
+while getopts_long :vho opt \
+    verbose 0 \
+    help 0 \
+    open 0 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$(($_VERBOSE + 1)) ;;
+        h|help) _print_usage 0 ;;
+        :) _err "$OPTLERR"; _print_usage 1 ;;
+        o|open) opt_open=1 ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+## Mount/umount functions {{{
+# Try to mount device.
+mount_device() {
+    _log "trying to mount ${mount_dir}..."
+    mount "$mount_dir"
+
+    # tell how it went
+    if [[ $? == 0 ]]; then
+        _log "mounted succesfully"
+    else
+        _err "could not mount directory ${mount_dir}: is the device plugged in?" $ERR_DEVICE
+    fi
+}
+
+# Try to unmount device.
+umount_device() {
+    umount "$mount_dir"
+
+    # tell how it went
+    if [[ $? == 0 ]]; then
+        _log "unmounted successfully"
+    else
+        _err "could not unmount directory $mount_dir" $ERR_DEVICE
+    fi
+}
+## }}}
+
+if [[ $opt_open ]]; then
+    _log "opening connection..."
+    ./get open || _err "connection failed: ./get returned $?" $?
+fi
+
+mount_device
+
+podcast_dir="$mount_dir/$device_dest"
+
+## PODCAST: NHKラジオニュース {{{
+p1_src="archive/nhk-radio-news/episodes"
+p1_dest="nhk-radio-news"
+
+if [[ -e "$p1_src" ]]; then
+    # clear current files
+    rm -rf "$podcast_dir/$p1_dest"
+    mkdir "$podcast_dir/$p1_dest"
+
+    # only copy newest ones
+    rsync -a --progress "$p1_src/$(date +%Y%m%d)"* "$podcast_dir/$p1_dest"
+    rsync -a --progress "$p1_src/$(date --date="1 day ago" +%Y%m%d)"* "$podcast_dir/$p1_dest"
+    rsync -a --progress "$p1_src/$(date --date="2 days ago" +%Y%m%d)"* "$podcast_dir/$p1_dest"
+
+    # create & apply BGM to each one
+    #find "$podcast_dir/$p1_dest" -type f -name "*.mp3" | while read f; do
+    #    with_bgm="${f%.*}-bgm.mp3"
+    #    bgm-creator.py "$f" "$with_bgm"
+    #    mv "$with_bgm" "$f" # overwrite so bookmarks work with non-BGM too
+    #done
+else
+    _log "$p1_src not present, skipping"
+fi
+## }}}
+
+umount_device
+
+if [[ $opt_open ]]; then
+    _log "closing connection..."
+    ./get close
+fi

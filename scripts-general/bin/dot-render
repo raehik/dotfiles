@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#
+# Render & view a DOT file.
+#
+
+fmt="png"
+dot_renderer="dot"
+
+_BASHPLATE_DIR="$HOME/.local/share/bashplate"
+source "$_BASHPLATE_DIR/bashplate.sh"
+
+_usage="\
+Usage: $_FILENAME [options] FILE
+Render a DOT file to a PNG & optionally view.
+
+  Options:
+    -f, --output <file>     write to <file>
+    -o, --open              open the rendered file
+    -v, --verbose           be verbose
+    -h, --help              display this help text and exit
+
+If --open is specified without --output <file>, the image is rendered to a
+temporary file.\
+"
+
+while getopts_long :vhof: opt \
+    verbose 0 \
+    help 0 \
+    open 0 \
+    output 1 \
+    "" "$@"
+do
+    case "$opt" in
+        v|verbose) _VERBOSE=$(($_VERBOSE + 1)) ;;
+        h|help) _print_usage 0 ;;
+        :) _err "$OPTLERR"; _print_usage 1 ;;
+
+        o|open) _open_after=true ;;
+        f|output) outfile="$OPTLARG" ;;
+    esac
+done
+shift $((OPTLIND-1))
+
+if [[ $# != 1 ]]; then
+    _err "expected exactly 1 argument" 2
+fi
+
+infile="$1"
+if [[ ! -f "$infile" ]]; then
+	_err "not a file: $infile" 3
+fi
+
+if [[ ! "$outfile" ]]; then
+    if [[ $_open_after ]]; then
+        # no output file & opening: use temporary file
+        outfile="$(mktemp --suffix=".$fmt")"
+    else
+        # render next to file
+        outfile="${infile%.*}.$fmt"
+    fi
+fi
+
+
+
+$dot_renderer "$infile" -T "$fmt" -o "$outfile"
+
+if [[ $? != 0 ]]; then
+    _err "dot failed (see above)" 4
+fi
+
+if [[ $_open_after ]]; then
+    $FILE_OPENER "$outfile"
+fi
