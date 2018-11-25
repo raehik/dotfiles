@@ -20,7 +20,7 @@ mode $mode_resize {
 bindsym $mod+r mode $mode_resize
 
 # no-swallow mode for (sway in) virtual machines etc.
-set $mode_no_swallow "no-swallow - $mod+Shift+Esc to exit"
+set $mode_no_swallow "no-swallow - mod+Shift+Esc to exit"
 mode $mode_no_swallow {
     # only one keybind: return to normal
     bindsym $mod+Shift+Escape mode "default"

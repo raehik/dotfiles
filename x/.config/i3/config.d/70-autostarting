@@ -17,10 +17,10 @@ exec $editor
 assign [class="$browser_class"] $ws_www
 exec $browser
 
-#$i3_msg 'workspace number $ws_comms; exec $mail'
+$i3_msg 'workspace number $ws_comms; exec $mail'
 $i3_msg 'workspace number $ws_comms; exec $terminal --title "irc" -e $term_irc'
-#$i3_msg 'workspace number $ws_media; exec $terminal --title "music" -e $term_music'
-#$i3_msg 'workspace number $ws_media; exec $terminal --title "news" -e $term_news'
+$i3_msg 'workspace number $ws_media; exec $terminal --title "music" -e $term_music'
+$i3_msg 'workspace number $ws_media; exec $terminal --title "news" -e $term_news'
 #$i3_msg 'workspace number $ws_cal; exec $calendar'
 ### }}}
 
@@ -32,8 +32,8 @@ $i3_msg 'workspace number $ws_comms; exec $terminal --title "irc" -e $term_irc'
 # Keep in mind that the last workspace to have a layout appended to it
 # will probably be the active one on startup.
 #
-#$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
-#$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
+$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
+$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
 
 # try our best to make a specific workspace active on startup
 $i3_msg 'workspace number $ws_text'

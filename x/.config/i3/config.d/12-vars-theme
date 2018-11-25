@@ -1,5 +1,5 @@
 # fonts
-set $font_main  Terminus 10
+set $font_main  xos4 Terminus 10
 
 ## Default colours {{{
 # class                 border    backgrnd. text      indicator
