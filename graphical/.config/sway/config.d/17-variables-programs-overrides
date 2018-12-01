@@ -1,0 +1,6 @@
+# internal-ish programs
+set $lock       swaylock -c $c_general_lock
+set $lock_fork  swaylock -c $c_general_lock -f
+
+# overrides
+set $launcher dmenu_path | dmenu | xargs swaymsg exec

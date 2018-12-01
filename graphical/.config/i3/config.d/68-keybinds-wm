@@ -1,0 +1,6 @@
+# reload i3 config
+#bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r $exec_quiet cat $conf_dir/config.d/* > $conf_dir/config; reload
+
+# exit i3 (and X too)
+bindsym $mod+Shift+e exit

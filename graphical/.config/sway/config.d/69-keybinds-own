@@ -1,0 +1,26 @@
+## Internal {{{
+# reload config
+bindsym $mod+Shift+r reload
+
+# exit sway (& wayland session)
+bindsym $mod+Shift+e exit
+## }}}
+
+## Computer {{{
+# lock computer
+bindsym XF86Display exec swaylock -c 000000
+
+# lock computer & standby
+bindsym $mod+F1 exec swaylock -c 000000 -f && systemctl suspend
+
+# turn off screen
+#bindsym $mod+F2 $exec_quiet "sleep 0.2 && xset dpms force off"
+
+# turn off computer
+bindsym $mod+Shift+Delete exec poweroff
+
+# monitor brightness
+# REQ: haikarainen/light
+bindsym XF86MonBrightnessUp     exec light -A 10
+bindsym XF86MonBrightnessDown   exec light -U 10
+## }}}

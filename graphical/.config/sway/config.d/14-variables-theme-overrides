@@ -1,0 +1,2 @@
+# override font (sway requires no "pango:" prefix)
+set $font_main xos4 Terminus 10

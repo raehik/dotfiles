@@ -1,3 +1,20 @@
+## Theme: dim i3 (raehik) {{{
+set $c_text_foc         #dddddd
+set $c_text_unfoc       #777777
+set $c_text_inactive    #cccccc
+
+set $c_border_foc       #4c6088
+set $c_border_unfoc     #242424
+set $c_border_inactive  #444444
+
+set $c_bg_foc           #2a3d5d
+set $c_bg_unfoc         #1a1a1a
+set $c_bg_inactive      #353535
+
+# extra
+set $c_general_lock     #292b2e
+## }}}
+
 # fonts
 set $font_main pango:xos4 Terminus 10
 
@@ -28,18 +45,4 @@ set $bg_main ~/.assets/backgrounds/desktop
 #set $c_bg_foc       "#285577"
 #set $c_bg_unfoc     "#222222"
 #set $c_bg_inactive  "#5f676a"
-## }}}
-
-## Theme: dim i3 (raehik) {{{
-set $c_text_foc         #dddddd
-set $c_text_unfoc       #777777
-set $c_text_inactive    #cccccc
-
-set $c_border_foc       #4c6088
-set $c_border_unfoc     #242424
-set $c_border_inactive  #444444
-
-set $c_bg_foc           #2a3d5d
-set $c_bg_unfoc         #1a1a1a
-set $c_bg_inactive      #353535
 ## }}}
