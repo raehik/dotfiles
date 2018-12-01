@@ -1,0 +1,1 @@
+bindsym $mod+grave  exec $input_method_cycle && pkill -RTMIN+12 i3blocks

@@ -13,6 +13,6 @@
 # 5: scroll down
 
 case $BLOCK_BUTTON in
-    1) date "+%Y年%m月%d日" ;;
+    1) date --iso-8601=seconds ;;
     *) date "+%H:%M" ;;
 esac

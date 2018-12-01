@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+engine_current=$(ibus engine)
+
+if [[ "$engine_current" == "xkb:us::eng" ]]; then
+    echo "en_US"
+elif [[ "$engine_current" == "mozc-jp" ]]; then
+    echo "mozc"
+else
+    echo "IME=?"
+fi

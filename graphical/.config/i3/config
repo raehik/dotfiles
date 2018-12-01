@@ -267,6 +267,7 @@ bindsym $mod+a focus parent
 # kill focused window
 bindsym $mod+Shift+q kill
 ## }}}
+bindsym $mod+grave  exec $input_method_cycle
 # set shot options & directory
 set $shot maim -n -b 2 $HOME/media/screenshots/$(date +%F_%T_shot).png
 

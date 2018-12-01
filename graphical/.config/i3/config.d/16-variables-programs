@@ -1,3 +1,6 @@
+# special stuff
+set $input_method_cycle ime-cycle
+
 # generic names for preferred programs
 set $terminal       termite
 set $terminal_class termite
