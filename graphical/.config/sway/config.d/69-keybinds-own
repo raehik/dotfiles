@@ -8,10 +8,10 @@ bindsym $mod+Shift+e exit
 
 ## Computer {{{
 # lock computer
-bindsym XF86Display exec swaylock -c 000000
+bindsym XF86Display exec $lock
 
 # lock computer & standby
-bindsym $mod+F1 exec swaylock -c 000000 -f && systemctl suspend
+bindsym $mod+F1     exec $lock_fork && $suspend
 
 # turn off screen
 #bindsym $mod+F2 $exec_quiet "sleep 0.2 && xset dpms force off"
