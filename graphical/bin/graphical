@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#wm="sway"
+wm="startx"
+wm_args=
+
+if [[ "$1" ]]; then
+    if which "$1"; then
+        wm="$1"
+    else
+        echo "error: provided window manager not found"
+        exit 1
+    fi
+fi
+
+# input
+export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
+
+# IBus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+ibus-daemon -drx
+
+# fcitx
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XMODIFIERS=@im=fcitx
+#fcitx -d
+
+"$wm" $wm_args
