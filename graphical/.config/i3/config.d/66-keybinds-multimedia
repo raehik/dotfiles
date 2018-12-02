@@ -1,15 +1,6 @@
-## Multimedia {{{
-# set i3status full refresh command (only way)
-#set $refresh killall -USR1 i3status
-
 # set i3blocks refresh commands
 set $refresh_mpd pkill -RTMIN+10 i3blocks
 set $refresh_vol pkill -RTMIN+11 i3blocks
-
-# volume multimedia keys (ALSA)
-#bindsym XF86AudioRaiseVolume $exec_quiet "amixer -M set Master 1dB+ && $refresh"
-#bindsym XF86AudioLowerVolume $exec_quiet "amixer -M set Master 1dB- && $refresh"
-#bindsym XF86AudioMute $exec_quiet "amixer set Master toggle && $refresh"
 
 # volume multimedia keys (PulseAudio)
 bindsym XF86AudioRaiseVolume $exec_quiet "amixer set Master 2%+ && $refresh_vol"
@@ -27,18 +18,3 @@ bindsym XF86AudioNext      $exec_quiet "mpc next   && $refresh_mpd"
 bindsym $mod+XF86AudioPlay $exec_quiet "mpc next   && $refresh_mpd"
 bindsym $mod+XF86AudioNext       $exec_quiet "mpd-insert-best"
 bindsym $mod+Shift+XF86AudioPlay $exec_quiet "mpd-insert-best"
-## }}}
-
-### Computer {{{
-# lock computer
-bindsym XF86Display $exec_quiet "lock"
-
-# lock computer & standby
-bindsym $mod+F1 $exec_quiet "lockstb"
-
-# turn off screen
-bindsym $mod+F2 $exec_quiet "sleep 0.2 && xset dpms force off"
-
-# turn off computer
-bindsym $mod+Shift+Delete $exec_quiet "poweroff"
-### }}}

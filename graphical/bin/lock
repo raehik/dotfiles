@@ -1,9 +1,2 @@
 #!/usr/bin/env bash
-#
-# Lock your X session using i3lock.
-#
-
-i3_conf_dir="$HOME/.config/i3"
-lock_img="lockscreen.png"
-
 i3lock -ut -c 292b2e

@@ -1,5 +1,14 @@
-# special stuff
+# vim: ft=conf
+set $suspend            systemctl suspend
+set $poweroff           poweroff
 set $input_method_cycle ime-cycle
+
+set $lock               lock
+set $lock_fork          lock
+set $lock_timeout_sec   1800
+
+set $shot_img   $HOME/media/screenshots/$(date +%F_%T_shot).png
+set $shotter    maim -n -b 2
 
 # generic names for preferred programs
 set $terminal       termite

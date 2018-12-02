@@ -1,0 +1,5 @@
+# capture all screens together
+bindsym $mod+Print      $exec_quiet $shotter $shot_img
+
+# capture a selection
+bindsym $mod+Ctrl+Print $exec_quiet $shotter -s $shot_img

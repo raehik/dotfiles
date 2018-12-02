@@ -69,11 +69,11 @@ label=load
 interval=15
 
 # input method
-[input_method]
-command=$HOME/.config/i3blocks/i3blocks-ibus-engine
-interval=15
-color=999999
-signal=12
+#[input_method]
+#command=$HOME/.config/i3blocks/i3blocks-ibus-engine
+#interval=15
+#color=999999
+#signal=12
 
 # Date Time
 #

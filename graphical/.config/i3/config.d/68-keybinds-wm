@@ -1,6 +1,18 @@
-# reload i3 config
+# reload config
 #bindsym $mod+Shift+r reload
 bindsym $mod+Shift+r $exec_quiet cat $conf_dir/config.d/* > $conf_dir/config; reload
 
-# exit i3 (and X too)
+# exit window manager
 bindsym $mod+Shift+e exit
+
+# lock computer
+bindsym XF86Display exec $lock
+
+# lock computer & standby
+bindsym $mod+F1 exec $lock_fork && $suspend
+
+# turn off screen
+bindsym $mod+F2 exec sleep 0.2 && xset dpms force off
+
+# turn off computer
+bindsym $mod+Shift+Delete exec $poweroff
