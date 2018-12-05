@@ -11,8 +11,10 @@ imap <C-t> <C-r>=strftime("%FT%T%z")<CR>
 
 "" Markdown header inserts {{{
 " Normal mode
-nmap <F1> VypVr=
-nmap <F2> VypVr-
+"#nmap <F1> VypVr=
+"nmap <F2> VypVr-
+nmap <F1> 0i# <Esc>
+nmap <F2> 0i## <Esc>
 nmap <F3> 0i### <Esc>
 nmap <F4> 0i#### <Esc>
 
