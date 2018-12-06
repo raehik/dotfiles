@@ -1,3 +1,4 @@
+# vim: ft=sh
 #
 # bash-specific shell configuration.
 #
@@ -5,7 +6,7 @@
 cache_dir="$HOME/.cache"
 
 # shell theme
-_use_conf "shell/bash-theme"
+_use_conf "bash-theme"
 
 # reset default distro settings
 PROMPT_COMMAND=

@@ -1,4 +1,4 @@
-# vim: foldmethod=marker
+# vim: ft=zsh
 #
 # zsh-specific shell configuration.
 #
@@ -6,7 +6,7 @@
 cache_dir="$HOME/.cache"
 
 # shell theme
-_use_conf "shell/zsh-theme"
+_use_conf "zsh-theme"
 
 ## Completion-related stuff {{{
 # add custom command completions
@@ -20,7 +20,7 @@ autoload -U compinit
 compinit -d "$cache_dir/zcompdump"
 
 # alias completions
-_use_conf "shell/zsh-completion-aliases"
+_use_conf "zsh-completion-aliases"
 ## }}}
 
 # Vi[m]-style command-line editing
@@ -98,7 +98,7 @@ setopt rm_star_silent
 unsetopt ignoreeof
 
 # record full command history
-_use_conf "shell/zsh-record-full-hist"
+_use_conf "zsh-record-full-hist"
 
 # set a custom 'zsh: command not found: $0' message
 # args are the command args
