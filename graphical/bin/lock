@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-i3lock -ut -c 292b2e
+i3lock -t -c 292b2e
