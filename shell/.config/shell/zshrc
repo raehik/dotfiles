@@ -11,7 +11,7 @@ _use_conf "zsh-theme"
 ## Completion-related stuff {{{
 # add custom command completions
 # note: must be before the autoload -U compinit
-fpath=($SHCFG_DIR/shell/zsh-completions $fpath)
+fpath=($SHCFG_DIR/zsh-completions $fpath)
 
 # load zsh's great completion features
 autoload -U compinit
