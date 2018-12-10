@@ -7,22 +7,38 @@ call vundle#begin()
 " Define plugins
 " Note: for some reason, these must be enclosed in SINGLE QUOTES
 " I have no idea why :/
-Plugin 'gmarik/Vundle.vim'
+
+" Have Vundle manage itself
+Plugin 'VundleVim/Vundle.vim'
+
+" Base
+Plugin 'airblade/vim-rooter'
 Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
+
+" Small & handy
+Plugin 'vim-scripts/loremipsum'
+
+" Syntax
 Plugin 'tpope/vim-liquid'
+Plugin 'b4b4r07/vim-hcl'
+
+" Specific
 Plugin 'tpope/vim-fugitive'
-Plugin 'SirVer/ultisnips'
-Config ultisnips
-Plugin 'honza/vim-snippets'
+
+" Hefty
+"Plugin 'SirVer/ultisnips'
+"Config ultisnips
+"Plugin 'honza/vim-snippets'
+
+" Disabled for a long time
 "Plugin 'scrooloose/syntastic'
 "Config syntastic
 "Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
-Plugin 'vim-scripts/loremipsum'
-Plugin 'airblade/vim-rooter'
 
+" Themes
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sickill/vim-monokai'
 "Plugin 'whatyouhide/vim-gotham'
