@@ -42,6 +42,9 @@ alias cm="git c -m"
 # quicker 'date now' command
 alias d="date +%F"
 
+# quicker 'remove all empty dirs' command
+alias rmds="rmdir --ignore-fail-on-non-empty *"
+
 # automatic ls to stop my habit
 cdl() {
     cd $@
