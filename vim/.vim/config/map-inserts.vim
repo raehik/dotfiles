@@ -30,3 +30,9 @@ imap <C-c> ✓
 
 " X mark
 "imap <C-x> ✗
+
+" 2019-01-09: disable arrow key movement XD
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
