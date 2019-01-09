@@ -1,54 +1,39 @@
-#
-# i3status config file.
-#
-# See `man i3status` for detailed documentation.
-#
-
-general {
-    colors = true
-    #interval = 4
-    interval = 1
-    output_format = "i3bar"
-}
-
-order += "volume master"
-order += "disk /home"
-order += "battery 1"
-#order += "wireless wlp4s0"
-#order += "ethernet INTERFACE"
+# vim: ft=conf
+# TODO: make MPD better (format for failure)
+order += "mpd_status"
+order += "volume_status"
+order += "battery_level"
 order += "load"
 order += "time"
 
-volume "master" {
-    # doesn't use human/natural scale like alsamixer or amixer -M
-    format = "%volume"
-    device = "default"
-    mixer = "Master"
+mpd_status {
+    cache_timeout = 5
+    color_play = "#AA5500"
+    color_pause = "#555555"
+    color_stop = "#555555"
+    format = "♬  [[[{artist}] - {title}]|[{file}]]"
+    on_click 3 = "exec mpc toggle"
+    on_click 2 = "exec mpc next"
 }
 
-disk "/home" {
-    format = "%avail free"
+volume_status {
+    button_mute = 3
+    format = "[\?if=is_input 😮|🔊] {percentage}%"
+    thresholds = [(0, "#6666FF")]
+    format_muted = "[\?if=is_input 😮|🔇] {percentage}%"
+    color_muted = None
 }
 
-#wireless wlp4s0 {
-#    format_up = "W: %quality"
-#    format_down = "W: down"
-#}
-#
-#ethernet INTERFACE {
-#    # if you use %speed, i3status requires root privileges
-#    format_up = "E: %ip (%speed)"
-#    format_down = "E: down"
-#}
+battery_level {
+    format = "🔋 {percent}%[ {time_remaining}]"
+    hide_seconds = True
+    charging_character = "⚡"
+}
 
 load {
-    format = "%1min load"
+    format = "🌡 %1min"
 }
 
 time {
-    format = "%H:%M"
-}
-
-battery 1 {
-    format = "%status %percentage %remaining"
+    format = "🕒 %H:%M"
 }
