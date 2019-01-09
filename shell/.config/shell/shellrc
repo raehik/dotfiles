@@ -96,6 +96,10 @@ _use_conf "aliases-user"
 # managed by systemd user service, which needs this envvar
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# gpg-agent
+# 2019-01-09: override ssh-agent, trying things! TODO
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
 ## Shell-specific options {{{
 if [[ "$BASH_VERSION" ]]; then
     _use_conf "bashrc"
