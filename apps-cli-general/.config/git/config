@@ -15,5 +15,6 @@
     co = checkout
     d = diff
     b = branch
+    sub = submodule
 [push]
     default = simple
