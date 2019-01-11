@@ -14,6 +14,8 @@ mpd_status {
     format = "♬  [[[{artist}] - {title}]|[{file}]]"
     on_click 3 = "exec mpc toggle"
     on_click 2 = "exec mpc next"
+    on_click 4 = "exec mpc volume +2"
+    on_click 5 = "exec mpc volume -2"
 }
 
 volume_status {
