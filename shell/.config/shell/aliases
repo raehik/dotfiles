@@ -1,25 +1,28 @@
-# vim: syntax=sh filetype=sh :
+# vim: filetype=sh
 #
-# Non-specific/common (bash & zsh) shell aliases.
+# Common shell aliases (bash/zsh).
 #
-# This is only for *shell-related shortcuts* which I might use in a
-# terminal session. i3 and dmenu_run can't read aliases, so some things
-# are stored as one-line files in my ~/bin.
+# Shell-related shortcuts that I might use in a terminal session belong here.
+# Most application launchers (e.g.  dmenu_run) can't read aliases though, so
+# some things may go in my ~/bin as scripts instead.
 #
-# Anything that is a shortcut or something belongs here, rather than in
-# my ~/bin, if it's only for my ease of use (e.g. tmpmux, since it can
-# be achieved easily in another way
-#
+
+# enable completion for aliases when prefixing sudo
+alias sudo="sudo "
 
 # as of 2015-11-04 commit 109b9220c, ls now uses a different default quoting
 # method for terminals. I don't like it (makes my music library etc. look ugly)
 alias ls="ls --color=auto --literal"
 
-# grep colours
-alias grep="grep --color=auto"
-
-# allow aliases with 'sudo' prefixed -- pretty cool
-alias sudo="sudo "
+## Common shortcuts {{{
+# previously had a habit of immediate ls; this helps me not do that
+cdl() {
+    cd $@
+    if [ $? -eq 0 ]; then
+        ls --color=auto
+    fi
+}
+alias c="cdl"
 
 # useful ls aliases
 alias ll="ls -lh"
@@ -27,34 +30,21 @@ alias la="ls -lAh"
 alias l="ls"
 alias lb="ls -la"
 
-# so much git rite now
 alias g="git"
-
-# useful tmux shortcut
 alias t="tmux"
-
-# vim is my 3rd most common command, make it easier
 alias v="vim"
-
-# I do this so much, make it shorter
-alias cm="git c -m"
+alias cm="git c -m" # date now
 
 # quicker 'date now' command
 alias d="date +%F"
 
 # quicker 'remove all empty dirs' command
 alias rmds="rmdir --ignore-fail-on-non-empty *"
+## }}}
 
-# automatic ls to stop my habit
-cdl() {
-    cd $@
-    if [ $? -eq 0 ]; then
-        ls --color=auto
-    fi
-}
-
-# shorter cdl so maybe I use it more plz
-alias c="cdl"
+## Use colours {{{
+alias grep="grep --color=auto"
+## }}}
 
 # cd to the real path of current directory
 real() {
@@ -76,13 +66,12 @@ real() {
     cd "$new_dir"
 }
 
-# copy a file to the clipboard
+# copy a file to the X clipboard
 alias clpb="xsel -i -b < "
 
-# mount under current user w/ UTF8 for NTFS
-# bash doesn't keep track of GID, so we'll use a command
+# useful mount shortcut for non-POSIX FSes e.g. NTFS: current user, UTF-8
 alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
 
 ## [Fuck you, ]Docker {{{
-alias docker="sudo docker"
+#alias docker="sudo docker"
 ## }}}
