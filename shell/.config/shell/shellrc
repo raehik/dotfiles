@@ -86,11 +86,9 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;32m'
 ## }}}
 
-# aliases
 _use_conf "aliases"
-
-# command/user bin aliases
 _use_conf "aliases-user"
+_use_conf "config-env"
 
 # ssh-agent
 # managed by systemd user service, which needs this envvar

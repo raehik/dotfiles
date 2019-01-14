@@ -1,0 +1,10 @@
+# vim: ft=sh
+#
+# Shell config using environment variables.
+#
+# Some programs don't use a config file, instead opting to be pretty stupid and
+# offer environment variable-based config only. This file is for those programs.
+#
+
+# aws-vault: use file backend (nice and simple, & works with Geodesic)
+export AWS_VAULT_BACKEND="file"

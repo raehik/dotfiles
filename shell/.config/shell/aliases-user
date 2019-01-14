@@ -1,4 +1,4 @@
-# vim: filetype=sh
+# vim: ft=sh
 alias tw=twitterminal.py
 alias j=jctl.py
 alias jp="jctl.py -b ~/proj/writing/jp.raehik.net"

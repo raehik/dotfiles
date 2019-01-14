@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+key_label="raehik-pgp-main"
+mount_dir="/mnt-set/$key_label"
+
+sudo umount "$mount_dir"
+sudo cryptsetup close "$key_label"
+echo export GNUPGHOME=
