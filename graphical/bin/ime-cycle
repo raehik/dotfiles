@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-engine1="xkb:gb:extd:eng"
+engine1="xkb:us::eng"
 engine2="mozc-jp"
-engine3="xkb:us::eng"
 
 engine_default="$engine1"
 
@@ -9,10 +8,13 @@ engine_current=$(ibus engine)
 
 if [[ "$engine_current" == "$engine1" ]]; then
     ibus engine "$engine2"
-elif [[ "$engine_current" == "$engine3" ]]; then
-    ibus engine "$engine2" # if in US layout for some reason, change to GB
 elif [[ "$engine_current" == "$engine2" ]]; then
     ibus engine "$engine1"
 else
     ibus engine "$engine_default"
 fi
+
+# TODO tmp
+setxkbmap gb
+setxkbmap -option compose:menu      # menu = compose key
+setxkbmap -option caps:swapescape   # swap caps lock <-> Escape

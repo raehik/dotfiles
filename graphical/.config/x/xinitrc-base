@@ -4,6 +4,7 @@
 #
 
 ## Behaviour {{{
+setxkbmap gb
 setxkbmap -option compose:menu      # menu = compose key
 setxkbmap -option caps:swapescape   # swap caps lock <-> Escape
 
