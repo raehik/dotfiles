@@ -3,24 +3,22 @@
 # zsh-specific shell configuration.
 #
 
-cache_dir="$HOME/.cache"
-
 # shell theme
-_use_conf "zsh-theme"
+source "$cfg_dir"/zsh-theme
 
 ## Completion-related stuff {{{
 # add custom command completions
 # note: must be before the autoload -U compinit
-fpath=($SHCFG_DIR/zsh-completions $fpath)
+fpath=("$cfg_dir"/zsh-completions $fpath)
 
 # load zsh's great completion features
 autoload -U compinit
 
 # run compinit + move zcompdump cache file
-compinit -d "$cache_dir/zcompdump"
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
 
 # alias completions
-_use_conf "zsh-completion-aliases"
+source "$cfg_dir"/zsh-completion-aliases
 ## }}}
 
 # Vi[m]-style command-line editing
@@ -57,7 +55,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 ## Command history configuration {{{
 # file name
-HISTFILE="$cache_dir/zsh_history"
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
 
 # ???
 # for setting max no. of commands in history file
@@ -98,7 +96,7 @@ setopt rm_star_silent
 unsetopt ignoreeof
 
 # record full command history
-_use_conf "zsh-record-full-hist"
+source "$cfg_dir"/zsh-record-full-hist
 
 # set a custom 'zsh: command not found: $0' message
 # args are the command args

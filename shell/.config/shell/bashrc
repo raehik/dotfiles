@@ -3,17 +3,15 @@
 # bash-specific shell configuration.
 #
 
-cache_dir="$HOME/.cache"
-
 # shell theme
-_use_conf "bash-theme"
+source "$cfg_dir"/bash-theme
 
 # reset default distro settings
 PROMPT_COMMAND=
 
 ## Command history {{{
 # set history file
-HISTFILE="$cache_dir/bash_history"
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash_history
 
 # set number of history commands stored in memory
 HISTSIZE=1000

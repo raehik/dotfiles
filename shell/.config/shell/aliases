@@ -37,9 +37,14 @@ alias cm="git c -m" # date now
 
 # quicker 'date now' command
 alias d="date +%F"
+## }}}
 
+## Common shortcuts - not internalized {{{
 # quicker 'remove all empty dirs' command
 alias rmds="rmdir --ignore-fail-on-non-empty *"
+
+# kubectl
+alias k=kubectl
 ## }}}
 
 ## Use colours {{{

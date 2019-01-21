@@ -3,65 +3,48 @@
 # Non-specific/common (bash & zsh) shell configuration.
 #
 
-## Config sourcing setup {{{
-SHCFG_DIR="$HOME/.config/shell"
+# safely get all available XDG directories & set then-on config directory
+# straight from freedesktop.org @ https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
+test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" \
+    && source "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
+cfg_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
 
-_use_conf() {
-    if [[ $# != 1 ]]; then
-        >&2 echo "error: expected exactly 1 argument"
-        return 1
-    fi
-
-    local conf_file="$SHCFG_DIR/$1"
-    if [[ ! -f "$conf_file" ]]; then
-        >&2 echo "error: config file $conf_file does not exist"
-        return 2
-    fi
-    source "$conf_file"
+## $PATH prefixes {{{
+_prefix_path_if_present() {
+    [[ -d "$1" ]] && export PATH="$1:$PATH"
 }
-## }}}
 
-# prefix $PATH with user's personal ~/bin, if it exists
-if [[ -d "$HOME/bin" ]]; then
-    PATH="$HOME/bin:$PATH"
-fi
+_prefix_path_if_present "$HOME/bin"
+_prefix_path_if_present "$HOME/.rbenv/bin"
 
-## rbenv {{{
-# add rbenv to $PATH (for user-based install)
-export PATH="$HOME/.rbenv/bin:$PATH"
+unset _prefix_path_if_present
+## $PATH prefixes }}}
 
-# initialise rbenv *only* if present
-if command -v rbenv >/dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-## }}}
+# gpg-agent (+handle SSH)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-## cabal {{{
-# TODO
-# add cabal to $PATH (for user-based install)
-export PATH="$PATH:$HOME/.cabal/bin"
-## }}}
-
-## Java {{{
-# make sure Java programs use anti-aliasing
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
-
-# Arch doesn't set its own classpath or something? smh
-export CLASSPATH=".:/usr/share/java/*"
-## }}}
-
-## Python {{{
-# set a directory for personal user modules
-export PYTHONPATH="$HOME/.local/share/python-user"
-## }}}
-
-# turn off all console system bells (PC speaker beeps)
-# (note: doesn't affect X, see ~/.xinitrc for that)
+# turn off all console system bells (PC speaker beeps) - does not affect X
 if [[ "$TERM" == "linux" ]]; then
     setterm --blength 0
 fi
 
-# set $LS_COLOURS
+## Programming languages {{{
+# Ruby: initialise rbenv if present
+if command -v rbenv >/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+# Java: make sure we use anti-aliasing
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+# Java: Arch doesn't set its own classpath or something? smh
+export CLASSPATH=".:/usr/share/java/*"
+
+# Python: set a directory for personal user modules
+export PYTHONPATH="$HOME/.local/share/python-user"
+## }}}
+
+## Colors via envvars {{{
 if [[ -r "$SHCFG_DIR/dircolors" ]]; then
     # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
     # $(dircolors) effectively sets the LS_COLORS environment variable.
@@ -69,14 +52,7 @@ if [[ -r "$SHCFG_DIR/dircolors" ]]; then
     eval $(dircolors "$SHCFG_DIR/dircolors")
 fi
 
-# Vim master race
-export EDITOR="vim"
-
-# Set general file opener (e.g. xdg-open)
-export FILE_OPENER="mimeo"
-
-## man colours {{{
-# use nice colours for man (by exporting termcap values for less)
+# man: use nice colours (via exporting termcap values for less)
 export LESS_TERMCAP_mb=$'\e[01;31m'
 export LESS_TERMCAP_md=$'\e[01;31m'
 export LESS_TERMCAP_me=$'\e[0m'
@@ -86,29 +62,20 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;32m'
 ## }}}
 
-_use_conf "aliases"
-_use_conf "aliases-user"
-_use_conf "config-env"
+## Common programs via envvars {{{
+# Vim master race
+export EDITOR="vim"
 
-# ssh-agent
-# managed by systemd user service, which needs this envvar
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
-# gpg-agent
-# 2019-01-09: override ssh-agent, trying things! TODO
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
-## Shell-specific options {{{
-if [[ "$BASH_VERSION" ]]; then
-    _use_conf "bashrc"
-elif [[ "$ZSH_VERSION" ]]; then
-    _use_conf "zshrc"
-else
-    # nothing specific for this shell
-    continue
-fi
+# Set general file opener (e.g. xdg-open)
+export FILE_OPENER="mimeo"
 ## }}}
 
-# end: unset config sourcing function
-unset -f _use_conf
-unset SHCFG_DIR
+source "$cfg_dir"/aliases
+source "$cfg_dir"/aliases-user
+source "$cfg_dir"/config-env
+
+# shell-specific options
+[[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
+[[ -n "$ZSH_VERSION" ]]   && source "$cfg_dir"/zshrc
+
+unset cfg_dir
