@@ -41,6 +41,7 @@ shift $((OPTLIND-1))
 dock_on() {
     xrandr --output DP1-1 --auto --right-of $out_main
     xrandr --output DP1-2 --auto --right-of DP1-1
+    xrandr --output VGA1 --auto --right-of $out_main
     if [[ $opt_net ]]; then
         echo "nothing..."
         #sudo systemctl stop netctl-auto@$wlan_interface
@@ -51,6 +52,7 @@ dock_on() {
 dock_off() {
     xrandr --output DP1-1 --off
     xrandr --output DP1-2 --off
+    xrandr --output VGA1 --off
     if [[ $opt_net ]]; then
         echo "nothing..."
         #sudo netctl stop "$eth_profile"
