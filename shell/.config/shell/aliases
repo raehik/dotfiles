@@ -45,6 +45,9 @@ alias rmds="rmdir --ignore-fail-on-non-empty *"
 
 # kubectl
 alias k=kubectl
+
+# Terraform
+alias tf=terraform
 ## }}}
 
 ## Use colours {{{
