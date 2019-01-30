@@ -15,11 +15,14 @@ alias sudo="sudo "
 alias ls="ls --color=auto --literal"
 
 ## Common shortcuts {{{
+# cd to a directory and ls if it succeeds
 # previously had a habit of immediate ls; this helps me not do that
 cdl() {
     cd $@
     if [ $? -eq 0 ]; then
         ls --color=auto
+    else
+        return $?
     fi
 }
 alias c="cdl"
@@ -33,7 +36,7 @@ alias lb="ls -la"
 alias g="git"
 alias t="tmux"
 alias v="vim"
-alias cm="git c -m" # date now
+alias cm="git commit -m"
 
 # quicker 'date now' command
 alias d="date +%F"
