@@ -3,8 +3,7 @@
 # bash-specific shell configuration.
 #
 
-# shell theme
-source "$cfg_dir"/bash-theme
+for f in "$cfg_dir"/bash.d/*; do source "$f"; done
 
 # reset default distro settings
 PROMPT_COMMAND=

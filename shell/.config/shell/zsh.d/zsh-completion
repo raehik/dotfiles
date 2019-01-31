@@ -1,0 +1,28 @@
+# add custom command completions
+# note: must be before the autoload -U compinit
+fpath=("$cfg_dir"/zsh-completions $fpath)
+
+# load zsh's great completion features
+autoload -U compinit
+
+# run compinit + move zcompdump cache file
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+
+# show a completion menu for commands, files etc. (move around using
+# arrow keys)
+zstyle ':completion:*:*:*:*:*' menu select
+
+# make zsh's completion use $LS_COLORS
+# (stolen from oh-my-zsh)
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# show lots of processes with `kill` completion
+# (stolen from oh-my-zsh)
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# & colour `kill` completion
+# (stolen from oh-my-zsh)
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+
+# simple command alias completions
+compdef cdl=cd

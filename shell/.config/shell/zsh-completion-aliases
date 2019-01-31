@@ -1,6 +1,0 @@
-#
-# Zsh completions for commands which are just aliases to other commands'
-# completions.
-#
-
-compdef cdl=cd

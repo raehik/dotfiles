@@ -3,23 +3,7 @@
 # zsh-specific shell configuration.
 #
 
-# shell theme
-source "$cfg_dir"/zsh-theme
-
-## Completion-related stuff {{{
-# add custom command completions
-# note: must be before the autoload -U compinit
-fpath=("$cfg_dir"/zsh-completions $fpath)
-
-# load zsh's great completion features
-autoload -U compinit
-
-# run compinit + move zcompdump cache file
-compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
-
-# alias completions
-source "$cfg_dir"/zsh-completion-aliases
-## }}}
+for f in "$cfg_dir"/zsh.d/*; do source "$f"; done
 
 # Vi[m]-style command-line editing
 bindkey -v
@@ -34,24 +18,6 @@ bindkey -v
 # the command for realsies, scroll through your command history and hit Alt-# on
 # the commented-out line: it removes the '#' and runs the command!
 setopt interactivecomments
-
-## Custom completions {{{
-# show a completion menu for commands, files etc. (move around using
-# arrow keys)
-zstyle ':completion:*:*:*:*:*' menu select
-
-# make zsh's completion use $LS_COLORS
-# (stolen from oh-my-zsh)
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# show lots of processes with `kill` completion
-# (stolen from oh-my-zsh)
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-
-# & colour `kill` completion
-# (stolen from oh-my-zsh)
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-## }}}
 
 ## Command history configuration {{{
 # file name
@@ -94,9 +60,6 @@ setopt rm_star_silent
 
 # make sure no system-wide files have set 'Ctrl-D doesn't exit' option
 unsetopt ignoreeof
-
-# record full command history
-source "$cfg_dir"/zsh-record-full-hist
 
 # set a custom 'zsh: command not found: $0' message
 # args are the command args

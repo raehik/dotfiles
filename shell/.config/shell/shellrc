@@ -3,11 +3,13 @@
 # Non-specific/common (bash & zsh) shell configuration.
 #
 
-# safely get all available XDG directories & set then-on config directory
+# safely get all available XDG directories & set config directory from now on
 # straight from freedesktop.org @ https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
 test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" \
     && source "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
 cfg_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
+
+for f in "$cfg_dir"/general.d/*; do source "$f"; done
 
 ## $PATH prefixes {{{
 _prefix_path_if_present() {
@@ -69,10 +71,6 @@ export EDITOR="vim"
 # Set general file opener (e.g. xdg-open)
 export FILE_OPENER="mimeo"
 ## }}}
-
-source "$cfg_dir"/aliases
-source "$cfg_dir"/aliases-user
-source "$cfg_dir"/config-env
 
 # shell-specific options
 [[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
