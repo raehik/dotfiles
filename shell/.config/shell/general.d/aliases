@@ -40,6 +40,12 @@ alias cm="git commit -m"
 
 # quicker 'date now' command
 alias d="date +%F"
+
+# cdl to a shortcutted directory (in ~/sh)
+shcdl() {
+    cdl ~/sh/"$1"
+}
+alias s="shcdl"
 ## }}}
 
 ## Common shortcuts - not internalized {{{
