@@ -19,6 +19,10 @@ _prefix_path_if_present() {
 _prefix_path_if_present "$HOME/bin"
 _prefix_path_if_present "$HOME/.rbenv/bin"
 
+# snap
+# 2019-02-13: disabled because not preferred
+#_prefix_path_if_present "/snap/bin"
+
 unset _prefix_path_if_present
 ## $PATH prefixes }}}
 
