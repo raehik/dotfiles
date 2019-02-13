@@ -16,7 +16,11 @@ _prefix_path_if_present() {
     [[ -d "$1" ]] && export PATH="$1:$PATH"
 }
 
+# ~/bin
+# sometimes added, but let's make sure it's leftmost
 _prefix_path_if_present "$HOME/bin"
+
+# rbenv
 _prefix_path_if_present "$HOME/.rbenv/bin"
 
 # snap
