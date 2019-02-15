@@ -66,3 +66,6 @@ unsetopt ignoreeof
 #command_not_found_handler() {
 #    echo "ayy lmao"
 #}
+
+# enable direnv: must be at end (according to docs)
+eval "$(direnv hook zsh)"
