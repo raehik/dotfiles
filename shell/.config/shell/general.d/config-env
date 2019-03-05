@@ -8,3 +8,6 @@
 
 # aws-vault: use file backend (nice and simple, & works with Geodesic)
 export AWS_VAULT_BACKEND="file"
+
+# hledger: default journal file
+export LEDGER_FILE="$HOME"/proj/money/ledger/hledger.journal
