@@ -11,3 +11,6 @@ export AWS_VAULT_BACKEND="file"
 
 # hledger: default journal file
 export LEDGER_FILE="$HOME"/proj/money/ledger/hledger.journal
+
+# password-store / pass: put in (X) clipboard by default, shorten clip time
+export PASSWORD_STORE_CLIP_TIME=15

@@ -92,3 +92,6 @@ alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
 ## [Fuck you, ]Docker {{{
 #alias docker="sudo docker"
 ## }}}
+
+# password-store / pass: put in (X) clipboard by default (override via \pass)
+alias pass="pass -c"
