@@ -16,3 +16,9 @@ autocmd FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
 " Auto soft wrap mode for Markdown
 " Requires sourcing config/map-wrapmode.vim
 "autocmd Filetype markdown call ToggleWrap()
+
+" Auto-jump to previous last position in file on open
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
