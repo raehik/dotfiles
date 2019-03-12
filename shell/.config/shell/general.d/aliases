@@ -20,7 +20,7 @@ alias ls="ls --color=auto --literal"
 cdl() {
     cd $@
     if [ $? -eq 0 ]; then
-        ls --color=auto
+        ls
     else
         return $?
     fi
