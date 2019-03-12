@@ -94,4 +94,6 @@ alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
 ## }}}
 
 # password-store / pass: put in (X) clipboard by default (override via \pass)
-alias pass="pass -c"
+# 2019-03-12: DON'T do this: adding -c assumes show subcommand, all other
+# commands must be \pass escaped
+#alias pass="pass -c"
