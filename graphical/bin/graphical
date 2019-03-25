@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-#wm="sway"
-wm="startx"
+wm="sway"
+#wm="startx"
 wm_args=
 
-if [[ "$1" ]]; then
-    if which "$1"; then
-        wm="$1"
-    else
-        echo "error: provided window manager not found"
-        exit 1
-    fi
+[[ "$1" ]] && wm="$1"
+
+# confirm window manager exists
+which "$wm" >/dev/null 2>/dev/null
+if [ $? -ne 0 ]; then
+    echo "error: provided window manager not found: $wm"
+    exit 1
 fi
 
+## config {{{
 # input
 export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
 
@@ -26,5 +27,6 @@ ibus-daemon -drx
 #export QT_IM_MODULE=fcitx
 #export XMODIFIERS=@im=fcitx
 #fcitx -d
+## }}}
 
 "$wm" $wm_args
