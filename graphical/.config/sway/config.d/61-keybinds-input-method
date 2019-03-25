@@ -1,1 +1,1 @@
-../../i3/config.d/61-keybinds-input-method
+bindsym $mod+grave  exec $ime_cycle && pkill -RTMIN+12 i3blocks

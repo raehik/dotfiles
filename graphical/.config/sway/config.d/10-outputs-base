@@ -1,5 +1,2 @@
-output eDP-1 pos 0 0
-output VGA-1 pos 1366 0
-
 # default background
 output * bg $bg_main fill

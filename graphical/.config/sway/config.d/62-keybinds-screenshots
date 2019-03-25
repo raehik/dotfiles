@@ -1,1 +1,5 @@
-../../i3/config.d/62-keybinds-screenshots
+# capture all screens together
+bindsym $mod+Print      exec $shotter $shot_img
+
+# capture a selection
+bindsym $mod+Ctrl+Print exec $shot_selector | $shotter -g - $shot_img

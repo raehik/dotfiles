@@ -1,0 +1,33 @@
+# vim: ft=conf
+# lifecycle
+set $suspend    systemctl suspend
+set $poweroff   poweroff
+set $ime_cycle  ime-cycle
+
+set $lock               swaylock -c $c_general_lock
+set $lock_fork          swaylock -c $c_general_lock -f
+set $lock_timeout_sec   1800
+
+# screenshots
+set $shotter        grim
+set $shot_selector  slurp
+set $shot_img       $HOME/media/screenshots/$(date +%F_%T_shot).png
+
+# generic names for common apps
+set $terminal       termite
+set $terminal_class termite
+
+set $launcher       dmenu_path | dmenu | xargs swaymsg exec
+
+set $editor         emacs
+set $editor_class   Emacs
+
+set $browser        firefox
+set $browser_class  Firefox
+
+set $mail           claws-mail
+set $calendar       evolution
+
+set $term_irc       weechat
+set $term_music     mpn
+set $term_news      newsboat

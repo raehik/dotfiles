@@ -1,5 +1,0 @@
-set $lock       swaylock -c $c_general_lock
-set $lock_fork  swaylock -c $c_general_lock -f
-set $launcher   dmenu_path | dmenu | xargs swaymsg exec
-set $shotter        grim
-set $shot_selector  slurp

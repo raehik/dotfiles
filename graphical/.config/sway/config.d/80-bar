@@ -1,1 +1,25 @@
-../../i3/config.d/80-bar
+# vim: ft=conf
+bar {
+    # use py3status
+    # REQ: py3status
+    status_command py3status
+
+    # placement on monitor(s)
+    position bottom
+
+    # system tray on primary monitor
+    tray_output primary
+
+    # set default statusline colour
+    colors {
+        background "#000000"
+        statusline $c_text_foc
+        #separator "#666666"
+
+        # same colors as set & used for window titles previously
+        focused_workspace   $c_border_foc       $c_bg_foc       $c_text_foc
+        active_workspace    $c_border_inactive  $c_bg_inactive  $c_text_inactive
+        inactive_workspace  $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc
+       #urgent_workspace    "#2f343a"           "#900000"       "#ffffff"
+    }
+}
