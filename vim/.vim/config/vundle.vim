@@ -43,6 +43,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'sickill/vim-monokai'
 "Plugin 'whatyouhide/vim-gotham'
 "Plugin 'altercation/vim-colors-solarized'
+Plugin 'arcticicestudio/nord-vim'
 
 " Run end Vundle stuff (required!)
 " (maybe adds RTPs?)

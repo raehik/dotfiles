@@ -6,8 +6,8 @@ let &colorcolumn = &textwidth + 1
 " Enable syntax highlighting
 syntax on
 
-" Set colourscheme to Zenburn
-colorscheme zenburn
+" Set colourscheme
+colorscheme nord
 
 " Show extra whitespace at end of line
 " Colour = Zenburn theme (slightly lighter than CursorLine colour)
