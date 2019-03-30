@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+steamapps_dir="$HOME"/.steam/steam/steamapps
+
+game_dir="$steamapps_dir"/common/devildaggers
+cd "$game_dir"
+LD_PRELOAD=libcurl.so.3 ./devildaggers
