@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# 2019-03-30 phy-nix-arch-lennyb i3 settings: 0.500 look speed, 95 FOV
 steamapps_dir="$HOME"/.steam/steam/steamapps
 
 game_dir="$steamapps_dir"/common/devildaggers
