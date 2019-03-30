@@ -9,8 +9,8 @@ set $up     k
 set $right  l
 
 # monitor themes (duplicates allowed if your setup is smaller)
-set $mon_primary    eDP1
-set $mon_secondary  VGA1
+set $mon_primary    DP1-1
+set $mon_secondary  DP1-2
 set $mon_tertiary   eDP1
 
 # workspace themes (labelled+numbered)

@@ -18,8 +18,8 @@ set $up     k
 set $right  l
 
 # monitor themes (duplicates allowed if your setup is smaller)
-set $mon_primary    eDP1
-set $mon_secondary  VGA1
+set $mon_primary    DP1-1
+set $mon_secondary  DP1-2
 set $mon_tertiary   eDP1
 
 # workspace themes (labelled+numbered)
@@ -60,26 +60,23 @@ set $bg_main ~/.assets/backgrounds/desktop
 #client.placeholder      "#000000" "#0c0c0c" "#ffffff" "#000000"
 ## }}}
 
-# theme colours (applied to windows etc.)
-# (quotes not required, just for editors (Vim) to understand they're strings)
-
-## Theme: Default {{{
-#set $c_text_foc         "#ffffff"
-#set $c_text_unfoc       "#888888"
-#set $c_text_inactive    "#ffffff"
+## Theme: default {{{
+#set $c_text_foc         #ffffff
+#set $c_text_unfoc       #888888
+#set $c_text_inactive    #ffffff
 #
-#set $c_border_foc       "#4c7899"
-#set $c_border_unfoc     "#333333"
-#set $c_border_inactive  "#333333"
+#set $c_border_foc       #4c7899
+#set $c_border_unfoc     #333333
+#set $c_border_inactive  #333333
 #
-#set $c_bg_foc       "#285577"
-#set $c_bg_unfoc     "#222222"
-#set $c_bg_inactive  "#5f676a"
+#set $c_bg_foc       #285577
+#set $c_bg_unfoc     #222222
+#set $c_bg_inactive  #5f676a
 ## }}}
 # vim: ft=conf
 set $suspend            systemctl suspend
 set $poweroff           poweroff
-set $input_method_cycle ime-cycle
+set $ime_cycle          ime-cycle
 
 set $lock               lock
 set $lock_fork          lock
@@ -143,8 +140,8 @@ bindsym $mod+Shift+Escape mode $mode_no_swallow
 workspace $ws_text  output $mon_primary
 workspace $ws_www   output $mon_secondary
 workspace $ws_comms output $mon_tertiary
-workspace $ws_media output $mon_tertiary
-workspace $ws_cal   output $mon_tertiary
+#workspace $ws_media output $mon_tertiary
+#workspace $ws_cal   output $mon_tertiary
 
 ## Auto-float program assigns {{{
 # pavucontrol is better floating
@@ -279,7 +276,7 @@ bindsym $mod+a focus parent
 # kill focused window
 bindsym $mod+Shift+q kill
 ## }}}
-bindsym $mod+grave  exec $input_method_cycle && pkill -RTMIN+12 i3blocks
+bindsym $mod+grave  exec $ime_cycle && pkill -RTMIN+12 i3blocks
 # capture all screens together
 bindsym $mod+Print      $exec_quiet $shotter $shot_img
 
@@ -323,47 +320,20 @@ bindsym $mod+F2 exec sleep 0.2 && xset dpms force off
 
 # turn off computer
 bindsym $mod+Shift+Delete exec $poweroff
-### Applications {{{
-# Things to remember:
-#
-#   * prefix exec with a switch to the workspace you want the program on
-#   * remember to title things when required by your layouts
-#   * the selected window for a workspace seems pretty hard to set -
-#     the order in which you start things might have an effect, but it
-#     doesn't seem reliable
-
 # auto terminal for scratchpad
 for_window [title="^scratch$"] move scratchpad
 exec $terminal --title "scratch"
 
-assign [class="$editor_class"] $ws_text
-exec $editor
-
 assign [class="$browser_class"] $ws_www
 exec $browser
 
-$i3_msg 'workspace number $ws_comms; exec $mail'
-$i3_msg 'workspace number $ws_comms; exec $terminal --title "irc" -e $term_irc'
-$i3_msg 'workspace number $ws_media; exec $terminal --title "music" -e $term_music'
-$i3_msg 'workspace number $ws_media; exec $terminal --title "news" -e $term_news'
-#$i3_msg 'workspace number $ws_cal; exec $calendar'
-### }}}
+$i3_msg 'workspace number $ws_text; exec $terminal'
 
-### Layouts {{{
-# Note: there is no point in using a layout if a workspace has just 1
-#       window
-#
-# Remember to prefix the layout with a change to the wanted workspace!
-# Keep in mind that the last workspace to have a layout appended to it
-# will probably be the active one on startup.
-#
-$i3_msg 'workspace number $ws_comms; append_layout "$conf_dir/workspace-comms.json"'
-$i3_msg 'workspace number $ws_media; append_layout "$conf_dir/workspace-media.json"'
+assign [class="^Slack$"] $ws_comms
+exec slack
 
 # try our best to make a specific workspace active on startup
 $i3_msg 'workspace number $ws_text'
-
-### }}}
 # vim: ft=conf
 bar {
     # use py3status

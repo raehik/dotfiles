@@ -1,1 +1,1 @@
-bindsym $mod+grave  exec $ime_cycle && pkill -RTMIN+12 i3blocks
+bindsym $mod+grave exec $ime_cycle

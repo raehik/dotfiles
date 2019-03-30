@@ -7,8 +7,8 @@
 workspace $ws_text  output $mon_primary
 workspace $ws_www   output $mon_secondary
 workspace $ws_comms output $mon_tertiary
-workspace $ws_media output $mon_tertiary
-workspace $ws_cal   output $mon_tertiary
+#workspace $ws_media output $mon_tertiary
+#workspace $ws_cal   output $mon_tertiary
 
 ## Auto-float program assigns {{{
 # pavucontrol is better floating

@@ -30,19 +30,16 @@ set $bg_main ~/.assets/backgrounds/desktop
 #client.placeholder      "#000000" "#0c0c0c" "#ffffff" "#000000"
 ## }}}
 
-# theme colours (applied to windows etc.)
-# (quotes not required, just for editors (Vim) to understand they're strings)
-
-## Theme: Default {{{
-#set $c_text_foc         "#ffffff"
-#set $c_text_unfoc       "#888888"
-#set $c_text_inactive    "#ffffff"
+## Theme: default {{{
+#set $c_text_foc         #ffffff
+#set $c_text_unfoc       #888888
+#set $c_text_inactive    #ffffff
 #
-#set $c_border_foc       "#4c7899"
-#set $c_border_unfoc     "#333333"
-#set $c_border_inactive  "#333333"
+#set $c_border_foc       #4c7899
+#set $c_border_unfoc     #333333
+#set $c_border_inactive  #333333
 #
-#set $c_bg_foc       "#285577"
-#set $c_bg_unfoc     "#222222"
-#set $c_bg_inactive  "#5f676a"
+#set $c_bg_foc       #285577
+#set $c_bg_unfoc     #222222
+#set $c_bg_inactive  #5f676a
 ## }}}

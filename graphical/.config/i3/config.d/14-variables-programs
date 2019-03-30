@@ -1,7 +1,7 @@
 # vim: ft=conf
 set $suspend            systemctl suspend
 set $poweroff           poweroff
-set $input_method_cycle ime-cycle
+set $ime_cycle          ime-cycle
 
 set $lock               lock
 set $lock_fork          lock

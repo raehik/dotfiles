@@ -1,4 +1,4 @@
-## Theme: dim i3 (raehik) {{{
+## Theme: dim i3 (raehik) - enabled {{{
 set $c_text_foc         #dddddd
 set $c_text_unfoc       #777777
 set $c_text_inactive    #cccccc

@@ -7,7 +7,7 @@ let &colorcolumn = &textwidth + 1
 syntax on
 
 " Set colourscheme
-colorscheme nord
+colorscheme zenburn
 
 " Show extra whitespace at end of line
 " Colour = Zenburn theme (slightly lighter than CursorLine colour)

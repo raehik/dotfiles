@@ -2,7 +2,7 @@
 # lifecycle
 set $suspend    systemctl suspend
 set $poweroff   poweroff
-set $ime_cycle  ime-cycle
+set $ime_cycle  ime-cycle-wayland
 
 set $lock               swaylock -c $c_general_lock
 set $lock_fork          swaylock -c $c_general_lock -f
@@ -31,3 +31,7 @@ set $calendar       evolution
 set $term_irc       weechat
 set $term_music     mpn
 set $term_news      newsboat
+
+# REQ: haikarainen/light
+set $brightness_step_up     light -A 10
+set $brightness_step_down   light -U 10

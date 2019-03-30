@@ -1,3 +1,8 @@
-output DP-2     pos 0       0
-output DP-3     pos 1680    0
-output eDP-1    pos 3600    0
+# work
+#output DP-2     pos 0       0
+#output DP-3     pos 1680    0
+#output eDP-1    pos 3600    0
+
+# home
+output eDP-1    pos 0    0
+output DP-1     pos 1920 0
