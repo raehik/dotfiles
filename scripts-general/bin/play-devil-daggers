@@ -2,5 +2,9 @@
 steamapps_dir="$HOME"/.steam/steam/steamapps
 
 game_dir="$steamapps_dir"/common/devildaggers
+game_steamid="422970"
+
+echo "$game_steamid" > "$game_dir"/steam_appid.txt
+
 cd "$game_dir"
 LD_PRELOAD=libcurl.so.3 ./devildaggers
