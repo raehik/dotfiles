@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+engine1="xkb:us::eng"
+engine2="mozc-jp"
+
+engine_default="$engine1"
+
+engine_current=$(ibus engine)
+
+if [[ "$engine_current" == "$engine1" ]]; then
+    ibus engine "$engine2"
+elif [[ "$engine_current" == "$engine2" ]]; then
+    ibus engine "$engine1"
+else
+    ibus engine "$engine_default"
+fi
+
+# TODO: hack
+swaymsg input '*' xkb_layout gb
