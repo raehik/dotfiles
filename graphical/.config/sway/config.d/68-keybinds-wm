@@ -6,6 +6,7 @@ bindsym $mod+Shift+e exit
 
 # lock computer
 bindsym XF86Display exec $lock
+bindsym $mod+Alt+F1 exec $lock
 
 # lock computer & standby
 bindsym $mod+F1 exec $lock_fork && $suspend
