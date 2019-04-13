@@ -1,0 +1,11 @@
+input * {
+    # type of acceleration
+    # adaptive = velocity-based multiplier, flat = constant multiplier
+    # default: adaptive
+    #accel_profile flat
+
+    # acceleration multiplier
+    # -1<=x<=1
+    # default: 0 (= "base, so should be 0 change)
+    #pointer_accel 0
+}

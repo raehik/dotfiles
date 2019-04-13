@@ -118,13 +118,14 @@ mode $mode_resize {
     bindsym Up      resize  shrink  height  10px
     bindsym Right   resize  grow    width   10px
 
-    # back to normal: Enter or Escape
+    # back to normal: self, Enter, Escape
+    bindsym $mod+r mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode $mode_resize
 
-# no-swallow mode for using in virtual machines etc.
+# "no-swallow mode" to disable all binds (useful for virtual machines)
 set $mode_no_swallow "no-swallow - mod+Shift+Esc to exit"
 mode $mode_no_swallow {
     # only one keybind: return to normal
@@ -320,20 +321,6 @@ bindsym $mod+F2 exec sleep 0.2 && xset dpms force off
 
 # turn off computer
 bindsym $mod+Shift+Delete exec $poweroff
-# auto terminal for scratchpad
-for_window [title="^scratch$"] move scratchpad
-exec $terminal --title "scratch"
-
-assign [class="$browser_class"] $ws_www
-exec $browser
-
-$i3_msg 'workspace number $ws_text; exec $terminal'
-
-assign [class="^Slack$"] $ws_comms
-exec slack
-
-# try our best to make a specific workspace active on startup
-$i3_msg 'workspace number $ws_text'
 # vim: ft=conf
 bar {
     # use py3status
