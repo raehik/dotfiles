@@ -11,7 +11,7 @@ set $lock_timeout_sec   1800
 # screenshots
 set $shotter        grim
 set $shot_selector  slurp
-set $shot_img       $HOME/media/screenshots/$(date +%F_%T_shot).png
+set $shot_img       $HOME/proj/media/screenshots/$(date +%F_%T_shot).png
 
 # generic names for common apps
 set $terminal       termite

@@ -1,6 +1,6 @@
 # vim: ft=dosini
 [options]
-font = xos4 Terminus 14px
+font = Terminus 14px
 #font = Inconsolata 15px
 #font = Hack 13px
 #font = Source Code Pro 13px
