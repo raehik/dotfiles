@@ -72,16 +72,10 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;32m'
 ## }}}
 
-## Common programs via envvars {{{
-# Vim master race
-export EDITOR="vim"
-
-# Set general file opener (e.g. xdg-open)
-export FILE_OPENER="mimeo"
-## }}}
-
 # shell-specific options
 [[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
 [[ -n "$ZSH_VERSION" ]]   && source "$cfg_dir"/zshrc
+
+export TERMINFO_DIRS="/usr/share/terminfo${TERMINFO_DIRS:+:}$TERMINFO_DIRS"
 
 unset cfg_dir
