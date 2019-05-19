@@ -4,6 +4,7 @@ export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale${GUIX_LOCPATH:+:}$GUIX_LOCPA
 export TERMINFO_DIRS="$HOME/.guix-profile/share/terminfo${TERMINFO_DIRS:+:}$TERMINFO_DIRS"
 export BASH_LOADABLES_PATH="$HOME/.guix-profile/lib/bash${BASH_LOADABLES_PATH:+:}$BASH_LOADABLES_PATH"
 export INFOPATH="$HOME/.guix-profile/share/info${INFOPATH:+:}$INFOPATH"
+export PYTHONPATH="$HOME/.guix-profile/lib/python2.7/site-packages${PYTHONPATH:+:}$PYTHONPATH"
 export IBUS_COMPONENT_PATH="$HOME/.guix-profile/share/ibus/component${IBUS_COMPONENT_PATH:+:}$IBUS_COMPONENT_PATH"
 export GUIX_GTK3_PATH="$HOME/.guix-profile/lib/gtk-3.0${GUIX_GTK3_PATH:+:}$GUIX_GTK3_PATH"
 export XDG_DATA_DIRS="$HOME/.guix-profile/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
