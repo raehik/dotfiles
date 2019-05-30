@@ -557,7 +557,7 @@ external_editor = vim
 follow_now_playing_lyrics = yes
 
 # Music library location
-mpd_music_dir = ~/proj/music/library-main
+mpd_music_dir = ~/proj/music/library
 
 # Use alternative UI (song name/artist/album centred at top)
 user_interface = alternative
