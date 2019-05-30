@@ -6,7 +6,7 @@ set $ime_cycle  ime-cycle-wayland
 
 set $lock               swaylock -c $c_general_lock
 set $lock_fork          swaylock -c $c_general_lock -f
-set $lock_timeout_sec   1800
+set $lock_timeout_sec   3600
 
 # screenshots
 set $shotter        grim
