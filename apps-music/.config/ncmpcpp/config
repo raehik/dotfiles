@@ -550,8 +550,8 @@ screen_switcher_mode = previous
 # Place lyrics outside the music directory
 lyrics_directory = ~/proj/music/lyrics
 
-# Vim master race, as usual
-external_editor = vim
+# (n)Vim master race, as usual
+external_editor = nvim
 
 # Try to load new lyrics on song change
 follow_now_playing_lyrics = yes
