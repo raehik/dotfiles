@@ -38,7 +38,7 @@ alias lb="ls -la"
 alias g="git"
 alias t="tmux"
 alias vim="nvim"
-alias v="nvim"
+alias v="vim"
 alias cm="git commit -m"
 
 # cdl to a shortcutted directory (in ~/sh)
