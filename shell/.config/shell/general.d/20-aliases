@@ -10,13 +10,16 @@
 # enable completion for aliases when prefixing sudo
 alias sudo="sudo "
 
+## Options as aliases {{{
 # as of 2015-11-04 commit 109b9220c, ls now uses a different default quoting
 # method for terminals. I don't like it (makes my music library etc. look ugly)
 alias ls="ls --color=auto --literal"
 
-## Common shortcuts {{{
-# cd to a directory and ls if it succeeds
-# previously had a habit of immediate ls; this helps me not do that
+alias grep="grep --color=auto"
+## Options as aliases }}}
+
+## Shell basics {{{
+# cd to a directory and ls if succeeded (to beat my `cd; ls` habit)
 cdl() {
     cd $@
     if [ $? -eq 0 ]; then
@@ -27,7 +30,6 @@ cdl() {
 }
 alias c="cdl"
 
-# useful ls aliases
 alias ll="ls -lh"
 alias la="ls -lAh"
 alias l="ls"
@@ -39,62 +41,43 @@ alias vim="nvim"
 alias v="nvim"
 alias cm="git commit -m"
 
-# quicker 'date now' command
-alias d="date +%F"
-
 # cdl to a shortcutted directory (in ~/sh)
 shcdl() {
     cdl ~/sh/"$1"
 }
 alias s="shcdl"
-## }}}
 
-## Common shortcuts - not internalized {{{
-# quicker 'remove all empty dirs' command
-alias rmds="rmdir --ignore-fail-on-non-empty *"
+# quicker 'date now' command
+alias d="date +%F"
 
-# kubectl
-alias k=kubectl
-
-# Terraform
-alias tf=terraform
-## }}}
-
-## Use colours {{{
-alias grep="grep --color=auto"
-## }}}
-
-# cd to the real path of current directory
+# cd to the real path of given file's directory, given directory, or current
+# directory
 real() {
     if [[ $# > 0 ]]; then
-        # we got an argument, so cd to it's realpath
+        # got arg: use
         if [[ -d "$1" ]]; then
-            # it's a directory
+            # got dir: cd to it
             new_dir="$(realpath "$1")"
         else
-            # it's a file, so cd to it's directory
+            # got file: cd to it's directory
             new_file="$(realpath "$1")"
             new_dir="${new_file%/*}"
+            unset new_file
         fi
     else
-        # no arguments, use current directory
+        # no arg: use current directory
         new_dir="$(realpath .)"
     fi
-
     cd "$new_dir"
+    unset new_dir
 }
+## Shell basics }}}
 
-# copy a file to the X clipboard
-alias clpb="xsel -i -b < "
+## Specific {{{
+# (dependent on e.g. current most-used software)
+alias k=kubectl
+alias tf=terraform
+## Specific }}}
 
-# useful mount shortcut for non-POSIX FSes e.g. NTFS: current user, UTF-8
+# useful mount shortcut for non-POSIX FSes (e.g. NTFS): current user, UTF-8
 alias ntfsmount="mount -ouid=$(id -u),gid=$(id -g),utf8"
-
-## [Fuck you, ]Docker {{{
-#alias docker="sudo docker"
-## }}}
-
-# password-store / pass: put in (X) clipboard by default (override via \pass)
-# 2019-03-12: DON'T do this: adding -c assumes show subcommand, all other
-# commands must be \pass escaped
-#alias pass="pass -c"
