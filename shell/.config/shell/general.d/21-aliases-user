@@ -5,5 +5,5 @@ alias jp="jctl.py -b ~/proj/writing/jp.raehik.net"
 alias predict=pb-make.py
 alias new=pyplater.py
 alias mr=markdown-render.py
-alias rg=run-bg
+alias rbg=run-bg
 alias play=play.py
