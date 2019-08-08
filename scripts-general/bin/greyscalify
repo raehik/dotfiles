@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+if [[ $# != 2 ]]; then
+    echo "error: expected exactly 2 arguments (in-pdf, out-pdf)"
+    exit 1
+fi
+
+gs \
+    -sOutputFile="$2" \
+	-sDEVICE=pdfwrite \
+ 	-sColorConversionStrategy=Gray \
+ 	-dProcessColorModel=/DeviceGray \
+ 	-dCompatibilityLevel=1.4 \
+ 	-dNOPAUSE \
+ 	-dBATCH \
+ 	"$1"
