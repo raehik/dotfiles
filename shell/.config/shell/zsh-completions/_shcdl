@@ -1,0 +1,4 @@
+#compdef shcdl
+
+# complete only directories from a set prefix (essentially bookmarks)
+_files -/ -W ~/sh
