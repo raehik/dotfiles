@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+_err() {
+    echo >&2 "error: $1"
+    exit $2
+}
+
+if [[ $# < 2 ]]; then
+    _err "expected at least 2 arguments (got $#)" 1
+fi
+
+rclone_backend=remote
+bucket=raehik-sync
+prefix="$HOME"/proj
+
+method="$1"
+path="$2"
+
+if [[ "${path:0:1}" == "/" ]]; then
+    # absolute path: start from configured prefix (so just remove leading slash)
+    path="${path:1}"
+else
+    # relative path: if CWD in prefix, start from current directory, else start
+    # from configured prefix
+    real_cwd="$(realpath "$(pwd)")"
+    if [[ "$real_cwd"/ == "$prefix"/* ]]; then
+        echo "using path relative to CWD..."
+        prefix_cwd="${real_cwd#*$prefix}"
+        if [[ -n "$prefix_cwd" ]]; then
+            path="${prefix_cwd:1}/$path"
+        fi
+    fi
+fi
+
+# match together remote and local paths
+real_path="$(realpath -m "$prefix/$path")"
+if [[ "$real_path"/ != "$prefix"/* ]]; then
+    _err "relative path was outside prefix: $real_path not in $prefix" 4
+fi
+
+remote_path="$real_path"
+local_path="$real_path"
+
+if [[ $# == 1 ]]; then
+    shift 1
+else
+    shift 2
+fi
+
+case "$method" in
+    push)
+        rclone sync --links --progress "$local_path" "$rclone_backend:$bucket/$remote_path" $@
+        ;;
+    pull)
+        rclone sync --links --progress "$rclone_backend:$bucket/$remote_path" "$local_path" $@
+        ;;
+    delete)
+        echo "delete disabled due to danger: please edit this script to enable"
+        rclone purge "$rclone_backend:$bucket/$remote_path" $@
+        ;;
+    *)
+        _err "method not supported (must be one of: push, pull, delete)" 2
+        ;;
+esac
