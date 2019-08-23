@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+pass_password="gcp/test/terraformer"
+
+out_file=$(mktemp -p "$XDG_RUNTIME_DIR" --suffix=.json)
+echo "Grabbing password $pass_password..."
+pass show gcp/test/terraformer > "$out_file"
+export GOOGLE_APPLICATION_CREDENTIALS="$out_file"
+
+echo "Starting shell with GCP application credentials set..."
+$SHELL
+echo "Exiting shell and deleting temporary credential file..."
+rm "$out_file"
