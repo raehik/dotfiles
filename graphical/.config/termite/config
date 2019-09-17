@@ -3,7 +3,7 @@
 font = Terminus 14px
 #font = Inconsolata 15px
 #font = Hack 13px
-#font = Source Code Pro 13px
+font = Source Code Pro 13px
 
 # Nord
 [colors]
