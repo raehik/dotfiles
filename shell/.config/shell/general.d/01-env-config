@@ -18,3 +18,6 @@ export LEDGER_FILE="$HOME"/proj/money/ledger/main.journal
 
 # password-store / pass: put in (X) clipboard by default, shorten clip time
 export PASSWORD_STORE_CLIP_TIME=15
+
+# Go: place in user's local
+export GOPATH="$XDG_DATA_HOME/go"
