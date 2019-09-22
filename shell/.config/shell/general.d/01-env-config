@@ -21,3 +21,4 @@ export PASSWORD_STORE_CLIP_TIME=15
 
 # Go: place in user's local
 export GOPATH="$XDG_DATA_HOME/go"
+export PATH="$PATH:$GOPATH/bin"
