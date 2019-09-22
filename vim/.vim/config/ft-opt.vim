@@ -13,6 +13,9 @@ autocmd BufNewFile,BufRead *.sql set filetype=mysql
 " Ruby: indent = 2
 autocmd FileType ruby set softtabstop=2 tabstop=2 shiftwidth=2
 
+" Go: use tabs
+autocmd FileType go setlocal noexpandtab
+
 " Auto soft wrap mode for Markdown
 " Requires sourcing config/map-wrapmode.vim
 "autocmd Filetype markdown call ToggleWrap()
