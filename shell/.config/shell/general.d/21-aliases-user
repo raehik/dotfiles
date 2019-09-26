@@ -7,3 +7,4 @@ alias new=pyplater.py
 alias mr=markdown-render.py
 alias rbg=run-bg
 alias play=play.py
+alias m=mbedctl

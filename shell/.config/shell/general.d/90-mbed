@@ -1,0 +1,1 @@
+export PATH="$HOME/proj/uni/year-4/modules/co657/etc/emsdk:$HOME/proj/uni/year-4/modules/co657/etc/emsdk/clang/e1.38.21_64bit:$HOME/proj/uni/year-4/modules/co657/etc/emsdk/node/8.9.1_64bit/bin:$HOME/proj/uni/year-4/modules/co657/etc/emsdk/emscripten/1.38.21:$PATH"
