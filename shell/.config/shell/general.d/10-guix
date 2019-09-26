@@ -10,3 +10,5 @@ export GUIX_GTK3_PATH="$HOME/.guix-profile/lib/gtk-3.0${GUIX_GTK3_PATH:+:}$GUIX_
 export XDG_DATA_DIRS="$HOME/.guix-profile/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 export GIO_EXTRA_MODULES="$HOME/.guix-profile/lib/gio/modules${GIO_EXTRA_MODULES:+:}$GIO_EXTRA_MODULES"
 export ZATHURA_PLUGINS_PATH="$HOME/.guix-profile/lib/zathura${ZATHURA_PLUGINS_PATH:+:}$ZATHURA_PLUGINS_PATH"
+export SSL_CERT_DIR="$HOME/.guix-profile/etc/ssl/certs${SSL_CERT_DIR:+:}$SSL_CERT_DIR"
+export SSL_CERT_FILE="$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt"
