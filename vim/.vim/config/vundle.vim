@@ -16,6 +16,7 @@ Plugin 'airblade/vim-rooter'
 Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
+Plugin 'editorconfig/editorconfig-vim'
 
 " Small & handy
 Plugin 'vim-scripts/loremipsum'
