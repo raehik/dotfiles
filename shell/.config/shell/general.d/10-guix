@@ -1,4 +1,5 @@
 # vim: ft=sh
+export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
 GUIX_PROFILE="$HOME/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale${GUIX_LOCPATH:+:}$GUIX_LOCPATH"
