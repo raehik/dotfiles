@@ -16,7 +16,7 @@ set $c_general_lock     292b2e
 ## }}}
 
 # fonts
-set $font_main Terminus 10
+set $font_main Source Code Pro 10
 
 # backgrounds
 set $bg_main ~/.assets/backgrounds/desktop
