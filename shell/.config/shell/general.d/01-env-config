@@ -6,10 +6,6 @@
 # offer environment variable-based config only. This file is for those programs.
 #
 
-# non-guix config
-export XDG_DATA_DIRS="/usr/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
-export IBUS_COMPONENT_PATH="/usr/share/ibus/component${IBUS_COMPONENT_PATH:+:}$IBUS_COMPONENT_PATH"
-
 # aws-vault: use file backend (nice and simple, & works with Geodesic)
 export AWS_VAULT_BACKEND="file"
 
