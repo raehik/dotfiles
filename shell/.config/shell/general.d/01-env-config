@@ -6,6 +6,9 @@
 # offer environment variable-based config only. This file is for those programs.
 #
 
+# set this early so that Guix overrides it properly
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
+
 # aws-vault: use file backend (nice and simple, & works with Geodesic)
 export AWS_VAULT_BACKEND="file"
 
@@ -18,3 +21,6 @@ export PASSWORD_STORE_CLIP_TIME=15
 # Go: place in user's local
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+# Java: fix broken bullshit
+export _JAVA_AWT_WM_NONREPARENTING=1

@@ -28,6 +28,7 @@ Plugin 'b4b4r07/vim-hcl'
 " Specific
 Plugin 'tpope/vim-fugitive'
 Plugin 'briancollins/vim-jst'
+Plugin 'zchee/vim-flatbuffers'
 
 " Hefty
 "Plugin 'SirVer/ultisnips'
