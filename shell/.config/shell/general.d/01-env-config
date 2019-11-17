@@ -6,6 +6,8 @@
 # offer environment variable-based config only. This file is for those programs.
 #
 
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # set this early so that Guix overrides it properly
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share/${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 

@@ -19,7 +19,7 @@ set $c_general_lock     292b2e
 set $font_main Source Code Pro 10
 
 # backgrounds
-set $bg_main ~/.assets/backgrounds/desktop
+set $bg_main ~/.local/share/backgrounds/desktop.png
 
 ## Default colours {{{
 # class                 border    backgrnd. text      indicator

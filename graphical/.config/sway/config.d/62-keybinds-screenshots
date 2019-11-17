@@ -3,3 +3,6 @@ bindsym $mod+Print      exec $shotter $shot_img
 
 # capture a selection
 bindsym $mod+Ctrl+Print exec $shot_selector | $shotter -g - $shot_img
+
+# custom screenshot
+bindsym $mod+Alt+Print exec $shot_selector | $shotter -g - $HOME/sh/iot/video/res/img/screenshots/$(date +%F_%T).png
