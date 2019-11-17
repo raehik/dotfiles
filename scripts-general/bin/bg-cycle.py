@@ -178,7 +178,7 @@ class BGCycler(BoilerplateClass):
         cmd_convert_img.append(background_path)
         ret = self.drop_to_shell(cmd_convert_img)
         if ret != 0:
-            self.fail("failed converting for background {}, image: {}".format(background, image), BGCycler.ERR_IMG_CONVERSION_FAILED)
+            self.fail("failed converting for background {}, image: {}".format(bg_name, image), BGCycler.ERR_IMG_CONVERSION_FAILED)
 
     def main(self):
         """Main entrypoint after program setup."""
