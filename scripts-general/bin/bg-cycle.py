@@ -168,14 +168,15 @@ class BGCycler(BoilerplateClass):
 
         background_path = Path(self.out_dir, bg_name+".png")
 
-        cmd_convert_img = ["convert", image, "-brightness-contrast", "{}x{}".format(brightness, contrast)]
+        cmd_convert_img = ["convert", str(image), "-brightness-contrast", "{}x{}".format(brightness, contrast)]
         if width == "0" or height == "0":
             pass
         else:
             cmd_convert_img += [
-                    "-crop", "{}x{}+0+0".format(width, height),
-                    "-gravity", "center"]
-        cmd_convert_img.append(background_path)
+                    "-gravity", "center",
+                    "-crop", "{}x{}+0+0".format(width, height)]
+        cmd_convert_img.append(str(background_path))
+        self.logger.debug("cmd: {}".format(" ".join(cmd_convert_img)))
         ret = self.drop_to_shell(cmd_convert_img)
         if ret != 0:
             self.fail("failed converting for background {}, image: {}".format(bg_name, image), BGCycler.ERR_IMG_CONVERSION_FAILED)
