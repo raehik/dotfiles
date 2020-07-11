@@ -16,3 +16,8 @@ video/webm=mpv.desktop;
 video/x-matroska=mpv.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/discord-443564201349218305=discord-443564201349218305.desktop
+x-scheme-handler/magnet=userapp-transmission-gtk-URRWJ0.desktop
+
+[Added Associations]
+x-scheme-handler/magnet=userapp-transmission-gtk-URRWJ0.desktop;

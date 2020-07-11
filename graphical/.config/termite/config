@@ -1,6 +1,8 @@
 # vim: ft=dosini
 [options]
-font = Source Code Pro 13px
+#font = Terminus 14px
+#font = Source Code Pro 13px
+font = Fira Code
 
 # Nord
 [colors]
