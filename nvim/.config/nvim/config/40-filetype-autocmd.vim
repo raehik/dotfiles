@@ -20,8 +20,8 @@ autocmd FileType go setlocal noexpandtab
 " Requires sourcing config/map-wrapmode.vim
 "autocmd Filetype markdown call ToggleWrap()
 
-" Auto-jump to previous last position in file on open
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
+" Auto-jump to last position in file upon open (thanks to ':help last-position-jump')
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif

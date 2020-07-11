@@ -1,0 +1,2 @@
+# Ignore the binary generated spell file things (??)
+spell/*.spl
