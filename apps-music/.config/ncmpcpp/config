@@ -557,7 +557,7 @@ external_editor = nvim
 follow_now_playing_lyrics = yes
 
 # Music library location
-mpd_music_dir = ~/proj/music/library
+mpd_music_dir = ~/proj/music/library-portable
 
 # Use alternative UI (song name/artist/album centred at top)
 user_interface = alternative

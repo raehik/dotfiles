@@ -26,3 +26,12 @@ export PATH="$PATH:$GOPATH/bin"
 
 # Java: fix broken bullshit
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Composer
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+# ocaml/opam
+[[ -x $(which opam) ]] && eval $(opam env)
+
+# TeX (default is ~/texmf, ew)
+export TEXMFHOME='~/.local/share/tex'
