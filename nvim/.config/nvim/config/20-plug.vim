@@ -16,6 +16,7 @@ Plug 'vim-scripts/loremipsum'
 Plug 'tpope/vim-liquid'
 Plug 'b4b4r07/vim-hcl'
 Plug 'cespare/vim-toml'
+Plug 'neovimhaskell/haskell-vim'
 
 " Specific
 Plug 'tpope/vim-fugitive'

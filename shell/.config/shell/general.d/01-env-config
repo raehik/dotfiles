@@ -30,6 +30,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Composer
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
+# cargo (Rust)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # ocaml/opam
 [[ -x $(which opam) ]] && eval $(opam env)
 

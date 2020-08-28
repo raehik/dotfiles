@@ -2,7 +2,8 @@
 [options]
 #font = Terminus 14px
 #font = Source Code Pro 13px
-font = Fira Code
+#font = Fira Code
+font = Hack
 
 # Nord
 [colors]

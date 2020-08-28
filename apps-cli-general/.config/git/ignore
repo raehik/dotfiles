@@ -1,12 +1,9 @@
-# General coding
-tags
-
 # Vim shenanigans
 *~
 .*.swp
 
-# Personal
-#TODO*
+# Emacs shenanigans
+.#*
 
 # Python
 __pycache__/

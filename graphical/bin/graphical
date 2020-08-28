@@ -14,7 +14,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-## config {{{
 # input
 export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
 
@@ -22,15 +21,7 @@ export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-ibus-daemon -drx
-
-# 2019-11-20: fix ibus-mozc by starting manually? looks like IBus can't start it
-# properly... weird
-/usr/lib/ibus-mozc/ibus-engine-mozc &
-
-# notifications
-mako &
-## }}}
+#ibus-daemon -drx
 
 # 2020-03-13: TODO: make a shell file that only gets included if wayland
 export MOZ_ENABLE_WAYLAND=1
