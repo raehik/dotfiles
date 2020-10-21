@@ -1,5 +1,4 @@
-#input 1:1:AT_Translated_Set_2_keyboard {
-input * {
+input "type:keyboard" {
     xkb_layout gb
     xkb_options caps:swapescape,compose:menu
 }
