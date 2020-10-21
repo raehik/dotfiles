@@ -4,9 +4,6 @@
 [includeIf "gitdir:~/work/"]
     path = identity-work
 
-[core]
-    quotepath = false
-    autocrlf = false
 [alias]
     s = status
     l = log
@@ -17,5 +14,15 @@
     dc = diff --cached
     b = branch
     sub = submodule
+
+[core]
+    quotepath = false
+    autocrlf = false
 [push]
     default = simple
+[pull]
+    rebase = true
+[fetch]
+    prune = true
+[diff]
+    colorMoved = zebra
