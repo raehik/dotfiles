@@ -8,7 +8,12 @@ set hidden
 set ignorecase smartcase
 
 " On save, backup the original file (filename with ~ appended)
+" Neovim complains upon saving if the backup dir doesn't exist (and doesn't try
+" to create it itself)
 set backup backupdir=$XDG_DATA_HOME/nvim/backup
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir)
+endif
 
 " Always use Unix plaintext EOL defaults, regardless of platform
 set fileformats=unix,dos
