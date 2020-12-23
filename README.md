@@ -9,10 +9,15 @@ Stored using `stow`.
 EDIT in them to find the important lines more quickly.
 
 ## Issues
-  * PulseAudio complains if the `~/.config/pulse` directory is a symlink. Remove
-    it, `mkdir` manually, and re-stow.
-  * Other places you need to manually `mkdir`:
-    * `mpd`
+  * Some places you need to manually `mkdir` so that only inner files are
+    symlinked, due to their complaining about directory symlinks and/or creating
+    states files that shouldn't go in config.
+    * PulseAudio: `~/.config/pulse`
+    * MPD: `~/.config/mpd`
+  * Neovim config doesn't come with vim-plug baked in, I prefer requiring the
+    user to do the legwork for the latest version. Very simple.
+    * See GitHub: https://github.com/junegunn/vim-plug
+    * Once installed, run `:PlugInstall`
 
 ## Dependencies
 ### General
