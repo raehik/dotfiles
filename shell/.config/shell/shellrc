@@ -33,9 +33,6 @@ _prefix_path_if_present "$HOME/.rbenv/bin"
 unset _prefix_path_if_present
 ## $PATH prefixes }}}
 
-# gpg-agent (+handle SSH)
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
 # turn off all console system bells (PC speaker beeps) - does not affect X
 if [[ "$TERM" == "linux" ]]; then
     setterm --blength 0
