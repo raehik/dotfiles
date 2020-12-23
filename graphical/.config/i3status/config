@@ -1,4 +1,5 @@
 # vim: ft=conf
+
 # TODO: make MPD better (format for failure)
 order += "mpd_status"
 order += "volume_status"

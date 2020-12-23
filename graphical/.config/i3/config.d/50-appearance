@@ -1,5 +1,5 @@
 # set font for window titles, bar (unless specified in bar {} block) etc.
-font $font_main
+font $font_main $font_main_size
 
 # disable titlebar & borders
 #default_border none

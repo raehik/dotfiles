@@ -1,2 +1,2 @@
 # default background
-output * bg $bg_main fill
+#output * bg $bg_main fill

@@ -8,6 +8,12 @@ Stored using `stow`.
 `EDIT_*` files will very likely require some other configuration. Search for
 EDIT in them to find the important lines more quickly.
 
+## Issues
+  * PulseAudio complains if the `~/.config/pulse` directory is a symlink. Remove
+    it, `mkdir` manually, and re-stow.
+  * Other places you need to manually `mkdir`:
+    * `mpd`
+
 ## Dependencies
 ### General
 Not tied to any one OS. *(But I do use Arch Linux, so my `--version`s are very

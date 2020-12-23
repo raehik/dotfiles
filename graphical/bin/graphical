@@ -2,15 +2,18 @@
 set -e
 
 wm="sway"
-#wm="startx"
 wm_args=
 
-[[ "$1" ]] && wm="$1"
+# if arg(s) provided, use for window manager and args
+if [[ "$1" ]]; then
+    wm="$1"
+    wm_args=${@:2}
+fi
 
 # confirm window manager exists
 which "$wm" >/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "error: provided window manager not found: $wm"
+    echo "$0: error: window manager program not found: $wm"
     exit 1
 fi
 

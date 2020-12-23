@@ -1,8 +1,7 @@
 # vim: ft=conf
 bar {
-    # use py3status
-    # REQ: py3status
-    status_command py3status
+    #status_command py3status
+    status_command i3status-rs
 
     # placement on monitor(s)
     position bottom

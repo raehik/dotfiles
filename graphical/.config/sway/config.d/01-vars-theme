@@ -16,7 +16,8 @@ set $c_general_lock     292b2e
 ## }}}
 
 # fonts
-set $font_main Hack 11
+set $font_main Hack
+set $font_main_size 11
 
 # backgrounds
 set $bg_main ~/.local/share/backgrounds/desktop.png
