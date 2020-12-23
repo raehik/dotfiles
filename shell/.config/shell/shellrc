@@ -60,24 +60,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export PYTHONPATH="$HOME/.local/share/python-user"
 ## }}}
 
-## Colors via envvars {{{
-if [[ -r "$SHCFG_DIR/dircolors" ]]; then
-    # `dircolors` prints out `LS_COLORS='...'; export LS_COLORS`, so eval-ing
-    # $(dircolors) effectively sets the LS_COLORS environment variable.
-    # thanks [Matt](http://unix.stackexchange.com/a/94306)
-    eval $(dircolors "$SHCFG_DIR/dircolors")
-fi
-
-# man: use nice colours (via exporting termcap values for less)
-export LESS_TERMCAP_mb=$'\e[01;31m'
-export LESS_TERMCAP_md=$'\e[01;31m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;44;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[01;32m'
-## }}}
-
 # shell-specific options
 [[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
 [[ -n "$ZSH_VERSION" ]]   && source "$cfg_dir"/zshrc

@@ -6,9 +6,21 @@
 # offer environment variable-based config only. This file is for those programs.
 #
 
+# ls: colors (need to set LS_COLORS, we do dynamically via dircolors)
+eval $(dircolors "$cfg_dir/dircolors")
+
+# man: use nice colours (via exporting termcap values for less)
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+
 export XDG_DATA_HOME="$HOME/.local/share"
 
-# set this early so that Guix overrides it properly
+# Guix: set this early so that Guix overrides it properly
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share/${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
 
 # aws-vault: use file backend (nice and simple, & works with Geodesic)
@@ -27,13 +39,13 @@ export PATH="$PATH:$GOPATH/bin"
 # Java: fix broken bullshit
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Composer
+# PHP : Composer package manager
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-# cargo (Rust)
+# Rust: cargo package manager
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# ocaml/opam
+# OCaml: opam package manager
 [[ -x $(which opam) ]] && eval $(opam env)
 
 # TeX (default is ~/texmf, ew)
