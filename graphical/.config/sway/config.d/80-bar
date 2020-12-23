@@ -10,15 +10,25 @@ bar {
     tray_output primary
 
     # set default statusline colour
-    colors {
-        background "#000000"
-        statusline $c_text_foc
-        #separator "#666666"
+#    colors {
+#        background "#000000"
+#        statusline $c_text_foc
+#        #separator "#666666"
+#
+#        # same colors as set & used for window titles previously
+#        focused_workspace   $c_border_foc       $c_bg_foc       $c_text_foc
+#        active_workspace    $c_border_inactive  $c_bg_inactive  $c_text_inactive
+#        inactive_workspace  $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc
+#        #urgent_workspace    "#2f343a"           "#900000"       "#ffffff"
+#    }
 
-        # same colors as set & used for window titles previously
-        focused_workspace   $c_border_foc       $c_bg_foc       $c_text_foc
-        active_workspace    $c_border_inactive  $c_bg_inactive  $c_text_inactive
-        inactive_workspace  $c_border_unfoc     $c_bg_unfoc     $c_text_unfoc
-       #urgent_workspace    "#2f343a"           "#900000"       "#ffffff"
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #195f82 #195f82 #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #444444 #353535 #888888
+        urgent_workspace #2f343a #900000 #ffffff
     }
 }
