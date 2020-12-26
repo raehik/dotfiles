@@ -6,10 +6,13 @@
 mpdscribble_pidfile="$HOME/.mpdscribble/pid"
 
 mpd
+mpDris2 >/dev/null 2>/dev/null &
+mpdris2_pid=$!
 mpdscribble
 ncmpcpp
 
 # ncmpcpp exited: cleanup
 
-mpd --kill
 kill $(cat "$mpdscribble_pidfile")
+kill $mpdris2_pid
+mpd --kill

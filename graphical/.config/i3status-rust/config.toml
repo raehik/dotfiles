@@ -2,19 +2,19 @@ theme = "solarized-dark"
 icons = "awesome"
 
 [[block]]
+block = "music"
+buttons = ["play", "next"]
+
+[[block]]
 block = "battery"
 interval = 10
 format = "{percentage}% {time}"
 
 [[block]]
-block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
-alert = 10.0
+block = "ibus"
+[block.mappings]
+"mozc-jp" = "JA"
+"xkb:us::eng" = "EN"
 
 [[block]]
 block = "memory"
