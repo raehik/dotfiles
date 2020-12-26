@@ -11,6 +11,9 @@ interval = 10
 format = "{percentage}% {time}"
 
 [[block]]
+block = "watson"
+
+[[block]]
 block = "ibus"
 [block.mappings]
 "mozc-jp" = "JA"
