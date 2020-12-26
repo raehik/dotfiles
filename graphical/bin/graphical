@@ -24,7 +24,6 @@ export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-#ibus-daemon -drx
 
 # 2020-03-13: TODO: make a shell file that only gets included if wayland
 export MOZ_ENABLE_WAYLAND=1

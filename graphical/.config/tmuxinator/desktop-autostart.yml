@@ -45,4 +45,8 @@ root: ~/
 attach: false
 
 windows:
-  - gammastep: gammastep
+# TODO: DISPLAY= fixes my huge nasty bug!! great!!!
+- ibus: DISPLAY= ibus-daemon --replace
+- gammastep: gammastep
+- mako: mako
+- discord: discord
