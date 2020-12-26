@@ -2,21 +2,16 @@
 #
 # Tweet from the shell.
 #
-# Requires the following pip packages:
-#   * simplejson
-#   * twitter (NOT python-twitter, aka Python Twitter Tools)
+#     pip install twitter
+#     tw sup
 #
+# 2020-12-23: extracted raehutils, no longer appear to need to install a JSON
+# package (but careful, maybe need simplejson)
 
-import raehutils
-import sys, os, argparse, logging
-
-# twitter requires a json module
-# simplejson is updated more and may be faster
-# see: http://stackoverflow.com/questions/712791
-import simplejson
+import sys, os, argparse
 import twitter
 
-class Twitterminal(raehutils.RaehBaseClass):
+class Twitterminal():
     CREDS_FILE = os.getenv('HOME')+"/.twitterminal_creds"
     APP_CREDS_FILE = os.getenv('HOME')+"/.twitterminal_appcreds"
 
@@ -45,13 +40,9 @@ class Twitterminal(raehutils.RaehBaseClass):
     ## CLI-related {{{
     def _parse_args(self):
         self.parser = argparse.ArgumentParser(description="Tweet from the shell.")
-        self.parser.add_argument("-v", "--verbose", help="be verbose", action="count", default=0)
-        self.parser.add_argument("-q", "--quiet", help="be quiet (overrides -v)", action="count", default=0)
         self.parser.add_argument("message", help="text to tweet")
 
         self.args = self.parser.parse_args()
-
-        self._parse_verbosity()
 
         if len(self.args.message) == 0:
             exit("message needs to be longer than 0 characters", ERR_ARGS)
@@ -60,6 +51,10 @@ class Twitterminal(raehutils.RaehBaseClass):
     def main(self):
         """Main entrypoint after program initialisation."""
         self.tweet(self.args.message)
+
+    def run(self):
+        self._parse_args()
+        self.main()
 
     def tweet(self, msg):
         """Tweet a message."""
