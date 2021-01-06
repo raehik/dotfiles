@@ -3,6 +3,7 @@ set $refresh_mpd pkill -RTMIN+10 i3blocks
 set $refresh_vol pkill -RTMIN+11 i3blocks
 
 # volume multimedia keys (PulseAudio)
+# TODO pref use PA tools rather than Alsa lol (amixer needs alsa-tools or sth)
 bindsym XF86AudioRaiseVolume exec "amixer set Master 2%+ && $refresh_vol"
 bindsym XF86AudioLowerVolume exec "amixer set Master 2%- && $refresh_vol"
 bindsym XF86AudioMute exec "amixer set Master toggle && $refresh_vol"
