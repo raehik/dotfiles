@@ -50,3 +50,4 @@ windows:
 - gammastep: gammastep
 - mako: mako
 - discord: discord
+- irc: termite -e weechat
