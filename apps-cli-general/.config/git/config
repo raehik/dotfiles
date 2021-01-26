@@ -4,6 +4,9 @@
 #[includeIf "gitdir:~/work/"]
 #    path = identity-work
 
+[init]
+    defaultBranch = main
+
 [alias]
     s = status
     l = log
@@ -18,11 +21,15 @@
 [core]
     quotepath = false
     autocrlf = false
+
 [push]
     default = simple
+
 [pull]
     rebase = true
+
 [fetch]
     prune = true
+
 [diff]
     colorMoved = zebra
