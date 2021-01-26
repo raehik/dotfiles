@@ -1,8 +1,8 @@
 # set base identity, then potentially override based on filesystem location
 [include]
     path = identity-default
-[includeIf "gitdir:~/work/"]
-    path = identity-work
+#[includeIf "gitdir:~/work/"]
+#    path = identity-work
 
 [alias]
     s = status
