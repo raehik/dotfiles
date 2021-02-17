@@ -6,9 +6,6 @@ bar {
     # placement on monitor(s)
     position bottom
 
-    # system tray on primary monitor
-    tray_output primary
-
     # set default statusline colour
 #    colors {
 #        background "#000000"
