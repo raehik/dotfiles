@@ -1,24 +1,19 @@
-# set i3blocks refresh commands
-set $refresh_mpd pkill -RTMIN+10 i3blocks
-set $refresh_vol pkill -RTMIN+11 i3blocks
-
 # volume multimedia keys (PulseAudio)
-# TODO pref use PA tools rather than Alsa lol (amixer needs alsa-tools or sth)
-bindsym XF86AudioRaiseVolume exec "amixer set Master 2%+ && $refresh_vol"
-bindsym XF86AudioLowerVolume exec "amixer set Master 2%- && $refresh_vol"
-bindsym XF86AudioMute exec "amixer set Master toggle && $refresh_vol"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 
 # music player keys (MPD)
 # with special multimedia keys, and extra binds for keyboards missing them
-bindsym $mod+XF86AudioRaiseVolume exec "mpc volume +2 && $refresh_vol"
-bindsym $mod+XF86AudioLowerVolume exec "mpc volume -2 && $refresh_vol"
-bindsym XF86AudioPlay      exec "mpc toggle && $refresh_mpd"
-bindsym XF86AudioStop      exec "mpc stop   && $refresh_mpd"
-bindsym XF86AudioPrev      exec "mpc prev   && $refresh_mpd"
-bindsym XF86AudioNext      exec "mpc next   && $refresh_mpd"
-bindsym $mod+XF86AudioPlay exec "mpc next   && $refresh_mpd"
-bindsym $mod+XF86AudioNext       exec "mpd-insert-best"
-bindsym $mod+Shift+XF86AudioPlay exec "mpd-insert-best"
+bindsym $mod+XF86AudioRaiseVolume exec mpc volume +2
+bindsym $mod+XF86AudioLowerVolume exec mpc volume -2
+bindsym XF86AudioPlay      exec mpc toggle
+bindsym XF86AudioStop      exec mpc stop
+bindsym XF86AudioPrev      exec mpc prev
+bindsym XF86AudioNext      exec mpc next
+bindsym $mod+XF86AudioPlay exec mpc next
+bindsym $mod+XF86AudioNext       exec mpd-insert-best
+bindsym $mod+Shift+XF86AudioPlay exec mpd-insert-best
 
 # monitor brightness
 bindsym XF86MonBrightnessUp     exec $brightness_step_up
