@@ -1,4 +1,8 @@
-colorscheme nord
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+colorscheme space_vim_theme
 
 " Enable syntax highlighting
 syntax on
@@ -15,8 +19,7 @@ set ruler number cursorline hlsearch linebreak
 " By default, it's the same colour that cursorline uses.
 let &colorcolumn = &textwidth + 1
 
-" Show extra whitespace at end of line
-" Colour = Zenburn theme (slightly lighter than CursorLine colour)
+" Show extra whitespace at end of line (light grey)
 highlight ExtraWhitespace ctermbg=239 guibg=#4e4e4e
 match ExtraWhitespace /\s\+\%#\@<!$/
 

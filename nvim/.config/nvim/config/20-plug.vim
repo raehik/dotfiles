@@ -38,6 +38,8 @@ Plug 'zchee/vim-flatbuffers'
 "Plug 'whatyouhide/vim-gotham'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'liuchengxu/space-vim-theme'
 
 " Status line
 Plug 'vim-airline/vim-airline'
