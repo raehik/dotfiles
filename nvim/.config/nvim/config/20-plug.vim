@@ -1,3 +1,6 @@
+" vim-plug install (2021-02-27):
+"     $ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 call plug#begin(stdpath('data') . '/plugged')
 
 " note: make sure to use single quotes for plugins!
