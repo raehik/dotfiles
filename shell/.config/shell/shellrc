@@ -23,9 +23,6 @@ _prefix_path_if_present "$HOME/bin"
 # also sometimes used (maybe I should move there...)
 _prefix_path_if_present "$HOME/.local/bin"
 
-# rbenv
-_prefix_path_if_present "$HOME/.rbenv/bin"
-
 # snap
 # 2019-02-13: disabled because not preferred
 #_prefix_path_if_present "/snap/bin"
@@ -37,25 +34,6 @@ unset _prefix_path_if_present
 if [[ "$TERM" == "linux" ]]; then
     setterm --blength 0
 fi
-
-## Programming languages {{{
-# Ruby: initialise rbenv if present
-if command -v rbenv >/dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-
-# Java: make sure we use anti-aliasing
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
-
-# Java: Arch doesn't set its own classpath or something? smh
-export CLASSPATH=".:/usr/share/java/*"
-
-# Java: is fucking garbage
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Python: set a directory for personal user modules
-export PYTHONPATH="$HOME/.local/share/python-user"
-## }}}
 
 # shell-specific options
 [[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
