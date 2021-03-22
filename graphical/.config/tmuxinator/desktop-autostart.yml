@@ -51,3 +51,4 @@ windows:
 - mako: mako
 - discord: discord
 - irc: termite -e weechat
+- pavucontrol: pavucontrol
