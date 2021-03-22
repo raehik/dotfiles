@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+if command -v gh &> /dev/null; then
+    completion_file=~/.cache/zsh/completion/_gh
+    if [[ ! -r $completion_file ]]; then
+        gh completion -s zsh > $completion_file
+    fi
+fi

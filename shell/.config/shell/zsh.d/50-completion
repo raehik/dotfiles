@@ -1,6 +1,6 @@
 # add custom command completions
 # note: must be before the autoload -U compinit
-fpath=("$cfg_dir"/zsh-completions $fpath)
+fpath=("$cfg_dir"/zsh-completions ~/.cache/zsh/completion $fpath)
 
 # load zsh's great completion features
 autoload -U compinit
