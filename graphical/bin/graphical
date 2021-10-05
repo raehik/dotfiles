@@ -28,4 +28,7 @@ export QT_IM_MODULE=ibus
 # 2020-03-13: TODO: make a shell file that only gets included if wayland
 export MOZ_ENABLE_WAYLAND=1
 
+# 2021-08-07: xdg-desktop-portal-wlr
+export XDG_CURRENT_DESKTOP=$wm
+
 "$wm" $wm_args

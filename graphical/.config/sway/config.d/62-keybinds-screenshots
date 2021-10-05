@@ -5,4 +5,6 @@ bindsym $mod+Print      exec $shotter $shot_img
 bindsym $mod+Ctrl+Print exec $shot_selector | $shotter -g - $shot_img
 
 # custom screenshot
-bindsym $mod+Alt+Print exec $shot_selector | $shotter -g - $HOME/sh/iot/video/res/img/screenshots/$(date +%F_%T).png
+# ($mod+Alt+Print seems to have strange behaviour, at least on Firefox, so Shift
+# it is)
+#bindsym $mod+Shift+Print exec $shotter -g "139,233 1207x681" -t jpeg $HOME/sh/golden-time/tmp/2021-07-24-tl-entry-test-imgs/$(date +%F_%T).jpeg
