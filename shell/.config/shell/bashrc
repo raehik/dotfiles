@@ -3,7 +3,7 @@
 # bash-specific shell configuration.
 #
 
-for f in "$cfg_dir"/bash.d/*; do source "$f"; done
+for f in "$_cfg_dir"/bash.d/*; do source "$f"; done
 
 # reset default distro settings
 PROMPT_COMMAND=

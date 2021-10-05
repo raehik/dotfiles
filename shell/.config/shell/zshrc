@@ -3,7 +3,7 @@
 # zsh-specific shell configuration.
 #
 
-for f in "$cfg_dir"/zsh.d/*; do source "$f"; done
+for f in "$_cfg_dir"/zsh.d/*; do source "$f"; done
 
 # Vi[m]-style command-line editing
 bindkey -v

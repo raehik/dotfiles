@@ -1,44 +1,16 @@
-# vim: ft=sh
+#!/usr/bin/env bash
 #
-# Non-specific/common (bash & zsh) shell configuration.
+# Common shell configuration (bash + zsh).
 #
 
 # safely get all available XDG directories & set config directory from now on
 # straight from freedesktop.org @ https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
 test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" \
     && source "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
-cfg_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
+_cfg_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
 
-for f in "$cfg_dir"/general.d/*; do source "$f"; done
+# shell-specific config
+[[ -n "$BASH_VERSION" ]] && source "$_cfg_dir"/bashrc
+[[ -n "$ZSH_VERSION"  ]] && source "$_cfg_dir"/zshrc
 
-## $PATH prefixes {{{
-_prefix_path_if_present() {
-    [[ -d "$1" ]] && export PATH="$1:$PATH"
-}
-
-# ~/bin
-# sometimes added, but let's make sure it's leftmost
-_prefix_path_if_present "$HOME/bin"
-
-# also sometimes used (maybe I should move there...)
-_prefix_path_if_present "$HOME/.local/bin"
-
-# snap
-# 2019-02-13: disabled because not preferred
-#_prefix_path_if_present "/snap/bin"
-
-unset _prefix_path_if_present
-## $PATH prefixes }}}
-
-# turn off all console system bells (PC speaker beeps) - does not affect X
-if [[ "$TERM" == "linux" ]]; then
-    setterm --blength 0
-fi
-
-# shell-specific options
-[[ -n "$BASH_VERSION" ]]  && source "$cfg_dir"/bashrc
-[[ -n "$ZSH_VERSION" ]]   && source "$cfg_dir"/zshrc
-
-export TERMINFO_DIRS="/usr/share/terminfo${TERMINFO_DIRS:+:}$TERMINFO_DIRS"
-
-unset cfg_dir
+for f in "$_cfg_dir"/general.d/*; do source "$f"; done

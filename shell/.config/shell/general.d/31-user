@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Vim stays wining
+# 2019-05-10: *neovim stays winning
+export EDITOR="nvim"
+
+# general file opener (e.g. xdg-open)
+export FILE_OPENER="mimeo"
+
+# password-store / pass: put in (X) clipboard by default, shorten clip time
+export PASSWORD_STORE_CLIP_TIME=15
+
+# Java: fix broken bullshit
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Java: make sure we use anti-aliasing
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgrep/config
+
+# hledger: default journal file
+export LEDGER_FILE="$HOME"/proj/money/ledger/main.journal
+
+# TeX (default is ~/texmf, ew)
+export TEXMFHOME='~/.local/share/tex'

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+eval $(_dedup_path_var_perl PATH)

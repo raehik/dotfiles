@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# For PATH handling, I prefer to dedup after the fact. Even if I configure my
+# user-side stuff correctly, the host OS might be set up to re-add paths. And
+# it's useful to redo user-side stuff if so, to maintain "intended" path order.
+# So I have some utils here, but I don't necessarily use them.
+_prefix_path_no_dup() { [[ ":$PATH:" != *":$1:"* ]] && PATH="$1":"$PATH" ; }
+
+# thanks to Ryan C. Thompson @ https://unix.stackexchange.com/a/149054
+_dedup_path_var_perl() {
+    path_orig=$(eval echo \$$1)
+    path_deduped="$(perl -e 'print join(":",grep { not $seen{$_}++ } split(/:/,
+    $ARGV[0]))' "$path_orig")"
+    echo "$1"="$path_deduped"
+}
+
+_prefix_path_if_present()  { [[ -d "$1" ]]   && PATH="$1":"$PATH" ; }
+_source_if_present()       { [[ -f "$1" ]]   && source "$1"       ; }
+_eval_if_present()         { [[ -x "$1" ]]   && eval   $($@)      ; }
+_eval_if_in_path()         { command -v "$1" && eval   $($@)      ; }

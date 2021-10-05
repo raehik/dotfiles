@@ -1,4 +1,4 @@
-# vim: ft=sh
+#!/usr/bin/env bash
 #
 # Common shell aliases (bash/zsh).
 #

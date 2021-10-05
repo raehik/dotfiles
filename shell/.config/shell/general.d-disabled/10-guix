@@ -1,7 +1,12 @@
 # vim: ft=sh
+
+# set this early so that Guix overrides it properly
+export XDG_DATA_DIRS="/usr/local/share/:/usr/share/${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
+
+# lots of stuff (automatically generated or provided I think)
 export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
 GUIX_PROFILE="$HOME/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
+source "$GUIX_PROFILE/etc/profile"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale${GUIX_LOCPATH:+:}$GUIX_LOCPATH"
 export PYTHONPATH="$GUIX_PROFILE/lib/python2.7/site-packages${PYTHONPATH:+:}$PYTHONPATH"
 export GUIX_GTK3_PATH="$GUIX_PROFILE/lib/gtk-3.0${GUIX_GTK3_PATH:+:}$GUIX_GTK3_PATH"

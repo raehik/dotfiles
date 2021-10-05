@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+_prefix_path_if_present "$HOME"/bin
+_prefix_path_if_present "$HOME"/.local/bin
+
+# Rust: cargo package manager
+_prefix_path_if_present "$HOME"/.cargo/bin
+
+# Haskell: ghcup
+_source_if_present "$HOME"/.ghcup/env
+
+# Go: place in user's local
+export GOPATH="$XDG_DATA_HOME"/go
+_prefix_path_if_present "$GOPATH"/bin
+
+# Python: set a directory for personal user modules
+export PYTHONPATH="$HOME"/.local/share/python-user
+
+# Ruby: initialise rbenv if present
+#if command -v rbenv >/dev/null 2>&1; then
+#    eval "$(rbenv init -)"
+#fi
+
+# PHP: Composer package manager
+_prefix_path_if_present "$HOME"/.config/composer/vendor/bin
+
+# OCaml: opam package manager
+#_eval_if_in_path opam env
+
+# Homebrew
+_eval_if_present "$HOME"/.linuxbrew/bin/brew shellenv

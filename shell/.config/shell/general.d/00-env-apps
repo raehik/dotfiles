@@ -1,6 +1,0 @@
-# Vim master race
-# 2019-05-10: neovim master race
-export EDITOR="nvim"
-
-# general file opener (e.g. xdg-open)
-export FILE_OPENER="mimeo"
