@@ -17,4 +17,4 @@ _dedup_path_var_perl() {
 _prefix_path_if_present()  { [[ -d "$1" ]]   && PATH="$1":"$PATH" ; }
 _source_if_present()       { [[ -f "$1" ]]   && source "$1"       ; }
 _eval_if_present()         { [[ -x "$1" ]]   && eval   $($@)      ; }
-_eval_if_in_path()         { command -v "$1" && eval   $($@)      ; }
+_eval_if_in_path()         { command -v "$1" >/dev/null 2>&1 && eval $($@) ; }
