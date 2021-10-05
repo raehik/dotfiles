@@ -1,0 +1,12 @@
+# vim: ft=gitconfig
+[include]
+    path = delta-themes
+
+[delta]
+    features = calochortus-lyallii # collared-trogon good too? (?)
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta

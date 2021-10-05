@@ -34,3 +34,6 @@
 
 [diff]
     colorMoved = zebra
+
+[include]
+    path = delta
