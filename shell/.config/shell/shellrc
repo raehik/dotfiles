@@ -3,11 +3,15 @@
 # Common shell configuration (bash + zsh).
 #
 
-# safely get all available XDG directories & set config directory from now on
-# straight from freedesktop.org @ https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" \
-    && source "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
-_cfg_dir="${XDG_CONFIG_HOME:-$HOME/.config}/shell"
+# set & export XDG info
+# not using `user-dirs.dirs` because I don't need `xdg-user-dirs` compatibility
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DESKTOP_DIR="$HOME/.desktop-xdg"
+export XDG_DOWNLOAD_DIR="$HOME/tmp/dl"
+
+_cfg_dir="$XDG_CONFIG_HOME/shell"
 
 # shell-specific config
 [[ -n "$BASH_VERSION" ]] && source "$_cfg_dir"/bashrc

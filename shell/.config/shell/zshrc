@@ -21,7 +21,7 @@ setopt interactivecomments
 
 ## Command history configuration {{{
 # file name
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
+HISTFILE="$XDG_CACHE_HOME/zsh_history"
 
 # ???
 # for setting max no. of commands in history file

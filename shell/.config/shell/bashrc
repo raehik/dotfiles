@@ -10,7 +10,7 @@ PROMPT_COMMAND=
 
 ## Command history {{{
 # set history file
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash_history
+HISTFILE="$XDG_CACHE_HOME"/bash_history
 
 # set number of history commands stored in memory
 HISTSIZE=1000

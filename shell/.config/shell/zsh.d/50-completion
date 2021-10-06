@@ -6,7 +6,7 @@ fpath=("$_cfg_dir"/zsh-completions ~/.cache/zsh/completion $fpath)
 autoload -U compinit
 
 # run compinit + move zcompdump cache file
-compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+compinit -d "$XDG_CACHE_HOME/zcompdump"
 
 # show a completion menu for commands, files etc. (move around using
 # arrow keys)
