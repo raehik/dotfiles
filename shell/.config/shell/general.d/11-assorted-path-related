@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-_prefix_path_if_present "$HOME"/bin
-_prefix_path_if_present "$HOME"/.local/bin
+_prefix_path_if_present "$HOME"/bin "$HOME"/.local/bin
 
 # Rust: cargo package manager
 _prefix_path_if_present "$HOME"/.cargo/bin
