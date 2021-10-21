@@ -24,5 +24,8 @@ _prefix_path_if_present "$HOME"/.config/composer/vendor/bin
 # OCaml: opam package manager
 _eval_if_in_path opam env
 
-# Homebrew
+# Homebrew (for Linux)
 _eval_if_present "$HOME"/.linuxbrew/bin/brew shellenv
+
+# Rakubrew
+_eval_if_present "$HOME"/.rakubrew/bin/rakubrew init Zsh
