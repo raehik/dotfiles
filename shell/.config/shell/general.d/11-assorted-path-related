@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-_prefix_path_if_present "$HOME"/bin "$HOME"/.local/bin
-
 # Rust: cargo package manager
 _prefix_path_if_present "$HOME"/.cargo/bin
 
@@ -29,3 +27,5 @@ _eval_if_present "$HOME"/.linuxbrew/bin/brew shellenv
 
 # Rakubrew
 _eval_if_present "$HOME"/.rakubrew/bin/rakubrew init Zsh
+
+_prefix_path_if_present "$HOME"/bin "$HOME"/.local/bin
