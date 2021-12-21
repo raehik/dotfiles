@@ -1,0 +1,18 @@
+# gromit on/off toggle with auto clear (most convenient)
+bindsym $mod+g exec gromit-mpx --clear && gromit-mpx --visibility
+
+#bindsym $mod+g       exec gromit-mpx --toggle
+#bindsym $mod+Shift+g exec gromit-mpx --clear
+#bindsym $mod+Ctrl+g  exec gromit-mpx --visibility
+
+set $mode_gromit "gromit: t=toggle, c=clear, v=visiblity"
+mode $mode_gromit {
+    bindsym t exec gromit-mpx --toggle
+    bindsym c exec gromit-mpx --clear
+    bindsym v exec gromit-mpx --visibility
+
+    bindsym Escape mode "default"
+
+    bindsym $mod+Ctrl+g mode "default"
+}
+bindsym $mod+Ctrl+g mode $mode_gromit
