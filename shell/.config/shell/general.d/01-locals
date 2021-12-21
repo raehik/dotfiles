@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-_prefix_path_if_present() { for x in "$@"; do; [[ -d "$x" ]] && PATH="$x":"$PATH" ; done }
-_source_if_present()      { for x in "$@"; do; [[ -f "$x" ]] && source "$x"       ; done }
+_prefix_path_if_present() { for x in "$@"; do [[ -d "$x" ]] && PATH="$x":"$PATH" ; done }
+_source_if_present()      { for x in "$@"; do [[ -f "$x" ]] && source "$x"       ; done }
 _eval_if_present() { [[ -x "$1" ]] && eval "$("$@")" ; }
 _eval_if_in_path() { command -v "$1" >/dev/null 2>&1 && eval "$("$@")" ; }

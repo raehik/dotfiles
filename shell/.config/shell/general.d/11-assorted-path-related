@@ -25,7 +25,4 @@ _eval_if_in_path opam env
 # Homebrew (for Linux)
 _eval_if_present "$HOME"/.linuxbrew/bin/brew shellenv
 
-# Rakubrew
-_eval_if_present "$HOME"/.rakubrew/bin/rakubrew init Zsh
-
 _prefix_path_if_present "$HOME"/bin "$HOME"/.local/bin
