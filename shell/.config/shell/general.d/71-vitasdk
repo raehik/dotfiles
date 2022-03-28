@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-export VITASDK=/usr/local/vitasdk
-_prefix_path_if_present "$VITASDK"/bin

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# vitasdk
+export VITASDK=/usr/local/vitasdk
+_prefix_path_if_present "$VITASDK"/bin
+
+# Vita Development Suite
+# https://github.com/Vita-Development-Suite/doc
+#export SCE_PSP2_SDK_DIR=~/proj/dev/vita/toolchains/vd-suite/sdk
