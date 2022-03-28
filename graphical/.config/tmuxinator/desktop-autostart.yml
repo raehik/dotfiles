@@ -46,7 +46,7 @@ attach: false
 
 windows:
 # TODO: DISPLAY= fixes my huge nasty bug!! great!!!
-- ibus: DISPLAY= ibus-daemon --replace
+- fcitx: fcitx5
 - gammastep: gammastep
 - mako: mako
 - discord: discord

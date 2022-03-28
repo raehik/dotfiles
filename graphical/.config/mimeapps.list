@@ -18,6 +18,11 @@ x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/discord-443564201349218305=discord-443564201349218305.desktop
 x-scheme-handler/magnet=userapp-transmission-gtk-URRWJ0.desktop
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/discord-478576776990425110=discord-478576776990425110.desktop
+x-scheme-handler/discord-378483863044882443=discord-378483863044882443.desktop
 
 [Added Associations]
 x-scheme-handler/magnet=userapp-transmission-gtk-URRWJ0.desktop;

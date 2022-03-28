@@ -1,7 +1,8 @@
 # vim: ft=conf
+
 bar {
-    #status_command py3status
     status_command i3status-rs
+    font Hack 12
 
     # placement on monitor(s)
     position bottom

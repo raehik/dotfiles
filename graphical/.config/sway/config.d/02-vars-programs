@@ -14,7 +14,7 @@ set $shot_selector  slurp
 set $shot_img       $HOME/proj/media/screenshots/$(date +%F_%T_shot).png
 
 # generic names for common apps
-set $terminal       termite
+set $terminal       foot
 
 set $launcher       dmenu_path | dmenu | xargs swaymsg exec
 

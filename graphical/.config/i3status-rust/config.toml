@@ -14,12 +14,6 @@ format = "{percentage} {time}"
 block = "watson"
 
 [[block]]
-block = "ibus"
-[block.mappings]
-"mozc-jp" = "JA"
-"xkb:us::eng" = "EN"
-
-[[block]]
 block = "memory"
 display_type = "memory"
 format_mem = "{mem_used_percents}"
@@ -39,5 +33,5 @@ block = "sound"
 
 [[block]]
 block = "time"
-interval = 60
+interval = 30
 format = "%a %d/%m %R"
