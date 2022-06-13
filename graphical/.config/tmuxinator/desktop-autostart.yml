@@ -45,10 +45,10 @@ root: ~/
 attach: false
 
 windows:
-# TODO: DISPLAY= fixes my huge nasty bug!! great!!!
 - fcitx: fcitx5
 - gammastep: gammastep
 - mako: mako
 - discord: discord
 - irc: foot weechat
 - pavucontrol: pavucontrol
+- slack: slack
