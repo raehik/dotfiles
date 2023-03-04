@@ -39,7 +39,7 @@ bindsym $mod+z workspace back_and_forth
 bindsym $mod+Shift+z move container to workspace back_and_forth
 
 # move workspace to another output (rolls over, so with 2 outputs=always swap)
-bindsym $mod+x move workspace to output right
+bindsym $mod+x move workspace to output up
 
 # call simple 2 monitor all-workspace-swap script
 bindsym $mod+Shift+x $exec_quiet "outswap"

@@ -11,7 +11,7 @@ set $lock_timeout_sec   7200
 # screenshots
 set $shotter        grim
 set $shot_selector  slurp
-set $shot_img       $HOME/proj/media/screenshots/$(date +%F_%T_shot).png
+set $shot_img       $HOME/proj/data/screenshots/$(date +%F_%T_shot).png
 
 # generic names for common apps
 set $terminal       foot
@@ -30,7 +30,3 @@ set $calendar       evolution
 set $term_irc       weechat
 set $term_music     mpn
 set $term_news      newsboat
-
-# REQ: haikarainen/light
-set $brightness_step_up     light -A 10
-set $brightness_step_down   light -U 10

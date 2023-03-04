@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+# originally written for Arch, also using for NixOS. take care
+# suggest exec if you don't wanna leave an open terminal on crash
 set -e
 
-wm="sway"
+wm=sway
 wm_args=
+ime=fcitx5
 
 # if arg(s) provided, use for window manager and args
 if [[ "$1" ]]; then
@@ -20,10 +23,10 @@ fi
 # input
 export XKB_DEFAULT_OPTIONS=caps:swapescape,compose:menu
 
-# IME (fcitx5)
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+# IME config
+export GTK_IM_MODULE="$ime"
+export QT_IM_MODULE="$ime"
+export XMODIFIERS=@im="$ime"
 
 # 2020-03-13: TODO: make a shell file that only gets included if wayland
 export MOZ_ENABLE_WAYLAND=1

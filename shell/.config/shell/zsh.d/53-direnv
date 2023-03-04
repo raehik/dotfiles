@@ -1,0 +1,2 @@
+# they say to put it at the end but whatever
+eval "$(direnv hook zsh)"

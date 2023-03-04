@@ -16,5 +16,5 @@ bindsym $mod+XF86AudioNext       exec mpd-insert-best
 bindsym $mod+Shift+XF86AudioPlay exec mpd-insert-best
 
 # monitor brightness
-bindsym XF86MonBrightnessUp     exec $brightness_step_up
-bindsym XF86MonBrightnessDown   exec $brightness_step_down
+bindsym XF86MonBrightnessUp     exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown   exec brightnessctl set 10%-

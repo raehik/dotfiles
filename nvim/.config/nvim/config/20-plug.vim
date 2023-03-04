@@ -21,6 +21,7 @@ Plug 'b4b4r07/vim-hcl'
 Plug 'cespare/vim-toml'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'vmchale/dhall-vim'
+Plug 'LnL7/vim-nix'
 
 " Specific
 Plug 'tpope/vim-fugitive'

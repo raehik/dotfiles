@@ -2,29 +2,28 @@
 #
 # record *all* commands written ever! >:D
 #
-# special function zshaddhistory is run before a line is added to the
-# history file, or something like that.
+# special function zshaddhistory is run before a line is added to the history
+# file, or something like that.
 #
-# does *not* store line parse errors (though does store incorrect
-# commands).
+# does *not* store line parse errors (though does store incorrect commands).
 #
 
-full_history_file="$HOME/data/zsh_full_history"
-start_history_file="$HOME/data/zsh_start_history"
+shell_uid="$(date +%s)-$(openssl rand -hex 4)"
+metrics_dir="$HOME"/proj/data/metrics/pc/usage/shell/zsh
 
 # .zshrc is read on shell startup, so log that
-printf '%s\n' "$(date "+%s") 1" >> "$start_history_file"
+printf '%s\n' "$(date +%s) $shell_uid 1" >> "$metrics_dir"/sessions
 
 zshaddhistory() {
     # exiting with Ctrl-D leaves no newline. we check to see if the last
     # character is a newline: if it isn't, Ctrl-D was hit, so we don't
     # record it.
     if [[ "${1: -1}" == $'\n' ]]; then
-        printf '%s' "$(date "+%s") $1" >> "$full_history_file"
+        printf '%s' "$(date +%s) $shell_uid $1" >> "$metrics_dir"/commands
     fi
 }
 
 # executed on shell exit
 zshexit() {
-    printf '%s\n' "$(date "+%s") 0" >> "$start_history_file"
+    printf '%s\n' "$(date +%s) $shell_uid 0" >> "$metrics_dir"/sessions
 }

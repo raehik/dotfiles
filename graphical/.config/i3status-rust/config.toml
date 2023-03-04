@@ -1,5 +1,5 @@
 theme = "solarized-dark"
-icons = "awesome"
+icons = "awesome6"
 
 [[block]]
 block = "music"
@@ -10,8 +10,8 @@ block = "battery"
 interval = 10
 format = "{percentage} {time}"
 
-[[block]]
-block = "watson"
+#[[block]]
+#block = "watson"
 
 [[block]]
 block = "memory"

@@ -548,7 +548,7 @@ autocenter_mode = yes
 screen_switcher_mode = previous
 
 # Place lyrics outside the music directory
-lyrics_directory = ~/proj/music/lyrics
+lyrics_directory = ~/proj/media/music/lyrics
 
 # (n)Vim master race, as usual
 external_editor = nvim
