@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+_session_name=desktop-autostart
+tmux new-session -d -s $_session_name
+
+_win() {
+    tmux new-window -t $_session_name $1
+}
+
+_win gammastep
+_win pavucontrol
