@@ -4,9 +4,9 @@ set $suspend    systemctl suspend
 set $poweroff   poweroff
 set $ime_cycle  ime-cycle-wayland
 
-set $lock               swaylock -c $c_general_lock
-set $lock_fork          swaylock -c $c_general_lock -f
-set $lock_timeout_sec   7200
+set $lock             swaylock -c $c_general_lock
+set $lock_fork        swaylock -c $c_general_lock -f
+set $idle_timeout_sec 600
 
 # screenshots
 set $shotter        grim

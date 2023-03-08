@@ -1,6 +1,6 @@
 # vim: ft=conf
 exec swayidle \
-    timeout $lock_timeout_sec 'swaymsg "output * dpms off"' \
-    timeout $lock_timeout_sec '$suspend' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep '$lock'
+    before-sleep '$lock' \
+    timeout $idle_timeout_sec '$suspend' \
+    timeout $idle_timeout_sec 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'

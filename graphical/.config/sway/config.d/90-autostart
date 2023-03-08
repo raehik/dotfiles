@@ -1,4 +1,5 @@
 # for xdg-desktop-portal-wlr (now just works & uses slurp to select screen!)
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-exec $terminal tmuxinator start desktop-autostart
+#exec $terminal tmuxinator start desktop-autostart
+exec graphical-autostart
