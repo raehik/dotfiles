@@ -1,32 +1,35 @@
+# 2023-03-20: raehik: syntax overhaul and now it's weird and new. not a fan
+
+[theme]
 theme = "solarized-dark"
+
+[icons]
 icons = "awesome6"
 
 [[block]]
 block = "music"
-buttons = ["play", "next"]
 
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage} {time}"
+format = " $icon $percentage $time "
 
 #[[block]]
 #block = "watson"
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
+format = " $icon $mem_used_percents "
+format_alt = " SWP $swap_used_percents "
 
 [[block]]
 block = "cpu"
-interval = 1
+interval = 10
 
 [[block]]
 block = "load"
-interval = 1
-format = "{1m}"
+interval = 10
+#format = "{1m}"
 
 [[block]]
 block = "sound"
@@ -34,4 +37,4 @@ block = "sound"
 [[block]]
 block = "time"
 interval = 30
-format = "%a %d/%m %R"
+format = " $icon $timestamp.datetime(f:'%a %d/%m %R') "
