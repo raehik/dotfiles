@@ -19,7 +19,9 @@ mount_user() {
 }
 
 mount_public() {
-    sudo mount -t cifs "//$(nmblookup $nas_server | awk 'END{print $1}')/$nas_share_public" "$mount_dir" -o "vers=1.0,username=$(id -un),password=,uid=$(id -u),gid=$(id -g),iocharset=utf8"
+    #nas_ip="$(nmblookup "$nas_server" 2>&1 | tail -n1 | cut -d ' ' -f 1)"
+    nas_ip="192.168.0.101"
+    sudo mount -t cifs "//$nas_ip/$nas_share_public" "$mount_dir" -o "vers=1.0,username=$(id -un),password=,uid=$(id -u),gid=$(id -g),iocharset=utf8"
     #smbnetfs "$mount_dir"
 }
 
