@@ -10,3 +10,6 @@ __pycache__/
 
 # direnv
 .direnv/
+
+# `nix flake build` default output name
+/result
